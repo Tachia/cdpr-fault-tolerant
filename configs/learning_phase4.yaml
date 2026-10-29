@@ -1,0 +1,101 @@
+# Protocol of Phase 4: learned fault classifier (baseline B3 of the specification).
+# Written on 27 October 2026, before any Phase 4 run was simulated. Every Phase 4 script reads its
+# settings from this file and stamps its SHA-256 prefix into its output; a change after the data
+# exist is recorded below and in docs/phase4 with the reason.
+#
+# Amendments
+#  1. (27 October, while the first runs were simulated, before any feature was extracted or any
+#     model trained; first version sha256/16 6aea047c4fab79e4) features.compress added. After a
+#     break the free winch pays out cable at up to 2.5 m/s, so the length residual of the broken
+#     cable reaches thousands of millimetres while the residuals that reveal an actuator fault are
+#     a few millimetres; standardised linearly, those would be squeezed by the outliers.
+#  2. (27 October, while the runs were simulated, before the dataset was built and before any
+#     search trial; version with amendment 1: sha256/16 4a7c22e06ffe7ccf) compute budget. Measured
+#     on the 2-core machine (one thread, batch 256): the CNN of 3 x 32 channels, kernel 5, window 40
+#     takes 0.04 s per training step, an LSTM of 2 x 128 units over 80 steps 0.53 s, so the largest
+#     configurations of the first space would take hours per epoch and the search days. Changed:
+#     cnn_channels [16, 32, 64] (was up to 128), cnn_kernel [3, 5] (was up to 7), lstm_hidden
+#     [32, 64] (was up to 128); search max_epochs 20, patience 4; training max_epochs 40,
+#     patience 6; fault windows of the training split taken every 2nd cycle (fault_stride_train).
+#     A timing check trained two small models for one and two epochs on the first 14 finished
+#     training and validation runs; its scores were not used for any choice.
+
+data:
+  seed_base: 300000                 # Phase 4 seeds: 300000 and up (calibration 100000+, evaluation 200000+)
+  controller: controller_phase3.yaml   # frozen configuration, with the two changes below
+  variant: no_hedging               # the MPC uses no fault information, so the data carry no trace of the IMM
+  mu_declare: 2.0                   # declarations disabled
+  faults:                           # (kind, value); value: rho for loe, fraction of holding torque for bias
+    - [break, 0.0]
+    - [loe, 0.3]
+    - [loe, 0.6]
+    - [bias, 0.1]
+    - [bias, -0.1]
+  onset: [3.0, 7.0]                 # uniform [s], drawn from seed + 500000, rounded to 1 ms
+  after_onset: 1.0                  # [s] a fault run ends this long after the onset (or when the platform is lost)
+  noise: [1.0, 2.0]                 # alternating with the repetition index
+  T1:                               # training, validation and test
+    repetitions: 10                 # per (fault, cable): 400 fault runs
+    fault_free: 40                  # full 16 s runs
+    split:                          # by repetition index (fault runs) or run index (fault-free)
+      train: [0, 1, 2, 3, 4, 5]
+      val: [6, 7]
+      test: [8, 9]
+    fault_free_split: {train: 24, val: 8, test: 8}
+  T2:                               # held out entirely: test of generalisation to another path
+    repetitions: 2                  # per (fault, cable): 80 fault runs
+    fault_free: 8
+
+features:
+  module: cdpr_ft.learning.features # r_t, t_hat, r_l per winch at the estimator rate (200 Hz), float16
+  t_from: 2.0                       # [s] windows end at or after the arming time of the IMM
+  label: mode at the last sample of the window (0 healthy, 1-8 break of cable i, 9-16 actuator fault of winch i)
+  compress: signed logarithm sign(x) ln(1 + |x|) of the scaled channels, inside the model
+  standardise: per channel, mean and standard deviation of the compressed training windows
+  m0_stride_train: 4                # healthy windows of the training split: every 4th
+  fault_stride_train: 2             # fault windows of the training split: every 2nd; validation and test: every window
+
+search:                             # on the training and validation splits only
+  sampler: TPE                      # Optuna, seed 0
+  pruner: median                    # 5 startup trials, 5 warm-up epochs
+  trials: 30
+  objective: validation macro-F1 over all validation windows, best epoch
+  max_epochs: 20
+  patience: 4                       # epochs without improvement of the objective
+  batch: 256
+  space:
+    arch: [cnn, lstm]
+    window: [20, 40, 80]            # samples at 200 Hz: 0.1, 0.2, 0.4 s
+    cnn_layers: [2, 3, 4]           # causal dilated convolutions, dilation 2^l
+    cnn_channels: [16, 32, 64]
+    cnn_kernel: [3, 5]
+    lstm_hidden: [32, 64]
+    lstm_layers: [1, 2]
+    dropout: [0.0, 0.3]
+    lr: [1.0e-4, 3.0e-3]            # log-uniform
+    weight_decay: [1.0e-6, 1.0e-3]  # log-uniform
+  loss: cross-entropy with balanced class weights of the training windows
+
+training:                           # best hyperparameters of the search
+  seeds: [0, 1, 2, 3, 4]
+  max_epochs: 40
+  patience: 6
+  deployed: the seed with the highest validation macro-F1 (used as baseline B3 in Phase 5)
+  size_curve:                       # share of the training runs (stratified by fault and cable), seeds 0-2, validation only
+    fractions: [0.25, 0.5, 1.0]
+  threads: 2
+  deterministic: true
+
+declaration:                        # thresholds of the classifier, on the validation runs, deployed model
+  rule: the controller's (same fault mode the most probable, probability >= mu_iso, in N_c consecutive estimator cycles)
+  mu_iso: [0.5, 0.7, 0.8, 0.9, 0.95, 0.99, 0.999, 0.9999]
+  n_c: [1, 2, 3, 4, 6, 8]
+  selection: lexicographic - fewest runs with a false alarm, most faults declared with the correct mode, smallest median delay of the break declarations, larger mu_iso, larger N_c
+  # with no false alarm and every fault correct this is the rule used for the IMM in Phase 3
+
+test:                               # once, after configs/classifier_phase4.yaml is written
+  splits: [T1 test, T2]
+  window_metrics: accuracy, macro-F1, per-class precision, recall and F1, confusion matrix (all five seeds and the deployed model)
+  run_metrics: false alarms, missed and wrong declarations, delays (deployed model with its thresholds; all five seeds)
+  comparison: IMM on the same runs, with its frozen thresholds (mu_iso 0.9999, N_c 2)
+  intervals: 95 % bootstrap over runs, 2000 resamples, seed 0

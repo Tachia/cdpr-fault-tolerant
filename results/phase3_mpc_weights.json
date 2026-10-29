@@ -1,0 +1,554 @@
+{
+ "settings": {
+  "first": {
+   "scale": [],
+   "lost": 2,
+   "rms_mm_median": 2.751076920225631,
+   "rms_mm_max": 104.82545190858335,
+   "max_fault_mu": 1.0,
+   "runs": [
+    {
+     "seed": 100000,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": [
+      "tilt",
+      3.738
+     ],
+     "rms_mm": 60.94241213319859
+    },
+    {
+     "seed": 100001,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.8374768467580864
+    },
+    {
+     "seed": 100002,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.599628062662559
+    },
+    {
+     "seed": 100003,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 1.750709172255712
+    },
+    {
+     "seed": 100004,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.752790157300726
+    },
+    {
+     "seed": 100005,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.4054031292917633
+    },
+    {
+     "seed": 100006,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.756991868658053
+    },
+    {
+     "seed": 100007,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.995167602153505
+    },
+    {
+     "seed": 100008,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.774390887475104
+    },
+    {
+     "seed": 100009,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.3550723824849853
+    },
+    {
+     "seed": 100010,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.2648053919182383
+    },
+    {
+     "seed": 100011,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 4.815626899611923
+    },
+    {
+     "seed": 100012,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.749363683150536
+    },
+    {
+     "seed": 100013,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 3.629660571833349
+    },
+    {
+     "seed": 100014,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.9666184459747005
+    },
+    {
+     "seed": 100015,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": [
+      "tilt",
+      5.328
+     ],
+     "rms_mm": 104.82545190858335
+    }
+   ],
+   "seconds": 294.74093222618103
+  },
+  "A": {
+   "scale": [
+    [
+     "q_vel",
+     0.1
+    ],
+    [
+     "q_angvel",
+     0.1
+    ],
+    [
+     "r_rate",
+     10.0
+    ]
+   ],
+   "lost": 0,
+   "rms_mm_median": 2.6412459204808894,
+   "rms_mm_max": 5.162298926561917,
+   "max_fault_mu": 5.199835140956566e-05,
+   "runs": [
+    {
+     "seed": 100000,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 5.162298926561917
+    },
+    {
+     "seed": 100001,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.7559921083362373
+    },
+    {
+     "seed": 100002,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.83693183950423
+    },
+    {
+     "seed": 100003,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 1.326356753157764
+    },
+    {
+     "seed": 100004,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.6865834842466563
+    },
+    {
+     "seed": 100005,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.394942280294361
+    },
+    {
+     "seed": 100006,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.0175502728458703
+    },
+    {
+     "seed": 100007,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.9629088937105705
+    },
+    {
+     "seed": 100008,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.7293838791490095
+    },
+    {
+     "seed": 100009,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.1691528806532268
+    },
+    {
+     "seed": 100010,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.0009670670074886
+    },
+    {
+     "seed": 100011,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 4.931088799143335
+    },
+    {
+     "seed": 100012,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.834166821261469
+    },
+    {
+     "seed": 100013,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.595908356715122
+    },
+    {
+     "seed": 100014,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.8816915299549344
+    },
+    {
+     "seed": 100015,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 3.209228953438943
+    }
+   ],
+   "seconds": 306.58687114715576
+  },
+  "B": {
+   "scale": [
+    [
+     "q_vel",
+     0.3
+    ],
+    [
+     "q_angvel",
+     0.3
+    ],
+    [
+     "r_rate",
+     3.0
+    ]
+   ],
+   "lost": 0,
+   "rms_mm_median": 2.5709362899203176,
+   "rms_mm_max": 5.3894271703664325,
+   "max_fault_mu": 0.00017964215658139437,
+   "runs": [
+    {
+     "seed": 100000,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 5.3894271703664325
+    },
+    {
+     "seed": 100001,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.85949915427399
+    },
+    {
+     "seed": 100002,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.7039716085514134
+    },
+    {
+     "seed": 100003,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 1.3030661924345108
+    },
+    {
+     "seed": 100004,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.4379009712892223
+    },
+    {
+     "seed": 100005,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.412080984380889
+    },
+    {
+     "seed": 100006,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.9192273973310716
+    },
+    {
+     "seed": 100007,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.9627150537919424
+    },
+    {
+     "seed": 100008,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.035268692485891
+    },
+    {
+     "seed": 100009,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.193917433881911
+    },
+    {
+     "seed": 100010,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 1.9356000400906523
+    },
+    {
+     "seed": 100011,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 4.744721235369768
+    },
+    {
+     "seed": 100012,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.0209048391793174
+    },
+    {
+     "seed": 100013,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.885602460745956
+    },
+    {
+     "seed": 100014,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.9706958706344975
+    },
+    {
+     "seed": 100015,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 4.118799889223364
+    }
+   ],
+   "seconds": 321.6082558631897
+  },
+  "C": {
+   "scale": [
+    [
+     "q_pos",
+     0.5
+    ],
+    [
+     "q_rot",
+     0.5
+    ],
+    [
+     "q_vel",
+     0.1
+    ],
+    [
+     "q_angvel",
+     0.1
+    ],
+    [
+     "r_rate",
+     10.0
+    ]
+   ],
+   "lost": 0,
+   "rms_mm_median": 2.681616830980998,
+   "rms_mm_max": 5.217817504570992,
+   "max_fault_mu": 4.984977204003371e-05,
+   "runs": [
+    {
+     "seed": 100000,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 5.217817504570992
+    },
+    {
+     "seed": 100001,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.808028721309427
+    },
+    {
+     "seed": 100002,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.9176580884735923
+    },
+    {
+     "seed": 100003,
+     "trajectory": "T1",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 1.4326709175957972
+    },
+    {
+     "seed": 100004,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.7829216067627023
+    },
+    {
+     "seed": 100005,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.4543333788260617
+    },
+    {
+     "seed": 100006,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.0967465057460886
+    },
+    {
+     "seed": 100007,
+     "trajectory": "T1",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.087132785644309
+    },
+    {
+     "seed": 100008,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.794853377595499
+    },
+    {
+     "seed": 100009,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 3.2044228740914322
+    },
+    {
+     "seed": 100010,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 2.114557210707551
+    },
+    {
+     "seed": 100011,
+     "trajectory": "T2",
+     "noise": 1.0,
+     "lost": null,
+     "rms_mm": 4.954425512294689
+    },
+    {
+     "seed": 100012,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.910258827876237
+    },
+    {
+     "seed": 100013,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 2.5803120551992937
+    },
+    {
+     "seed": 100014,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 1.980789808397033
+    },
+    {
+     "seed": 100015,
+     "trajectory": "T2",
+     "noise": 2.0,
+     "lost": null,
+     "rms_mm": 3.218358496539433
+    }
+   ],
+   "seconds": 307.0246341228485
+  }
+ },
+ "chosen": "B",
+ "provenance": {
+  "code_digest": "2b833249d3db311e",
+  "utc": "2026-10-26T16:03:09Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

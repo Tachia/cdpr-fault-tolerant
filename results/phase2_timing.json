@@ -1,0 +1,41 @@
+{
+  "cpu_count": 2,
+  "closed_loop": {
+    "0.00025": {
+      "plant_build_s": 0.035,
+      "controller_setup_s": 4.14,
+      "run_s": 6.22,
+      "simulated_s": 16.0,
+      "s_per_simulated_s": 0.389
+    },
+    "0.000125": {
+      "plant_build_s": 0.094,
+      "controller_setup_s": 4.31,
+      "run_s": 7.83,
+      "simulated_s": 16.0,
+      "s_per_simulated_s": 0.489
+    },
+    "6.25e-05": {
+      "plant_build_s": 0.089,
+      "controller_setup_s": 4.49,
+      "run_s": 11.72,
+      "simulated_s": 16.0,
+      "s_per_simulated_s": 0.733
+    }
+  },
+  "prediction_model_us": {
+    "rk4_step_vm": 54.5,
+    "rk4_step_with_jacobians_vm": 273.7,
+    "rk4_step_with_jacobians_jit": 45.9,
+    "17_modes_step_with_jacobians_jit": 275.0
+  },
+  "provenance": {
+    "code_digest": "c77663b917040fde",
+    "utc": "2026-10-26T09:27:55Z",
+    "python": "3.13.17",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "casadi": "3.8.1"
+  },
+  "jit_build_s": 25.5
+}

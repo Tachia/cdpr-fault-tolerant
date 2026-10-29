@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "cdpr-fault-tolerant: simulation, fault diagnosis and fault tolerant control of a redundant cable driven parallel robot"
+type: software
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/Tachia/cdpr-fault-tolerant"
+authors:
+  - family-names: Tachia
+    given-names: "Mfeuter Joseph"
+    affiliation: "Innopolis University"
+    orcid: "https://orcid.org/0000-0002-9274-3658"
+  - family-names: Maloletov
+    given-names: "Alexander V."
+    affiliation: "Innopolis University; Volgograd State Technical University"
+    orcid: "https://orcid.org/0000-0002-7312-2944"
+keywords:
+  - cable driven parallel robot
+  - fault tolerant control
+  - interacting multiple model
+  - model predictive control
+  - IPAnema

@@ -1,0 +1,81 @@
+Passages of paper/manuscript/main.tex whose numbers agree with the stored results (scripts/paper_check_numbers.py):
+PASS  a paired simulation study of 624 fault cases and 200 fault free runs
+PASS  It identified 623 of the 624 faults correctly, declared every cable break within 19 ms and lost the platform after 11 of 208 cable breaks, against 122 without fault tolerance and 65 with a classical threshold based pipeline.
+PASS  when its probabilities also shaped the constraints of the controller, the platform was lost after 44 of 64 breaks.
+PASS  the platform was lost after every one of 104 simulated breaks of an upper cable
+PASS  Recovery plans computed offline keep the platform after 197 of 208 cable breaks
+PASS  isolates every cable break within 19 ms
+PASS  It identified 623 of 624 faults correctly and declared every break within 19 ms.
+PASS  With it the platform was lost after 11 of 208 breaks, against 20 with the same planner solved online and 122 without fault tolerance.
+PASS  used that way it raised false alarms in 154 of 252 runs and lost 44 of 64 breaks.
+PASS  Counting every method on every run it applies to, B3T on a subset fixed in advance, the evaluation comprises 5,212 simulations.
+PASS  The IMM declared 623 of the 624 faults with the correct mode
+PASS  Its median delay was 17 ms for a break, 23 ms for a loss of effectiveness and 41 ms for a bias, and no break took longer than 19 ms.
+PASS  Its one false alarm, 2.8 s before a loss of effectiveness of the same winch, is also the one fault it did not declare correctly.
+PASS  On the same runs P declared 5 ms earlier than B2 and 10 ms earlier than B3
+PASS  B2 declared every break correctly and no actuator fault, and in 21 runs with a loss of effectiveness of an upper winch it declared a break of a healthy lower cable
+PASS  The classifier of B3 declared all 208 breaks correctly, 206 of the 208 losses of effectiveness and 184 of the 208 biases.
+PASS  The classifier raised 42 false alarms in the 1.29 h of operation in which P raised one, and its fault free runs carried a false alarm in 4 of 100 on T1 and in 34 of 100 on T2
+PASS  it raised a false alarm in 6 of 8 fault free test runs and declared 45 of 80 faults correctly
+PASS  lost the platform after 11 of the 208 breaks (5.3%), against 122 without fault tolerance (58.7%), 65 for B2 (31.2%), 25 for B3 (12.0%) and 38 without replanning (18.3%)
+PASS  All 11 losses of P followed the break of an upper cable, 6 of 52 on T1 and 5 of 52 on T2
+PASS  The oracle B1 lost 4, three of them after upper cable breaks
+PASS  a cable was outside its bounds for 5.1% of the time under P and 2.1% under the oracle
+PASS  lost 65 platforms, 30 of them after a lower cable break
+PASS  Without it (A2), 38 platforms were lost, 86.5% of the transient was spent outside the bounds in the median, and the error after the transient was 72.7 mm against 5.6 mm for P
+PASS  lost 20 platforms against 11 (paired, p=0.09, a secondary comparison) and raised the time outside the bounds in the transient from 5.1 to 20.2%
+PASS  in 181 of the 208 break runs, after 0.27 s in the median
+PASS  the oracle recovered 197 runs after 0.19 s, A3 173 after 0.70 s and A2 74 after 1.01 s
+PASS  The 0.4 s of latency cost nine platforms and quadrupled
+PASS  the classifier cost 14 platforms more than the IMM, 25 against 11
+PASS  lost 19 platforms after a loss of effectiveness and 2 after a bias.
+PASS  an RMS error of 30 N in the median, 20 N for \rho=0.3 and 52 N
+PASS  the error after the transient was 18.2 mm, 14 and 45 mm for the two magnitudes, so that only 80 of the 208 runs returned
+PASS  After a bias the deficit error was 5.6 N and 206 of 208 runs returned to the band.
+PASS  P and A1 lost the same number of platforms after a break, 11 each, with the outcome differing in ten runs, five each way
+PASS  (paired median difference 0 N, p=0.26)
+PASS  the position error before the fault was identical in 804 of the 824 paired runs
+PASS  raised a false alarm in 154 of 252 runs against 11 for B3 on the same runs, reduced the correct declarations from 186 to 16 of 192, lost 44 of 64 platforms after a break against 8, and lowered the margin in the transient by 19 N (paired median; 95% interval -28.7 to -13.8 N)
+PASS  took 2.9 ms on average and 5.3 ms at the 99th percentile, against its period of 5 ms.
+PASS  The MPC took 32 ms on average and 65 ms at the 99th percentile
+PASS  The MPC needed 32 ms on average against its period of 20 ms
+PASS  Cable 2 breaks at 4.933 s on T1.
+PASS  The IMM gives the break mode a probability above 0.99 in the cycle 11 ms after the break and declares it after 17 ms.
+PASS  The classifier's probability rises earlier, to 0.99 at 6 ms, but both reach the threshold of 0.9999 in the same cycle, 11 ms after the break; the IMM needs two such cycles and declares after 17 ms, the classifier needs four and declares after 27 ms, and the threshold rule of B2 declares at 22 ms.
+PASS  Under P it descends by 0.5 m along the recovery plan to a pose the seven remaining cables can hold, tilting by at most 6.7^\circ and settling at 5.3^\circ
+PASS  an intact cable leaves its bounds for 5% of the first 2 s, all of it within 0.21 s of the break, and from 0.3 s on every intact tension lies between 15 and 183 N
+PASS  Without fault tolerance the platform turns past 30^\circ and is lost 0.40 s after the break.
+PASS  (0.65\sigma_x,i,0.125\sigma_y,i,0.25) m for the upper and (0.75\sigma_x,i,0.10\sigma_y,i,0.75) m for the lower cables
+PASS  which gives EA=35.2 kN
+PASS  acts like a mass of I_m/r_d^2=1.7 kg
+PASS  the eight cables hold the level platform at 3,357 positions within the drum windows. After the loss of one upper cable 11.8% of these positions remain, and after the loss of a lower cable 42.2%.
+PASS  8,059 of 14,241 points of a 0.05 m grid are feasible with all cables, 14 after the loss of the upper cable 1 and 4,073 after the loss of the lower cable 5
+PASS  52.3% of the positions can be held after an upper cable breaks and 73.8% after a lower one, with a median tilt of 10^\circ
+PASS  The peak speed of 0.79 m/s is a third of the speed limit
+PASS  Solving \eqrefeq:recovery took 0.21 s in the median and at most 0.82 s on one core
+PASS  applies after a latency of 0.4 s, which covers the 99th percentile of the solve times
+PASS  with a median drop of the reference point of 0.54 to 0.60 m depending on the cable, whereas after a lower cable break the time scaling sufficed for 31 to 69 of the 222 instants of both paths and the recovery plans dropped by at most 0.02 m
+PASS  drifts from a recovery path after an upper cable break by up to 0.11 m by its end
+PASS  the lowest elastic mode of the platform falls to 3.2 to 3.6 Hz
+PASS  RMS error of 0.30 N at the nominal current noise and 0.57 N at twice that noise, at the price of a lag of 3/\omega_o=9.5 ms
+PASS  At the home pose the six elastic modes of the platform with locked winches then lie between 5.5 and 18.7 Hz.
+PASS  never falls below 95.4% of EA
+PASS  while after a lower cable breaks it can on 29 to 52% of the path
+PASS  rotor of 0.3 kgcm^2 acts like a mass
+PASS  vertical lines: declarations of P (17 ms), B2 (22 ms) and B3 (27 ms)
+PASS  A break of the upper cable 2 at 4.933 s on T1 (run 1 of the evaluation)
+PASS  declared every break within 19 ms and raised one false alarm in 1.29 h. With recovery plans computed in advance along the task the platform was lost after 11 of 208 breaks, all of them upper cable breaks, against 122 without fault tolerance and 20 when the same plans were solved online.
+PASS  (a) IMM (P against A1, 624 runs): the points lie on the diagonal. (b) Classifier (B3T against B3, 138 runs)
+PASS  bandwidth \omega_o/2\pi; k_P, k_I & 50 Hz; 0.5, 20 s^-1
+PASS  period; arming time & 5 ms; 2 s
+PASS  process noise, linear and angular acceleration & 0.5 ms^-2, 1 rads^-2
+PASS  measurement noise, lengths and tensions & 0.2 mm, 1.5 N
+PASS  deficit random walk; fault and return rates & 20 Ns^-1/2; 10^-3, 10^-2 s^-1
+PASS  \mu_\mathrmiso, N_c & 0.9999, 2
+PASS  period, horizon & 20 ms, 12 steps
+PASS  weights: pose; velocity; tension change & 4\times10^4; 120; 0.03
+PASS  velocity \times0.3, tension change \times3
+PASS  scenarios: threshold \mu_s, at most & 10^-3, 2 fault scenarios
+PASS  time scaling: horizon, \kappa_\min & 2 s, 0.25
+PASS  T, intervals; s_p, s_\min & 1 s, 15; 5, 10 N
+PASS  library: break instants; detection delay & every 50 ms; 15 ms

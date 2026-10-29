@@ -1,0 +1,4 @@
+{'omega': 10.0, 'kp': 100.0, 'kd': 20.0, 'lost': 0, 'median_rmse_mm': 10.383123094061421, 'max_rmse_mm': 15.886524846817677, 'median_outside_pct': 0.0}
+{'omega': 20.0, 'kp': 400.0, 'kd': 40.0, 'lost': 0, 'median_rmse_mm': 9.931550536460069, 'max_rmse_mm': 17.408101360347835, 'median_outside_pct': 3.9685019686269607}
+{'omega': 30.0, 'kp': 900.0, 'kd': 60.0, 'lost': 2, 'median_rmse_mm': 24.187776636140256, 'max_rmse_mm': 45.48254346438467, 'median_outside_pct': 72.04862196112742}
+chosen {'omega': 20.0, 'kp': 400.0, 'kd': 40.0, 'lost': 0, 'median_rmse_mm': 9.931550536460069, 'max_rmse_mm': 17.408101360347835, 'median_outside_pct': 3.9685019686269607}

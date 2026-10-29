@@ -1,0 +1,5 @@
+first {'scale': [], 'lost': 2, 'rms_mm_median': 2.751076920225631, 'rms_mm_max': 104.82545190858335, 'max_fault_mu': 1.0, 'seconds': 294.74093222618103}
+A {'scale': [['q_vel', 0.1], ['q_angvel', 0.1], ['r_rate', 10.0]], 'lost': 0, 'rms_mm_median': 2.6412459204808894, 'rms_mm_max': 5.162298926561917, 'max_fault_mu': 5.199835140956566e-05, 'seconds': 306.58687114715576}
+B {'scale': [['q_vel', 0.3], ['q_angvel', 0.3], ['r_rate', 3.0]], 'lost': 0, 'rms_mm_median': 2.5709362899203176, 'rms_mm_max': 5.3894271703664325, 'max_fault_mu': 0.00017964215658139437, 'seconds': 321.6082558631897}
+C {'scale': [['q_pos', 0.5], ['q_rot', 0.5], ['q_vel', 0.1], ['q_angvel', 0.1], ['r_rate', 10.0]], 'lost': 0, 'rms_mm_median': 2.681616830980998, 'rms_mm_max': 5.217817504570992, 'max_fault_mu': 4.984977204003371e-05, 'seconds': 307.0246341228485}
+chosen: B

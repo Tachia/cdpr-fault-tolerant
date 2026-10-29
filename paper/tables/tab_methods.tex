@@ -1,0 +1,20 @@
+% written by scripts/paper_tables.py from stored files; do not edit
+\begin{table}[t]
+\centering\small
+\caption{Methods of the evaluation. All run on the same plant, sensors and seeds, so every comparison is paired.}\label{tab:methods}
+\begin{tabular}{@{}lp{0.8\linewidth}@{}}
+\toprule
+Method & Description \\
+\midrule
+P & Proposed: IMM diagnosis; before a declaration the MPC weights the fault scenarios by their probabilities; after a break declaration it follows a plan from the library \\
+A1 & P without the probability aware tightening \\
+A2 & P without replanning after a break \\
+A3 & P with the recovery plan solved online, applied after 0.4~s \\
+B0 & No fault tolerance: healthy model throughout, no declaration \\
+B1 & Oracle: the true fault declared at its onset \\
+B2 & Thresholds on the winch tension estimates, computed torque control with tension distribution, plans from the library \\
+B3 & Recurrent classifier in place of the IMM probabilities for the declaration; A1 otherwise \\
+B3T & B3 with the classifier probabilities also weighting the MPC scenarios \\
+\bottomrule
+\end{tabular}
+\end{table}

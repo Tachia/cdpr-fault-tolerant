@@ -1,0 +1,30 @@
+[
+ {
+  "name": "sigma_acc_ang=1",
+  "imm": {
+   "sigma_acc_ang": 1.0
+  },
+  "eso": 50.0
+ },
+ {
+  "name": "sigma_acc_ang=1, eso=100Hz",
+  "imm": {
+   "sigma_acc_ang": 1.0
+  },
+  "eso": 100.0
+ },
+ {
+  "name": "sigma_acc_ang=2",
+  "imm": {
+   "sigma_acc_ang": 2.0
+  },
+  "eso": 50.0
+ },
+ {
+  "name": "sigma_acc_ang=2, eso=100Hz",
+  "imm": {
+   "sigma_acc_ang": 2.0
+  },
+  "eso": 100.0
+ }
+]

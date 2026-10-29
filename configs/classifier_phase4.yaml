@@ -1,0 +1,55 @@
+# Frozen learned fault classifier (Phase 4, 2026-10-27): baseline B3 of the evaluation.
+# Hyperparameters: results/phase4_search.json (training and validation splits only).
+# Models: results/phase4_training.json; deployed = seed with the highest validation macro-F1.
+# Declaration thresholds: results/phase4_thresholds.json (validation runs, rule of the protocol).
+# Phase 4 seeds: 300000 and up. The test splits are evaluated once, after this file is written.
+params:
+  arch: lstm
+  window: 20
+  lstm_hidden: 64
+  lstm_layers: 2
+  dropout: 0.24298172848567406
+  lr: 0.0017524083914833295
+  weight_decay: 2.5637443672300642e-05
+deployed_model:
+  file: results/phase4_models/seed2.pt
+  sha256_16: e2b4d6691e630b0f
+  seed: 2
+  best_epoch: 5
+  val_macro_f1: 0.9628745541987669
+declaration:
+  mu_iso: 0.99
+  n_c: 4
+seed_models:
+  '0':
+    file: results/phase4_models/seed0.pt
+    sha256_16: c635e6c62ab17898
+    mu_iso: 0.99
+    n_c: 8
+  '1':
+    file: results/phase4_models/seed1.pt
+    sha256_16: 93d8a7e49b3a0d02
+    mu_iso: 0.95
+    n_c: 8
+  '2':
+    file: results/phase4_models/seed2.pt
+    sha256_16: e2b4d6691e630b0f
+    mu_iso: 0.99
+    n_c: 4
+  '3':
+    file: results/phase4_models/seed3.pt
+    sha256_16: b2f3fc9254f880c3
+    mu_iso: 0.95
+    n_c: 8
+  '4':
+    file: results/phase4_models/seed4.pt
+    sha256_16: d148d2d5933a2153
+    mu_iso: 0.99
+    n_c: 1
+hashes:
+  protocol: 1167c90253d950f9
+  dataset: 00cb48553bc96097
+  features_module: d659dfa5950bf8df
+  models_module: bc0b887ff09b44cd
+  learning_digest: 8aa62569041d0e4b
+  controller_digest: fe7722d2d710c537

@@ -1,0 +1,22 @@
+% written by scripts/paper_tables.py from stored files; do not edit
+\begin{table*}[t]
+\centering\small
+\caption{Outcome of every method. Lost: platform lost after the breaks of an upper and of a lower cable; correct: faults declared with the correct mode; delay: median delay of the correct break declarations; false alarms: per hour of operation with the fault modes armed; recovered: breaks after which the position error returned to the band of the fault free runs. A2 and A3 ran the break runs only, and B3T a subset fixed in advance. The differences in platforms lost between P and each of B0, B2, B3 and A2 remain after the Holm correction ($p\le0.007$).}\label{tab:results}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Lost} & Correct & Delay & False alarms & Recovered \\
+\cmidrule(lr){2-3}
+Method & upper & lower & & (ms) & (per h) & breaks \\
+\midrule
+P & 11/104 & 0/104 & 623/624 & 17 & 0.8 & 181/208 \\
+A1 & 11/104 & 0/104 & 624/624 & 17 & 0.0 & 182/208 \\
+A2 & 31/104 & 7/104 & 208/208 & 17 & -- & 74/208 \\
+A3 & 20/104 & 0/104 & 208/208 & 17 & -- & 173/208 \\
+B0 & 104/104 & 18/104 & -- & -- & -- & 0/208 \\
+B1 & 3/104 & 1/104 & 624/624 & -- & -- & 197/208 \\
+B2 & 35/104 & 30/104 & 208/624 & 22 & 3.1 & 93/208 \\
+B3 & 24/104 & 1/104 & 598/624 & 30 & 32.5 & 157/208 \\
+B3T & 28/32 & 16/32 & 16/192 & 532 & 505.1 & 19/64 \\
+\bottomrule
+\end{tabular}
+\end{table*}

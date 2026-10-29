@@ -1,0 +1,8 @@
+# Keep LF line endings on every platform: the code digest and the hash of the frozen
+# controller configuration are computed on the file bytes.
+* text=auto eol=lf
+*.npz binary
+*.gz binary
+*.pdf binary
+*.png binary
+*.pt binary

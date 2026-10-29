@@ -1,0 +1,51 @@
+# Frozen controller configuration of the study (Phase 3, 2026-10-26).
+# Code digest at freeze: fe7722d2d710c537
+# Sources of the values (details in docs/phase3/controller.pdf):
+#   imm      sigma_acc_ang: replay of the calibration runs (results/phase3_replay_c2.json and
+#            results/phase3_replay_c2_stage2_settings.json); other noise and bias settings: design choices kept;
+#            t_arm: development runs, earliest onset 3 s; nis_gate: safeguard, design choice
+#   mpc      horizon, rate: design choices; velocity and tension-change weights: results/phase3_mpc_weights.json
+#   planner  kappa_min, ramp, horizon: design choices (methods, Sec. 9)
+#   recovery problem of methods Eq. (recovery); margins and weights: design choices
+#   ftc      mu_declare, n_confirm: ROC on the calibration runs (results/phase3_roc_c3.json);
+#            post_break_weights: results/phase3_check_post_break_*.json; other values: design choices
+# Calibration seeds: 100000 and up. Test seeds (Phase 5): 200000 and up. Development runs: seeds below 100.
+imm: {dt: 0.005, sigma_acc_lin: 0.5, sigma_acc_ang: 1.0, sigma_pose: 1.0e-06, sigma_deficit: 20.0,
+  r_length: 0.0002, r_tension: 1.5, r_length_broken: 1.0, fault_rate: 0.001, return_rate: 0.01,
+  deficit_std0: 20.0, sigma_wrench_force: 0.5, sigma_wrench_moment: 0.1, wrench_force_std0: 10.0,
+  wrench_moment_std0: 2.0, sigma_offset: 1.0e-05, offset_std0: 0.001, sigma_kappa: 0.0001,
+  kappa_std0: 0.2, nis_gate: 10000.0, t_arm: 2.0}
+mpc: {dt: 0.02, horizon: 12, max_slots: 3, q_pos: 40000.0, q_rot: 40000.0, q_vel: 120.0,
+  q_angvel: 120.0, terminal_scale: 5.0, r_rate: 0.03, w_ff: 0.0001, w_safe: 100000.0,
+  q_terminal_twist: 1000.0, fault_track_scale: 0.1, w_window: 1000000.0, max_iter: 30,
+  hessian: exact}
+planner: {s_dyn: 0.0, horizon: 2.0, w_rot: 1.0, check_dt: 0.05, kappa_min: 0.25, ramp: 0.5}
+recovery: {steps: 15, t_lo: 1.0, t_hi: 1.0, s_path: 5.0, s_soft: 20.0, s_min: 10.0,
+  psi_path_deg: 25.0, psi_end_deg: 20.0, window_clearance: 0.02, w_pos: 10.0, w_rot: 1.0,
+  w_vel: 1.0, w_acc: 0.01, w_rate: 0.001, w_margin: 0.01, w_slack: 1000.0, tol_slack: 0.001,
+  max_iter: 300, max_cpu_time: 5.0, transcription: hermite_simpson, tol: 1.0e-06,
+  mu_init: 0.1, mu_strategy: adaptive}
+ftc:
+  eso_bandwidth_hz: 50.0
+  tension_kp: 0.5
+  tension_ki: 20.0
+  tension_i_max: 20.0
+  imm_every: 5
+  mpc_every: 20
+  mu_scenario: 0.001
+  max_fault_scenarios: 2
+  mu_declare: 0.9999
+  n_confirm: 2
+  variant: proposed
+  lost_tilt_deg: 30.0
+  plan_latency: 0.4
+  interim: seed_path
+  imm_input: command
+  mpc_weight_scale: []
+  post_break_weights:
+  - [q_vel, 0.3]
+  - [q_angvel, 0.3]
+  - [r_rate, 3.0]
+  planner_source: library
+  library_delay: 0.015
+  record_inputs: false

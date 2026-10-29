@@ -1,0 +1,291 @@
+{
+ "runs": [
+  {
+   "omega": 10.0,
+   "trajectory": "T1",
+   "seed": 140000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 5.62794213441437,
+   "max_mm": 8.782543085204834,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T1",
+   "seed": 140001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 9.142232937508943,
+   "max_mm": 11.673053925410887,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T1",
+   "seed": 140002,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 13.589169705165434,
+   "max_mm": 16.54340306184093,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T1",
+   "seed": 140003,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 12.787002494745687,
+   "max_mm": 16.88258252659059,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T2",
+   "seed": 141000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 15.886524846817677,
+   "max_mm": 18.48937982257795,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T2",
+   "seed": 141001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 8.84396396930558,
+   "max_mm": 10.854718986838224,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T2",
+   "seed": 141002,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 7.190160036384351,
+   "max_mm": 10.291108019767126,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 10.0,
+   "trajectory": "T2",
+   "seed": 141003,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 11.624013250613901,
+   "max_mm": 17.56922026043252,
+   "outside_pct": 0.0
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T1",
+   "seed": 140000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 8.854966954015014,
+   "max_mm": 11.306213540632438,
+   "outside_pct": 1.7998875070308105
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T1",
+   "seed": 140001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 8.281539470972618,
+   "max_mm": 11.997536833205364,
+   "outside_pct": 6.612086744578464
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T1",
+   "seed": 140002,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 11.008134118905122,
+   "max_mm": 13.322396642203165,
+   "outside_pct": 4.030998062621086
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T1",
+   "seed": 140003,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 6.094019234344236,
+   "max_mm": 9.154739908195802,
+   "outside_pct": 2.5685894631585526
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T2",
+   "seed": 141000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 17.408101360347835,
+   "max_mm": 30.115043415864246,
+   "outside_pct": 26.167114555340294
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T2",
+   "seed": 141001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 7.955623891040691,
+   "max_mm": 14.788754419343089,
+   "outside_pct": 1.8186363352290482
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T2",
+   "seed": 141002,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 12.76383553375905,
+   "max_mm": 29.904942937070658,
+   "outside_pct": 3.9060058746328354
+  },
+  {
+   "omega": 20.0,
+   "trajectory": "T2",
+   "seed": 141003,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 11.757188633653975,
+   "max_mm": 24.714050829243526,
+   "outside_pct": 31.541778638835073
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T1",
+   "seed": 140000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 21.061609989871833,
+   "max_mm": 43.23385241509389,
+   "outside_pct": 59.90875570276858
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T1",
+   "seed": 140001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 18.007029003631747,
+   "max_mm": 81.38650674554835,
+   "outside_pct": 73.65164677207675
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T1",
+   "seed": 140002,
+   "noise_factor": 1.0,
+   "lost": true,
+   "rmse_mm": 23.303265701327476,
+   "max_mm": 191.085781151027,
+   "outside_pct": 80.57067215767024
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T1",
+   "seed": 140003,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 13.923438214432771,
+   "max_mm": 39.793299451069025,
+   "outside_pct": 66.7520779951253
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T2",
+   "seed": 141000,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 29.89629275288912,
+   "max_mm": 78.96534243311014,
+   "outside_pct": 72.5767139553778
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T2",
+   "seed": 141001,
+   "noise_factor": 2.0,
+   "lost": false,
+   "rmse_mm": 25.07228757095304,
+   "max_mm": 109.39951052930692,
+   "outside_pct": 71.52052996687706
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T2",
+   "seed": 141002,
+   "noise_factor": 1.0,
+   "lost": false,
+   "rmse_mm": 30.615290565194492,
+   "max_mm": 147.5409135359307,
+   "outside_pct": 70.81432410474345
+  },
+  {
+   "omega": 30.0,
+   "trajectory": "T2",
+   "seed": 141003,
+   "noise_factor": 2.0,
+   "lost": true,
+   "rmse_mm": 45.48254346438467,
+   "max_mm": 156.07304568474058,
+   "outside_pct": 74.53194876070643
+  }
+ ],
+ "table": [
+  {
+   "omega": 10.0,
+   "kp": 100.0,
+   "kd": 20.0,
+   "lost": 0,
+   "median_rmse_mm": 10.383123094061421,
+   "max_rmse_mm": 15.886524846817677,
+   "median_outside_pct": 0.0
+  },
+  {
+   "omega": 20.0,
+   "kp": 400.0,
+   "kd": 40.0,
+   "lost": 0,
+   "median_rmse_mm": 9.931550536460069,
+   "max_rmse_mm": 17.408101360347835,
+   "median_outside_pct": 3.9685019686269607
+  },
+  {
+   "omega": 30.0,
+   "kp": 900.0,
+   "kd": 60.0,
+   "lost": 2,
+   "median_rmse_mm": 24.187776636140256,
+   "max_rmse_mm": 45.48254346438467,
+   "median_outside_pct": 72.04862196112742
+  }
+ ],
+ "chosen": {
+  "omega": 20.0,
+  "kp": 400.0,
+  "kd": 40.0,
+  "lost": 0,
+  "median_rmse_mm": 9.931550536460069,
+  "max_rmse_mm": 17.408101360347835,
+  "median_outside_pct": 3.9685019686269607
+ },
+ "provenance": {
+  "code_digest": "7e8dd4edcb7676a5",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-27T13:16:46Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

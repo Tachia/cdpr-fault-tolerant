@@ -1,0 +1,70 @@
+{
+ "fault_free": {
+  "n": 16,
+  "false_alarms": 0,
+  "lost": 0,
+  "rms_error_mm_median": 2.937990567409145,
+  "rms_error_mm_max": 5.8047811292095375
+ },
+ "break": {
+  "n": 8,
+  "false_alarm_before_onset": 0,
+  "declared_after_onset": 8,
+  "correct": 8,
+  "delay_ms_median": 15.500000000000291,
+  "delay_ms_max": 19.000000000000128,
+  "lost": 0,
+  "post_outside_pct_median": 1.6495876030992251,
+  "post_outside_pct_max": 18.295426143464134,
+  "post_tension_max_N": 271.3004012282312,
+  "branches": {
+   "1": 0,
+   "2": 8,
+   "3": 0
+  }
+ },
+ "loe": {
+  "n": 16,
+  "false_alarm_before_onset": 0,
+  "declared_after_onset": 16,
+  "correct": 16,
+  "delay_ms_median": 23.9999999999998,
+  "delay_ms_max": 35.00000000000014,
+  "lost": 0,
+  "post_outside_pct_median": 0.0,
+  "post_outside_pct_max": 3.0242439390152462,
+  "post_tension_max_N": 186.96954492092635,
+  "branches": {
+   "1": 16,
+   "2": 0,
+   "3": 0
+  }
+ },
+ "bias": {
+  "n": 16,
+  "false_alarm_before_onset": 0,
+  "declared_after_onset": 16,
+  "correct": 16,
+  "delay_ms_median": 42.499999999999986,
+  "delay_ms_max": 99.99999999999964,
+  "lost": 0,
+  "post_outside_pct_median": 0.0,
+  "post_outside_pct_max": 0.0,
+  "post_tension_max_N": 173.37826757283926,
+  "branches": {
+   "1": 16,
+   "2": 0,
+   "3": 0
+  }
+ },
+ "mpc_seconds": {
+  "mean_of_means": 0.024152796828586766,
+  "max_p99": 0.09388829900090039,
+  "max": 0.23770140600026934
+ },
+ "imm_seconds": {
+  "mean_of_means": 0.0022710005318841917,
+  "max_p99": 0.008420119659531333,
+  "max": 0.06708200300090539
+ }
+}

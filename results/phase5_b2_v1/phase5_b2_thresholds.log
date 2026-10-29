@@ -1,0 +1,9 @@
+1.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (31, 32), 'loe': (0, 64), 'bias': (0, 64)}
+2.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (31, 32), 'loe': (0, 64), 'bias': (0, 64)}
+3.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+4.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+5.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+6.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+8.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+9.0 {'theta_actuator': inf, 'n_c': 8, 'false_alarm_runs': 0} {'break': (32, 32), 'loe': (0, 64), 'bias': (0, 64)}
+chosen {'mu_iso': 0.5, 'n_c': 8, 'false_alarm_runs': 0, 'fault_free_hours': 0.1947944488949247, 'break': {'n': 32, 'declared': 32, 'correct': 32, 'median_delay': 0.057000186920166396, 'max_delay': 0.17600007247924765}, 'loe': {'n': 64, 'declared': 11, 'correct': 0, 'median_delay': None, 'max_delay': None}, 'bias': {'n': 64, 'declared': 0, 'correct': 0, 'median_delay': None, 'max_delay': None}, 'theta_break': 6.0, 'theta_actuator': inf}

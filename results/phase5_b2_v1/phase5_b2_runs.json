@@ -1,0 +1,2758 @@
+{
+ "gains": {
+  "omega": 20.0,
+  "kp": 400.0,
+  "kd": 40.0,
+  "lost": 0,
+  "median_rmse_mm": 9.931550536460069,
+  "max_rmse_mm": 17.408101360347835,
+  "median_outside_pct": 3.9685019686269607
+ },
+ "runs": [
+  {
+   "trajectory": "T1",
+   "seed": 150000,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    0,
+    3.969,
+    0.0
+   ],
+   "t_end": 4.968999999999999,
+   "index": 0,
+   "offset": 0,
+   "length": 829,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150001,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    0,
+    6.073,
+    0.0
+   ],
+   "t_end": 7.073,
+   "index": 1,
+   "offset": 829,
+   "length": 1253,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150002,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    0,
+    5.722,
+    0.3
+   ],
+   "t_end": 6.722,
+   "index": 2,
+   "offset": 2082,
+   "length": 1343,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150003,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    0,
+    6.946,
+    0.3
+   ],
+   "t_end": 7.946,
+   "index": 3,
+   "offset": 3425,
+   "length": 1588,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150004,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    0,
+    5.705,
+    0.6
+   ],
+   "t_end": 6.705,
+   "index": 4,
+   "offset": 5013,
+   "length": 1339,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150005,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    0,
+    5.196,
+    0.6
+   ],
+   "t_end": 6.196,
+   "index": 5,
+   "offset": 6352,
+   "length": 1238,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150006,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    0,
+    3.333,
+    0.1
+   ],
+   "t_end": 4.333,
+   "index": 6,
+   "offset": 7590,
+   "length": 865,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150007,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    0,
+    4.403,
+    0.1
+   ],
+   "t_end": 5.403,
+   "index": 7,
+   "offset": 8455,
+   "length": 1079,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150008,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    0,
+    5.366,
+    -0.1
+   ],
+   "t_end": 6.366,
+   "index": 8,
+   "offset": 9534,
+   "length": 1272,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150009,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    0,
+    5.501,
+    -0.1
+   ],
+   "t_end": 6.501,
+   "index": 9,
+   "offset": 10806,
+   "length": 1299,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150010,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    1,
+    3.884,
+    0.0
+   ],
+   "t_end": 4.884,
+   "index": 10,
+   "offset": 12105,
+   "length": 821,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150011,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    1,
+    4.893,
+    0.0
+   ],
+   "t_end": 5.893,
+   "index": 11,
+   "offset": 12926,
+   "length": 1016,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150012,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    1,
+    4.573,
+    0.3
+   ],
+   "t_end": 5.573,
+   "index": 12,
+   "offset": 13942,
+   "length": 1113,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150013,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    1,
+    3.808,
+    0.3
+   ],
+   "t_end": 4.808,
+   "index": 13,
+   "offset": 15055,
+   "length": 960,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150014,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    1,
+    6.007,
+    0.6
+   ],
+   "t_end": 7.007,
+   "index": 14,
+   "offset": 16015,
+   "length": 1400,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150015,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    1,
+    6.49,
+    0.6
+   ],
+   "t_end": 7.49,
+   "index": 15,
+   "offset": 17415,
+   "length": 1496,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150016,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    1,
+    6.316,
+    0.1
+   ],
+   "t_end": 7.316,
+   "index": 16,
+   "offset": 18911,
+   "length": 1462,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150017,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    1,
+    4.908,
+    0.1
+   ],
+   "t_end": 5.908,
+   "index": 17,
+   "offset": 20373,
+   "length": 1180,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150018,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    1,
+    3.266,
+    -0.1
+   ],
+   "t_end": 4.266,
+   "index": 18,
+   "offset": 21553,
+   "length": 852,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150019,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    1,
+    6.266,
+    -0.1
+   ],
+   "t_end": 7.266,
+   "index": 19,
+   "offset": 22405,
+   "length": 1452,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150020,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    2,
+    5.043,
+    0.0
+   ],
+   "t_end": 6.043,
+   "index": 20,
+   "offset": 23857,
+   "length": 1042,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150021,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    2,
+    3.22,
+    0.0
+   ],
+   "t_end": 4.220000000000001,
+   "index": 21,
+   "offset": 24899,
+   "length": 683,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150022,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    2,
+    4.824,
+    0.3
+   ],
+   "t_end": 5.824,
+   "index": 22,
+   "offset": 25582,
+   "length": 1163,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150023,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    2,
+    6.55,
+    0.3
+   ],
+   "t_end": 7.55,
+   "index": 23,
+   "offset": 26745,
+   "length": 1508,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150024,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    2,
+    3.987,
+    0.6
+   ],
+   "t_end": 4.987,
+   "index": 24,
+   "offset": 28253,
+   "length": 889,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150025,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    2,
+    4.917,
+    0.6
+   ],
+   "t_end": 5.917,
+   "index": 25,
+   "offset": 29142,
+   "length": 1182,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150026,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    2,
+    4.426,
+    0.1
+   ],
+   "t_end": 5.426,
+   "index": 26,
+   "offset": 30324,
+   "length": 1084,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150027,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    2,
+    5.503,
+    0.1
+   ],
+   "t_end": 6.503,
+   "index": 27,
+   "offset": 31408,
+   "length": 1299,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150028,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    2,
+    3.38,
+    -0.1
+   ],
+   "t_end": 4.38,
+   "index": 28,
+   "offset": 32707,
+   "length": 874,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150029,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    2,
+    6.932,
+    -0.1
+   ],
+   "t_end": 7.932,
+   "index": 29,
+   "offset": 33581,
+   "length": 1585,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150030,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    3,
+    6.422,
+    0.0
+   ],
+   "t_end": 7.422,
+   "index": 30,
+   "offset": 35166,
+   "length": 1327,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150031,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    3,
+    6.682,
+    0.0
+   ],
+   "t_end": 7.682,
+   "index": 31,
+   "offset": 36493,
+   "length": 1378,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150032,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    3,
+    3.813,
+    0.3
+   ],
+   "t_end": 4.813000000000001,
+   "index": 32,
+   "offset": 37871,
+   "length": 961,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150033,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    3,
+    4.357,
+    0.3
+   ],
+   "t_end": 5.357,
+   "index": 33,
+   "offset": 38832,
+   "length": 1070,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150034,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    3,
+    3.298,
+    0.6
+   ],
+   "t_end": 4.298,
+   "index": 34,
+   "offset": 39902,
+   "length": 858,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150035,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    3,
+    3.893,
+    0.6
+   ],
+   "t_end": 4.893,
+   "index": 35,
+   "offset": 40760,
+   "length": 855,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150036,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    3,
+    4.465,
+    0.1
+   ],
+   "t_end": 5.465,
+   "index": 36,
+   "offset": 41615,
+   "length": 1091,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150037,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    3,
+    3.599,
+    0.1
+   ],
+   "t_end": 4.599,
+   "index": 37,
+   "offset": 42706,
+   "length": 918,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150038,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    3,
+    4.095,
+    -0.1
+   ],
+   "t_end": 5.095,
+   "index": 38,
+   "offset": 43624,
+   "length": 1017,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150039,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    3,
+    3.89,
+    -0.1
+   ],
+   "t_end": 4.890000000000001,
+   "index": 39,
+   "offset": 44641,
+   "length": 976,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150040,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    4,
+    3.119,
+    0.0
+   ],
+   "t_end": 4.119,
+   "index": 40,
+   "offset": 45617,
+   "length": 822,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150041,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    4,
+    3.337,
+    0.0
+   ],
+   "t_end": 4.337,
+   "index": 41,
+   "offset": 46439,
+   "length": 866,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150042,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    4,
+    6.603,
+    0.3
+   ],
+   "t_end": 7.603,
+   "index": 42,
+   "offset": 47305,
+   "length": 1519,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150043,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    4,
+    4.353,
+    0.3
+   ],
+   "t_end": 5.353,
+   "index": 43,
+   "offset": 48824,
+   "length": 1069,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150044,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    4,
+    6.58,
+    0.6
+   ],
+   "t_end": 7.58,
+   "index": 44,
+   "offset": 49893,
+   "length": 1514,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150045,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    4,
+    6.73,
+    0.6
+   ],
+   "t_end": 7.73,
+   "index": 45,
+   "offset": 51407,
+   "length": 1544,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150046,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    4,
+    5.417,
+    0.1
+   ],
+   "t_end": 6.417,
+   "index": 46,
+   "offset": 52951,
+   "length": 1282,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150047,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    4,
+    4.424,
+    0.1
+   ],
+   "t_end": 5.424,
+   "index": 47,
+   "offset": 54233,
+   "length": 1083,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150048,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    4,
+    4.459,
+    -0.1
+   ],
+   "t_end": 5.459,
+   "index": 48,
+   "offset": 55316,
+   "length": 1090,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150049,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    4,
+    5.696,
+    -0.1
+   ],
+   "t_end": 6.696,
+   "index": 49,
+   "offset": 56406,
+   "length": 1338,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150050,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    5,
+    6.052,
+    0.0
+   ],
+   "t_end": 7.052,
+   "index": 50,
+   "offset": 57744,
+   "length": 1409,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150051,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    5,
+    5.077,
+    0.0
+   ],
+   "t_end": 6.077,
+   "index": 51,
+   "offset": 59153,
+   "length": 1214,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150052,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    5,
+    5.909,
+    0.3
+   ],
+   "t_end": 6.909,
+   "index": 52,
+   "offset": 60367,
+   "length": 1380,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150053,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    5,
+    3.491,
+    0.3
+   ],
+   "t_end": 4.491,
+   "index": 53,
+   "offset": 61747,
+   "length": 897,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150054,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    5,
+    6.183,
+    0.6
+   ],
+   "t_end": 7.183,
+   "index": 54,
+   "offset": 62644,
+   "length": 1435,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150055,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    5,
+    3.886,
+    0.6
+   ],
+   "t_end": 4.886,
+   "index": 55,
+   "offset": 64079,
+   "length": 976,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150056,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    5,
+    4.431,
+    0.1
+   ],
+   "t_end": 5.431,
+   "index": 56,
+   "offset": 65055,
+   "length": 1085,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150057,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    5,
+    5.295,
+    0.1
+   ],
+   "t_end": 6.295,
+   "index": 57,
+   "offset": 66140,
+   "length": 1257,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150058,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    5,
+    3.518,
+    -0.1
+   ],
+   "t_end": 4.518,
+   "index": 58,
+   "offset": 67397,
+   "length": 902,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150059,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    5,
+    4.747,
+    -0.1
+   ],
+   "t_end": 5.747,
+   "index": 59,
+   "offset": 68299,
+   "length": 1148,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150060,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    6,
+    4.55,
+    0.0
+   ],
+   "t_end": 5.55,
+   "index": 60,
+   "offset": 69447,
+   "length": 975,
+   "lost": true
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150061,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    6,
+    3.861,
+    0.0
+   ],
+   "t_end": 4.861000000000001,
+   "index": 61,
+   "offset": 70422,
+   "length": 971,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150062,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    6,
+    6.066,
+    0.3
+   ],
+   "t_end": 7.066,
+   "index": 62,
+   "offset": 71393,
+   "length": 1412,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150063,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    6,
+    3.191,
+    0.3
+   ],
+   "t_end": 4.191,
+   "index": 63,
+   "offset": 72805,
+   "length": 837,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150064,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    6,
+    4.789,
+    0.6
+   ],
+   "t_end": 5.789,
+   "index": 64,
+   "offset": 73642,
+   "length": 1156,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150065,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    6,
+    6.708,
+    0.6
+   ],
+   "t_end": 7.708,
+   "index": 65,
+   "offset": 74798,
+   "length": 1540,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150066,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    6,
+    6.074,
+    0.1
+   ],
+   "t_end": 7.074,
+   "index": 66,
+   "offset": 76338,
+   "length": 1413,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150067,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    6,
+    3.183,
+    0.1
+   ],
+   "t_end": 4.183,
+   "index": 67,
+   "offset": 77751,
+   "length": 835,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150068,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    6,
+    6.514,
+    -0.1
+   ],
+   "t_end": 7.514,
+   "index": 68,
+   "offset": 78586,
+   "length": 1501,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150069,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    6,
+    3.932,
+    -0.1
+   ],
+   "t_end": 4.932,
+   "index": 69,
+   "offset": 80087,
+   "length": 985,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150070,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    7,
+    3.167,
+    0.0
+   ],
+   "t_end": 4.167,
+   "index": 70,
+   "offset": 81072,
+   "length": 832,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150071,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    7,
+    6.227,
+    0.0
+   ],
+   "t_end": 7.227,
+   "index": 71,
+   "offset": 81904,
+   "length": 1444,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150072,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    7,
+    3.236,
+    0.3
+   ],
+   "t_end": 4.236000000000001,
+   "index": 72,
+   "offset": 83348,
+   "length": 846,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150073,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    7,
+    4.523,
+    0.3
+   ],
+   "t_end": 5.523,
+   "index": 73,
+   "offset": 84194,
+   "length": 1103,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150074,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    7,
+    6.062,
+    0.6
+   ],
+   "t_end": 7.062,
+   "index": 74,
+   "offset": 85297,
+   "length": 1411,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150075,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    7,
+    5.925,
+    0.6
+   ],
+   "t_end": 6.925,
+   "index": 75,
+   "offset": 86708,
+   "length": 1383,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150076,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    7,
+    4.79,
+    0.1
+   ],
+   "t_end": 5.79,
+   "index": 76,
+   "offset": 88091,
+   "length": 1156,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150077,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    7,
+    4.353,
+    0.1
+   ],
+   "t_end": 5.353,
+   "index": 77,
+   "offset": 89247,
+   "length": 1069,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150078,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    7,
+    3.131,
+    -0.1
+   ],
+   "t_end": 4.131,
+   "index": 78,
+   "offset": 90316,
+   "length": 825,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 150079,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    7,
+    4.281,
+    -0.1
+   ],
+   "t_end": 5.281,
+   "index": 79,
+   "offset": 91141,
+   "length": 1055,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152000,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 80,
+   "offset": 92196,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152001,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 81,
+   "offset": 95394,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152002,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 82,
+   "offset": 98592,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152003,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 83,
+   "offset": 101790,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152004,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 84,
+   "offset": 104988,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152005,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 85,
+   "offset": 108186,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152006,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 86,
+   "offset": 111384,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T1",
+   "seed": 152007,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 87,
+   "offset": 114582,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151000,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    0,
+    3.391,
+    0.0
+   ],
+   "t_end": 4.391,
+   "index": 88,
+   "offset": 117780,
+   "length": 716,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151001,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    0,
+    6.563,
+    0.0
+   ],
+   "t_end": 7.563,
+   "index": 89,
+   "offset": 118496,
+   "length": 1356,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151002,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    0,
+    4.199,
+    0.3
+   ],
+   "t_end": 5.199,
+   "index": 90,
+   "offset": 119852,
+   "length": 1038,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151003,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    0,
+    5.841,
+    0.3
+   ],
+   "t_end": 6.841,
+   "index": 91,
+   "offset": 120890,
+   "length": 1367,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151004,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    0,
+    6.105,
+    0.6
+   ],
+   "t_end": 7.105,
+   "index": 92,
+   "offset": 122257,
+   "length": 1369,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151005,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    0,
+    4.404,
+    0.6
+   ],
+   "t_end": 5.404,
+   "index": 93,
+   "offset": 123626,
+   "length": 975,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151006,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    0,
+    4.141,
+    0.1
+   ],
+   "t_end": 5.141,
+   "index": 94,
+   "offset": 124601,
+   "length": 1027,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151007,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    0,
+    5.468,
+    0.1
+   ],
+   "t_end": 6.468,
+   "index": 95,
+   "offset": 125628,
+   "length": 1292,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151008,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    0,
+    5.175,
+    -0.1
+   ],
+   "t_end": 6.175,
+   "index": 96,
+   "offset": 126920,
+   "length": 1233,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151009,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    0,
+    4.823,
+    -0.1
+   ],
+   "t_end": 5.823,
+   "index": 97,
+   "offset": 128153,
+   "length": 1163,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151010,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    1,
+    5.651,
+    0.0
+   ],
+   "t_end": 6.651,
+   "index": 98,
+   "offset": 129316,
+   "length": 1170,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151011,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    1,
+    6.14,
+    0.0
+   ],
+   "t_end": 7.14,
+   "index": 99,
+   "offset": 130486,
+   "length": 1262,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151012,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    1,
+    5.226,
+    0.3
+   ],
+   "t_end": 6.226,
+   "index": 100,
+   "offset": 131748,
+   "length": 1244,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151013,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    1,
+    3.127,
+    0.3
+   ],
+   "t_end": 4.127,
+   "index": 101,
+   "offset": 132992,
+   "length": 824,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151014,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    1,
+    6.598,
+    0.6
+   ],
+   "t_end": 7.598,
+   "index": 102,
+   "offset": 133816,
+   "length": 1406,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151015,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    1,
+    4.978,
+    0.6
+   ],
+   "t_end": 5.978,
+   "index": 103,
+   "offset": 135222,
+   "length": 1194,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151016,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    1,
+    6.903,
+    0.1
+   ],
+   "t_end": 7.903,
+   "index": 104,
+   "offset": 136416,
+   "length": 1579,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151017,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    1,
+    4.196,
+    0.1
+   ],
+   "t_end": 5.196,
+   "index": 105,
+   "offset": 137995,
+   "length": 1038,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151018,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    1,
+    3.15,
+    -0.1
+   ],
+   "t_end": 4.15,
+   "index": 106,
+   "offset": 139033,
+   "length": 828,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151019,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    1,
+    6.242,
+    -0.1
+   ],
+   "t_end": 7.242,
+   "index": 107,
+   "offset": 139861,
+   "length": 1447,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151020,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    2,
+    5.842,
+    0.0
+   ],
+   "t_end": 6.842,
+   "index": 108,
+   "offset": 141308,
+   "length": 1209,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151021,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    2,
+    6.06,
+    0.0
+   ],
+   "t_end": 7.06,
+   "index": 109,
+   "offset": 142517,
+   "length": 1247,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151022,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    2,
+    4.522,
+    0.3
+   ],
+   "t_end": 5.522,
+   "index": 110,
+   "offset": 143764,
+   "length": 1103,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151023,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    2,
+    3.596,
+    0.3
+   ],
+   "t_end": 4.596,
+   "index": 111,
+   "offset": 144867,
+   "length": 918,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151024,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    2,
+    3.846,
+    0.6
+   ],
+   "t_end": 4.846,
+   "index": 112,
+   "offset": 145785,
+   "length": 968,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151025,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    2,
+    6.869,
+    0.6
+   ],
+   "t_end": 7.869,
+   "index": 113,
+   "offset": 146753,
+   "length": 1572,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151026,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    2,
+    6.684,
+    0.1
+   ],
+   "t_end": 7.684,
+   "index": 114,
+   "offset": 148325,
+   "length": 1535,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151027,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    2,
+    5.818,
+    0.1
+   ],
+   "t_end": 6.818,
+   "index": 115,
+   "offset": 149860,
+   "length": 1362,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151028,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    2,
+    6.249,
+    -0.1
+   ],
+   "t_end": 7.249,
+   "index": 116,
+   "offset": 151222,
+   "length": 1448,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151029,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    2,
+    6.714,
+    -0.1
+   ],
+   "t_end": 7.714,
+   "index": 117,
+   "offset": 152670,
+   "length": 1541,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151030,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    3,
+    6.953,
+    0.0
+   ],
+   "t_end": 7.953,
+   "index": 118,
+   "offset": 154211,
+   "length": 1429,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151031,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    3,
+    3.482,
+    0.0
+   ],
+   "t_end": 4.482,
+   "index": 119,
+   "offset": 155640,
+   "length": 738,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151032,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    3,
+    6.268,
+    0.3
+   ],
+   "t_end": 7.268,
+   "index": 120,
+   "offset": 156378,
+   "length": 1452,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151033,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    3,
+    3.897,
+    0.3
+   ],
+   "t_end": 4.897,
+   "index": 121,
+   "offset": 157830,
+   "length": 978,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151034,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    3,
+    5.317,
+    0.6
+   ],
+   "t_end": 6.317,
+   "index": 122,
+   "offset": 158808,
+   "length": 1161,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151035,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    3,
+    3.746,
+    0.6
+   ],
+   "t_end": 4.746,
+   "index": 123,
+   "offset": 159969,
+   "length": 842,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151036,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    3,
+    6.394,
+    0.1
+   ],
+   "t_end": 7.394,
+   "index": 124,
+   "offset": 160811,
+   "length": 1477,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151037,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    3,
+    3.551,
+    0.1
+   ],
+   "t_end": 4.551,
+   "index": 125,
+   "offset": 162288,
+   "length": 909,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151038,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    3,
+    3.296,
+    -0.1
+   ],
+   "t_end": 4.295999999999999,
+   "index": 126,
+   "offset": 163197,
+   "length": 858,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151039,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    3,
+    4.961,
+    -0.1
+   ],
+   "t_end": 5.961,
+   "index": 127,
+   "offset": 164055,
+   "length": 1191,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151040,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    4,
+    6.6,
+    0.0
+   ],
+   "t_end": 7.6,
+   "index": 128,
+   "offset": 165246,
+   "length": 1518,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151041,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    4,
+    3.739,
+    0.0
+   ],
+   "t_end": 4.739,
+   "index": 129,
+   "offset": 166764,
+   "length": 810,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151042,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    4,
+    6.299,
+    0.3
+   ],
+   "t_end": 7.299,
+   "index": 130,
+   "offset": 167574,
+   "length": 1458,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151043,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    4,
+    3.021,
+    0.3
+   ],
+   "t_end": 4.021,
+   "index": 131,
+   "offset": 169032,
+   "length": 803,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151044,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    4,
+    3.873,
+    0.6
+   ],
+   "t_end": 4.873,
+   "index": 132,
+   "offset": 169835,
+   "length": 973,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151045,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    4,
+    4.658,
+    0.6
+   ],
+   "t_end": 5.658,
+   "index": 133,
+   "offset": 170808,
+   "length": 1130,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151046,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    4,
+    4.329,
+    0.1
+   ],
+   "t_end": 5.329,
+   "index": 134,
+   "offset": 171938,
+   "length": 1064,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151047,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    4,
+    6.852,
+    0.1
+   ],
+   "t_end": 7.852,
+   "index": 135,
+   "offset": 173002,
+   "length": 1569,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151048,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    4,
+    6.666,
+    -0.1
+   ],
+   "t_end": 7.666,
+   "index": 136,
+   "offset": 174571,
+   "length": 1532,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151049,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    4,
+    6.778,
+    -0.1
+   ],
+   "t_end": 7.778,
+   "index": 137,
+   "offset": 176103,
+   "length": 1554,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151050,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    5,
+    5.287,
+    0.0
+   ],
+   "t_end": 6.287,
+   "index": 138,
+   "offset": 177657,
+   "length": 1256,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151051,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    5,
+    6.512,
+    0.0
+   ],
+   "t_end": 7.512,
+   "index": 139,
+   "offset": 178913,
+   "length": 1384,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151052,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    5,
+    6.98,
+    0.3
+   ],
+   "t_end": 7.98,
+   "index": 140,
+   "offset": 180297,
+   "length": 1594,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151053,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    5,
+    4.528,
+    0.3
+   ],
+   "t_end": 5.528,
+   "index": 141,
+   "offset": 181891,
+   "length": 1104,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151054,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    5,
+    6.808,
+    0.6
+   ],
+   "t_end": 7.808,
+   "index": 142,
+   "offset": 182995,
+   "length": 1560,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151055,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    5,
+    3.027,
+    0.6
+   ],
+   "t_end": 4.027,
+   "index": 143,
+   "offset": 184555,
+   "length": 804,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151056,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    5,
+    4.537,
+    0.1
+   ],
+   "t_end": 5.537,
+   "index": 144,
+   "offset": 185359,
+   "length": 1106,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151057,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    5,
+    3.039,
+    0.1
+   ],
+   "t_end": 4.039,
+   "index": 145,
+   "offset": 186465,
+   "length": 806,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151058,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    5,
+    6.474,
+    -0.1
+   ],
+   "t_end": 7.474,
+   "index": 146,
+   "offset": 187271,
+   "length": 1493,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151059,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    5,
+    3.621,
+    -0.1
+   ],
+   "t_end": 4.621,
+   "index": 147,
+   "offset": 188764,
+   "length": 923,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151060,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    6,
+    6.094,
+    0.0
+   ],
+   "t_end": 7.094,
+   "index": 148,
+   "offset": 189687,
+   "length": 1417,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151061,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    6,
+    3.538,
+    0.0
+   ],
+   "t_end": 4.538,
+   "index": 149,
+   "offset": 191104,
+   "length": 906,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151062,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    6,
+    6.571,
+    0.3
+   ],
+   "t_end": 7.571,
+   "index": 150,
+   "offset": 192010,
+   "length": 1513,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151063,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    6,
+    3.589,
+    0.3
+   ],
+   "t_end": 4.589,
+   "index": 151,
+   "offset": 193523,
+   "length": 916,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151064,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    6,
+    5.344,
+    0.6
+   ],
+   "t_end": 6.344,
+   "index": 152,
+   "offset": 194439,
+   "length": 1267,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151065,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    6,
+    3.946,
+    0.6
+   ],
+   "t_end": 4.946,
+   "index": 153,
+   "offset": 195706,
+   "length": 988,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151066,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    6,
+    3.848,
+    0.1
+   ],
+   "t_end": 4.848,
+   "index": 154,
+   "offset": 196694,
+   "length": 968,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151067,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    6,
+    6.172,
+    0.1
+   ],
+   "t_end": 7.172,
+   "index": 155,
+   "offset": 197662,
+   "length": 1433,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151068,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    6,
+    4.515,
+    -0.1
+   ],
+   "t_end": 5.515,
+   "index": 156,
+   "offset": 199095,
+   "length": 1101,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151069,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    6,
+    5.637,
+    -0.1
+   ],
+   "t_end": 6.637,
+   "index": 157,
+   "offset": 200196,
+   "length": 1326,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151070,
+   "noise_factor": 1.0,
+   "fault": [
+    "break",
+    7,
+    3.392,
+    0.0
+   ],
+   "t_end": 4.3919999999999995,
+   "index": 158,
+   "offset": 201522,
+   "length": 772,
+   "lost": true
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151071,
+   "noise_factor": 2.0,
+   "fault": [
+    "break",
+    7,
+    6.02,
+    0.0
+   ],
+   "t_end": 7.02,
+   "index": 159,
+   "offset": 202294,
+   "length": 1402,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151072,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    7,
+    6.539,
+    0.3
+   ],
+   "t_end": 7.539,
+   "index": 160,
+   "offset": 203696,
+   "length": 1506,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151073,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    7,
+    6.542,
+    0.3
+   ],
+   "t_end": 7.542,
+   "index": 161,
+   "offset": 205202,
+   "length": 1507,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151074,
+   "noise_factor": 1.0,
+   "fault": [
+    "loe",
+    7,
+    4.092,
+    0.6
+   ],
+   "t_end": 5.092,
+   "index": 162,
+   "offset": 206709,
+   "length": 1017,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151075,
+   "noise_factor": 2.0,
+   "fault": [
+    "loe",
+    7,
+    4.334,
+    0.6
+   ],
+   "t_end": 5.334,
+   "index": 163,
+   "offset": 207726,
+   "length": 1065,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151076,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    7,
+    3.017,
+    0.1
+   ],
+   "t_end": 4.0169999999999995,
+   "index": 164,
+   "offset": 208791,
+   "length": 802,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151077,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    7,
+    3.351,
+    0.1
+   ],
+   "t_end": 4.351,
+   "index": 165,
+   "offset": 209593,
+   "length": 869,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151078,
+   "noise_factor": 1.0,
+   "fault": [
+    "bias",
+    7,
+    5.46,
+    -0.1
+   ],
+   "t_end": 6.46,
+   "index": 166,
+   "offset": 210462,
+   "length": 1290,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 151079,
+   "noise_factor": 2.0,
+   "fault": [
+    "bias",
+    7,
+    6.254,
+    -0.1
+   ],
+   "t_end": 7.254,
+   "index": 167,
+   "offset": 211752,
+   "length": 1449,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153000,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 168,
+   "offset": 213201,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153001,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 169,
+   "offset": 216399,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153002,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 170,
+   "offset": 219597,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153003,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 171,
+   "offset": 222795,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153004,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 172,
+   "offset": 225993,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153005,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 173,
+   "offset": 229191,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153006,
+   "noise_factor": 1.0,
+   "fault": null,
+   "t_end": null,
+   "index": 174,
+   "offset": 232389,
+   "length": 3198,
+   "lost": false
+  },
+  {
+   "trajectory": "T2",
+   "seed": 153007,
+   "noise_factor": 2.0,
+   "fault": null,
+   "t_end": null,
+   "index": 175,
+   "offset": 235587,
+   "length": 3198,
+   "lost": false
+  }
+ ],
+ "provenance": {
+  "code_digest": "dbd00751635bcfe4",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-27T13:34:26Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

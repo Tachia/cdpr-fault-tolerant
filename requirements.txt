@@ -1,0 +1,14 @@
+# Versions with which the stored results were produced and reproduced (Python 3.13.17, Linux x86_64).
+# Phase 4 needs requirements-learning.txt as well.
+# A C compiler (gcc) is also needed: the estimators, the MPC and the recovery problem are compiled to C.
+numpy==2.5.3
+scipy==1.18.1
+casadi==3.8.1
+sympy==1.14.0
+PyYAML==6.0.3
+mujoco==3.3.0
+matplotlib==3.11.2
+# two dependencies of matplotlib that change the PNG figures by a few pixels when their version differs
+pillow==13.0.0
+fonttools==4.67.0
+pytest==9.1.1

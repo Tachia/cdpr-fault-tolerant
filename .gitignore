@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Compiled solvers, rebuilt on first use (about 20 min)
+build/
+
+# Calibration records: regenerated from the seeds by scripts/phase3_calibration_runs.py
+# (about 100 MB per set); the summaries runs.json.gz are kept
+results/phase3_calib/*/run*.npz
+results/phase3_calib/*/runs.json
+# Phase 4 runs: records and per-run outputs (about 0.6 GB), condensed by scripts/phase4_dataset.py
+results/phase4_work/
+# Phase 4b runs (about 0.4 GB), condensed by scripts/phase4b_dataset.py
+results/phase4b_work/
+# Phase 5 campaign: all rows and traces (several GB); condensed into results/phase5/
+results/phase5_work/
+results/phase5_pilot/
+# first start of the campaign (amendment 1): the rows are kept as a record, the traces are not
+results/phase5_first_start/traces/
+
+# Output of reproduce.py
+reproduction/
+
+# LaTeX intermediate files
+docs/**/*.aux
+docs/**/*.bbl
+docs/**/*.blg
+docs/**/*.fdb_latexmk
+docs/**/*.fls
+docs/**/*.log
+docs/**/*.out
+docs/**/*.synctex.gz
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.out
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fdb_latexmk
+paper/**/*.fls
+paper/**/*.synctex.gz
+paper/**/*.abs
+
+# Editors and systems
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Journal package written by scripts/paper_package.py
+paper/manuscript/*.zip

@@ -1,0 +1,380 @@
+{
+  "cable": {
+    "diameter_m": 0.0015,
+    "w_N_per_m_upper_bound": 0.016815629932742472
+  },
+  "winch": {
+    "drum_radius_m": 0.05,
+    "gear_ratio": 12.0,
+    "r_d_m_per_rad": 0.004166666666666667,
+    "rotor_inertia_kgm2": 3e-05,
+    "rotor_equivalent_cable_mass_kg": 1.728,
+    "rotor_inertia_at_drum_kgm2": 0.00432
+  },
+  "motor": {
+    "torque_rated_100K": 0.9,
+    "torque_rated_60K": 0.8,
+    "torque_peak": 4.0,
+    "speed_max_rpm": 9000.0,
+    "continuous_tension_60K_N": 192.0,
+    "continuous_tension_100K_N": 216.0,
+    "peak_tension_N": 960.0,
+    "torque_at_t_max_Nm": 0.8333333333333334,
+    "speed_at_v_max_rpm": 5729.5779513082325,
+    "acceleration_at_a_max_rad_s2": 6000.0
+  },
+  "home_lengths_m": [
+    4.749,
+    4.749,
+    4.749,
+    4.749,
+    5.151,
+    5.151,
+    5.151,
+    5.151
+  ],
+  "cases": {
+    "tempel2015_iftomm_scaled": {
+      "EA_N": 35187.8125,
+      "beta_s": 0.02,
+      "tmin10": {
+        "home_tensions_N": [
+          81.04,
+          81.04,
+          81.04,
+          81.04,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "home_max_torque_Nm": 0.3377,
+        "home_max_torque_over_rated_60K": 0.422,
+        "home_modes_straight_Hz": [
+          5.49,
+          6.86,
+          7.61,
+          8.06,
+          12.85,
+          18.71
+        ],
+        "home_modes_with_sag_Hz": [
+          5.46,
+          6.81,
+          7.6,
+          8.03,
+          12.79,
+          18.62
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9845,
+          0.9845,
+          0.9845,
+          0.9845
+        ],
+        "workspace_sag": {
+          "n_positions": 3357,
+          "n_cable_states": 26856,
+          "min_EAeq_over_EA": 0.9536623311029759,
+          "p05_EAeq_over_EA": 0.9667559168469962,
+          "median_EAeq_over_EA": 0.9998476096393858,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.0016090675558975251
+        }
+      },
+      "tmin30": {
+        "home_tensions_N": [
+          110.01,
+          110.01,
+          110.01,
+          110.01,
+          30.0,
+          30.0,
+          30.0,
+          30.0
+        ],
+        "home_max_torque_Nm": 0.4584,
+        "home_max_torque_over_rated_60K": 0.573,
+        "home_modes_straight_Hz": [
+          5.5,
+          6.86,
+          7.6,
+          8.06,
+          12.97,
+          18.77
+        ],
+        "home_modes_with_sag_Hz": [
+          5.5,
+          6.86,
+          7.6,
+          8.06,
+          12.97,
+          18.77
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9994,
+          0.9994,
+          0.9994,
+          0.9994
+        ],
+        "workspace_sag": {
+          "n_positions": 2096,
+          "n_cable_states": 16768,
+          "min_EAeq_over_EA": 0.9984515496321716,
+          "p05_EAeq_over_EA": 0.9987705209167331,
+          "median_EAeq_over_EA": 0.9999465909310343,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.0004979093433064294
+        }
+      },
+      "tmin40": {
+        "home_tensions_N": [
+          124.5,
+          124.5,
+          124.5,
+          124.5,
+          40.0,
+          40.0,
+          40.0,
+          40.0
+        ],
+        "home_max_torque_Nm": 0.5188,
+        "home_max_torque_over_rated_60K": 0.648,
+        "home_modes_straight_Hz": [
+          5.5,
+          6.87,
+          7.6,
+          8.07,
+          13.03,
+          18.8
+        ],
+        "home_modes_with_sag_Hz": [
+          5.5,
+          6.86,
+          7.6,
+          8.07,
+          13.03,
+          18.8
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9998,
+          0.9998,
+          0.9998,
+          0.9998
+        ],
+        "workspace_sag": {
+          "n_positions": 1619,
+          "n_cable_states": 12952,
+          "min_EAeq_over_EA": 0.999399537001165,
+          "p05_EAeq_over_EA": 0.9995071126619836,
+          "median_EAeq_over_EA": 0.9999632783176797,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.00035785579185091906
+        }
+      },
+      "EA_sweep": {
+        "0.5": {
+          "EA_N": 17593.90625,
+          "home_modes_straight_Hz": [
+            3.89,
+            4.85,
+            5.38,
+            5.71,
+            9.24,
+            13.31
+          ],
+          "home_modes_with_sag_Hz": [
+            3.88,
+            4.84,
+            5.38,
+            5.7,
+            9.22,
+            13.28
+          ]
+        },
+        "2": {
+          "EA_N": 70375.625,
+          "home_modes_straight_Hz": [
+            7.75,
+            9.7,
+            10.75,
+            11.39,
+            18.01,
+            26.37
+          ],
+          "home_modes_with_sag_Hz": [
+            7.67,
+            9.56,
+            10.74,
+            11.32,
+            17.86,
+            26.12
+          ]
+        }
+      }
+    },
+    "tempel2015_amm_scaled": {
+      "EA_N": 37500.0,
+      "beta_s": 0.03,
+      "tmin10": {
+        "home_tensions_N": [
+          81.04,
+          81.04,
+          81.04,
+          81.04,
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "home_max_torque_Nm": 0.3377,
+        "home_max_torque_over_rated_60K": 0.422,
+        "home_modes_straight_Hz": [
+          5.66,
+          7.08,
+          7.85,
+          8.32,
+          13.25,
+          19.3
+        ],
+        "home_modes_with_sag_Hz": [
+          5.63,
+          7.03,
+          7.85,
+          8.29,
+          13.19,
+          19.2
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9835,
+          0.9835,
+          0.9835,
+          0.9835
+        ],
+        "workspace_sag": {
+          "n_positions": 3357,
+          "n_cable_states": 26856,
+          "min_EAeq_over_EA": 0.9507673932765216,
+          "p05_EAeq_over_EA": 0.9646486753403937,
+          "median_EAeq_over_EA": 0.999837597710862,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.0016090675558975251
+        }
+      },
+      "tmin30": {
+        "home_tensions_N": [
+          110.01,
+          110.01,
+          110.01,
+          110.01,
+          30.0,
+          30.0,
+          30.0,
+          30.0
+        ],
+        "home_max_torque_Nm": 0.4584,
+        "home_max_torque_over_rated_60K": 0.573,
+        "home_modes_straight_Hz": [
+          5.67,
+          7.09,
+          7.85,
+          8.32,
+          13.37,
+          19.36
+        ],
+        "home_modes_with_sag_Hz": [
+          5.67,
+          7.08,
+          7.85,
+          8.32,
+          13.36,
+          19.36
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9994,
+          0.9994,
+          0.9994,
+          0.9994
+        ],
+        "workspace_sag": {
+          "n_positions": 2096,
+          "n_cable_states": 16768,
+          "min_EAeq_over_EA": 0.9983499690077329,
+          "p05_EAeq_over_EA": 0.9986898378206494,
+          "median_EAeq_over_EA": 0.9999430816264223,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.0004979093433064294
+        }
+      },
+      "tmin40": {
+        "home_tensions_N": [
+          124.5,
+          124.5,
+          124.5,
+          124.5,
+          40.0,
+          40.0,
+          40.0,
+          40.0
+        ],
+        "home_max_torque_Nm": 0.5188,
+        "home_max_torque_over_rated_60K": 0.648,
+        "home_modes_straight_Hz": [
+          5.68,
+          7.09,
+          7.85,
+          8.33,
+          13.43,
+          19.39
+        ],
+        "home_modes_with_sag_Hz": [
+          5.68,
+          7.09,
+          7.85,
+          8.33,
+          13.42,
+          19.39
+        ],
+        "home_EAeq_over_EA": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.9997,
+          0.9997,
+          0.9997,
+          0.9997
+        ],
+        "workspace_sag": {
+          "n_positions": 1619,
+          "n_cable_states": 12952,
+          "min_EAeq_over_EA": 0.9993601058878502,
+          "p05_EAeq_over_EA": 0.9994747420980907,
+          "median_EAeq_over_EA": 0.9999608654341843,
+          "fraction_below_0.90": 0.0,
+          "max_sag_over_chord": 0.00035785579185091906
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+% written by scripts/phase5_tables.py from results/phase5/analysis.json; do not edit
+\begin{table}[h]
+\centering\small
+\caption{Primary endpoints. Shares: count of pairs with the event and 95\% Wilson interval (\%); false alarms: count in the armed hours, exact Poisson interval per hour; differences: first method minus second, 95\% bootstrap interval (mean for shares, median for continuous endpoints). p: McNemar's exact test, Wilcoxon signed rank test or conditional binomial test for rates; Holm: adjusted within the endpoint. Continuous endpoints are compared run by run, so only the paired difference is given.}\label{tab:primary}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrllrrr@{}}
+\toprule
+Endpoint, comparison & Pairs & First & Second & Difference & p & Holm \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Platform lost after a break}} \\
+\quad P vs B0 & 208 & 11/208 [3, 9] & 122/208 [52, 65] & [$-$60.1, $-$46.2] pp & $<$0.001 & $<$0.001 \\
+\quad P vs B2 & 208 & 11/208 [3, 9] & 65/208 [25, 38] & [$-$32.7, $-$19.2] pp & $<$0.001 & $<$0.001 \\
+\quad P vs B3 & 208 & 11/208 [3, 9] & 25/208 [8, 17] & [$-$11.5, $-$2.4] pp & 0.007 & 0.007 \\
+\quad P vs A2 & 208 & 11/208 [3, 9] & 38/208 [14, 24] & [$-$18.8, $-$7.7] pp & $<$0.001 & $<$0.001 \\
+\multicolumn{7}{@{}l}{\textit{Fault declared with the correct mode}} \\
+\quad P vs B2 & 624 & 623/624 [99, 100] & 208/624 [30, 37] & [62.7, 70.0] pp & $<$0.001 & $<$0.001 \\
+\quad P vs B3 & 624 & 623/624 [99, 100] & 598/624 [94, 97] & [2.4, 5.6] pp & $<$0.001 & $<$0.001 \\
+\quad A1 vs B3 & 624 & 624/624 [99, 100] & 598/624 [94, 97] & [2.7, 5.8] pp & $<$0.001 & $<$0.001 \\
+\multicolumn{7}{@{}l}{\textit{Declaration delay of correct declarations}} \\
+\quad P vs B2 & 208 & -- & -- & $-$5.0 [$-$5.0, $-$5.0] ms & $<$0.001 & $<$0.001 \\
+\quad P vs B3 & 597 & -- & -- & $-$10.0 [$-$15.0, $-$10.0] ms & $<$0.001 & $<$0.001 \\
+\quad A1 vs B3 & 598 & -- & -- & $-$10.0 [$-$15.0, $-$10.0] ms & $<$0.001 & $<$0.001 \\
+\multicolumn{7}{@{}l}{\textit{False alarms per hour of armed fault-free operation}} \\
+\quad P vs A1 & 824 & 1 in 1.29 h [0.0, 4.3] & 0 in 1.29 h [0.0, 2.9] & -- & 1.000 & 1.000 \\
+\quad P vs B2 & 824 & 1 in 1.29 h [0.0, 4.3] & 4 in 1.29 h [0.8, 7.9] & -- & 0.219 & 0.437 \\
+\quad P vs B3 & 824 & 1 in 1.29 h [0.0, 4.3] & 42 in 1.29 h [23.4, 43.9] & -- & $<$0.001 & $<$0.001 \\
+\multicolumn{7}{@{}l}{\textit{Smallest tension margin in the transient window}} \\
+\quad P vs A1 & 624 & -- & -- & 0.0 [0.0, 0.0] N & 0.262 & 0.262 \\
+\quad B3T vs B3 & 138 & -- & -- & $-$19.0 [$-$28.7, $-$13.8] N & $<$0.001 & $<$0.001 \\
+\multicolumn{7}{@{}l}{\textit{Share of the transient window with a tension outside its bounds}} \\
+\quad P vs A1 & 624 & -- & -- & 0.0 [0.0, 0.0] pp & 0.496 & 0.496 \\
+\quad P vs B1 & 624 & -- & -- & 0.0 [0.0, 0.0] pp & $<$0.001 & $<$0.001 \\
+\bottomrule
+\end{tabular}\end{adjustbox}
+\end{table}

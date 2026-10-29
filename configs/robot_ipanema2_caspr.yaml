@@ -1,0 +1,129 @@
+# Robot description used throughout the study.
+# Every entry carries its provenance. Entries marked PENDING have no
+# accepted source yet and must not be used for reported results.
+
+robot:
+  name: "IPAnema 2 (CASPR model)"
+  source: >-
+    CASPR toolkit (Lau, Eden, Tan, Oetomo, IROS 2016), repository
+    github.com/darwinlau/CASPR, commit a6971eeb, model IPAnema_2,
+    cable set 'original'. Geometry after Pott et al., Cable-Driven
+    Parallel Robots, MMS vol. 12, Springer, 2013, pp. 119-134.
+  n_cables: 8
+  # Base anchor points a_i, world frame [m]
+  anchors:
+    - [-4.0,  3.0, 5.0]
+    - [ 4.0,  3.0, 5.0]
+    - [ 4.0, -3.0, 5.0]
+    - [-4.0, -3.0, 5.0]
+    - [-4.0,  3.0, 1.0]
+    - [ 4.0,  3.0, 1.0]
+    - [ 4.0, -3.0, 1.0]
+    - [-4.0, -3.0, 1.0]
+  # Platform attachment points b_i, platform frame (origin at P) [m]
+  attachments:
+    - [-0.65,  0.125, 0.25]
+    - [ 0.65,  0.125, 0.25]
+    - [ 0.65, -0.125, 0.25]
+    - [-0.65, -0.125, 0.25]
+    - [-0.75,  0.10,  0.75]
+    - [ 0.75,  0.10,  0.75]
+    - [ 0.75, -0.10,  0.75]
+    - [-0.75, -0.10,  0.75]
+  mass: 10.0                      # [kg]   CASPR
+  com: [0.0, 0.0, 0.5]            # [m]    CASPR, platform frame
+  inertia_com:                    # [kg m^2] CASPR, about the COM
+    - [1.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  home_pose: [0.0, 0.0, 3.0, 0.0, 0.0, 0.0]   # [m, rad]  CASPR q_initial
+  t_max: 200.0                    # [N]    CASPR force_max
+  t_min: 10.0                     # [N]    design choice (Phase 0 spec, 5 % of t_max), confirmed in Phase 1:
+                                  #        with the 1.5 mm cable sag is negligible at 10 N and the drive
+                                  #        holds the home pose at 42 % of rating; docs/phase1/methods.pdf, Sec. 4
+  cable_stroke: 6.0               # [m]    cable capacity of the IPAnema drum, "can store a cable length of up
+                                  #        to 6 m" (Pott et al. 2013, Sec. 2.2); IPAnema 2 keeps the IPAnema 1
+                                  #        winches (Sec. 3.2). It bounds the change of each free length.
+  length_window_lo: [2.242, 2.242, 2.242, 2.242, 1.777, 1.777, 1.777, 1.777]   # [m]    shortest free length of each cable as installed (cable i usable for
+                                  #        lo_i <= l_i <= lo_i + cable_stroke). Not published: derived by
+                                  #        scripts/phase1_drum_windows.py (window centred on the lengths the
+                                  #        static workspace needs at t_min = 10 N, which would take 6.37 m
+                                  #        upper and 6.36 m lower); null disables the length condition
+  v_max: 2.5                      # [m/s]  IPAnema 2 maximum velocity: IPAnema 1 value 10 m/s divided by four
+  a_max: 25.0                     # [m/s^2] after the gearbox change from i = 3 to i = 12 (Pott et al. 2013,
+                                  #        Sec. 3.1-3.2); IPAnema 1: 100 m/s^2
+  gravity: 9.81                   # [m/s^2]
+
+cable:
+  # IPAnema 2 keeps the cables of IPAnema 1 (Pott et al. 2013, Sec. 3.2): Dyneema, d = 1.5 mm (Sec. 4.2).
+  # No stiffness is published for this cable. EA is scaled by cross-section, (1.5/6)^2 = 1/16, from the
+  # 6 mm Dyneema cable identified on IPAnema 3 (assumption: same effective modulus of the braid):
+  #   Tempel, Miermeister, Pott, IFToMM World Congress 2015 (doi 10.6567/IFToMM.14TH.WC.OS4.020):
+  #     c_ref = 112601 N/m, d_ref = 2252 N s/m at q_ref = 5 m  -> EA = 563005 N / 16    (nominal)
+  #   Tempel, Miermeister, Lechler, Pott, Appl. Mech. Mater. 794:419-426, 2015:
+  #     c_ref = 120000 N/m, d_ref = 3600 N s/m at q_ref = 5 m  -> EA = 600000 N / 16    (alternative)
+  # The retardation time d_ref/c_ref is kept (assumption: a material property, independent of diameter).
+  # Because EA is scaled rather than measured, it is also swept by the factors in EA_sweep_factor.
+  diameter: 0.0015                # [m]
+  material_density: 970.0         # [kg/m^3] UHMWPE (Hwangbo et al., arXiv:1806.10632, Tab. I);
+                                  #   solid-section linear density is an upper bound for a braided rope
+  EA: 35187.8125                  # [N]  = 112601 N/m * 5 m / 16
+  EA_alternative: 37500.0         # [N]  = 120000 N/m * 5 m / 16
+  EA_sweep_factor: [0.5, 2.0]     # [-]  robustness range around the scaled value (study choice)
+  damping_time: 0.0200            # [s]  = 2252 / 112601 (IFToMM 2015); c_i = damping_time * k_i
+  damping_time_alternative: 0.0300  # [s] = 3600 / 120000 (AMM 2015)
+  damping_onset: 1.0e-4           # [m] stretch below which the damping fades to zero (model choice, plant only):
+                                  #   avoids the force jump of the plain Kelvin-Voigt law when a slack cable
+                                  #   tightens; equals the stretch of 0.4 to 2.2 N, below t_min, so every taut
+                                  #   operating state follows the identified law
+
+winch:
+  # IPAnema winch (Pott et al. 2013, Sec. 2.2, Fig. 2): synchronous servo motor Bosch Rexroth IndraDyn S
+  # with multi-turn absolute encoder, planetary gearbox i = 12 on IPAnema 2 (Sec. 3.2), drum diameter
+  # 100 mm (printed "d = 100 m"), constant-pitch spooling, capacity 6 m. The angle theta is the motor
+  # angle; the cable length paid out per motor radian is r_d = drum_radius / gear_ratio = 4.167 mm/rad.
+  # Gearbox efficiency is not published: ideal transmission in the nominal model.
+  drum_radius: 0.050              # [m]
+  gear_ratio: 12.0                # [-]
+  # Motor size is not published. Sized for this study within the IndraDyn S (MSK) series from the
+  # Rexroth project planning manual R911296289 (DOK-MOTOR*-MSK********-PR12-EN-P, ed. 12, 2018,
+  # Table 4-5, p. 31; same values in ed. 05, 2006, p. 21). Requirements at the motor shaft:
+  #   speed  v_max / r_d = 2.5 / 4.167e-3 rad/s = 5730 1/min
+  #   torque r_d * t_max = 0.833 N m continuous
+  # MSK030B (0.4 N m continuous) is too small; MSK030C-0900 is the smallest size that meets both.
+  # MSK030C-0900-NN: M0_60 = 0.8 N m, M0_100 = 0.9 N m, Mmax = 4.0 N m, KM_N = 0.58 N m/A,
+  #   Jred = 0.00003 kg m^2 (without brake), nmax el = 9000 1/min, mass 1.9 kg.
+  inertia: 3.0e-5                 # [kg m^2] rotor, motor side; gearbox and drum inertia not published
+  inertia_factor_sweep: [1.0, 6.0]  # [-] multiplies `inertia` in the robustness sweep; factor 6 is about
+                                  #   the rotor of the next size (MSK040C, 0.00014 kg m^2) with gearbox and drum
+  torque_rated: 0.9               # [N m]  M0_100, continuous at standstill
+  torque_rated_60K: 0.8           # [N m]  M0_60 (conservative rating, used by the holding check)
+  torque_peak: 4.0                # [N m]  Mmax
+  torque_constant: 0.58           # [N m/A] KM_N at 20 degC, motor current -> torque (Phase 2 sensor model)
+  speed_max_rpm: 9000.0           # [1/min] nmax el
+  encoder_counts: 1048576         # [1/rev] multi-turn absolute encoder M1 (Hiperface, 128 signal periods,
+                                  #   4096 revolutions, +/-120 arcsec), Rexroth MSK manual (R911296289), Sec. 4.3,
+                                  #   Table 4-2. Counts = 128 periods x 2^13 interpolation, the manual's own example
+                                  #   for M1 ("encoder resolution depends on the connected controller"). The option
+                                  #   fitted to IPAnema 2 is not published; Pott et al. state multi-turn absolute.
+  speed_limit_band: 0.10          # [-] drive speed limiter: motoring torque falls linearly to zero over the last
+                                  #   10 % below speed_max (model choice; the drive's limiter is not published)
+  viscous: 0.0                    # [N m s]   nominal 0: friction neglected as in Ida & Mattioni (2022), Sec. 4;
+  coulomb: 0.0                    # [N m]     friction enters only the robustness sweep
+
+sensors:
+  # Rexroth MSK encoder data (manual R911296289, Sec. 4.3, Table 4-2) for the option assumed above.
+  encoder_option: "M1"
+  encoder_accuracy_arcsec: 120.0  # [arcsec] system accuracy, modelled as a once-per-revolution error of this
+                                  #   amplitude with a random phase per winch (model choice)
+  # Motor current: no published noise figure for the IndraDrive current measurement. Design choice,
+  # stated as torque at the motor shaft (current x KM); the specification evaluates nominal and 2x.
+  current_noise_torque_std: 0.004 # [N m] = 0.1 % of Mmax, i.e. 0.96 N of cable tension through r_d
+  current_noise_factor_sweep: [1.0, 2.0]
+  delay_samples: 1                # [-] one-sample measurement delay at the inner rate (specification, Sec. 11)
+
+control:
+  inner_rate: 1000.0              # [Hz] faster than the 2 ms set-point cycle of the IPAnema controller
+                                  #      (Pott et al. 2013, Sec. 2.1); 1 ms as on IPAnema 3 (Kraus et al. 2015)
+  plant_step: 6.25e-5             # [s] fixed RK4 step of the plant, 16 steps per inner sample; chosen by the
+                                  #      step convergence study (results/phase2_step_convergence.json)

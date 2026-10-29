@@ -1,0 +1,36 @@
+{
+ "fault_free": {
+  "n": 0,
+  "false_alarms": 0,
+  "lost": 0,
+  "rms_error_mm_median": null,
+  "rms_error_mm_max": null
+ },
+ "break": {
+  "n": 8,
+  "false_alarm_before_onset": 0,
+  "declared_after_onset": 8,
+  "correct": 8,
+  "delay_ms_median": 15.500000000000291,
+  "delay_ms_max": 19.000000000000128,
+  "lost": 1,
+  "post_outside_pct_median": 3.374156460884779,
+  "post_outside_pct_max": 72.33191702074481,
+  "post_tension_max_N": 543.9969708728512,
+  "branches": {
+   "1": 0,
+   "2": 8,
+   "3": 0
+  }
+ },
+ "mpc_seconds": {
+  "mean_of_means": 0.02790944195402987,
+  "max_p99": 0.13794235011941053,
+  "max": 0.2065947809987847
+ },
+ "imm_seconds": {
+  "mean_of_means": 0.0025025511987665124,
+  "max_p99": 0.0049628583790945376,
+  "max": 0.012122414000259596
+ }
+}

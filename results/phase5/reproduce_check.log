@@ -1,0 +1,53 @@
+# Reproduction report
+
+Target: phase5; 2 step(s); --jobs 2; Python 3.13.17, Linux x86_64, 2 cores; started 2026-10-29 02:01 UTC
+
+### campaign_subset
+
+`scripts/phase5_check.py 2` (28 jobs of the campaign simulated again (every method on four fixed runs) and compared, row and trace, with what the campaign stored; the full campaign is about 27 h on two cores), about 10 min on the reference machine
+
+finished in 7.4 min
+results/phase5/subset_rows.json: IDENTICAL (1437 values compared, 1437 identical, largest relative difference 0.00e+00)
+results/phase5/traces/P/run00000.npz: IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A1/run00000.npz: IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A2/run00000.npz: IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A5/run00000.npz: IDENTICAL (68616 values compared, 68616 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B0/run00000.npz: IDENTICAL (69463 values compared, 69463 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B1/run00000.npz: IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B2/run00000.npz: IDENTICAL (85514 values compared, 85514 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3/run00000.npz: IDENTICAL (87201 values compared, 87201 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3T/run00000.npz: IDENTICAL (148114 values compared, 148114 identical, largest relative difference 0.00e+00)
+results/phase5/traces/P/run00023.npz: IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A1/run00023.npz: IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B0/run00023.npz: IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B1/run00023.npz: IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B2/run00023.npz: IDENTICAL (166070 values compared, 166070 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3/run00023.npz: IDENTICAL (166565 values compared, 166565 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3T/run00023.npz: IDENTICAL (71447 values compared, 71447 identical, largest relative difference 0.00e+00)
+results/phase5/traces/P/run00036.npz: IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A1/run00036.npz: IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B0/run00036.npz: IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B1/run00036.npz: IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B2/run00036.npz: IDENTICAL (172790 values compared, 172790 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3/run00036.npz: IDENTICAL (173305 values compared, 173305 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3T/run00036.npz: IDENTICAL (68077 values compared, 68077 identical, largest relative difference 0.00e+00)
+results/phase5/traces/P/run00049.npz: IDENTICAL (215193 values compared, 215193 identical, largest relative difference 0.00e+00)
+results/phase5/traces/A1/run00049.npz: IDENTICAL (215193 values compared, 215193 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B2/run00049.npz: IDENTICAL (268759 values compared, 268759 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3/run00049.npz: IDENTICAL (269559 values compared, 269559 identical, largest relative difference 0.00e+00)
+results/phase5/traces/B3T/run00049.npz: IDENTICAL (81429 values compared, 81429 identical, largest relative difference 0.00e+00)
+
+
+### analysis
+
+`scripts/phase5_analyse.py` (statistics from the stored rows (results/phase5/rows.jsonl.gz)), about 1 min on the reference machine
+
+finished in 0.4 min
+results/phase5/analysis.json: IDENTICAL (37758 values compared, 37758 identical, largest relative difference 0.00e+00)
+
+
+## Summary
+
+All steps reproduced the stored results within tolerance.
+
+report: reproduction/20261029T020149Z/report.md

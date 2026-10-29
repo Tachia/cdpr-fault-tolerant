@@ -1,0 +1,21 @@
+# Thresholds of baseline B2 (scripts/phase5_b2_calibrate.py), fixed before the Phase 5 campaign.
+theta_break: 6.0
+theta_actuator: .inf
+n_c: 8
+t_from: 2.0
+ct_kp:
+- 400.0
+- 400.0
+- 400.0
+- 400.0
+- 400.0
+- 400.0
+ct_kd:
+- 40.0
+- 40.0
+- 40.0
+- 40.0
+- 40.0
+- 40.0
+source: 'thresholds: results/phase5_b2_thresholds.json (B2 calibration runs, scripts/phase5_b2_runs.py);
+  gains: results/phase5_b2_gains.json (fault-free calibration runs)'

@@ -1,0 +1,89 @@
+# Protocol of Phase 4b: the learned fault classifier trained on both reference paths.
+# Written on 27 October 2026, after the single test evaluation of Phase 4 and before any Phase 4b
+# run was simulated. Every Phase 4b script reads its settings from this file and stamps its
+# SHA-256 prefix into its output; a change after the data exist is recorded here with the reason.
+#
+# Why this phase exists. The Phase 4 classifier was trained on the circle T1 only, as the
+# specification asks, and held out the helix T2 to measure generalisation. On T2 it raised a false
+# alarm in 31 of 88 runs. The evaluation of Phase 5 runs both paths, so a classifier that has never
+# seen T2 would lose there for a reason fixed in advance by its training data. The baseline B3 of
+# Phase 5 is therefore trained on both paths; the Phase 4 model stays as the generalisation result.
+# Only the training data change: the hyperparameters are those chosen by the Phase 4 search, so
+# that the two models differ in their data alone.
+#
+# Two changes to the Phase 4 procedure, both decided before any Phase 4b data existed:
+#  - calibration. B3 replaces the IMM probabilities in the controller, where they weight the fault
+#    scenarios of the MPC and are compared with mu_s = 1e-3, so their size matters and not only
+#    their order. The softmax outputs are calibrated by one temperature per model, fitted on the
+#    validation windows by minimising the negative log-likelihood (temperature scaling, Guo et al.,
+#    ICML 2017). The thresholds are chosen after calibration.
+#  - deployed seed. In Phase 4 the validation macro-F1 over windows did not rank the seeds the way
+#    their declarations did. The deployed seed is now chosen at the level that matters in the
+#    controller: the declaration outcomes on the validation runs (same lexicographic key as the
+#    thresholds), the validation macro-F1 breaking ties. This change was prompted by the Phase 4
+#    test result; the Phase 5 evaluation uses fresh seeds (200000 and up), untouched by it.
+
+base:                               # Phase 4 data, used as stored
+  protocol: configs/learning_phase4.yaml   # sha256/16 1167c90253d950f9
+  dataset: results/phase4_data/dataset.npz # sha256/16 00cb48553bc96097
+  classifier: configs/classifier_phase4.yaml  # hyperparameters taken from here
+
+data:                               # new runs: the helix T2 for training and validation
+  controller: controller_phase3.yaml
+  variant: no_hedging               # as in Phase 4: the MPC uses no fault information
+  mu_declare: 2.0                   # declarations disabled
+  seed_base: 340000                 # T2 fault runs 340000 + j; T2 fault-free runs 350000 + r
+  faults:
+    - [break, 0.0]
+    - [loe, 0.3]
+    - [loe, 0.6]
+    - [bias, 0.1]
+    - [bias, -0.1]
+  onset: [3.0, 7.0]                 # uniform [s], drawn from seed + 500000, rounded to 1 ms
+  after_onset: 1.0
+  noise: [1.0, 2.0]                 # alternating with the repetition index
+  T2:
+    repetitions: 8                  # per (fault, cable): 320 fault runs
+    split: {train: [0, 1, 2, 3, 4, 5], val: [6, 7]}
+    fault_free: 32
+    fault_free_split: {train: 24, val: 8}
+
+splits:                             # of the combined data
+  train: [Phase 4 T1 train, Phase 4b T2 train]     # 264 + 264 runs
+  val: [Phase 4 T1 val, Phase 4b T2 val]           # 88 + 88 runs
+  test: [Phase 4 T1 test, Phase 4 T2 test]         # 88 + 88 runs, already evaluated once in Phase 4
+
+features:                           # unchanged from Phase 4
+  t_from: 2.0
+  m0_stride_train: 4
+  fault_stride_train: 2
+
+training:
+  params: from configs/classifier_phase4.yaml (no new search)
+  seeds: [0, 1, 2, 3, 4]
+  max_epochs: 40
+  patience: 6
+  batch: 256
+  threads: 2
+  deterministic: true
+
+calibration:
+  method: temperature scaling, one temperature per seed, logits divided by T
+  data: every validation window (cycles from t_from)
+  objective: mean negative log-likelihood of the true mode
+  search: bounded scalar minimisation over log T, T in [0.05, 20]
+
+declaration:                        # on the calibrated probabilities, validation runs of both paths
+  rule: the controller's (same fault mode the most probable, probability >= mu_iso, in N_c consecutive estimator cycles)
+  mu_iso: [0.5, 0.7, 0.8, 0.9, 0.95, 0.99, 0.999, 0.9999]
+  n_c: [1, 2, 3, 4, 6, 8]
+  selection: lexicographic - fewest runs with a false alarm, most faults declared with the correct mode, smallest median delay of the break declarations, larger mu_iso, larger N_c
+
+deployment:
+  rule: the seed whose chosen thresholds give the best validation outcome by the key of the declaration rule; ties broken by the larger validation macro-F1
+
+test:                               # once, after configs/classifier_phase4b.yaml is written
+  splits: [T1 test, T2 test]
+  comparison: the IMM (frozen thresholds 0.9999, 2) and the Phase 4 classifier on the same runs
+  intervals: 95 % bootstrap over runs, 2000 resamples, seed 0
+  note: these runs were evaluated once in Phase 4; no choice of Phase 4b depends on them, but the decision to train on T2 was prompted by that evaluation

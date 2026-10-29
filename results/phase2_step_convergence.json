@@ -1,0 +1,1522 @@
+{
+  "t_end_s": 8.0,
+  "steps_s": [
+    0.001,
+    0.0005,
+    0.00025,
+    0.000125,
+    6.25e-05,
+    3.125e-05
+  ],
+  "seed": 20261026,
+  "scenarios": {
+    "nominal": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.0006513140807602386,
+          "max_position_error_m": 0.0008027052005760838,
+          "max_tilt_rad": 3.0133703627134477e-05,
+          "max_tension_N": 160.52232227674148,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608042010748,
+          "final_position_m": [
+            -0.499998795284907,
+            -0.000800508223359598,
+            2.9999997407283416
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47531316880054
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.0006513140728947824,
+          "max_position_error_m": 0.0008027064129974412,
+          "max_tilt_rad": 3.0130348849710056e-05,
+          "max_tension_N": 160.5222681112652,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608023531801,
+          "final_position_m": [
+            -0.49999879554787746,
+            -0.000800511937916338,
+            2.9999997415775117
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47513664082726
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.0006513140418954612,
+          "max_position_error_m": 0.0008027071507739201,
+          "max_tilt_rad": 3.013320223323266e-05,
+          "max_tension_N": 160.522268127121,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608008494748,
+          "final_position_m": [
+            -0.4999987944008898,
+            -0.0008005105407852139,
+            2.9999997415979953
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47507829778982
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.0006513139911234404,
+          "max_position_error_m": 0.000802706730501105,
+          "max_tilt_rad": 3.012701172838216e-05,
+          "max_tension_N": 160.52226812806364,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608024979112,
+          "final_position_m": [
+            -0.49999879572860345,
+            -0.0008005124129391046,
+            2.9999997402232133
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47534796139124
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.00065131400560478,
+          "max_position_error_m": 0.000802707601892839,
+          "max_tilt_rad": 3.012750708401264e-05,
+          "max_tension_N": 160.5222681281091,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608037902425,
+          "final_position_m": [
+            -0.49999879770182104,
+            -0.0008005137077368646,
+            2.9999997416271875
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.4753479733671
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.0006513139634613115,
+          "max_position_error_m": 0.0008027099141259204,
+          "max_tilt_rad": 3.013007320820876e-05,
+          "max_tension_N": 160.5222681281091,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 102.72608022828086,
+          "final_position_m": [
+            -0.4999987935538785,
+            -0.0008005141965283323,
+            2.9999997420131326
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.4753387471933
+        }
+      },
+      "seconds": {
+        "0.001": 3.19,
+        "0.0005": 3.81,
+        "0.00025": 3.14,
+        "0.000125": 4.16,
+        "6.25e-05": 5.16,
+        "3.125e-05": 7.86
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 1.415885675370987e-08,
+            "orientation": 1.1053094664104625e-07,
+            "tension": 6.635556293304034e-06,
+            "motor_angle": 8.350490157481848e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.2076287849487752e-08,
+            "max_position_error_m": 1.5104169317671597e-06,
+            "max_tilt_rad": 0.00011134213683204055,
+            "max_tension_N": 3.3743278688298205e-07,
+            "mean_tension_N": 1.7988564385297148e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 7.638893912351632e-09
+          },
+          "worst_metric_change": 0.00011134213683204055,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 1.4311148710532962e-08,
+            "orientation": 1.2032615588423087e-07,
+            "tension": 6.305326270990008e-06,
+            "motor_angle": 8.678376621198013e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 4.759504504978209e-08,
+            "max_position_error_m": 9.191103856439822e-07,
+            "max_tilt_rad": 9.469234303474123e-05,
+            "max_tension_N": 9.877643878884726e-11,
+            "mean_tension_N": 1.4638008653330445e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 3.6155086364395e-09
+          },
+          "worst_metric_change": 9.469234303474123e-05,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 1.2642754620983965e-08,
+            "orientation": 1.1556920099974058e-07,
+            "tension": 6.318337990904865e-06,
+            "motor_angle": 8.276721316471328e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 7.795321688564088e-08,
+            "max_position_error_m": 5.235695667784922e-07,
+            "max_tilt_rad": 0.00020548021510772847,
+            "max_tension_N": 5.872296884172802e-12,
+            "mean_tension_N": 1.6046912386684199e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.3508165679401236e-09
+          },
+          "worst_metric_change": 0.00020548021510772847,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.4816376125992292e-08,
+            "orientation": 1.3516888022873508e-07,
+            "tension": 6.211260361084214e-06,
+            "motor_angle": 8.115376170886884e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.2234036893776438e-08,
+            "max_position_error_m": 1.085565568330267e-06,
+            "max_tilt_rad": 1.6441972085468924e-05,
+            "max_tension_N": 2.8311532044231e-13,
+            "mean_tension_N": 1.2580362125191916e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.492260971746498e-09
+          },
+          "worst_metric_change": 1.6441972085468924e-05,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.209406513824618e-08,
+            "orientation": 1.3201775516116993e-07,
+            "tension": 6.122691760168663e-06,
+            "motor_angle": 8.568980693731751e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 6.470530477649898e-08,
+            "max_position_error_m": 2.880533852572406e-06,
+            "max_tilt_rad": 8.516820315661627e-05,
+            "max_tension_N": 0.0,
+            "mean_tension_N": 1.4674305589354613e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 8.388873116206754e-09
+          },
+          "worst_metric_change": 8.516820315661627e-05,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        }
+      }
+    },
+    "break_lower": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.022261592862308822,
+          "max_position_error_m": 0.057538617800676595,
+          "max_tilt_rad": 0.2656559661512297,
+          "max_tension_N": 184.33214923236503,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.97995259211632,
+          "final_position_m": [
+            -0.4922453877662994,
+            0.03435231504318876,
+            3.0255116286494075
+          ],
+          "slack_samples": 2227,
+          "max_motor_speed_rad_s": 176.1224667052426
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.022261731653497326,
+          "max_position_error_m": 0.05753851123522763,
+          "max_tilt_rad": 0.265654917532677,
+          "max_tension_N": 184.3320283536258,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.98039725380013,
+          "final_position_m": [
+            -0.4922454010023456,
+            0.034352270594690586,
+            3.025511597043932
+          ],
+          "slack_samples": 2226,
+          "max_motor_speed_rad_s": 176.1239513041474
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.022261765102578334,
+          "max_position_error_m": 0.05753848626913006,
+          "max_tilt_rad": 0.2656552808783435,
+          "max_tension_N": 184.33204713328794,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.98046705140504,
+          "final_position_m": [
+            -0.4922453996224344,
+            0.03435225887289096,
+            3.025511590712491
+          ],
+          "slack_samples": 2226,
+          "max_motor_speed_rad_s": 176.12406638316764
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.022261737904302116,
+          "max_position_error_m": 0.05753850865799797,
+          "max_tilt_rad": 0.2656552245162001,
+          "max_tension_N": 184.33204988627966,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.98039460459546,
+          "final_position_m": [
+            -0.4922453985855668,
+            0.034352270460479735,
+            3.0255116015445704
+          ],
+          "slack_samples": 2227,
+          "max_motor_speed_rad_s": 176.12401929722003
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.022261739461119222,
+          "max_position_error_m": 0.05753850430674533,
+          "max_tilt_rad": 0.26565522878646497,
+          "max_tension_N": 184.33205042759505,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.98040035349686,
+          "final_position_m": [
+            -0.4922453995664084,
+            0.03435226888377001,
+            3.0255115969651696
+          ],
+          "slack_samples": 2227,
+          "max_motor_speed_rad_s": 176.12403761286035
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.022261739776700887,
+          "max_position_error_m": 0.05753850254383915,
+          "max_tilt_rad": 0.265655229562931,
+          "max_tension_N": 184.33204165283155,
+          "time_outside_bounds_pct": 35.195600549931264,
+          "mean_tension_N": 87.98040124444525,
+          "final_position_m": [
+            -0.492245399767264,
+            0.03435226674969518,
+            3.0255115979528906
+          ],
+          "slack_samples": 2227,
+          "max_motor_speed_rad_s": 176.12404541807228
+        }
+      },
+      "seconds": {
+        "0.001": 2.2,
+        "0.0005": 2.59,
+        "0.00025": 3.04,
+        "0.000125": 4.4,
+        "6.25e-05": 5.78,
+        "3.125e-05": 8.66
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 5.4997392121336475e-05,
+            "orientation": 0.0011031127795336421,
+            "tension": 0.02409990728037016,
+            "motor_angle": 0.0018837751274303545
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 6.2345189792106195e-06,
+            "max_position_error_m": 1.8520717112315839e-06,
+            "max_tilt_rad": 3.94729584700256e-06,
+            "max_tension_N": 6.55766338157522e-07,
+            "mean_tension_N": 5.054099523243262e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 1.1224558779766462e-07
+          },
+          "worst_metric_change": 6.2345189792106195e-06,
+          "worst_metric": "rms_position_error_m",
+          "pass_0.1pct": true
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 8.35167680257598e-06,
+            "orientation": 0.0001685997369160435,
+            "tension": 0.003752062322480683,
+            "motor_angle": 0.0002848188558613629
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.5025349901205553e-06,
+            "max_position_error_m": 4.3390257877949363e-07,
+            "max_tilt_rad": 1.3677336482727128e-06,
+            "max_tension_N": 1.0187952907853127e-07,
+            "mean_tension_N": 7.933306931348294e-07,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 2.6787451002568232e-08
+          },
+          "worst_metric_change": 1.5025349901205553e-06,
+          "worst_metric": "rms_position_error_m",
+          "pass_0.1pct": true
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 8.840097041939998e-06,
+            "orientation": 0.00017782758661881798,
+            "tension": 0.003915519249946442,
+            "motor_angle": 0.0003024956949317127
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.2217499071701234e-06,
+            "max_position_error_m": 3.891110220716647e-07,
+            "max_tilt_rad": 2.1216275154959313e-07,
+            "max_tension_N": 1.4934959605415278e-08,
+            "mean_tension_N": 8.234426534241963e-07,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 3.179190139639185e-08
+          },
+          "worst_metric_change": 1.2217499071701234e-06,
+          "worst_metric": "rms_position_error_m",
+          "pass_0.1pct": true
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 7.008634090865939e-07,
+            "orientation": 1.4200041824901255e-05,
+            "tension": 0.00030973762303716513,
+            "motor_angle": 2.42155942863074e-05
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 6.993241065032753e-08,
+            "max_position_error_m": 7.562331859936842e-08,
+            "max_tilt_rad": 1.6074461938671126e-08,
+            "max_tension_N": 2.9366319417903476e-09,
+            "mean_tension_N": 6.534297841393644e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 9.883112057253826e-09
+          },
+          "worst_metric_change": 7.562331859936842e-08,
+          "worst_metric": "max_position_error_m",
+          "pass_0.1pct": true
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 9.429675618122246e-08,
+            "orientation": 1.906881310645642e-06,
+            "tension": 4.1635807740050265e-05,
+            "motor_angle": 3.391051321836258e-06
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.4175965945716944e-08,
+            "max_position_error_m": 3.063872185174641e-08,
+            "max_tilt_rad": 2.9228334931820562e-09,
+            "max_tension_N": 4.760302887125045e-08,
+            "mean_tension_N": 1.012666881132926e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 4.720258953526154e-09
+          },
+          "worst_metric_change": 4.760302887125045e-08,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        }
+      }
+    },
+    "break_upper": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.4767633096077533,
+          "max_position_error_m": 0.8535300157612548,
+          "max_tilt_rad": 2.8748620160758174,
+          "max_tension_N": 529.3528013621128,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67948090328801,
+          "final_position_m": [
+            -0.13303704306688904,
+            -0.5079423566746017,
+            3.2748629243515137
+          ],
+          "slack_samples": 10870,
+          "max_motor_speed_rad_s": 245.0206631487049
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.476772803763142,
+          "max_position_error_m": 0.8535303447746689,
+          "max_tilt_rad": 2.874895269478825,
+          "max_tension_N": 536.1585820610691,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.6797366468109,
+          "final_position_m": [
+            -0.13305996707692466,
+            -0.5078923620156209,
+            3.2749322721610525
+          ],
+          "slack_samples": 10873,
+          "max_motor_speed_rad_s": 245.33708316159672
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.47677155654363956,
+          "max_position_error_m": 0.8535303049691481,
+          "max_tilt_rad": 2.874912803413283,
+          "max_tension_N": 539.6365849487029,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.68011886662401,
+          "final_position_m": [
+            -0.13304673341432063,
+            -0.5078656935985215,
+            3.2749517819361333
+          ],
+          "slack_samples": 10872,
+          "max_motor_speed_rad_s": 244.28449146165727
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.47676768113748147,
+          "max_position_error_m": 0.8535303141271421,
+          "max_tilt_rad": 2.874894183584175,
+          "max_tension_N": 535.9700035277691,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67746378181572,
+          "final_position_m": [
+            -0.13303833922259628,
+            -0.5079039372366855,
+            3.2749050917288773
+          ],
+          "slack_samples": 10869,
+          "max_motor_speed_rad_s": 244.2125686576106
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.47677005932431193,
+          "max_position_error_m": 0.8535303097677146,
+          "max_tilt_rad": 2.8749016349176295,
+          "max_tension_N": 537.4431726322503,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67923523668179,
+          "final_position_m": [
+            -0.1330442541024018,
+            -0.5078869579507221,
+            3.274927305814385
+          ],
+          "slack_samples": 10872,
+          "max_motor_speed_rad_s": 244.40270573692476
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.476770138436903,
+          "max_position_error_m": 0.8535303190266154,
+          "max_tilt_rad": 2.8749023722105242,
+          "max_tension_N": 537.5899489463824,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67934943683056,
+          "final_position_m": [
+            -0.1330441632698737,
+            -0.5078859252240094,
+            3.2749283493806542
+          ],
+          "slack_samples": 10872,
+          "max_motor_speed_rad_s": 244.3853069241153
+        }
+      },
+      "seconds": {
+        "0.001": 2.55,
+        "0.0005": 2.96,
+        "0.00025": 3.77,
+        "0.000125": 4.67,
+        "6.25e-05": 6.04,
+        "3.125e-05": 9.56
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 0.0009665120835569141,
+            "orientation": 0.007422822509708382,
+            "tension": 0.7484107342351506,
+            "motor_angle": 0.006088191462510426
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.991337449150587e-05,
+            "max_position_error_m": 3.854735993793517e-07,
+            "max_tilt_rad": 1.1566822402426669e-05,
+            "max_tension_N": 0.01269359649675638,
+            "mean_tension_N": 3.379286638888317e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 0.00017702084454158048
+          },
+          "worst_metric_change": 0.01269359649675638,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 0.0004871160746109382,
+            "orientation": 0.0050609384717636985,
+            "tension": 0.5946098797893274,
+            "motor_angle": 0.0019807935304082874
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.61596877023348e-06,
+            "max_position_error_m": 4.663632989679654e-08,
+            "max_tilt_rad": 6.098944787931856e-06,
+            "max_tension_N": 0.006445083570389173,
+            "mean_tension_N": 5.0504652852426575e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 7.118892105403577e-05
+          },
+          "worst_metric_change": 0.006445083570389173,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 0.0004028425406670255,
+            "orientation": 0.004514298836695296,
+            "tension": 0.30638203164779787,
+            "motor_angle": 0.003533244847323095
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 8.128500129974533e-06,
+            "max_position_error_m": 1.072954747852179e-08,
+            "max_tilt_rad": 6.476700678117277e-06,
+            "max_tension_N": 0.006841019827229562,
+            "mean_tension_N": 3.508422026339391e-05,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 0.00012186900784579912
+          },
+          "worst_metric_change": 0.006841019827229562,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 0.00019509231313663555,
+            "orientation": 0.0023655433281577487,
+            "tension": 0.19598456986326468,
+            "motor_angle": 0.001576843323346175
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 4.988121179076354e-06,
+            "max_position_error_m": 5.107525105761873e-09,
+            "max_tilt_rad": 2.591856835795163e-06,
+            "max_tension_N": 0.002741069529762492,
+            "mean_tension_N": 2.340740971461106e-05,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.715759091751877e-05
+          },
+          "worst_metric_change": 0.002741069529762492,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.2300542586052288e-05,
+            "orientation": 0.00013399347935649786,
+            "tension": 0.02432141608617215,
+            "motor_angle": 9.220799742855145e-05
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.6593445082079293e-07,
+            "max_position_error_m": 1.0847770197269723e-08,
+            "max_tilt_rad": 2.5645841120162583e-07,
+            "max_tension_N": 0.0002730265222030122,
+            "mean_tension_N": 1.5090001383731857e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 2.9419759141893487e-06
+          },
+          "worst_metric_change": 0.0002730265222030122,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        }
+      }
+    },
+    "loe": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.0017358607096293413,
+          "max_position_error_m": 0.0031566856663157606,
+          "max_tilt_rad": 0.002561297316399274,
+          "max_tension_N": 160.52232227674148,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891290574171,
+          "final_position_m": [
+            -0.5011519329576046,
+            0.00084811257157435,
+            2.9992043711970107
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47290430902999
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.0017358607321867412,
+          "max_position_error_m": 0.003156684334511755,
+          "max_tilt_rad": 0.0025612975636438284,
+          "max_tension_N": 160.5222681112652,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891262642216,
+          "final_position_m": [
+            -0.5011519317181801,
+            0.0008481093669490456,
+            2.999204368311855
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47293044187998
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.001735860730263377,
+          "max_position_error_m": 0.003156684377161402,
+          "max_tilt_rad": 0.002561299760467828,
+          "max_tension_N": 160.522268127121,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891289975127,
+          "final_position_m": [
+            -0.5011519321808543,
+            0.0008481116533769488,
+            2.999204369768096
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47294249452844
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.0017358606937156746,
+          "max_position_error_m": 0.0031566847985429547,
+          "max_tilt_rad": 0.0025612997430160033,
+          "max_tension_N": 160.52226812806364,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891291354829,
+          "final_position_m": [
+            -0.5011519319596911,
+            0.000848110132089173,
+            2.999204369201283
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.4728997994173
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.001735860641837161,
+          "max_position_error_m": 0.003156683556837369,
+          "max_tilt_rad": 0.0025613007811322377,
+          "max_tension_N": 160.5222681281091,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891285262196,
+          "final_position_m": [
+            -0.5011519347981553,
+            0.0008481130819324983,
+            2.99920437008272
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.4734251135436
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.0017358606512754243,
+          "max_position_error_m": 0.003156683904621875,
+          "max_tilt_rad": 0.00256129974640222,
+          "max_tension_N": 160.5222681281091,
+          "time_outside_bounds_pct": 0.0,
+          "mean_tension_N": 101.11891291244005,
+          "final_position_m": [
+            -0.5011519350288086,
+            0.0008481103824620766,
+            2.999204369391069
+          ],
+          "slack_samples": 0,
+          "max_motor_speed_rad_s": 175.47289979665982
+        }
+      },
+      "seconds": {
+        "0.001": 2.79,
+        "0.0005": 3.17,
+        "0.00025": 3.13,
+        "0.000125": 4.13,
+        "6.25e-05": 5.39,
+        "3.125e-05": 8.88
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 1.388278292324685e-08,
+            "orientation": 1.2141530228264308e-07,
+            "tension": 6.635556293304034e-06,
+            "motor_angle": 8.798566050759693e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.2994936483144034e-08,
+            "max_position_error_m": 4.2189964674604224e-07,
+            "max_tilt_rad": 9.653097623901435e-08,
+            "max_tension_N": 3.3743278688298205e-07,
+            "mean_tension_N": 2.7622879177118003e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 8.973275840741978e-09
+          },
+          "worst_metric_change": 4.2189964674604224e-07,
+          "worst_metric": "max_position_error_m",
+          "pass_0.1pct": true
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 1.3300914591951596e-08,
+            "orientation": 1.0337236961170324e-07,
+            "tension": 6.263606313581249e-06,
+            "motor_angle": 8.678376621198013e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.1080176030922726e-09,
+            "max_position_error_m": 1.3510899963140348e-08,
+            "max_tilt_rad": 8.576989048795288e-07,
+            "max_tension_N": 9.877643878884726e-11,
+            "mean_tension_N": 2.7030463349072185e-09,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.499984573489537e-09
+          },
+          "worst_metric_change": 8.576989048795288e-07,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 1.6093668842032116e-08,
+            "orientation": 1.613082903448998e-07,
+            "tension": 6.227729715675423e-06,
+            "motor_angle": 8.337473665355385e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.1054513473812267e-08,
+            "max_position_error_m": 1.3348863754443e-07,
+            "max_tilt_rad": 6.813659648843616e-09,
+            "max_tension_N": 5.872296884172802e-12,
+            "mean_tension_N": 1.3644351998558748e-10,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 3.2768926921077356e-09
+          },
+          "worst_metric_change": 1.3348863754443e-07,
+          "worst_metric": "max_position_error_m",
+          "pass_0.1pct": true
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.2648987968155723e-08,
+            "orientation": 1.175393456436663e-07,
+            "tension": 6.151512294820805e-06,
+            "motor_angle": 8.592321778070152e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.9886335565994884e-08,
+            "max_position_error_m": 3.933576372853701e-07,
+            "max_tilt_rad": 4.053082098422686e-07,
+            "max_tension_N": 2.8311532044231e-13,
+            "mean_tension_N": 6.025215619849121e-10,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 8.375054758468318e-09
+          },
+          "worst_metric_change": 4.053082098422686e-07,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.3045310054415893e-08,
+            "orientation": 1.0085161455627469e-07,
+            "tension": 6.139151592279291e-06,
+            "motor_angle": 8.608004816142797e-07
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 5.437224073833021e-09,
+            "max_position_error_m": 1.1017400429162194e-07,
+            "max_tilt_rad": 4.039863039331752e-07,
+            "max_tension_N": 0.0,
+            "mean_tension_N": 5.915618561387234e-10,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.5923956341508085e-09
+          },
+          "worst_metric_change": 4.039863039331752e-07,
+          "worst_metric": "max_tilt_rad",
+          "pass_0.1pct": true
+        }
+      }
+    },
+    "stiff_break": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.015033280641979833,
+          "max_position_error_m": 0.04381960725076464,
+          "max_tilt_rad": 0.21905919554170888,
+          "max_tension_N": 254.61388454575112,
+          "time_outside_bounds_pct": 34.99562554680665,
+          "mean_tension_N": 86.73957868316846,
+          "final_position_m": [
+            -0.495393229071187,
+            0.020677537136470338,
+            3.012309176947244
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.9972317920744
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.01503331290481413,
+          "max_position_error_m": 0.043820065012696516,
+          "max_tilt_rad": 0.21906133702522032,
+          "max_tension_N": 247.18446374372752,
+          "time_outside_bounds_pct": 34.983127109111365,
+          "mean_tension_N": 86.73926839114186,
+          "final_position_m": [
+            -0.4953932269576701,
+            0.02067753705284962,
+            3.0123091767045183
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.9964498240683
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.01503329987442659,
+          "max_position_error_m": 0.043820059431374125,
+          "max_tilt_rad": 0.21906130781703703,
+          "max_tension_N": 243.14335383315205,
+          "time_outside_bounds_pct": 34.983127109111365,
+          "mean_tension_N": 86.73909501795451,
+          "final_position_m": [
+            -0.495393229990311,
+            0.020677537318834382,
+            3.0123091782940357
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.9963301643833
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.015033302028073403,
+          "max_position_error_m": 0.043820055173692925,
+          "max_tilt_rad": 0.21906129705978858,
+          "max_tension_N": 244.05620916263106,
+          "time_outside_bounds_pct": 34.983127109111365,
+          "mean_tension_N": 86.73913252137811,
+          "final_position_m": [
+            -0.49539322584216866,
+            0.02067754152919036,
+            3.0123091773068897
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.99636299203883
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.015033302651019643,
+          "max_position_error_m": 0.04382005681046184,
+          "max_tilt_rad": 0.21906130382342726,
+          "max_tension_N": 244.16027412649794,
+          "time_outside_bounds_pct": 34.983127109111365,
+          "mean_tension_N": 86.7391372616523,
+          "final_position_m": [
+            -0.49539322858320134,
+            0.020677538381078102,
+            3.0123091762371614
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.99649276598433
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.015033303211030462,
+          "max_position_error_m": 0.04382005826562965,
+          "max_tilt_rad": 0.21906130591886708,
+          "max_tension_N": 244.19883240953249,
+          "time_outside_bounds_pct": 34.983127109111365,
+          "mean_tension_N": 86.73913877450659,
+          "final_position_m": [
+            -0.4953932270721042,
+            0.020677540064209517,
+            3.0123091786901486
+          ],
+          "slack_samples": 2274,
+          "max_motor_speed_rad_s": 175.99639096461846
+        }
+      },
+      "seconds": {
+        "0.001": 2.67,
+        "0.0005": 3.26,
+        "0.00025": 3.81,
+        "0.000125": 4.12,
+        "6.25e-05": 5.91,
+        "3.125e-05": 7.24
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 2.0149253245449472e-05,
+            "orientation": 0.0005066010651610481,
+            "tension": 0.037147104010118,
+            "motor_angle": 0.0010357893209934827
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.1460894548510705e-06,
+            "max_position_error_m": 1.0446400107837495e-05,
+            "max_tilt_rad": 9.775725559411909e-06,
+            "max_tension_N": 0.03005618026918622,
+            "mean_tension_N": 3.577295870172095e-06,
+            "time_outside_bounds_pct": 0.00012498437695285247,
+            "final_position_m": 4.2581038109449346e-09
+          },
+          "worst_metric_change": 0.03005618026918622,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 9.84836510919962e-06,
+            "orientation": 0.00025443765831065224,
+            "tension": 0.020205549552877358,
+            "motor_angle": 0.0005114964637147599
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 8.667682843185502e-07,
+            "max_position_error_m": 1.2736911959486776e-07,
+            "max_tilt_rad": 1.3333337402084665e-07,
+            "max_tension_N": 0.01662027707879908,
+            "mean_tension_N": 1.998789442241207e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 6.868544068684566e-09
+          },
+          "worst_metric_change": 0.01662027707879908,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 1.992126573036046e-06,
+            "orientation": 5.134843692718345e-05,
+            "tension": 0.004564276647395076,
+            "motor_angle": 0.00010348226810077064
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.432584011780834e-07,
+            "max_position_error_m": 9.716284435933383e-08,
+            "max_tilt_rad": 4.91061113829858e-08,
+            "max_tension_N": 0.003740348719711197,
+            "mean_tension_N": 4.323702867262038e-07,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 1.1984763545250823e-08
+          },
+          "worst_metric_change": 0.003740348719711197,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 2.7567786187177035e-07,
+            "orientation": 7.061060142955983e-06,
+            "tension": 0.0005574548213235709,
+            "motor_angle": 1.4468087122270149e-05
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 4.14377501865091e-08,
+            "max_position_error_m": 3.735204912963492e-08,
+            "max_tilt_rad": 3.087555199781728e-08,
+            "max_tension_N": 0.0004262157889491881,
+            "mean_tension_N": 5.4649773359261315e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 8.618164439447622e-09
+          },
+          "worst_metric_change": 0.0004262157889491881,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 9.333336237205003e-08,
+            "orientation": 2.3184490133276725e-06,
+            "tension": 0.00019279141517273502,
+            "motor_angle": 4.746009109797448e-06
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 3.725134862952102e-08,
+            "max_position_error_m": 3.320780186587701e-08,
+            "max_tilt_rad": 9.565540627402765e-09,
+            "max_tension_N": 0.00015789708187417955,
+            "mean_tension_N": 1.744142614408335e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 6.67337751344681e-09
+          },
+          "worst_metric_change": 0.00015789708187417955,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        }
+      }
+    },
+    "break_upper_noise_free": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.4767653237404045,
+          "max_position_error_m": 0.8535178065793823,
+          "max_tilt_rad": 2.87488032687552,
+          "max_tension_N": 529.8014774150704,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67903912766377,
+          "final_position_m": [
+            -0.13304875312560205,
+            -0.5079177232660582,
+            3.2748970445402015
+          ],
+          "slack_samples": 10870,
+          "max_motor_speed_rad_s": 245.21632544550954
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.47677460933790367,
+          "max_position_error_m": 0.8535192132086485,
+          "max_tilt_rad": 2.8749112162027224,
+          "max_tension_N": 536.6082858552015,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.68036936549242,
+          "final_position_m": [
+            -0.1330702924106291,
+            -0.5078710629786818,
+            3.2749618880541256
+          ],
+          "slack_samples": 10872,
+          "max_motor_speed_rad_s": 245.49833818085202
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.4767730503958947,
+          "max_position_error_m": 0.8535190710512862,
+          "max_tilt_rad": 2.8749290198728934,
+          "max_tension_N": 540.084660600697,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.68000751933903,
+          "final_position_m": [
+            -0.1330577091146752,
+            -0.5078487341745566,
+            3.274977235474195
+          ],
+          "slack_samples": 10872,
+          "max_motor_speed_rad_s": 244.4774922705148
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.47676753649724873,
+          "max_position_error_m": 0.8535190434026049,
+          "max_tilt_rad": 2.874903287746522,
+          "max_tension_N": 534.9846072328053,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67744982519936,
+          "final_position_m": [
+            -0.13304600890544604,
+            -0.5078995257536654,
+            3.2749148453298056
+          ],
+          "slack_samples": 10870,
+          "max_motor_speed_rad_s": 244.3506389253112
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.4767698099203501,
+          "max_position_error_m": 0.853519053022507,
+          "max_tilt_rad": 2.8749128823755172,
+          "max_tension_N": 536.8898337225943,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.67905085313413,
+          "final_position_m": [
+            -0.13305000810046427,
+            -0.5078810011463344,
+            3.2749374075441935
+          ],
+          "slack_samples": 10871,
+          "max_motor_speed_rad_s": 244.41157720223856
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.4767690073734993,
+          "max_position_error_m": 0.8535190504649764,
+          "max_tilt_rad": 2.874909505560308,
+          "max_tension_N": 536.2224809501267,
+          "time_outside_bounds_pct": 49.831271091113614,
+          "mean_tension_N": 75.6785171826649,
+          "final_position_m": [
+            -0.13304870681461559,
+            -0.5078874345274609,
+            3.2749296305003166
+          ],
+          "slack_samples": 10869,
+          "max_motor_speed_rad_s": 244.39234512143963
+        }
+      },
+      "seconds": {
+        "0.001": 2.4,
+        "0.0005": 2.74,
+        "0.00025": 2.75,
+        "0.000125": 3.56,
+        "6.25e-05": 5.25,
+        "3.125e-05": 8.49
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 0.0009579803290968858,
+            "orientation": 0.007526040472098927,
+            "tension": 0.7432623286771782,
+            "motor_angle": 0.006042509343543781
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.9475864102917897e-05,
+            "max_position_error_m": 1.6480346833662408e-06,
+            "max_tilt_rad": 1.0744445612167057e-05,
+            "max_tension_N": 0.012684873900676005,
+            "mean_tension_N": 1.7577052540925845e-05,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 0.00016547875411125507
+          },
+          "worst_metric_change": 0.012684873900676005,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 0.0004961608130997774,
+            "orientation": 0.005014680057611187,
+            "tension": 0.41189171514648065,
+            "motor_angle": 0.0018973318178359749
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 3.2697779534496445e-06,
+            "max_position_error_m": 1.665544065126147e-07,
+            "max_tilt_rad": 6.192733819842215e-06,
+            "max_tension_N": 0.006436721868065965,
+            "mean_tension_N": 4.78126476538216e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.974807556782962e-05
+          },
+          "worst_metric_change": 0.006436721868065965,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 0.000572625010621497,
+            "orientation": 0.006246851244293694,
+            "tension": 0.1518976123465549,
+            "motor_angle": 0.004532608502837055
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.156517217270685e-05,
+            "max_position_error_m": 3.239374863177444e-08,
+            "max_tilt_rad": 8.950605914691263e-06,
+            "max_tension_N": 0.009533084314839724,
+            "mean_tension_N": 3.379730878320661e-05,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 0.00016259408994562526
+          },
+          "worst_metric_change": 0.009533084314839724,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 0.00021531318663536858,
+            "orientation": 0.002457584983335259,
+            "tension": 0.16569436498021253,
+            "motor_angle": 0.0017190968644105035
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 4.768387288960565e-06,
+            "max_position_error_m": 1.1270869775043917e-08,
+            "max_tilt_rad": 3.337363387294707e-06,
+            "max_tension_N": 0.003548635809657419,
+            "mean_tension_N": 2.1155497019581555e-05,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 5.8930744290107106e-05
+          },
+          "worst_metric_change": 0.003548635809657419,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 7.43030421226365e-05,
+            "orientation": 0.0008683265751185942,
+            "tension": 0.019896358602472616,
+            "motor_angle": 0.0006036685186218112
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 1.6833033154357594e-06,
+            "max_position_error_m": 2.9964539389059805e-09,
+            "max_tilt_rad": 1.174581392110533e-06,
+            "max_tension_N": 0.001244544561587715,
+            "mean_tension_N": 7.051809272847095e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 2.0353294479444268e-05
+          },
+          "worst_metric_change": 0.001244544561587715,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        }
+      }
+    },
+    "stiff_break_noise_free": {
+      "metrics": {
+        "0.001": {
+          "rms_position_error_m": 0.015034884873189363,
+          "max_position_error_m": 0.043825947178192735,
+          "max_tilt_rad": 0.2190897826803377,
+          "max_tension_N": 252.43693459248863,
+          "time_outside_bounds_pct": 35.02062242219722,
+          "mean_tension_N": 86.73912335046731,
+          "final_position_m": [
+            -0.4953932432686976,
+            0.02068017346449296,
+            3.0123112856557954
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.91594758089354
+        },
+        "0.0005": {
+          "rms_position_error_m": 0.015034925537787647,
+          "max_position_error_m": 0.04382643844944082,
+          "max_tilt_rad": 0.21909207200825387,
+          "max_tension_N": 246.11041080799126,
+          "time_outside_bounds_pct": 35.008123984501935,
+          "mean_tension_N": 86.73889188007772,
+          "final_position_m": [
+            -0.4953932426316829,
+            0.020680177024065736,
+            3.0123112871869484
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.91593426684912
+        },
+        "0.00025": {
+          "rms_position_error_m": 0.015034913266492957,
+          "max_position_error_m": 0.04382642512224675,
+          "max_tilt_rad": 0.21909200991515626,
+          "max_tension_N": 242.75199403485112,
+          "time_outside_bounds_pct": 35.008123984501935,
+          "mean_tension_N": 86.73874489960752,
+          "final_position_m": [
+            -0.4953932428545774,
+            0.020680176191592677,
+            3.012311286844971
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.91593373945682
+        },
+        "0.000125": {
+          "rms_position_error_m": 0.015034912104456918,
+          "max_position_error_m": 0.04382641893017138,
+          "max_tilt_rad": 0.21909198106237837,
+          "max_tension_N": 242.66075874414184,
+          "time_outside_bounds_pct": 35.008123984501935,
+          "mean_tension_N": 86.73873863141644,
+          "final_position_m": [
+            -0.4953932428329411,
+            0.020680176279609927,
+            3.0123112868816064
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.91593373600702
+        },
+        "6.25e-05": {
+          "rms_position_error_m": 0.015034912812790102,
+          "max_position_error_m": 0.04382641585856207,
+          "max_tilt_rad": 0.21909196674962608,
+          "max_tension_N": 243.01652113288714,
+          "time_outside_bounds_pct": 35.008123984501935,
+          "mean_tension_N": 86.73875307958919,
+          "final_position_m": [
+            -0.4953932428222277,
+            0.0206801763220717,
+            3.012311286899208
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.9159337495891
+        },
+        "3.125e-05": {
+          "rms_position_error_m": 0.01503491293799584,
+          "max_position_error_m": 0.043826415697160954,
+          "max_tilt_rad": 0.21909196599753744,
+          "max_tension_N": 243.06905943497864,
+          "time_outside_bounds_pct": 35.008123984501935,
+          "mean_tension_N": 86.73875509771715,
+          "final_position_m": [
+            -0.49539324282720204,
+            0.02068017630243341,
+            3.0123112868910775
+          ],
+          "slack_samples": 2275,
+          "max_motor_speed_rad_s": 175.9159337502587
+        }
+      },
+      "seconds": {
+        "0.001": 2.6,
+        "0.0005": 2.63,
+        "0.00025": 3.09,
+        "0.000125": 3.16,
+        "6.25e-05": 5.26,
+        "3.125e-05": 8.71
+      },
+      "halving": {
+        "0.001->0.0005": {
+          "trajectory_rel_diff": {
+            "position": 1.725212291603384e-05,
+            "orientation": 0.00043113506303404643,
+            "tension": 0.03163261892248684,
+            "motor_angle": 0.0008862058712474549
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 2.70467573530383e-06,
+            "max_position_error_m": 1.1209472306346133e-05,
+            "max_tilt_rad": 1.0449159091748687e-05,
+            "max_tension_N": 0.02570603886169266,
+            "mean_tension_N": 2.6685882719529337e-06,
+            "time_outside_bounds_pct": 0.00012498437695285247,
+            "final_position_m": 7.853859064254512e-09
+          },
+          "worst_metric_change": 0.02570603886169266,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.0005->0.00025": {
+          "trajectory_rel_diff": {
+            "position": 8.1872165296204e-06,
+            "orientation": 0.0002118297943380995,
+            "tension": 0.016792083865700677,
+            "motor_angle": 0.0004253167967120232
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 8.161865966868416e-07,
+            "max_position_error_m": 3.0409037546116926e-07,
+            "max_tilt_rad": 2.8341105470765106e-07,
+            "max_tension_N": 0.013834764927442688,
+            "mean_tension_N": 1.694519218157411e-06,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 1.8543376373892396e-09
+          },
+          "worst_metric_change": 0.013834764927442688,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "0.00025->0.000125": {
+          "trajectory_rel_diff": {
+            "position": 3.416273441914086e-07,
+            "orientation": 8.993980257758103e-06,
+            "tension": 0.0006106766966900423,
+            "motor_angle": 1.940069003542422e-05
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 7.728918070824157e-08,
+            "max_position_error_m": 1.4128636373886915e-07,
+            "max_tilt_rad": 1.3169253273991505e-07,
+            "max_tension_N": 0.00037597875808785135,
+            "mean_tension_N": 7.226518606425828e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 1.955232146974164e-10
+          },
+          "worst_metric_change": 0.00037597875808785135,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        },
+        "0.000125->6.25e-05": {
+          "trajectory_rel_diff": {
+            "position": 8.620115847790544e-07,
+            "orientation": 2.218111762704463e-05,
+            "tension": 0.0017788119437264526,
+            "motor_angle": 4.4769811328038435e-05
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 4.711255679325953e-08,
+            "max_position_error_m": 7.008579766214756e-08,
+            "max_tilt_rad": 6.532759964344326e-08,
+            "max_tension_N": 0.0014639432211719931,
+            "mean_tension_N": 1.6657113730484158e-07,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 9.43947405526927e-11
+          },
+          "worst_metric_change": 0.0014639432211719931,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": false
+        },
+        "6.25e-05->3.125e-05": {
+          "trajectory_rel_diff": {
+            "position": 1.244067977523855e-07,
+            "orientation": 3.2089110559225306e-06,
+            "tension": 0.0002626915104575289,
+            "motor_angle": 6.4665113618612935e-06
+          },
+          "metric_rel_change": {
+            "rms_position_error_m": 8.327666322698795e-09,
+            "max_position_error_m": 3.6827359054596782e-09,
+            "max_tilt_rad": 3.4327531725797377e-09,
+            "max_tension_N": 0.0002161455769550952,
+            "mean_tension_N": 2.3266738792913685e-08,
+            "time_outside_bounds_pct": 0.0,
+            "final_position_m": 4.3658210583598936e-11
+          },
+          "worst_metric_change": 0.0002161455769550952,
+          "worst_metric": "max_tension_N",
+          "pass_0.1pct": true
+        }
+      }
+    }
+  },
+  "provenance": {
+    "code_digest": "c77663b917040fde",
+    "utc": "2026-10-26T09:21:16Z",
+    "python": "3.13.17",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "casadi": "3.8.1"
+  },
+  "failing_by_step": {
+    "0.001": {
+      "break_upper": [
+        "max_tension_N",
+        0.012694
+      ],
+      "stiff_break": [
+        "max_tension_N",
+        0.030056
+      ],
+      "break_upper_noise_free": [
+        "max_tension_N",
+        0.012685
+      ],
+      "stiff_break_noise_free": [
+        "max_tension_N",
+        0.025706
+      ]
+    },
+    "0.0005": {
+      "break_upper": [
+        "max_tension_N",
+        0.006445
+      ],
+      "stiff_break": [
+        "max_tension_N",
+        0.01662
+      ],
+      "break_upper_noise_free": [
+        "max_tension_N",
+        0.006437
+      ],
+      "stiff_break_noise_free": [
+        "max_tension_N",
+        0.013835
+      ]
+    },
+    "0.00025": {
+      "break_upper": [
+        "max_tension_N",
+        0.006841
+      ],
+      "stiff_break": [
+        "max_tension_N",
+        0.00374
+      ],
+      "break_upper_noise_free": [
+        "max_tension_N",
+        0.009533
+      ]
+    },
+    "0.000125": {
+      "break_upper": [
+        "max_tension_N",
+        0.002741
+      ],
+      "break_upper_noise_free": [
+        "max_tension_N",
+        0.003549
+      ],
+      "stiff_break_noise_free": [
+        "max_tension_N",
+        0.001464
+      ]
+    },
+    "6.25e-05": {
+      "break_upper_noise_free": [
+        "max_tension_N",
+        0.001245
+      ]
+    }
+  }
+}

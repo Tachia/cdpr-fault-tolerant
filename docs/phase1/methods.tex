@@ -1,0 +1,380 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,bm,booktabs,array,xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+
+% ---------------------------------------------------------------- notation
+\newcommand{\vc}[1]{\bm{#1}}
+\newcommand{\mt}[1]{\mathbf{#1}}
+\newcommand{\sk}[1]{[#1]_{\times}}
+\newcommand{\pend}[1]{\textcolor{red}{[#1]}}
+\newcommand{\eye}{\mt{I}}
+
+\title{Phase 1: Mathematical formulation\\[2pt]
+\large Fault tolerant control and post fault trajectory planning of a redundant cable driven parallel robot}
+\author{M.\,J.\ Tachia, A.\,V.\ Maloletov}
+\date{Technical report, 26 October 2026 (revision 1b)}
+
+\begin{document}
+\maketitle
+
+\noindent\fbox{\parbox{0.97\linewidth}{\small\textit{About this document.} This document holds the model and the formulation of the estimators, the controller and the post fault planner. Quantities in \pend{red} wait for a published source and enter no reported result. Revision 1b (26 October 2026) aligns all hardware data with IPAnema~2 as published by \citet{pott2013ipanema}: 1.5~mm Dyneema cable, IPAnema winch with gearbox $i_g=12$ and 100~mm drum, 6~m drum capacity, speed and acceleration limits. Assumptions and design choices that remain: the cable stiffness scaled from the 6~mm cable of IPAnema~3, the MSK030C motor sized within the IndraDyn~S series, a lossless gearbox, the position of each cable's 6~m length window on its drum, and $t_{\min}=10$~N (Section~\ref{sec:cable}, Table~\ref{tab:tmin}). The drum diameter is printed as ``$d=100$~m'' in \citet{pott2013ipanema}; we read it as 100~mm.}}
+
+% =====================================================================
+\section{System and notation}\label{sec:system}
+
+The robot studied in this work is a fully constrained cable driven parallel robot (CDPR) with $n=8$ cables and a platform with six degrees of freedom. It is IPAnema~2, a member of the IPAnema family of industrial cable robots, built in a frame of $8\times6\times5$~m \citep{pott2013ipanema}. The geometry is the one published for that robot, and the mass, the inertia and the upper tension bound are those of the IPAnema~2 model distributed with the open source toolkit CASPR \citep{lau2016caspr}, whose geometry coincides with the published one; the cables, winches and drives follow the IPAnema data as far as they are published (Section~\ref{sec:cable}). We use all of these data unchanged (Table~\ref{tab:robot}). Four anchor points sit at the top of the frame ($z=5$~m) and four at the bottom ($z=1$~m), so the platform is held by cables that pull upward and downward at the same time, and this is what allows it to resist a wrench in any direction as long as every cable stays in tension. With eight cables and six degrees of freedom the redundancy is $r=n-6=2$, which leaves a two dimensional family of tension distributions for every wrench. After the loss of one cable the redundancy drops to one, and whether the seven remaining cables can still hold the platform depends strongly on where the platform is, a point we quantify in Section~\ref{sec:workspace}.
+
+The world frame $\{O\}$ has its $z$ axis pointing upward. The platform frame $\{P\}$ is attached to a reference point $P$ of the platform, and the centre of mass lies at $\vc{c}$ in $\{P\}$. The pose is described by the generalised coordinates
+\begin{equation}
+\vc{q}=\begin{bmatrix}\vc{p}\\ \vc{\varphi}\end{bmatrix}\in\mathbb{R}^{6},\qquad
+\mt{R}(\vc\varphi)=\mt{R}_z(\psi)\,\mt{R}_y(\vartheta)\,\mt{R}_x(\phi),
+\end{equation}
+where $\vc{p}$ is the position of $P$ in $\{O\}$ and $\vc\varphi=[\phi,\vartheta,\psi]^\top$ are ZYX Euler angles. The angular velocity of the platform in the world frame follows from the Euler rates as
+\begin{equation}\label{eq:E}
+\vc\omega=\mt{E}(\vc\varphi)\,\dot{\vc\varphi},\qquad
+\mt{E}(\vc\varphi)=\begin{bmatrix}\cos\psi\cos\vartheta & -\sin\psi & 0\\ \sin\psi\cos\vartheta & \cos\psi & 0\\ -\sin\vartheta & 0 & 1\end{bmatrix},
+\end{equation}
+which is singular only at $\vartheta=\pm\pi/2$, far outside the tilt range of this robot. We collect the translational and angular velocities in the twist $\vc\nu=[\dot{\vc p}^\top,\vc\omega^\top]^\top=\mt{H}(\vc q)\,\dot{\vc q}$ with $\mt{H}=\operatorname{blkdiag}(\eye_3,\mt E)$.
+
+\begin{table}[t]
+\centering
+\caption{Parameters of the robot. Geometry, drum capacity $\Delta l_{\max}$ and the limits of speed and acceleration after \citet{pott2013ipanema}; mass, inertia and the tension upper bound of the CASPR IPAnema~2 model \citep{lau2016caspr}; the lower bound $t_{\min}$ and the installed length windows $l_i^-$ are our choices (Section~\ref{sec:cable}, Table~\ref{tab:tmin}).}\label{tab:robot}
+\begin{tabular}{@{}cccl@{}}
+\toprule
+Cable $i$ & $\vc a_i$ in $\{O\}$ [m] & $\vc b_i$ in $\{P\}$ [m] & \\
+\midrule
+1 & $(-4,\ 3,\ 5)$ & $(-0.65,\ 0.125,\ 0.25)$ & \\
+2 & $(\ 4,\ 3,\ 5)$ & $(\ 0.65,\ 0.125,\ 0.25)$ & \\
+3 & $(\ 4,-3,\ 5)$ & $(\ 0.65,-0.125,\ 0.25)$ & \\
+4 & $(-4,-3,\ 5)$ & $(-0.65,-0.125,\ 0.25)$ & \\
+5 & $(-4,\ 3,\ 1)$ & $(-0.75,\ 0.10,\ 0.75)$ & \\
+6 & $(\ 4,\ 3,\ 1)$ & $(\ 0.75,\ 0.10,\ 0.75)$ & \\
+7 & $(\ 4,-3,\ 1)$ & $(\ 0.75,-0.10,\ 0.75)$ & \\
+8 & $(-4,-3,\ 1)$ & $(-0.75,-0.10,\ 0.75)$ & \\
+\midrule
+\multicolumn{4}{@{}l}{$m=10$~kg,\quad $\vc c=(0,0,0.5)$~m,\quad $\mt I_G=\operatorname{diag}(1,1,1)$~kg\,m$^2$,\quad home pose $\vc p=(0,0,3)$~m, $\vc\varphi=\vc 0$}\\
+\multicolumn{4}{@{}l}{$t_{\max}=200$~N,\quad $t_{\min}=10$~N,\quad $v_{\max}=2.5$~m/s,\quad $a_{\max}=25$~m/s$^2$ (platform)}\\
+\multicolumn{4}{@{}l}{$\Delta l_{\max}=6$~m,\quad $l_i^-=2.242$~m (cables 1 to 4),\quad $l_i^-=1.777$~m (cables 5 to 8)}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Cable kinematics}\label{sec:kinematics}
+
+Cable $i$ runs from the attachment point $\vc b_i$ on the platform to the anchor point $\vc a_i$ on the frame. Its vector, length and unit direction are
+\begin{equation}\label{eq:cable}
+\vc l_i=\vc a_i-\vc p-\mt R\,\vc b_i,\qquad l_i=\lVert\vc l_i\rVert,\qquad \vc u_i=\vc l_i/l_i ,
+\end{equation}
+so $\vc u_i$ points from the platform toward the anchor and a tension $t_i\ge 0$ acts on the platform as the force $t_i\vc u_i$. Differentiating \eqref{eq:cable} and using $\tfrac{d}{dt}(\mt R\vc b_i)=\vc\omega\times\mt R\vc b_i$ gives $\dot l_i=-\vc u_i^\top(\dot{\vc p}+\vc\omega\times\mt R\vc b_i)$, which for all cables reads
+\begin{equation}\label{eq:ldot}
+\dot{\vc l}=-\mt W^\top(\vc q)\,\vc\nu=-\mt W^\top\mt H\,\dot{\vc q},\qquad
+\mt W=\begin{bmatrix}\vc u_1&\cdots&\vc u_n\\ (\mt R\vc b_1)\times\vc u_1&\cdots&(\mt R\vc b_n)\times\vc u_n\end{bmatrix}\in\mathbb{R}^{6\times n}.
+\end{equation}
+The matrix $\mt W$ is the wrench matrix: the cables apply to the platform the force and moment about $P$ given by $\mt W\vc t$. The same matrix, transposed and with a minus sign, maps the twist to the rate of change of the cable lengths, and the sign convention in \eqref{eq:ldot} is the one that keeps the cable forces pulling; we state it once here and use it everywhere after, because a sign slip at this point turns every cable into a strut.
+
+% =====================================================================
+\section{Platform dynamics from the Lagrange equations}\label{sec:lagrange}
+
+We treat the platform as a rigid body and the cables, for the moment, as sources of generalised forces; the elasticity of the cables and the winch dynamics come in Section~\ref{sec:cable}.
+
+\paragraph{Kinetic energy.} The velocity of the centre of mass is $\dot{\vc p}+\vc\omega\times\vc c_w$ with $\vc c_w=\mt R\vc c$, so the kinetic energy of the platform is
+\begin{equation}\label{eq:T}
+T=\tfrac12\,m\,\lVert\dot{\vc p}+\vc\omega\times\vc c_w\rVert^2+\tfrac12\,\vc\omega^\top\mt I_c\,\vc\omega,\qquad \mt I_c=\mt R\,\mt I_G\,\mt R^\top .
+\end{equation}
+Expanding the square and substituting $\vc\omega=\mt E\dot{\vc\varphi}$ puts \eqref{eq:T} in the quadratic form $T=\tfrac12\dot{\vc q}^\top\mt M(\vc q)\dot{\vc q}$ with
+\begin{equation}\label{eq:M}
+\mt M(\vc q)=\mt H^\top\mt M_\nu\,\mt H,\qquad
+\mt M_\nu=\begin{bmatrix} m\,\eye_3 & -m\,\sk{\vc c_w}\\ m\,\sk{\vc c_w} & \mt I_c-m\,\sk{\vc c_w}^2\end{bmatrix},
+\end{equation}
+where $\sk{\cdot}$ is the cross product matrix. The lower right block is the inertia about $P$, and the off diagonal blocks couple translation and rotation because $P$ is not the centre of mass; for this platform the offset is 0.5~m, so the coupling is far from negligible. Because $\mt E$ depends on $\vartheta$ and $\psi$ and $\mt R$ on all three angles, $\mt M$ depends on the orientation only, and not on $\vc p$.
+
+\paragraph{Potential energy.} Gravity acts along $-z$, so
+\begin{equation}\label{eq:V}
+V=m\,g\,\vc e_3^\top(\vc p+\mt R\vc c).
+\end{equation}
+We do not place the elastic energy of the cables in $V$. The cable forces are introduced once, through their virtual work, so that they cannot be counted twice, once as a potential and once as an applied force.
+
+\paragraph{Generalised forces of the cables.} A virtual displacement $\delta\vc q$ moves attachment point $i$ by $\delta\vc p+\delta\vc\Theta\times\mt R\vc b_i$ with $\delta\vc\Theta=\mt E\,\delta\vc\varphi$, so the virtual work of the tensions is
+\begin{equation}\label{eq:Q}
+\delta W=\sum_{i=1}^{n} t_i\,\vc u_i^\top\big(\delta\vc p+\delta\vc\Theta\times\mt R\vc b_i\big)=\big(\mt H^\top\mt W\vc t\big)^{\!\top}\delta\vc q,
+\end{equation}
+and the generalised force conjugate to $\vc q$ is $\vc Q=\mt H^\top\mt W\vc t$. Comparing with \eqref{eq:ldot}, $\vc Q=-(\partial\vc l/\partial\vc q)^\top\vc t$, which is the expected statement that a tension does negative work when its cable gets longer.
+
+\paragraph{Equations of motion.} With $L=T-V$, the Lagrange equations $\frac{d}{dt}\frac{\partial L}{\partial\dot{\vc q}}-\frac{\partial L}{\partial\vc q}=\vc Q$ give
+\begin{equation}\label{eq:EL}
+\mt M(\vc q)\,\ddot{\vc q}+\mt C(\vc q,\dot{\vc q})\,\dot{\vc q}+\vc G(\vc q)=\mt H^\top(\vc q)\,\mt W(\vc q)\,\vc t ,
+\end{equation}
+where we choose $\mt C$ through the Christoffel symbols of the first kind,
+\begin{equation}\label{eq:C}
+C_{kj}=\sum_{i=1}^{6}\tfrac12\Big(\frac{\partial M_{kj}}{\partial q_i}+\frac{\partial M_{ki}}{\partial q_j}-\frac{\partial M_{ij}}{\partial q_k}\Big)\dot q_i ,
+\end{equation}
+so that $\dot{\mt M}-2\mt C$ is skew symmetric, and
+\begin{equation}\label{eq:G}
+\vc G=\frac{\partial V}{\partial\vc q}=-\mt H^\top\vc w_g,\qquad
+\vc w_g=\begin{bmatrix} m\vc g\\ \vc c_w\times m\vc g\end{bmatrix},\qquad \vc g=-g\,\vc e_3 .
+\end{equation}
+The skew symmetry of $\dot{\mt M}-2\mt C$ is the property that later lets us read $\tfrac12\dot{\vc q}^\top\mt M\dot{\vc q}+V$ as an energy function of the closed loop, and it holds only for the Christoffel choice of $\mt C$, which is why we fix that choice explicitly instead of writing a generic Coriolis term.
+
+\paragraph{Equivalent form in twist coordinates.} Substituting $\dot{\vc q}=\mt H^{-1}\vc\nu$ into \eqref{eq:EL} and multiplying by $\mt H^{-\top}$ gives the Newton--Euler form about $P$ that we use in the simulator and in the controller,
+\begin{equation}\label{eq:NE}
+\mt M_\nu\,\dot{\vc\nu}+\vc b(\vc q,\vc\nu)=\mt W\vc t+\vc w_g,\qquad
+\vc b=\begin{bmatrix} m\,\vc\omega\times(\vc\omega\times\vc c_w)\\ \vc\omega\times\mt I_c\vc\omega+m\,\vc c_w\times\big(\vc\omega\times(\vc\omega\times\vc c_w)\big)\end{bmatrix}.
+\end{equation}
+Both forms come from the same Lagrangian, and we checked numerically that they produce the same accelerations (Appendix~\ref{app:verification}). The Euler angle form \eqref{eq:EL} is the one we analyse, and the twist form \eqref{eq:NE} is cheaper to evaluate, has no Euler angle singularity in its mass matrix, and is the one the simulator integrates.
+
+% =====================================================================
+\section{Cables and winches}\label{sec:cable}
+
+\paragraph{Elastic and unilateral cables.} Each cable is wound on a drum that a motor drives through a gearbox. We take the motor angle $\theta_i>0$ to reel cable in, so the unstretched free length is $l_{u,i}=l_{u,i}^0-r_d\theta_i$, with $r_d$ the cable length paid out per radian of the motor shaft (see the winch paragraph below). With the stretch $\Delta_i=l_i-l_{u,i}$ and the axial stiffness $k_i=EA/l_{u,i}$, the tension follows a Kelvin--Voigt law that is cut off at zero,
+\begin{equation}\label{eq:tension}
+t_i=\begin{cases}\max\!\big(0,\;k_i\Delta_i+\beta\,k_i\,s(\Delta_i)\,\dot\Delta_i\big), & \Delta_i>0,\\ 0, & \Delta_i\le 0,\end{cases}
+\qquad \dot\Delta_i=\dot l_i+r_d\dot\theta_i ,
+\end{equation}
+where $\beta$ is a retardation time that sets the internal damping. The cut off is what makes a cable a cable: it can pull but cannot push, and once it goes slack it carries no load until it is stretched again. The factor $s(\Delta)=3r^2-2r^3$ with $r=\min(\Delta/\Delta_s,1)$ lets the damping fade to zero at zero stretch. Without it, a slack cable that tightens again would jump at once to the force $\beta k\dot\Delta$, the known defect of linear viscoelastic contact laws that Hunt and Crossley removed by letting the damping grow with the indentation \citep{hunt1975coefficient}. We take $\Delta_s=0.1$~mm, the stretch at a tension of 0.4 to 2.2~N depending on the cable length, well below $t_{\min}$, so every taut operating state follows the identified law and $s$ acts only while a cable passes through slack. The anchor points are taken as fixed; the few millimetres by which the exit point moves on a swivelling pulley are neglected.
+
+\paragraph{Cable data.} IPAnema~2 was obtained from IPAnema~1 by changing the frame, the platform and the gearboxes, while the cables, the winches and the controllers were left unchanged \citep{pott2013ipanema}, so its cables are the Dyneema cables of 1.5~mm diameter used on IPAnema~1. No stiffness has been published for this cable. The closest identification is that of the 6~mm Dyneema cable of IPAnema~3, the larger member of the same family. Tempel et al.\ report for it a spring rate of $c_{\mathrm{ref}}=112\,601$~N/m and a damping coefficient of $d_{\mathrm{ref}}=2252$~N\,s/m at a reference length of 5~m \citep{tempel2015iftomm}, that is $EA=563$~kN and $\beta=d_{\mathrm{ref}}/c_{\mathrm{ref}}=0.020$~s, and a second paper by the same group on the same robot gives 120\,000~N/m and 3600~N\,s/m, that is 600~kN and 0.030~s \citep{tempel2015amm}. We scale both stiffness values by the ratio of the cross sections, $(1.5/6)^2=1/16$, which assumes that the two braids have the same effective modulus, and keep the retardation times, which we treat as a property of the fibre. This gives $EA=35.2$~kN as the nominal value and 37.5~kN as the alternative. Because the nominal value is scaled and not measured, the evaluation also sweeps $EA$ between half and twice the nominal value. At the home pose, held by the tension distribution of least total tension (81.0~N in the upper and 10.0~N in the lower cables), the six elastic modes of the platform with locked winches lie between 5.5 and 18.7~Hz for the nominal stiffness, and between 3.9 and 26.4~Hz over the sweep. The lowest of these modes bounds the bandwidth that any controller of this robot can use, and the highest sets the integration step of the simulator, which is fixed by a step convergence test on the final parameter set.
+
+\paragraph{Sag.} We take the cables as straight and check the error this makes. For the 1.5~mm cable the weight per unit length is at most $w=0.0168$~N/m, computed for a solid section of UHMWPE with density 970~kg\,m$^{-3}$ \citep{hwangbo2018cable}; a braided rope is lighter, so the figures below are conservative. Over the nominal feasible workspace of Section~\ref{sec:workspace}, with the tension distributions of least total tension, the mid span sag never exceeds 0.16\% of the chord. The more sensitive measure is the equivalent modulus of a sagging cable \citep{ernst1965},
+\begin{equation}\label{eq:ernst}
+EA_{\mathrm{eq}}=\frac{EA}{1+w^2\,l_h^2\,EA/(12\,t^3)},
+\end{equation}
+with $l_h$ the horizontal projection of the cable, because it falls with the cube of the tension. Even so, no cable state in that workspace keeps less than 95.4\% of its axial stiffness, and at the home pose the lower cables, at 10~N, keep 98.5\%. We therefore neglect the sag in the simulator as well as in the controller. This is a property of the light cable and not of the robot: with the 6~mm cable of IPAnema~3 on the same platform, the lower cables at 10~N would keep 1.5\% of their stiffness at the home pose, and the sag would then dictate the lower tension bound.
+
+\paragraph{Winches.} The winch of the IPAnema robots couples a synchronous servo motor of the Bosch Rexroth IndraDyn~S series, which carries a multi turn absolute encoder, to a planetary gearbox that drives a drum of 100~mm diameter. A spindle with the pitch of the drum moves the cable guide along the drum, so the cable leaves in a constant direction, and the drum stores up to 6~m of cable \citep{pott2013ipanema}. What the drum capacity limits is the change of the free length, $\Delta l_{\max}=6$~m; where that range lies depends on how much cable is mounted, which has not been reported. We centre the range of each cable on the free lengths that the cable takes over the static workspace of Section~\ref{sec:workspace}, so that cable $i$ can be used for
+\begin{equation}\label{eq:window}
+l_i^-\le l_i\le l_i^-+\Delta l_{\max},
+\end{equation}
+with $l_i^-=2.242$~m for the upper and $1.777$~m for the lower cables. Below the window the drum would have to hold more cable than it can, above it the drum would run empty. IPAnema~2 uses the gear ratio $i_g=12$. We write
+\begin{equation}\label{eq:rd}
+r_d=\frac{r_D}{i_g}=\frac{50~\text{mm}}{12}=4.167~\text{mm/rad}
+\end{equation}
+for the cable length paid out per radian of the motor shaft, with $r_D$ the drum radius, and refer the inertia $I_m$ and the friction of rotor, gearbox and drum to the motor shaft, so that
+\begin{equation}\label{eq:winch}
+I_m\ddot\theta_i+b_m\dot\theta_i+\tau_c\tanh(\dot\theta_i/\epsilon)=\tau_i^{\mathrm{act}}-r_d\,t_i ,
+\end{equation}
+where $\tau_i^{\mathrm{act}}$ is the torque the motor actually delivers. The term $r_d t_i$ is the virtual work of the cable on the motor shaft, so \eqref{eq:EL}, \eqref{eq:tension} and \eqref{eq:winch} together form the full model with the $6+n$ coordinates $(\vc q,\vc\theta)$. The gearbox is taken as lossless, since its efficiency is not published. The current loop of each drive is assumed ideal, and the drive reports the motor current, which we read as the commanded torque $\tau_i$. The gear ratio matters for the dynamics more than its size suggests. Seen from the cable, the inertia of the motor shaft is $I_m/r_d^2$, so the rotor of the motor selected below, 0.3~kg\,cm$^2$, already acts like a mass of 1.7~kg on every cable, against a platform of 10~kg. The winches are therefore not small next to the platform, and they are also the part of the robot through which every fault has to be observed.
+
+\paragraph{Drive sizing and the lower tension bound.} The size of the IndraDyn~S motors of IPAnema~2 has not been published, so we sized the motor within that series from the manufacturer's data \citep{rexroth_msk2018}. Two requirements follow from the robot data. The speed of 2.5~m/s, which is the IPAnema~1 value of 10~m/s reduced by the factor of four that the change of gearbox brought \citep{pott2013ipanema}, needs 5730~rpm at the motor, and holding $t_{\max}=200$~N needs $r_d t_{\max}=0.83$~N\,m continuously. The smallest motor of the series that meets both is the MSK030C-0900, with 0.9~N\,m continuous torque at standstill (0.8~N\,m at the lower winding temperature rise of 60~K), 4.0~N\,m peak torque, a maximum speed of 9000~rpm, a torque constant of 0.58~N\,m/A and a rotor inertia of 0.3~kg\,cm$^2$; the next smaller size, the MSK030B, offers only 0.4~N\,m. The motor speed demanded by the two robots of the family is the same, 600~rad/s for 10~m/s with $i_g=3$ and for 2.5~m/s with $i_g=12$, which agrees with the statement that the winches were not changed. Through $r_d$ the motor sustains 192~N of cable tension within its 60~K rating and delivers up to 960~N, so the drive does not limit the choice of the lower tension bound, and neither does the sag. The lower bound has only to keep the cables away from slack under the dynamic loads and the estimation errors, and we keep the value $t_{\min}=10$~N, 5\% of $t_{\max}$, fixed in the specification of this study. Table~\ref{tab:tmin} shows what a higher bound would buy: no stiffness, since the lowest mode stays at 5.5~Hz, at the price of a higher motor load and a smaller post fault workspace. The rotor inertia is the only inertia we can source; the gearbox and the drum add to it, and the robustness sweep multiplies it by a factor between 1 and 6, the upper value being about the rotor of the next larger size, the MSK040C (1.4~kg\,cm$^2$), together with its gearbox and drum. Friction is set to zero in the nominal model, as in the winch analysis of \citep{ida2022actuators}, and enters only the robustness sweep.
+
+\begin{table}[t]
+\centering
+\caption{Choice of the lower tension bound. Columns 2 to 6: home pose, tension distribution of least total tension, nominal cable stiffness (Section~\ref{sec:cable}) with the Ernst sag correction; the motor load is the largest holding torque over the 60~K rating of the MSK030C. Columns 7 to 9: static workspace at zero orientation within the drum windows (0.25~m grid), and the share of it that can still be held after the loss of an upper or a lower cable when the platform may tilt by up to $20^\circ$. The bound used in the study is $t_{\min}=10$~N.}\label{tab:tmin}
+\begin{tabular}{@{}ccccccccc@{}}
+\toprule
+$t_{\min}$ & \multicolumn{2}{c}{Tension [N]} & Motor & Lower cable & Lowest & Feasible & \multicolumn{2}{c}{Post fault [\%]}\\
+\cmidrule(lr){2-3}\cmidrule(lr){8-9}
+[N] & upper & lower & load & $EA_{\mathrm{eq}}/EA$ & mode [Hz] & positions & upper & lower\\
+\midrule
+10 & 81.0 & 10.0 & 0.42 & 0.985 & 5.5 & 3357 & 52.3 & 73.8\\
+30 & 110.0 & 30.0 & 0.57 & 0.999 & 5.5 & 2096 & 41.7 & 61.3\\
+40 & 124.5 & 40.0 & 0.65 & 1.000 & 5.5 & 1619 & 38.4 & 55.8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Two models, two roles.} The simulator integrates the full model, with elastic unilateral cables and the dynamics of the winches; it carries the orientation as a unit quaternion, so that the large rotations after an uncontrolled fault pass the singularity of the Euler angles, which are recovered for the estimators and the controller. The estimators and the controller use the rigid cable model \eqref{eq:NE}, in which the tensions are inputs. The gap between the two is deliberate: it is the same gap that exists between any model based controller and a real robot, and keeping it in the simulation prevents the controller from being tested against its own design model.
+
+% =====================================================================
+\section{Faults and sensing}\label{sec:faults}
+
+\paragraph{Fault model.} We consider three faults, all described with one parameterisation,
+\begin{equation}\label{eq:fault}
+\tau_i^{\mathrm{act}}=(1-\rho_i)\,\tau_i+f_i,\qquad t_i(t)\equiv0\ \text{for } t\ge t_{f}\ \text{if cable } i\text{ breaks}.
+\end{equation}
+A cable break removes the cable permanently. A loss of effectiveness $\rho_i\in(0,1)$ models a drive that delivers only part of the commanded torque, for instance through a damaged gear stage or a demagnetised motor, and a bias $f_i$ models a constant parasitic torque such as a dragging brake. Slack and over tension are not listed as faults: they are states that a controller can avoid or cause, and we report them as constraint violations.
+
+\paragraph{Sensors.} Every winch has a multi turn absolute encoder on the motor shaft, which measures $\theta_i$, and the drive reports the motor current $i_i$, which the torque constant converts into torque; on the IPAnema robots the same current is already used to estimate the cable tension \citep{pott2013ipanema}. Because the encoder sits before the gearbox, one arc minute at the motor corresponds to 1.2~$\mu$m of cable. The resolution and accuracy of the encoder, which depend on the encoder option of the motor \citep{rexroth_msk2018}, and the noise of the current measurement belong to the sensor model of the simulator. There are no load cells on the cables. This choice is deliberate. With a load cell on every cable a break is visible directly as a zero reading, and the diagnosis problem becomes trivial; without load cells the tensions have to be inferred from the motor side, and a loss of effectiveness becomes invisible to the drive, since the measured current is correct while the torque is not. A camera or laser tracker measuring the platform pose is considered only as an ablation. Sensor noise levels are swept in the evaluation rather than fixed.
+
+% =====================================================================
+\section{Wrench feasibility before and after a fault}\label{sec:workspace}
+
+For an active cable set $\mathcal S$ we call a pose statically feasible if every free cable length lies in its drum window and the remaining cables can balance gravity with tensions inside the admissible box,
+\begin{equation}\label{eq:wfw}
+\mathcal F_{\mathcal S}=\big\{\vc q:\ l_i^-\le l_i(\vc q)\le l_i^-+\Delta l_{\max}\ \forall i\in\mathcal S,\ \ \exists\,\vc t_{\mathcal S}\in[t_{\min},t_{\max}]^{|\mathcal S|}\ \text{with}\ \mt W_{\mathcal S}(\vc q)\vc t_{\mathcal S}+\vc w_g(\vc q)=\vc 0\big\},
+\end{equation}
+and we measure how far inside the set a pose lies by the margin
+\begin{equation}\label{eq:margin}
+s^\star(\vc q,\mathcal S)=\max_{s,\vc t_{\mathcal S}} s\quad\text{s.t.}\quad \mt W_{\mathcal S}\vc t_{\mathcal S}+\vc w_g=\vc 0,\quad t_{\min}+s\le t_i\le t_{\max}-s ,
+\end{equation}
+a linear programme whose solution is also a tension distribution with the largest distance to both bounds. A pose belongs to $\mathcal F_{\mathcal S}$ when $s^\star\ge0$ and the lengths of the cables in $\mathcal S$ satisfy \eqref{eq:window}; a broken cable carries no load and imposes no length condition.
+
+We evaluated \eqref{eq:margin} on a grid with a spacing of 0.25~m covering $x\in[-3.5,3.5]$~m, $y\in[-2.5,2.5]$~m and $z\in[1.5,4.5]$~m, 7917 positions in all, with $t_{\min}=10$~N. At zero orientation the eight cables can balance gravity at 3425 grid positions. Over these positions the free length of an upper cable would vary by 6.37~m and that of a lower cable by 6.36~m, slightly more than the 6~m a drum holds, so the windows \eqref{eq:window} take away the outermost positions and leave 3357 of them, in a region of $|x|\le2.75$~m, $|y|\le2.5$~m and $1.5\le z\le4$~m. The drum capacity thus fits this frame closely, and it is the tension bounds, not the drums, that set the size of the workspace. Removing one of the upper cables (1 to 4) leaves 11.8\% of these positions feasible, and removing one of the lower cables (5 to 8) leaves 42.2\%. At the home pose itself no single cable can be lost: after an upper cable breaks there is no admissible tension distribution even with $t_{\min}=0$, and after a lower cable breaks one of the remaining cables has to go slack. When the platform must also hold any rotation of $\pm10^\circ$ about one axis, the nominal set shrinks to 1505 positions, all of them inside the windows; 0.3\% of them survive the loss of an upper cable and 18.8\% the loss of a lower one.
+
+The picture changes once the platform is allowed to give up its orientation. Repeating the post fault test with the orientation free to settle anywhere within $\pm20^\circ$ about each axis (searched on a $10^\circ$ grid, with the length windows checked at every orientation), 52.3\% of the nominal positions can be held after an upper cable breaks and 73.8\% after a lower cable breaks, against 11.8\% and 42.2\% at fixed orientation, and the tilt needed is $10^\circ$ in the median case. Tilting is therefore the main resource the robot has left after a fault: a platform that insists on its original orientation loses most of its workspace, while a platform that tilts by about ten degrees keeps about half of it after losing an upper cable and three quarters of it after losing a lower one. The same pattern holds at the higher bounds of Table~\ref{tab:tmin}, so the conclusion does not depend on the choice of $t_{\min}$.
+
+These numbers set the logic of the controller. A fault tolerant controller for this robot cannot simply redistribute tension and carry on, because for most of the workspace there is no tension distribution to carry on with at the original orientation. The platform has to be moved and tilted into the post fault feasible set of the cable that was lost, and it has to start moving before that set is out of reach. All of these results are static; the dynamic margins along a moving path are smaller and are checked by the planner. That observation is the basis of the planner of Section~\ref{sec:planner} and of the way the controller of Section~\ref{sec:mpc} uses the fault probabilities.
+
+\paragraph{Reference trajectories.} The same analysis fixes the references of the evaluation. We call a reference admissible if, at every sample, the cable lengths are within their windows \eqref{eq:window}, the speed and the acceleration of the platform are within $v_{\max}$ and $a_{\max}$, and the wrench of gravity and inertia needed to follow it, with rigid cables, can be produced with tensions in $[t_{\min},0.8\,t_{\max}]$, which keeps a fifth of the tension range in reserve for the controller. For a horizontal circle about the home position, started and stopped with a quintic ramp of the angular speed over one period, the largest admissible radius grows with the period, from 0.75~m at 2~s to 1.95~m at 5~s, and up to that period it is the speed limit that binds; at 6 and 8~s the tension bound takes over, at 2.0 and 1.9~m. We take for T1 a radius of 0.5~m and a period of 4~s, about a third of the radius admissible at that period (1.55~m), which keeps the reference in the central part of the workspace and its peak speed, 0.79~m/s, at a third of $v_{\max}$; the peak acceleration is 1.23~m/s$^2$. The circle is followed for three turns (16~s), so that every fault onset of the specification, drawn between 3 and 7~s, falls where the path speed is at least 89\% of its constant value, and at least 5~s of constant speed path follow the latest onset. The helix T2 follows the same circle while climbing 1~m, from $z=2.5$ to 3.5~m. Along the two paths the smallest tension margin is 25.4~N and 9.4~N. Neither path has a single point at which an upper cable can be lost at the original orientation, while a lower cable can be lost on 29 to 52\% of the path, depending on the cable. A break of an upper cable therefore always forces the platform to leave its orientation, whereas after a break of a lower cable part of the path can still be held as it is, so the fault scenarios should reach both of the first two branches of the planner.
+
+% =====================================================================
+\section{Fault diagnosis}\label{sec:fdd}
+
+The two levels of the diagnosis build on work that treated them separately. Bettega et al.\ \citep{bettega2025load} estimated the load torque of each motor from its current and encoder and classified cable breaks with supervised classifiers, without actuator faults and without a recovery strategy. Raman et al.\ \citep{raman2023cable} isolated cable failures of a planar reconfigurable CDPR with an IMM bank of extended Kalman filters, assuming a direct measurement of the platform pose. Here a winch level observer, which needs no load cell, supplies tension estimates to a platform level IMM that separates cable breaks from actuator faults, and the probabilities of the IMM are passed on to the controller.
+
+\subsection{Tension estimation at each winch}
+
+Writing \eqref{eq:winch} with \eqref{eq:fault} as $\ddot\theta_i=b_0\tau_i+d_i$ with $b_0=1/I_m$ collects everything that is not the commanded torque into a single unknown,
+\begin{equation}\label{eq:d}
+d_i=-\frac{1}{I_m}\Big(r_d t_i+b_m\dot\theta_i+\tau_c\tanh(\dot\theta_i/\epsilon)+\rho_i\tau_i-f_i\Big).
+\end{equation}
+An extended state observer \citep{han2009pid} treats $d_i$ as a third state and estimates it from the encoder alone,
+\begin{equation}\label{eq:eso}
+\begin{aligned}
+\dot z_{1,i}&=z_{2,i}+3\omega_o\,(\tilde\theta_i-z_{1,i}),\\
+\dot z_{2,i}&=z_{3,i}+b_0\tau_i+3\omega_o^2\,(\tilde\theta_i-z_{1,i}),\\
+\dot z_{3,i}&=\omega_o^3\,(\tilde\theta_i-z_{1,i}),
+\end{aligned}
+\end{equation}
+where the gains place all three observer poles at $-\omega_o$ \citep{gao2003scaling}. The tension estimate is then
+\begin{equation}\label{eq:that}
+\hat t_i=-\frac{1}{r_d}\Big(I_m z_{3,i}+\hat b_m z_{2,i}+\hat\tau_c\tanh(z_{2,i}/\epsilon)\Big).
+\end{equation}
+For a bounded $\dot d_i$ the estimation error of a linear observer of this type is ultimately bounded, with a bound that shrinks as $\omega_o$ grows \citep{guo2011eso}; the bandwidth cannot grow without limit, because the encoder quantisation and the 1~kHz sampling are amplified by $\omega_o^3$ in the third channel. Comparing \eqref{eq:d} and \eqref{eq:that}, the estimate converges to
+\begin{equation}\label{eq:bias}
+\hat t_i\to t_i+\frac{\rho_i\tau_i-f_i}{r_d}+\frac{\Delta\tau_{f,i}}{r_d},
+\end{equation}
+with $\Delta\tau_{f,i}$ the error of the friction model. Equation \eqref{eq:bias} is the reason the diagnosis needs two levels. A cable break is seen at the winch, because $t_i$ and hence $\hat t_i$ drop to zero while the commanded tension does not. An actuator fault is not seen at the winch, because it adds to $\hat t_i$ exactly the torque that the motor failed to deliver, and a tension loop closed on $\hat t_i$ will happily hold $\hat t_i$ at its reference while the true tension is lower by $\delta_i=(\rho_i\tau_i-f_i)/r_d$. That deficit acts on the platform, and the platform is where it has to be found.
+
+\paragraph{Tension loop.} Each winch tracks the tension $t_{d,i}$ requested by the controller with
+\begin{equation}\label{eq:tensionloop}
+\tau_i=r_d t_{d,i}+\hat b_m z_{2,i}+\hat\tau_c\tanh(z_{2,i}/\epsilon)+I_m\ddot\theta_i^{\,\mathrm{ff}}+r_d\Big(k_P\,e_i+k_I\!\int e_i\,dt\Big),\qquad e_i=t_{d,i}-\hat t_i ,
+\end{equation}
+where $\ddot\theta_i^{\,\mathrm{ff}}=-\ddot l_{i}^{\,\mathrm{ref}}/r_d$ is the drum acceleration implied by the reference motion.
+
+\subsection{Interacting multiple model estimator}
+
+\paragraph{Modes.} The platform level diagnosis runs an interacting multiple model (IMM) estimator \citep{blom1988imm} over the $N=2n+1=17$ modes
+\begin{equation}
+\mathcal M=\{\mathcal M_0\}\cup\{\mathcal B_1,\dots,\mathcal B_n\}\cup\{\mathcal A_1,\dots,\mathcal A_n\},
+\end{equation}
+where $\mathcal M_0$ is the healthy robot, $\mathcal B_i$ a break of cable $i$ and $\mathcal A_i$ an actuator fault on winch $i$. Each mode tells the platform model which tension it actually receives for a commanded vector $\vc t_d$,
+\begin{equation}\label{eq:modes}
+\vc t^{(0)}=\vc t_d,\qquad \vc t^{(\mathcal B_i)}=(\eye-\vc e_i\vc e_i^\top)\,\vc t_d,\qquad \vc t^{(\mathcal A_i)}=\vc t_d-\vc e_i\,\delta_i ,
+\end{equation}
+where $\delta_i$ is the unknown tension deficit of \eqref{eq:bias}. Every filter carries the state $\vc x=[\vc q^\top,\vc\nu^\top,\delta,\vc w_b^\top,\vc\beta^\top,\kappa]^\top\in\mathbb R^{28}$. The deficit $\delta$ is used by the filters of the modes $\mathcal A_i$ only, where it is a random walk. The other three groups describe what the nominal model gets wrong, and all modes share them: $\vc w_b$ is a slowly varying wrench about $P$ that collects the errors in mass, centre of mass and inertia, $\vc\beta$ holds offsets of the length readings that collect the errors in the anchor positions and in the homing, and $\kappa$ is the ratio of the true to the nominal axial stiffness. All three are random walks of small intensity. They are needed because the deficit of an $\mathcal A_i$ mode is a free parameter: without them, the $\mathcal A_i$ filters absorb the mismatch of a randomised plant and win in fault free runs. A fault, by contrast, is an abrupt change that the slow bias states cannot follow on the time scale of the diagnosis, and so it remains for the fault modes to explain. The mode $\mathcal A_i$ deliberately merges the loss of effectiveness and the bias, because both produce the same signature at the platform; the two are separated afterwards by regressing the estimated $\delta_i$ on $\tau_i$, since $\delta_i=(\rho_i\tau_i-f_i)/r_d$ is linear in $\tau_i$ with slope $\rho_i/r_d$ and offset $-f_i/r_d$.
+
+\paragraph{Mode matched models.} Each filter propagates the mean of \eqref{eq:NE}, with its own $\vc t^{(j)}$ and the wrench $\vc w_b$ added, over the IMM sampling period $\Delta_I$ by a fourth order Runge--Kutta step, and the covariance with the transition matrix $\eye+\mt F\Delta_I+\tfrac12(\mt F\Delta_I)^2$ of the continuous time Jacobian $\mt F$, obtained by automatic differentiation. The measurement is
+\begin{equation}\label{eq:meas}
+\vc y=\begin{bmatrix}\tilde{\vc l}_u\\ \hat{\vc t}\end{bmatrix},\qquad \tilde l_{u,i}=l_{u,i}^0-r_d\tilde\theta_i ,
+\end{equation}
+the unstretched lengths read from the encoders and the tensions from \eqref{eq:that}. Under mode $j$ the expected measurement is
+\begin{equation}\label{eq:h}
+\tilde l_{u,i}=\frac{\kappa EA\;l_i(\vc q)}{\kappa EA+t_i^{(j)}}+\beta_i,\qquad
+\hat t_i=\begin{cases}0,& j=\mathcal B_i,\\ t_{d,i},&\text{otherwise,}\end{cases}
+\end{equation}
+where the first relation is \eqref{eq:tension} solved for the free length and the second states that the tension loop \eqref{eq:tensionloop} holds $\hat t_i$ at its reference unless the cable is gone. Under $\mathcal B_i$ the winch of the broken cable spins freely and its length reading carries no information on the pose; rather than dropping that channel, which would leave the modes with likelihoods of different dimension, we keep it with a variance large enough to make it uninformative.
+
+\paragraph{Start, rate and safeguards.} The platform starts at rest at a known pose with known commanded tensions, so the first length reading fixes the prior mean of $\vc\beta$ (homing). The fault modes enter the estimator only after $t_{\mathrm{arm}}=2$~s: until then the transition probabilities into them are zero, which gives the bias states of the healthy filter time to converge on the first part of the task; armed earlier, at 1~s, an $\mathcal A_i$ mode took over in two of four fault free development runs, because its free deficit explains the start transient of a randomised plant faster than the slow bias states do. The earliest onset of the evaluation is 3~s. The IMM runs every $\Delta_I=5$~ms (200~Hz) on the delayed time line: it predicts over the last period with the average of the tension commands held over it, and updates with the measurement taken at its end. A filter whose normalised innovation squared exceeds $10^4$ keeps its prediction instead of updating, since its likelihood is negligible and an update through the linearisation at that distance only produces a meaningless jump; a filter whose state or covariance is no longer finite restarts from its mixed prior with zero likelihood for that cycle. Neither safeguard acts on the true mode in the runs we checked; they keep the filters of the implausible modes, which see innovations of tens of newtons after a break, from corrupting the arithmetic. As input, the commands are used rather than the tension estimates of \eqref{eq:that}: in closed loop with the MPC, the estimates, which lag the true tensions by several milliseconds, made the estimate of the platform state diverge within half a second in fault free runs.
+
+\paragraph{Recursion.} Let $\pi_{lj}$ be the probability of switching from mode $l$ to mode $j$ in one step and $\mu_l$ the mode probabilities after the previous step. One IMM cycle \citep{blom1988imm} computes the predicted mode probabilities and the mixing weights,
+\begin{equation}
+\bar c_j=\sum_l\pi_{lj}\mu_l,\qquad \mu_{l|j}=\pi_{lj}\mu_l/\bar c_j ,
+\end{equation}
+mixes the twelve states that all filters share,
+\begin{equation}
+\hat{\vc x}^{0j}=\sum_l\mu_{l|j}\hat{\vc x}^{l},\qquad
+\mt P^{0j}=\sum_l\mu_{l|j}\Big(\mt P^{l}+(\hat{\vc x}^{l}-\hat{\vc x}^{0j})(\hat{\vc x}^{l}-\hat{\vc x}^{0j})^\top\Big),
+\end{equation}
+while the deficit $\delta_i$ of $\mathcal A_i$, which has no counterpart in the other modes, restarts from its own previous estimate. Each filter then performs its extended Kalman prediction and update and returns its innovation $\vc r^{(j)}=\vc y-\vc h^{(j)}(\hat{\vc x}^{(j)}_{k|k-1})$ and innovation covariance $\mt S^{(j)}=\mt C^{(j)}\mt P^{(j)}_{k|k-1}\mt C^{(j)\top}+\mt R^{(j)}$, with $\mt C^{(j)}$ the measurement Jacobian. The likelihood of mode $j$ is the Gaussian density of its innovation,
+\begin{equation}\label{eq:lik}
+\ln\Lambda^{(j)}=-\tfrac12\Big(\vc r^{(j)\top}\mt S^{(j)-1}\vc r^{(j)}+\ln\det\big(2\pi\mt S^{(j)}\big)\Big),
+\end{equation}
+and the mode probabilities follow from Bayes' rule,
+\begin{equation}\label{eq:mu}
+\mu_j=\frac{\Lambda^{(j)}\,\bar c_j}{\sum_l\Lambda^{(l)}\,\bar c_l}
+=\exp\!\Big(\ln\Lambda^{(j)}+\ln\bar c_j-\max_l\big(\ln\Lambda^{(l)}+\ln\bar c_l\big)-\ln\!\sum_l e^{\ln\Lambda^{(l)}+\ln\bar c_l-\max_m(\ln\Lambda^{(m)}+\ln\bar c_m)}\Big).
+\end{equation}
+The second form of \eqref{eq:mu} is the same quantity evaluated in the log domain. It matters in practice: a cable break produces innovations of tens of newtons, the Gaussian densities of all modes can then underflow to zero in double precision, and a direct evaluation returns $0/0$ or falls back on the prior, after which the probabilities only follow the Markov chain and drift to its stationary distribution. By construction $\mu_j\ge0$ and $\sum_j\mu_j=1$ at every step, and the code asserts both.
+
+\paragraph{What the IMM estimates.} The IMM estimates two things at once: the posterior probability of every mode given all measurements so far, and the platform state $\hat{\vc x}=\sum_j\mu_j\hat{\vc x}^{(j)}$ with its covariance. The deficits $\delta_i$ are estimated by the filters of the modes $\mathcal A_i$. A fault is declared when one mode $j\neq0$ holds $\mu_j\ge\mu_{\mathrm{iso}}$ for $N_c$ consecutive samples; $\mu_{\mathrm{iso}}$, $N_c$, $\pi_{lj}$ and the noise covariances are tuned on calibration runs that are never used for the reported results.
+
+% =====================================================================
+\section{Probability aware model predictive control}\label{sec:mpc}
+
+The controller has to make a decision before the diagnosis is certain, because the time the platform needs to reach the post fault feasible set is of the same order as the time the IMM needs to isolate the fault. We therefore let the mode probabilities enter the controller directly.
+
+At each control instant the scenario set $\mathcal J=\{0\}\cup\{j:\mu_j\ge\mu_s\}$ collects the healthy mode and every fault mode whose probability exceeds a small threshold $\mu_s$, and the weights $\tilde\mu_j=\mu_j/\sum_{l\in\mathcal J}\mu_l$ are renormalised over it. The controller solves
+\begin{equation}\label{eq:mpc}
+\begin{aligned}
+\min_{\vc t_0,\dots,\vc t_{N-1}}\ & \sum_{j\in\mathcal J}\tilde\mu_j\Big[\sum_{k=0}^{N-1}\big(\lVert\vc x^{(j)}_k-\vc x^{\mathrm{ref}}_k\rVert^2_{\mt Q_j}+\lVert\vc t_k-\vc t_{k-1}\rVert^2_{\mt R}\big)+V_f^{(j)}\big(\vc x^{(j)}_N\big)\Big]\\
+\text{s.t.}\ & \vc x^{(j)}_{k+1}=\vc f_d\big(\vc x^{(j)}_k,\vc t^{(j)}(\vc t_k)\big),\quad \vc x^{(j)}_0=\hat{\vc x}^{(j)},\qquad j\in\mathcal J,\\
+& t_{\min}\le t_{k,i}\le t_{\max},\qquad k=0,\dots,N-1,
+\end{aligned}
+\end{equation}
+where $\vc f_d$ is \eqref{eq:NE} discretised over the control period, and $\vc t^{(j)}(\cdot)$ is the map \eqref{eq:modes}. All scenarios share one tension sequence, so the first tension command is good for all modes that are still plausible. For the healthy mode the terminal cost $V_f^{(0)}$ penalises the distance to the reference; for a fault mode it pulls the predicted pose toward a pose that the remaining cables can hold,
+\begin{equation}
+V_f^{(j)}(\vc x)=w_s\,\lVert\vc q-\vc q^{\star}_j\rVert^2_{\mt W_q}+\lVert\vc\nu\rVert^2_{\mt Q_\nu},\qquad
+\vc q^\star_j=\arg\min_{\vc q'\in\mathcal F^{\,s_{\min}}_{\mathcal S_j}}\lVert\vc q'-\hat{\vc q}\rVert_{\mt W_q},
+\end{equation}
+where $\mathcal F^{\,s_{\min}}_{\mathcal S_j}$ is the set of poses of $\mathcal F_{\mathcal S_j}$ with margin at least $s_{\min}$, stored offline as a grid for every mode, and $\vc q^\star_j$ is looked up once per control step from the current estimate $\hat{\vc q}$; keeping the lookup outside the optimisation leaves \eqref{eq:mpc} a smooth nonlinear programme. To bound the computation, $\mathcal J$ keeps at most $N_s$ fault scenarios, the most probable ones. As $\mu_j$ grows, this term starts pulling the platform toward the region in which it would survive the fault $j$, before the fault is confirmed. Raman et al.\ \citep{raman2023cable} used the IMM weights to mix the outputs of mode specific kinematic controllers; in \eqref{eq:mpc} the probabilities instead weight predicted costs and decide which fault scenarios shape a single tension sequence, so the tension bounds hold whichever mode is true. When only the healthy mode is active, \eqref{eq:mpc} is an ordinary tracking MPC with tension bounds, and its first tension vector also solves the tension distribution problem, so no separate distribution step is needed. For the baselines that do not use MPC we distribute tensions with \eqref{eq:margin} augmented by the wrench demanded by a computed torque law.
+
+The length windows \eqref{eq:window} are not imposed in \eqref{eq:mpc} as hard constraints, because a state constraint can make the programme infeasible after a fault. The references produced by the planner of Section~\ref{sec:planner} respect them, and the stage cost carries the penalty $w_l\sum_i\big[\max\!\big(0,\,l_i(\vc q^{(j)}_k)-l_i^--\Delta l_{\max}\big)^2+\max\!\big(0,\,l_i^--l_i(\vc q^{(j)}_k)\big)^2\big]$, which is zero inside the windows.
+
+\paragraph{Rates and weights after a break.} The MPC runs at 50~Hz with a horizon of $N=12$ steps (0.24~s), and the IMM supplies its initial states. The weights are parameters of the compiled programme, so they can change during a run. Their values come from calibration runs: with larger velocity weights and a smaller weight on the tension changes, the closed loop oscillated on randomised plants whose cables were 15 to 20\% softer than nominal. After a break is declared, the weights of the velocity errors are multiplied by 0.3 and the weight of the tension changes by 3. The reason is again the elasticity of the cables, which the prediction model leaves out: with seven cables, at the end poses of the recovery paths of Section~\ref{sec:planner}, the lowest elastic mode of the platform falls to 3.2 to 3.6~Hz with locked winches, against 5.5~Hz at the home pose with eight cables.
+
+We do not claim recursive feasibility or closed loop stability for \eqref{eq:mpc}. The plant differs from the prediction model through the cable elasticity, the winch dynamics and the estimation errors, and the scenario set changes with time. Feasibility of the tension bounds alone is never lost, because the box $[t_{\min},t_{\max}]$ does not depend on the state; what can be lost is the ability to track, and that is measured, not assumed, in the evaluation.
+
+% =====================================================================
+\section{Post fault planning}\label{sec:planner}
+
+Once a fault $j$ is declared, the planner decides what the platform can still do. Earlier recovery strategies steer the platform to a safe region after a break that is assumed to be known, by minimising kinetic energy or following potential fields in a planar robot \citep{boumann2019emergency}, or by driving a suspended point mass to a precomputed safe position with an adaptive sliding mode controller \citep{dipaola2024smapid}. The planner below works with the full six degree of freedom pose, with the fault isolated online, and checks dynamic feasibility along the recovery path. Every path it returns keeps the cable lengths within their windows \eqref{eq:window} and the speed and acceleration of the platform within $v_{\max}$ and $a_{\max}$. After an actuator fault $\mathcal A_i$ the tension loop of winch $i$ is corrected by the estimated deficit, $\hat t_i\leftarrow\hat t_i-\hat\delta_i$ in \eqref{eq:tensionloop}, and the reference is kept. After a break $\mathcal B_i$ the planner tries, in order:
+\begin{enumerate}
+\item \emph{Time scaling.} If the remaining reference over the next $T_h=2$~s, slowed down to a factor $\kappa\in[\kappa_{\min},1]$, can be followed with the remaining cables, the task continues with the largest such $\kappa$, found by bisection. Following means that the margin \eqref{eq:margin}, with $\vc w_g$ replaced by $\vc w_g-\mt M_\nu\dot{\vc\nu}^{\mathrm{ref}}-\vc b(\vc q^{\mathrm{ref}},\vc\nu^{\mathrm{ref}})$ so that the cables also supply the inertial wrench of the slowed motion, stays non negative at every sample. The time scale changes from 1 to $\kappa$ along a quintic ramp of $T_r=0.5$~s, so the reference velocity stays continuous and the deceleration enters the check. Below $\kappa_{\min}=0.25$ the task is not continued in any useful sense, and the planner goes to the next branch.
+\item \emph{Recovery.} The platform is brought to rest, within $T=1$~s, at a pose that the remaining cables hold with margin $s_{\min}=10$~N. The path is the solution of an optimal control problem on the rigid model \eqref{eq:NE} with the remaining cables, transcribed by separated Hermite--Simpson collocation \citep{kelly2017collocation} on 15 intervals with the tensions constant over each and solved with IPOPT \citep{wachter2006ipopt} through CasADi \citep{andersson2019casadi},
+\begin{equation}\label{eq:recovery}
+\begin{aligned}
+\min\ & \lVert\vc q_N-\hat{\vc q}\rVert^2_{\mt W_q}+w_v h\sum_k\lVert\vc\nu_k\rVert^2_{\mt W_\nu}+w_a h\sum_k\Big\lVert\frac{\vc\nu_{k+1}-\vc\nu_k}{h}\Big\rVert^2_{\mt W_\nu}+w_r\sum_k\lVert\vc t_{k+1}-\vc t_k\rVert^2+w_m\sum_k\lVert\vc r_k\rVert^2+w_s\sum_k s_k\\
+\text{s.t.}\ & \vc x_0=\hat{\vc x},\ \text{collocation of \eqref{eq:NE} on every interval},\quad t_{k,j}=0\ \text{for the broken cable},\\
+& t_{\min}+s_p-s_k\le t_{k,i}\le t_{\max}-s_p+s_k,\quad t_{\min}+s_r-r_{k,i}\le t_{k,i}\le t_{\max}-s_r+r_{k,i},\quad s_k,\ r_{k,i}\ge0,\\
+& \lVert\dot{\vc p}_k\rVert\le v_{\max},\quad\lVert\dot{\vc p}_{k+1}-\dot{\vc p}_k\rVert\le a_{\max}h,\quad\lVert\vc\varphi\rVert_\infty\le25^\circ,\quad\text{lengths within \eqref{eq:window}},\\
+& \vc\nu_N=\vc 0,\quad \mt W(\vc q_N)\vc t_{\mathrm{hold}}+\vc w_g(\vc q_N)=\vc 0,\quad t_{\min}+s_{\min}-s_N\le t_{\mathrm{hold},i}\le t_{\max}-s_{\min}+s_N,\quad\lVert\vc\varphi_N\rVert_\infty\le20^\circ,
+\end{aligned}
+\end{equation}
+with $h=T/15$. The terminal conditions say that the platform ends at rest at a pose of $\mathcal F^{\,s_{\min}}_{\mathcal S_j}$, and the first term picks among those poses one close to the pose at the break; the nearest precomputed pose of $\mathcal F^{\,s_{\min}}_{\mathcal S_j}$ only seeds the solver. The twist and acceleration terms keep the motion direct and smooth, and the soft margin $s_r=20$~N keeps part of the tension range free for the feedback of the MPC. The hard margin $s_p=5$~N is relaxed by the slacks $s_k$, which keep the problem feasible from any state.
+\item \emph{Descent.} If the optimal slacks of \eqref{eq:recovery} are not all zero, the platform cannot be guided within the tension bounds, and the solution is the descent with the least violation of them; the run is recorded as such.
+\end{enumerate}
+A first version of the recovery branch joined the current state to the nearest safe pose with a quintic polynomial; after the break of an upper cable at the height of the reference paths no duration made it feasible, with the smallest margin along the path between $-31$ and $-78$~N in the cases checked, because the seven remaining cables can only produce accelerations inside a narrow, pose dependent set that a fixed polynomial shape does not stay in.
+
+Solving \eqref{eq:recovery} takes 0.2~s (median) and up to 0.8~s on one core of the machine used here, and the platform falls during that time; in closed loop, a planning latency of 0.3~s instead of 0.1~s raised the share of post fault time with a tension out of bounds from 0--5\,\% to 9--14\,\% in the cases tried. Because the reference paths are known before the task runs, the planner is therefore evaluated in advance: for every cable, the branch and its plan are computed for break instants every 50~ms along the path, and on a declaration at time $t_d$ the controller takes the plan of the break instant nearest to $t_d$ minus the typical detection delay. The online solution, with its latency, is kept as an alternative for states the library does not cover.
+
+The new reference is passed to the MPC, together with the tensions of the plan as feedforward, and from then on the MPC predicts with the model of mode $j$.
+
+% =====================================================================
+\appendix
+\section{Verification of the model}\label{app:verification}
+
+All checks run automatically (\texttt{pytest}, 22 tests) on the code that produces the results, and the values in Table~\ref{tab:verification} are printed by \texttt{scripts/phase1\_verification.py}, which also runs the sensitivity check. The cable and winch values used in the model checks are test values, since none of these checks depend on them; the last two rows check the study parameters themselves.
+
+\begin{table}[h]
+\centering
+\caption{Verification of the model. Random poses within $\pm0.5$~m and $\pm0.5$~rad of the home pose, 100 samples per check unless stated.}\label{tab:verification}
+\begin{tabular}{@{}p{0.47\linewidth}p{0.2\linewidth}p{0.22\linewidth}@{}}
+\toprule
+Check & Criterion & Result\\
+\midrule
+$\partial\vc l/\partial\vc q=-\mt W^\top\mt H$ against central differences & rel.\ error $<10^{-7}$ & $9.0\times10^{-10}$\\
+$\mt M=\mt H^\top\mt M_\nu\mt H$ (SymPy Lagrangian vs.\ \eqref{eq:M}) & abs.\ error & $1.8\times10^{-15}$\\
+$\vc G=-\mt H^\top\vc w_g$ & abs.\ error & $7.1\times10^{-15}$\\
+$\mt M$ positive definite & smallest eigenvalue & 0.495\\
+$\dot{\mt M}-2\mt C$ skew symmetric, $\dot{\mt M}$ exact & $\max|N+N^\top|<10^{-10}$ & $3.6\times10^{-15}$\\
+Lagrange form \eqref{eq:EL} vs.\ Newton--Euler \eqref{eq:NE} & $\max|\dot{\vc\nu}-\mt H\ddot{\vc q}-\dot{\mt H}\dot{\vc q}|$ & $9.9\times10^{-11}$\\
+Same check with the centripetal term $m\,\vc\omega\times(\vc\omega\times\vc c_w)$ removed from $\vc b$ (sensitivity of the test) & must fail & error 3.7\\
+Static equilibrium at the home pose & $\max|\dot{\vc x}|$ & $1.8\times10^{-10}$\\
+Energy, locked winches, no damping, 1~s, $\Delta t=10^{-4}$~s & drift / initial kinetic energy & $3.5\times10^{-10}$\\
+Step halving, 0.5~s, motors active & pose difference & $2.4\times10^{-13}\to1.6\times10^{-14}$ (ratio 14.4, fourth order near round off)\\
+Slack cable, broken cable, loss of effectiveness & exact values & pass\\
+Geared winch: holding torque $r_D t/i_g$, $i_g$ motor turns pay out $2\pi r_D$ & exact values & pass\\
+Sourced parameters; drive meets speed, torque and holding requirements & exact values & pass\\
+Drum windows: configuration equals derivation, width $\Delta l_{\max}$, home pose inside & exact values & pass\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent The tensions of the home equilibrium returned by \eqref{eq:margin} with $t_{\min}=10$~N, used by the equilibrium, energy and step halving checks, are 151.4~N in the upper cables and 58.6~N in the lower cables, with a margin of 48.6~N to both bounds.
+
+\bibliographystyle{plainnat}
+\bibliography{phase1}
+\end{document}

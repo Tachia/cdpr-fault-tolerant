@@ -1,0 +1,6707 @@
+{
+ "protocol_sha256_16": "54d15c7987103438",
+ "seeds": {
+  "0": {
+   "temperature": 0.5976597284414688,
+   "nll_before": 0.1669144733905688,
+   "nll_after": 0.09013029388899761,
+   "ece_before": 0.09325855246007152,
+   "ece_after": 0.003884652180909444,
+   "val_macro_f1": 0.972738050168271,
+   "table": [
+    {
+     "mu_iso": 0.5,
+     "n_c": 1,
+     "false_alarm_runs": 43,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 26,
+      "median_delay": 0.00799991989135762,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 52,
+      "declared": 52,
+      "correct": 52,
+      "median_delay": 0.009000062942504883,
+      "max_delay": 0.015000072479248061
+     },
+     "bias": {
+      "n": 49,
+      "declared": 49,
+      "correct": 42,
+      "median_delay": 0.016999977111816555,
+      "max_delay": 0.05200008201599138
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 2,
+     "false_alarm_runs": 37,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 27,
+      "median_delay": 0.012999958038330206,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 54,
+      "declared": 54,
+      "correct": 54,
+      "median_delay": 0.014000110626220863,
+      "max_delay": 0.02000018692016603
+     },
+     "bias": {
+      "n": 51,
+      "declared": 51,
+      "correct": 48,
+      "median_delay": 0.02250003433227543,
+      "max_delay": 0.07199988174438499
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 3,
+     "false_alarm_runs": 28,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.017999805450439776,
+      "max_delay": 0.02000020599365193
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.019000186920165696,
+      "max_delay": 0.024999824523925795
+     },
+     "bias": {
+      "n": 54,
+      "declared": 54,
+      "correct": 51,
+      "median_delay": 0.027999910354614244,
+      "max_delay": 0.11199984359741233
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 4,
+     "false_alarm_runs": 22,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.0229999008178714,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.024000082015991353,
+      "max_delay": 0.029999938964843764
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 52,
+      "median_delay": 0.03299987697601314,
+      "max_delay": 0.1169999580383303
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 6,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.03299993896484388,
+      "max_delay": 0.0350002059936525
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.03449999618530253,
+      "max_delay": 0.0400001678466797
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 57,
+      "median_delay": 0.04299980545043969,
+      "max_delay": 0.12700018692016624
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299984359741238,
+      "max_delay": 0.045000110626221
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.044499934196472246,
+      "max_delay": 0.049999919891357436
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.0529999246597288,
+      "max_delay": 0.15199984359741237
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 1,
+     "false_alarm_runs": 30,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 27,
+      "median_delay": 0.007999996185303004,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.009999929428100796,
+      "max_delay": 0.016999881744384382
+     },
+     "bias": {
+      "n": 53,
+      "declared": 53,
+      "correct": 45,
+      "median_delay": 0.018999910354614347,
+      "max_delay": 0.1020000915527346
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 2,
+     "false_alarm_runs": 24,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.01299993896484386,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.014999953269958732,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 51,
+      "median_delay": 0.023999919891357635,
+      "max_delay": 0.10700020599365256
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 3,
+     "false_alarm_runs": 21,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.01799978637695343,
+      "max_delay": 0.02000020599365193
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.020000053405762053,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 53,
+      "median_delay": 0.028999996185302912,
+      "max_delay": 0.11199984359741233
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 4,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022999881744385053,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.024999929428100476,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 57,
+      "median_delay": 0.033999977111816015,
+      "max_delay": 0.1169999580383303
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 6,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03299991989135753,
+      "max_delay": 0.0350002059936525
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03499995803833045,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.043999938964843555,
+      "max_delay": 0.12700018692016624
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299984359741238,
+      "max_delay": 0.045000110626221
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04500008201599126,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.05399995326995821,
+      "max_delay": 0.15699995803833033
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 1,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.008000043869018647,
+      "max_delay": 0.012000072479247947
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.010000101089477687,
+      "max_delay": 0.016999881744384382
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 48,
+      "median_delay": 0.019000020027160947,
+      "max_delay": 0.1020000915527346
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 2,
+     "false_alarm_runs": 21,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.013000110626220973,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.015000072479248061,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 52,
+      "median_delay": 0.02400008678436305,
+      "max_delay": 0.10700020599365256
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 3,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01800005340576183,
+      "max_delay": 0.022000053405761832
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.020000129699707436,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 54,
+      "median_delay": 0.029499929428100646,
+      "max_delay": 0.11199984359741233
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 4,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.02299992465972922,
+      "max_delay": 0.0270001678466798
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.02500016784668002,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 59,
+      "median_delay": 0.03400014877319357,
+      "max_delay": 0.1169999580383303
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 6,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.033000091552734645,
+      "max_delay": 0.03700016784667959
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.035000129699707117,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.04400010108947772,
+      "max_delay": 0.12700018692016624
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04299990558624289,
+      "max_delay": 0.04700014877319347
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04500022506713908,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.0540001106262209,
+      "max_delay": 0.15699995803833033
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 1,
+     "false_alarm_runs": 19,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.008000077247619863,
+      "max_delay": 0.012000072479247947
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.010999919891357735,
+      "max_delay": 0.016999881744384382
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 51,
+      "median_delay": 0.019999843597411804,
+      "max_delay": 0.1020000915527346
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 2,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01300016784668001,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.015999900817870838,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 55,
+      "median_delay": 0.024999958038329773,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 3,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01800014877319356,
+      "max_delay": 0.022000053405761832
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.020999824523925348,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 59,
+      "median_delay": 0.029999919891357862,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 4,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.023000067710876593,
+      "max_delay": 0.0270001678466798
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.02599991035461402,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 60,
+      "median_delay": 0.03499987220764167,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 6,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03300014877319368,
+      "max_delay": 0.03700016784667959
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03599990558624255,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.044999786376953566,
+      "max_delay": 0.1299999961853029
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.043000048637390265,
+      "max_delay": 0.04700014877319347
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04599989128112769,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.05499985313415534,
+      "max_delay": 0.1620000724792483
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 1,
+     "false_alarm_runs": 14,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.008999862670898473,
+      "max_delay": 0.013999958038329652
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.011000086784362706,
+      "max_delay": 0.017000148773193224
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 55,
+      "median_delay": 0.021000034332275597,
+      "max_delay": 0.10700020599365256
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 2,
+     "false_alarm_runs": 10,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.013999881744384712,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.01600003910064718,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.02599979591369639,
+      "max_delay": 0.11199984359741233
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 3,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.018999776840209925,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.020999991416931207,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.030999881744384616,
+      "max_delay": 0.1169999580383303
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 4,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.023999795913696165,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.025999977111816452,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.03599994850158694,
+      "max_delay": 0.12200007247924827
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 6,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.033999862670898384,
+      "max_delay": 0.03900005340576129
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03600006771087649,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.04599993896484378,
+      "max_delay": 0.15699995803833033
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.043999834060668874,
+      "max_delay": 0.04899980545043903
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04599995326995843,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.05599997711181626,
+      "max_delay": 0.16700018692016627
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 1,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.009000110626220525,
+      "max_delay": 0.01500003433227537
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.012000062942504774,
+      "max_delay": 0.020000062942505004
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.023000205993652045,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 2,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.014000110626220419,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.01700005340576194,
+      "max_delay": 0.02499993896484387
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.028000120162963826,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 3,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.0190001583099364,
+      "max_delay": 0.024999786376953104
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02200006771087648,
+      "max_delay": 0.03000005340576184
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.033000091552734645,
+      "max_delay": 0.13599991989135773
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 4,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.02400011062622065,
+      "max_delay": 0.029999900817871072
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02700006294250512,
+      "max_delay": 0.03499992942810071
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.03800016784667992,
+      "max_delay": 0.15699995803833033
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 6,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03400009155273409,
+      "max_delay": 0.04000012969970701
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03700003433227561,
+      "max_delay": 0.04499991989135754
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.04800016784667971,
+      "max_delay": 0.16700018692016627
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 8,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04400018692016605,
+      "max_delay": 0.049999881744384744
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.047000091552734435,
+      "max_delay": 0.05499991035461438
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.05999980545043915,
+      "max_delay": 0.48100003433227556
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 1,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.011999900817870834,
+      "max_delay": 0.017000167846680014
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.014000158309936506,
+      "max_delay": 0.02499993896484387
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.027999910354614244,
+      "max_delay": 0.1470002059936526
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 2,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.016999972343444636,
+      "max_delay": 0.02199980545043978
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.019000186920165696,
+      "max_delay": 0.03000005340576184
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.03299995803832978,
+      "max_delay": 0.15199984359741237
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 3,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.022000005722045746,
+      "max_delay": 0.02699991989135775
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02400007247924818,
+      "max_delay": 0.03499992942810071
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.03800000572204576,
+      "max_delay": 0.4709998054504396
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 4,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.026999958038329996,
+      "max_delay": 0.03200003433227572
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.029000139236450284,
+      "max_delay": 0.040000043869018675
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.04300012016296373,
+      "max_delay": 0.4759999198913576
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 6,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03699995326995831,
+      "max_delay": 0.04199978637695345
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03900016784667937,
+      "max_delay": 0.05000003433227551
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 62,
+      "median_delay": 0.05449999618530299,
+      "max_delay": 0.48600014877319353
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 8,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04699993896484367,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.049000120162963956,
+      "max_delay": 0.06000002479553235
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 63,
+      "median_delay": 0.06500009155273467,
+      "max_delay": 0.49599990081787126
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 1,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.013000148773193665,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.01600008678436282,
+      "max_delay": 0.03000005340576184
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.034999881744385064,
+      "max_delay": 0.4759999198913576
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 2,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.01800014877319356,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.021000034332275375,
+      "max_delay": 0.03499992942810071
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 62,
+      "median_delay": 0.04100001049041757,
+      "max_delay": 0.48100003433227556
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 3,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.023000067710876593,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02599995326995841,
+      "max_delay": 0.040000043869018675
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 62,
+      "median_delay": 0.04600000572204599,
+      "max_delay": 0.48600014877319353
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 4,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.028000043869018665,
+      "max_delay": 0.033999938964843324
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.031000053405761507,
+      "max_delay": 0.04499991989135754
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 63,
+      "median_delay": 0.05399992942810039,
+      "max_delay": 0.4909997863769533
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 6,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03800012969970723,
+      "max_delay": 0.04400016784667926
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.041000058174133214,
+      "max_delay": 0.05499991035461438
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 63,
+      "median_delay": 0.06699978637695292,
+      "max_delay": 0.5010000152587892
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 8,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04800002479553234,
+      "max_delay": 0.053999919891356996
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05100003433227518,
+      "max_delay": 0.06499990081787121
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 63,
+      "median_delay": 0.08200003433227554,
+      "max_delay": 0.510999767303467
+     }
+    }
+   ],
+   "chosen": {
+    "mu_iso": 0.9999,
+    "n_c": 4,
+    "false_alarm_runs": 3,
+    "fault_free_hours": 0.19528694889492448,
+    "break": {
+     "n": 32,
+     "declared": 32,
+     "correct": 32,
+     "median_delay": 0.028000043869018665,
+     "max_delay": 0.033999938964843324
+    },
+    "loe": {
+     "n": 64,
+     "declared": 64,
+     "correct": 64,
+     "median_delay": 0.031000053405761507,
+     "max_delay": 0.04499991989135754
+    },
+    "bias": {
+     "n": 64,
+     "declared": 64,
+     "correct": 63,
+     "median_delay": 0.05399992942810039,
+     "max_delay": 0.4909997863769533
+    }
+   }
+  },
+  "1": {
+   "temperature": 0.5993153243721542,
+   "nll_before": 0.1724306826602148,
+   "nll_after": 0.09811739062251987,
+   "ece_before": 0.09253445509430132,
+   "ece_after": 0.004961967441055935,
+   "val_macro_f1": 0.9655220743139007,
+   "table": [
+    {
+     "mu_iso": 0.5,
+     "n_c": 1,
+     "false_alarm_runs": 36,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 26,
+      "declared": 26,
+      "correct": 26,
+      "median_delay": 0.0069999771118163245,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 55,
+      "declared": 55,
+      "correct": 55,
+      "median_delay": 0.009999824523926115,
+      "max_delay": 0.014000186920165802
+     },
+     "bias": {
+      "n": 52,
+      "declared": 52,
+      "correct": 39,
+      "median_delay": 0.01699982452392579,
+      "max_delay": 0.05200008201599138
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 2,
+     "false_alarm_runs": 31,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 27,
+      "median_delay": 0.01199991989135718,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 55,
+      "declared": 55,
+      "correct": 55,
+      "median_delay": 0.014999910354614343,
+      "max_delay": 0.018999824523925568
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 48,
+      "median_delay": 0.021000110626220758,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 3,
+     "false_alarm_runs": 21,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.016999972343444636,
+      "max_delay": 0.02000001525878936
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.020000024795532312,
+      "max_delay": 0.023999938964843537
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 58,
+      "median_delay": 0.026999814987182624,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 4,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022000062942504783,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.024999767303467202,
+      "max_delay": 0.029000053405761506
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.031999900817871296,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 6,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03200005340576162,
+      "max_delay": 0.0350002059936525
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03499991989135731,
+      "max_delay": 0.03899980545043924
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.04199991989135743,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 8,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.042000043869018455,
+      "max_delay": 0.045000110626221
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04499980545043947,
+      "max_delay": 0.04900003433227518
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.05150004386901852,
+      "max_delay": 0.13500011062622086
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 1,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 27,
+      "median_delay": 0.007000034332275362,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 56,
+      "declared": 56,
+      "correct": 56,
+      "median_delay": 0.010000048637390124,
+      "max_delay": 0.015000072479248061
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 48,
+      "median_delay": 0.017500024795532365,
+      "max_delay": 0.09999978637695328
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 2,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.012000091552734293,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.015000015258789468,
+      "max_delay": 0.02000018692016603
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 57,
+      "median_delay": 0.022999824523926016,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 3,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.017000015258788803,
+      "max_delay": 0.02000001525878936
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.02000008201599135,
+      "max_delay": 0.024999824523925795
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.027999910354614244,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 4,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022000086784362605,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.024999948501587044,
+      "max_delay": 0.029999938964843764
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.03299992942810048,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 6,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.032000072479247965,
+      "max_delay": 0.0350002059936525
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03499995803833045,
+      "max_delay": 0.0400001678466797
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.04200019645690922,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 8,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04200008201599115,
+      "max_delay": 0.04699990081787142
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04500014877319369,
+      "max_delay": 0.049999919891357436
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.052000082015991156,
+      "max_delay": 0.13500011062622086
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 1,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.0070001392364500425,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.010000048637390124,
+      "max_delay": 0.015000072479248061
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 50,
+      "median_delay": 0.018000005722045742,
+      "max_delay": 0.09999978637695328
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 2,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.012000129699706985,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.014999996185303122,
+      "max_delay": 0.02000018692016603
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 58,
+      "median_delay": 0.02299998664855951,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 3,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.017000110626220533,
+      "max_delay": 0.02000001525878936
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.020000086784363047,
+      "max_delay": 0.024999824523925795
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.027999910354614244,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 4,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.02200010585784895,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.02499996757507339,
+      "max_delay": 0.029999938964843764
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.03299994373321513,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 6,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03200011062622066,
+      "max_delay": 0.0350002059936525
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03499999618530314,
+      "max_delay": 0.0400001678466797
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.042500015258789325,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 8,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.0420000915527341,
+      "max_delay": 0.04699990081787142
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04500014877319369,
+      "max_delay": 0.049999919891357436
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.052999910354614155,
+      "max_delay": 0.13500011062622086
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 1,
+     "false_alarm_runs": 14,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.00700019645690908,
+      "max_delay": 0.01000011062622086
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.010000101089477687,
+      "max_delay": 0.015000072479248061
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.01899990558624287,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 2,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.012000177383422628,
+      "max_delay": 0.015000225067138828
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.015000043869018764,
+      "max_delay": 0.02000018692016603
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.02399990081787129,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 3,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.017000186920165916,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.020000129699707436,
+      "max_delay": 0.024999824523925795
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.0289998245239258,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 4,
+     "false_alarm_runs": 10,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022000129699706772,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.02500016784668002,
+      "max_delay": 0.029999938964843764
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.03399993896484377,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 6,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.032000186920165596,
+      "max_delay": 0.037000148773193686
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03500005340576173,
+      "max_delay": 0.0400001678466797
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.04400001525878938,
+      "max_delay": 0.1299999961853029
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 8,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04200012969970679,
+      "max_delay": 0.04699990081787142
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04500022506713908,
+      "max_delay": 0.049999919891357436
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.054000043869018466,
+      "max_delay": 0.14000022506713883
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 1,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.008000058174133517,
+      "max_delay": 0.012999958038330206
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.01100001525878902,
+      "max_delay": 0.016999881744384382
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.020000091552734744,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 2,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.013000148773193665,
+      "max_delay": 0.018000072479248175
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.015999876976013017,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.02500004386901855,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 3,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01800005340576183,
+      "max_delay": 0.023000186920166144
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.020999900817871175,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.029999996185302802,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 4,
+     "false_alarm_runs": 10,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.02299992465972922,
+      "max_delay": 0.02799982452392591
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.025999938964843317,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.03500003433227583,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 6,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03300012969970734,
+      "max_delay": 0.03800005340576185
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.0359999294281006,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.044999938964843444,
+      "max_delay": 0.1299999961853029
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299991989135776,
+      "max_delay": 0.04799980545043958
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04599991989135743,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.05500012969970669,
+      "max_delay": 0.14000022506713883
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 1,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.0089999866485595,
+      "max_delay": 0.014000101089477468
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.011999786376953203,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.020999967575073164,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 2,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.014000101089477468,
+      "max_delay": 0.018999977111816335
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.01699986267089848,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.026000105857848954,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 3,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.019000129699707102,
+      "max_delay": 0.02699991989135775
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.021999767303467088,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.03099995803833,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 4,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.024000167846679688,
+      "max_delay": 0.03200003433227572
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.02699976730346698,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.036499991416931055,
+      "max_delay": 0.1620000724792483
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 6,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03400011062622088,
+      "max_delay": 0.04199978637695345
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03699984359741215,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.04699986267089873,
+      "max_delay": 0.17199982452392604
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04400016784667926,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04699982452392604,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.05699997711181659,
+      "max_delay": 0.3470000152587893
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 1,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.011999843597411797,
+      "max_delay": 0.017000167846680014
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.014000072479247727,
+      "max_delay": 0.01800009155273452
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.024500053405761335,
+      "max_delay": 0.15199984359741237
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 2,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.016999958038329765,
+      "max_delay": 0.02199980545043978
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.01899991989135774,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.029499948501586548,
+      "max_delay": 0.15699995803833033
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 3,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.021999824523925682,
+      "max_delay": 0.02699991989135775
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.023999996185302575,
+      "max_delay": 0.028000082015991357
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.03450006294250452,
+      "max_delay": 0.1620000724792483
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 4,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02699993896484365,
+      "max_delay": 0.03200003433227572
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.028999977111816566,
+      "max_delay": 0.032999958038330224
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.039499977111816076,
+      "max_delay": 0.16700018692016627
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 6,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03699993896484344,
+      "max_delay": 0.04199978637695345
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03899993896484388,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.04999997711181603,
+      "max_delay": 0.3470000152587893
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 8,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04699991989135732,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04899995803833024,
+      "max_delay": 0.052999938964843896
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.06000020599365197,
+      "max_delay": 0.7119997863769534
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 1,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.013000148773193665,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.01599992465972888,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 61,
+      "median_delay": 0.029999996185302358,
+      "max_delay": 0.3369997863769534
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 2,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.018000072479248175,
+      "max_delay": 0.022000110626220426
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02099991989135752,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 62,
+      "median_delay": 0.03500014877319302,
+      "max_delay": 0.34199990081787135
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 3,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02299993896484409,
+      "max_delay": 0.027000225067138395
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02599995326995841,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 62,
+      "median_delay": 0.040000024795531886,
+      "max_delay": 0.6919998054504397
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 4,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.028000015258789368,
+      "max_delay": 0.03200005340576162
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03100002479553199,
+      "max_delay": 0.037000129699706896
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 62,
+      "median_delay": 0.04549983406066893,
+      "max_delay": 0.6969999198913577
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 6,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03799992942810082,
+      "max_delay": 0.0420000915527341
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.040999910354614144,
+      "max_delay": 0.04700009155273399
+     },
+     "bias": {
+      "n": 64,
+      "declared": 64,
+      "correct": 62,
+      "median_delay": 0.05550006294250487,
+      "max_delay": 0.7070001487731936
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 8,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04799999618530304,
+      "max_delay": 0.05200003433227529
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05100003433227496,
+      "max_delay": 0.05700011062622057
+     },
+     "bias": {
+      "n": 64,
+      "declared": 63,
+      "correct": 62,
+      "median_delay": 0.06649997711181665,
+      "max_delay": 0.2549999771118161
+     }
+    }
+   ],
+   "chosen": {
+    "mu_iso": 0.9999,
+    "n_c": 8,
+    "false_alarm_runs": 1,
+    "fault_free_hours": 0.19528694889492448,
+    "break": {
+     "n": 32,
+     "declared": 32,
+     "correct": 32,
+     "median_delay": 0.04799999618530304,
+     "max_delay": 0.05200003433227529
+    },
+    "loe": {
+     "n": 64,
+     "declared": 64,
+     "correct": 64,
+     "median_delay": 0.05100003433227496,
+     "max_delay": 0.05700011062622057
+    },
+    "bias": {
+     "n": 64,
+     "declared": 63,
+     "correct": 62,
+     "median_delay": 0.06649997711181665,
+     "max_delay": 0.2549999771118161
+    }
+   }
+  },
+  "2": {
+   "temperature": 0.6379290435201515,
+   "nll_before": 0.152913681603911,
+   "nll_after": 0.09187268015508622,
+   "ece_before": 0.07812727910325769,
+   "ece_after": 0.0021935890731438978,
+   "val_macro_f1": 0.9649056457117249,
+   "table": [
+    {
+     "mu_iso": 0.5,
+     "n_c": 1,
+     "false_alarm_runs": 38,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 27,
+      "declared": 27,
+      "correct": 27,
+      "median_delay": 0.007999996185303004,
+      "max_delay": 0.012000072479247947
+     },
+     "loe": {
+      "n": 50,
+      "declared": 50,
+      "correct": 50,
+      "median_delay": 0.009999900817871499,
+      "max_delay": 0.015000072479248061
+     },
+     "bias": {
+      "n": 54,
+      "declared": 54,
+      "correct": 43,
+      "median_delay": 0.019000005722046076,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 2,
+     "false_alarm_runs": 33,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.01300003433227559,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 52,
+      "declared": 52,
+      "correct": 52,
+      "median_delay": 0.014999938964843862,
+      "max_delay": 0.02000018692016603
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 46,
+      "median_delay": 0.023000205993652045,
+      "max_delay": 0.12200001525878923
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 3,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.01799978637695343,
+      "max_delay": 0.021999824523925682
+     },
+     "loe": {
+      "n": 55,
+      "declared": 55,
+      "correct": 55,
+      "median_delay": 0.02000005340576161,
+      "max_delay": 0.024999824523925795
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 51,
+      "median_delay": 0.028999862670898047,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 4,
+     "false_alarm_runs": 25,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.0229999008178714,
+      "max_delay": 0.02699993896484365
+     },
+     "loe": {
+      "n": 55,
+      "declared": 55,
+      "correct": 55,
+      "median_delay": 0.02499990081787118,
+      "max_delay": 0.029999938964843764
+     },
+     "bias": {
+      "n": 57,
+      "declared": 57,
+      "correct": 52,
+      "median_delay": 0.03399997234344454,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 6,
+     "false_alarm_runs": 17,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.033000091552734645,
+      "max_delay": 0.03700016784667959
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.034999919891357756,
+      "max_delay": 0.0400001678466797
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 53,
+      "median_delay": 0.04399990081787131,
+      "max_delay": 0.1419999961853029
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 8,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299988174438507,
+      "max_delay": 0.04700020599365207
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.044999929428100716,
+      "max_delay": 0.049999919891357436
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 55,
+      "median_delay": 0.05300011062622101,
+      "max_delay": 0.15199998664855974
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 1,
+     "false_alarm_runs": 28,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.008000034332275696,
+      "max_delay": 0.012000072479247947
+     },
+     "loe": {
+      "n": 54,
+      "declared": 54,
+      "correct": 54,
+      "median_delay": 0.010000139236450156,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 45,
+      "median_delay": 0.01900010108947736,
+      "max_delay": 0.11699990081787126
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 2,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.013000110626220973,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 55,
+      "declared": 55,
+      "correct": 55,
+      "median_delay": 0.015000225067138828,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 50,
+      "median_delay": 0.024000186920166033,
+      "max_delay": 0.12200001525878923
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 3,
+     "false_alarm_runs": 24,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.018000034332275483,
+      "max_delay": 0.022000053405761832
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.020999767303466754,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 52,
+      "median_delay": 0.029499929428100646,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 4,
+     "false_alarm_runs": 20,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.02299992465972922,
+      "max_delay": 0.027000225067138395
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.02549997711181673,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 52,
+      "median_delay": 0.03450000572204592,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 6,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03300012969970734,
+      "max_delay": 0.03700016784667959
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.03549999618530286,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 55,
+      "median_delay": 0.04400012969970746,
+      "max_delay": 0.1419999961853029
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299991989135776,
+      "max_delay": 0.04700020599365207
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.045999862670898395,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 55,
+      "median_delay": 0.054000129699707244,
+      "max_delay": 0.15199998664855974
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 1,
+     "false_alarm_runs": 25,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.008000072479248388,
+      "max_delay": 0.012000072479247947
+     },
+     "loe": {
+      "n": 56,
+      "declared": 56,
+      "correct": 56,
+      "median_delay": 0.010999853134155302,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 47,
+      "median_delay": 0.02000001525878936,
+      "max_delay": 0.11699990081787126
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 2,
+     "false_alarm_runs": 25,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.013000148773193665,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 56,
+      "declared": 56,
+      "correct": 56,
+      "median_delay": 0.015999786376953207,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 51,
+      "median_delay": 0.02500011062622054,
+      "max_delay": 0.12200001525878923
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 3,
+     "false_alarm_runs": 22,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.018000072479248175,
+      "max_delay": 0.022000053405761832
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.020999824523925348,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 57,
+      "declared": 57,
+      "correct": 53,
+      "median_delay": 0.03000022506713851,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 4,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.023000186920166144,
+      "max_delay": 0.027000225067138395
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.025999881744384723,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 53,
+      "median_delay": 0.03500016784667981,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 6,
+     "false_alarm_runs": 10,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03300016784668003,
+      "max_delay": 0.03700016784667959
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.03599990558624255,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 55,
+      "median_delay": 0.04499991989135754,
+      "max_delay": 0.1419999961853029
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.043000167846679815,
+      "max_delay": 0.04700020599365207
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04599991989135699,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.05500012016296374,
+      "max_delay": 0.15199998664855974
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 1,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.008999824523925781,
+      "max_delay": 0.013000186920166357
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.011000072479247613,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 49,
+      "median_delay": 0.021000034332275597,
+      "max_delay": 0.12200001525878923
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 2,
+     "false_alarm_runs": 20,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.013999824523925675,
+      "max_delay": 0.018000072479248175
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.015999948501586925,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 53,
+      "median_delay": 0.026000129699706775,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 3,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.018999786376952876,
+      "max_delay": 0.023000186920166144
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.02099991989135752,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 52,
+      "median_delay": 0.030999776840209936,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 4,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02399982452392546,
+      "max_delay": 0.02800005340576206
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.025999938964843317,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 54,
+      "median_delay": 0.03550002479553216,
+      "max_delay": 0.13699988174438493
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 6,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03399991989135742,
+      "max_delay": 0.03800005340576185
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.03600002002716085,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.04599993896484378,
+      "max_delay": 0.14700011062622087
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.043999862670898615,
+      "max_delay": 0.04800003433227573
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.045999958038330124,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 56,
+      "median_delay": 0.055999958038330355,
+      "max_delay": 0.1570001010894777
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 1,
+     "false_alarm_runs": 19,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.008999929428100462,
+      "max_delay": 0.013000186920166357
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.01100011062622075,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 54,
+      "median_delay": 0.02299998664855951,
+      "max_delay": 0.12200001525878923
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 2,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.014000015258789134,
+      "max_delay": 0.018000072479248175
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.01600008678436282,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 54,
+      "median_delay": 0.027999872207641552,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 3,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.018999977111816335,
+      "max_delay": 0.023000186920166144
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.02100009155273419,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 54,
+      "median_delay": 0.032499948501587106,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 4,
+     "false_alarm_runs": 10,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.023999900817870845,
+      "max_delay": 0.02800005340576206
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.02600003433227549,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.03750000572204604,
+      "max_delay": 0.13699988174438493
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 6,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.033999996185302805,
+      "max_delay": 0.03800005340576185
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.036000167846679254,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.047999795913696186,
+      "max_delay": 0.14700011062622087
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.044000034332275284,
+      "max_delay": 0.04800003433227573
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.046000072479247756,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.05799994850158696,
+      "max_delay": 0.18699982452392572
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 1,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.009000034332275142,
+      "max_delay": 0.01500003433227537
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.012999805450439439,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 57,
+      "median_delay": 0.02499993896484387,
+      "max_delay": 0.1269998912811281
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 2,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.014000101089477468,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.017999834060669073,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 57,
+      "median_delay": 0.029999996185302358,
+      "max_delay": 0.13200000572204607
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 3,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.019000129699707102,
+      "max_delay": 0.024999786376953104
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.0229999198913573,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 57,
+      "median_delay": 0.03500003433227583,
+      "max_delay": 0.13699988174438493
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 4,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.024000091552734304,
+      "max_delay": 0.029999900817871072
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.02800003433227527,
+      "max_delay": 0.03800007247924775
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.03999998664855964,
+      "max_delay": 0.17199995803833001
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 6,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03400008201599114,
+      "max_delay": 0.04000012969970701
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.037999843597412486,
+      "max_delay": 0.04799982452392548
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.05000022506713897,
+      "max_delay": 0.18200018692016595
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 8,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04400014877319336,
+      "max_delay": 0.049999881744384744
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.048000039100646985,
+      "max_delay": 0.05800005340576142
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.06099997711181615,
+      "max_delay": 0.19199993896484369
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 1,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.01200011062622064,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.015000015258789468,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.030999834060668974,
+      "max_delay": 0.1570000915527343
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 2,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.01700003433227515,
+      "max_delay": 0.022000110626220426
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.020000129699707436,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.03700003433227561,
+      "max_delay": 0.16200020599365228
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 3,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.022000101089477475,
+      "max_delay": 0.027000225067138395
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.024999934196472173,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.04200022506713896,
+      "max_delay": 0.16699984359741205
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 4,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.027000072479247628,
+      "max_delay": 0.03200005340576162
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.029999938964843764,
+      "max_delay": 0.03800007247924775
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.048500110626220616,
+      "max_delay": 0.17199995803833001
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 6,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.036999991416931,
+      "max_delay": 0.0420000915527341
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04000011062622111,
+      "max_delay": 0.04799982452392548
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.062499996185303,
+      "max_delay": 0.18200018692016595
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 8,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04700000572204566,
+      "max_delay": 0.05200003433227529
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.049999919891357436,
+      "max_delay": 0.05800005340576142
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.07300008678436298,
+      "max_delay": 0.9470000534057617
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 1,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.013999986648559393,
+      "max_delay": 0.018000072479248175
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.01700001049041755,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.05799982452392616,
+      "max_delay": 0.2709999961853029
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 2,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.01899995803832999,
+      "max_delay": 0.023000186920166144
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.021999948501587152,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.06300001525878907,
+      "max_delay": 0.2760001106262209
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 3,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.023999891281127894,
+      "max_delay": 0.02800005340576206
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.026999929428100478,
+      "max_delay": 0.03800007247924775
+     },
+     "bias": {
+      "n": 64,
+      "declared": 63,
+      "correct": 60,
+      "median_delay": 0.06850004386901865,
+      "max_delay": 0.28100022506713884
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 4,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.028999910354614133,
+      "max_delay": 0.03300016784668003
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.032000043869018446,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 64,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.07399991035461406,
+      "max_delay": 0.2859998626708986
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 6,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.0389999961853027,
+      "max_delay": 0.043000167846679815
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.041999991416931115,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 64,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.08799984359741231,
+      "max_delay": 0.29600009155273455
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 8,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.048999891281127805,
+      "max_delay": 0.0530001487731937
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05200002479553212,
+      "max_delay": 0.06300016784667939
+     },
+     "bias": {
+      "n": 64,
+      "declared": 63,
+      "correct": 61,
+      "median_delay": 0.10799988174438457,
+      "max_delay": 0.3059998435974123
+     }
+    }
+   ],
+   "chosen": {
+    "mu_iso": 0.9999,
+    "n_c": 4,
+    "false_alarm_runs": 0,
+    "fault_free_hours": 0.19528694889492448,
+    "break": {
+     "n": 32,
+     "declared": 32,
+     "correct": 32,
+     "median_delay": 0.028999910354614133,
+     "max_delay": 0.03300016784668003
+    },
+    "loe": {
+     "n": 64,
+     "declared": 64,
+     "correct": 64,
+     "median_delay": 0.032000043869018446,
+     "max_delay": 0.04300018692016572
+    },
+    "bias": {
+     "n": 64,
+     "declared": 63,
+     "correct": 61,
+     "median_delay": 0.07399991035461406,
+     "max_delay": 0.2859998626708986
+    }
+   }
+  },
+  "3": {
+   "temperature": 0.6432941896296965,
+   "nll_before": 0.12475470785369755,
+   "nll_after": 0.07687873054403703,
+   "ece_before": 0.062248981753328055,
+   "ece_after": 0.002096745571657947,
+   "val_macro_f1": 0.9662738908570538,
+   "table": [
+    {
+     "mu_iso": 0.5,
+     "n_c": 1,
+     "false_alarm_runs": 32,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 25,
+      "declared": 25,
+      "correct": 23,
+      "median_delay": 0.007999996185303004,
+      "max_delay": 0.011999824523925895
+     },
+     "loe": {
+      "n": 56,
+      "declared": 56,
+      "correct": 56,
+      "median_delay": 0.010000077247619643,
+      "max_delay": 0.017000148773193224
+     },
+     "bias": {
+      "n": 55,
+      "declared": 55,
+      "correct": 39,
+      "median_delay": 0.01900010108947736,
+      "max_delay": 0.10499990081787125
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 2,
+     "false_alarm_runs": 31,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 25,
+      "declared": 25,
+      "correct": 25,
+      "median_delay": 0.012999958038330206,
+      "max_delay": 0.016999938964843864
+     },
+     "loe": {
+      "n": 56,
+      "declared": 56,
+      "correct": 56,
+      "median_delay": 0.015000043869018764,
+      "max_delay": 0.02199978637695299
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 47,
+      "median_delay": 0.02399997711181623,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 3,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.017999805450439776,
+      "max_delay": 0.022000053405761832
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.020000129699707436,
+      "max_delay": 0.02699990081787096
+     },
+     "bias": {
+      "n": 56,
+      "declared": 56,
+      "correct": 49,
+      "median_delay": 0.02900007247924785,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 4,
+     "false_alarm_runs": 24,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.0229999008178714,
+      "max_delay": 0.0270001678466798
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.025000034332275156,
+      "max_delay": 0.03200001525878893
+     },
+     "bias": {
+      "n": 57,
+      "declared": 57,
+      "correct": 51,
+      "median_delay": 0.03400011062622088,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 6,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03299993896484388,
+      "max_delay": 0.036999919891357536
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.035000024795532436,
+      "max_delay": 0.04199976730346666
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 53,
+      "median_delay": 0.04400010108947772,
+      "max_delay": 0.1299999961853029
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 8,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.04299988174438507,
+      "max_delay": 0.04700014877319347
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04500022506713908,
+      "max_delay": 0.0519999961853026
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 55,
+      "median_delay": 0.05399999618530282,
+      "max_delay": 0.15199984359741237
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 1,
+     "false_alarm_runs": 24,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 27,
+      "median_delay": 0.008000034332275696,
+      "max_delay": 0.013999958038329652
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.01100001525878902,
+      "max_delay": 0.017000148773193224
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 47,
+      "median_delay": 0.02000001525878936,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 2,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.01300003433227559,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.01599997711181622,
+      "max_delay": 0.02199978637695299
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 51,
+      "median_delay": 0.02500012969970733,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 3,
+     "false_alarm_runs": 21,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.017999824523926122,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 58,
+      "declared": 58,
+      "correct": 58,
+      "median_delay": 0.020999900817871175,
+      "max_delay": 0.02699990081787096
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 51,
+      "median_delay": 0.029999767303467095,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 4,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022999905586242875,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.025999938964843317,
+      "max_delay": 0.03200001525878893
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 53,
+      "median_delay": 0.03599988174438451,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 6,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03300011062622099,
+      "max_delay": 0.03900005340576129
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.036000024795532326,
+      "max_delay": 0.04199976730346666
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 55,
+      "median_delay": 0.0459998054504398,
+      "max_delay": 0.1470002059936526
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 8,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299988174438507,
+      "max_delay": 0.04899980545043903
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04599994850158673,
+      "max_delay": 0.0519999961853026
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 55,
+      "median_delay": 0.055000091552734,
+      "max_delay": 0.1449998626708986
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 1,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.008000077247619863,
+      "max_delay": 0.013999958038329652
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.011000072479248058,
+      "max_delay": 0.017000148773193224
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 51,
+      "median_delay": 0.021000015258788807,
+      "max_delay": 0.11000001525878922
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 2,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.01300016784668001,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.016000034332275703,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 52,
+      "median_delay": 0.026000105857848954,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 3,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01800014877319356,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.021000005722045856,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 53,
+      "median_delay": 0.031000072479248075,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 4,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.022999943733215567,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.025999977111816452,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 53,
+      "median_delay": 0.036000186920166044,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 6,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03300014877319368,
+      "max_delay": 0.03900005340576129
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03600011062622066,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.046499934196472026,
+      "max_delay": 0.1470002059936526
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04299991989135776,
+      "max_delay": 0.04899980545043903
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04600001525878916,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.056500029563903764,
+      "max_delay": 0.1449998626708986
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 1,
+     "false_alarm_runs": 19,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.0089999866485595,
+      "max_delay": 0.01500003433227537
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.011999862670898587,
+      "max_delay": 0.017000148773193224
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 52,
+      "median_delay": 0.022999919891357523,
+      "max_delay": 0.11500012969970719
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 2,
+     "false_alarm_runs": 17,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01400004386901843,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.016999805450439887,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 54,
+      "median_delay": 0.02799991512298594,
+      "max_delay": 0.12700022506713893
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 3,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.01899995803832999,
+      "max_delay": 0.024999786376953104
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.021999824523925682,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 55,
+      "median_delay": 0.03300004386901856,
+      "max_delay": 0.1319998626708987
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 4,
+     "false_alarm_runs": 14,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.023999862670898153,
+      "max_delay": 0.029999900817871072
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.02699986267089871,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 55,
+      "median_delay": 0.03800012969970723,
+      "max_delay": 0.13699997711181666
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 6,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.033999996185302805,
+      "max_delay": 0.04000012969970701
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.036999881744384844,
+      "max_delay": 0.04199997711181602
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.04799991035461426,
+      "max_delay": 0.1470002059936526
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 8,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.0439999580383299,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.046999900817870977,
+      "max_delay": 0.05200020599365196
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.058499938964843956,
+      "max_delay": 0.14999997711181656
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 1,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.009499986648559666,
+      "max_delay": 0.01500003433227537
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.012000034332275478,
+      "max_delay": 0.018000091552734077
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 54,
+      "median_delay": 0.02399993896484376,
+      "max_delay": 0.12700022506713893
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 2,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.014500024795532251,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.016999996185302457,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 55,
+      "median_delay": 0.029000034332275604,
+      "max_delay": 0.1319998626708987
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 3,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.019500024795532145,
+      "max_delay": 0.024999786376953104
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.022000091552734524,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 55,
+      "median_delay": 0.033999977111816015,
+      "max_delay": 0.13699997711181666
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 4,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.024000167846679688,
+      "max_delay": 0.029999900817871072
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.027000091552734418,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 56,
+      "median_delay": 0.03900002479553222,
+      "max_delay": 0.14200009155273463
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 6,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03400012969970678,
+      "max_delay": 0.04000012969970701
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03699999618530292,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.04899999618530293,
+      "max_delay": 0.1420002250671386
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 8,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.044500024795532056,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04700011062622078,
+      "max_delay": 0.05299993896484345
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 56,
+      "median_delay": 0.058999867439270215,
+      "max_delay": 0.15199997711181634
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 1,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.011999824523925895,
+      "max_delay": 0.01500003433227537
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.014000072479247727,
+      "max_delay": 0.02199978637695299
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 55,
+      "median_delay": 0.026999919891357305,
+      "max_delay": 0.13699997711181666
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 2,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.016999938964843864,
+      "max_delay": 0.020000148773193338
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.01899994850158704,
+      "max_delay": 0.02699990081787096
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 55,
+      "median_delay": 0.031999996185303026,
+      "max_delay": 0.1269998817443847
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 3,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.021999824523925682,
+      "max_delay": 0.02699991989135775
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.02400001525878892,
+      "max_delay": 0.03200001525878893
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.03699991035461414,
+      "max_delay": 0.13199999618530267
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 4,
+     "false_alarm_runs": 5,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.02699993896484365,
+      "max_delay": 0.03200003433227572
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.028999996185302912,
+      "max_delay": 0.037000129699706896
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 56,
+      "median_delay": 0.0420000677108765,
+      "max_delay": 0.13700011062622064
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 6,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.036999929428100486,
+      "max_delay": 0.04199978637695345
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.03900010108947738,
+      "max_delay": 0.04699988174438463
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 56,
+      "median_delay": 0.05199991989135766,
+      "max_delay": 0.1600001678466798
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 8,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04699991989135732,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.0490000343322754,
+      "max_delay": 0.05700011062622057
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 57,
+      "median_delay": 0.06399988174438498,
+      "max_delay": 0.24900012969970664
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 1,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.013000053405761935,
+      "max_delay": 0.02199980545043978
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.015000148773193445,
+      "max_delay": 0.023000205993652045
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 57,
+      "median_delay": 0.03400014877319357,
+      "max_delay": 0.3360000343322751
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 2,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.01800005340576183,
+      "max_delay": 0.02699991989135775
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.020000158309936733,
+      "max_delay": 0.02799984359741181
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.04099992465972879,
+      "max_delay": 0.34100014877319307
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 3,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.023000048637390247,
+      "max_delay": 0.03200003433227572
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.025000186920166367,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.04599991989135721,
+      "max_delay": 0.34599978637695283
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 4,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.028000020027160843,
+      "max_delay": 0.037000148773193686
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.030000120162963828,
+      "max_delay": 0.03800007247924775
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 58,
+      "median_delay": 0.052000015258788945,
+      "max_delay": 0.3509999008178708
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 6,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.0380000343322755,
+      "max_delay": 0.04699990081787142
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.040000139236450405,
+      "max_delay": 0.04799982452392548
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.09099988174438511,
+      "max_delay": 0.36100012969970674
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 8,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.048000000953674515,
+      "max_delay": 0.05700012969970736
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.0500001010894775,
+      "max_delay": 0.05800005340576142
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 59,
+      "median_delay": 0.11499978637695296,
+      "max_delay": 0.3709998817443845
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 1,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.014500120162963537,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.019000186920165696,
+      "max_delay": 0.03299995803832978
+     },
+     "bias": {
+      "n": 63,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.08599992942810086,
+      "max_delay": 0.7509999961853024
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 2,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.019500024795532145,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02400007247924818,
+      "max_delay": 0.03800007247924775
+     },
+     "bias": {
+      "n": 63,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.09099992942810076,
+      "max_delay": 0.7560001106262204
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 3,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.024500005722045692,
+      "max_delay": 0.033999938964843324
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.029000139236450284,
+      "max_delay": 0.04300018692016572
+     },
+     "bias": {
+      "n": 63,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.0959999198913577,
+      "max_delay": 0.7610002250671384
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 4,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.029500062942504623,
+      "max_delay": 0.03900005340576129
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.034000062942505016,
+      "max_delay": 0.08399982452392596
+     },
+     "bias": {
+      "n": 63,
+      "declared": 60,
+      "correct": 57,
+      "median_delay": 0.10099996757507324,
+      "max_delay": 0.7659998626708981
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 6,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03950000572204582,
+      "max_delay": 0.04899980545043903
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04400005340576185,
+      "max_delay": 0.0940000534057619
+     },
+     "bias": {
+      "n": 64,
+      "declared": 61,
+      "correct": 58,
+      "median_delay": 0.11200003433227534,
+      "max_delay": 0.7760000915527341
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 8,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.049500043869018295,
+      "max_delay": 0.059000034332274964
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05450006294250476,
+      "max_delay": 0.10399980545043963
+     },
+     "bias": {
+      "n": 64,
+      "declared": 59,
+      "correct": 57,
+      "median_delay": 0.12599980545043987,
+      "max_delay": 0.794000072479248
+     }
+    }
+   ],
+   "chosen": {
+    "mu_iso": 0.9999,
+    "n_c": 6,
+    "false_alarm_runs": 0,
+    "fault_free_hours": 0.19528694889492448,
+    "break": {
+     "n": 32,
+     "declared": 32,
+     "correct": 32,
+     "median_delay": 0.03950000572204582,
+     "max_delay": 0.04899980545043903
+    },
+    "loe": {
+     "n": 64,
+     "declared": 64,
+     "correct": 64,
+     "median_delay": 0.04400005340576185,
+     "max_delay": 0.0940000534057619
+    },
+    "bias": {
+     "n": 64,
+     "declared": 61,
+     "correct": 58,
+     "median_delay": 0.11200003433227534,
+     "max_delay": 0.7760000915527341
+    }
+   }
+  },
+  "4": {
+   "temperature": 0.5497476321217184,
+   "nll_before": 0.2580467814574608,
+   "nll_after": 0.11568064673918631,
+   "ece_before": 0.15342286986061565,
+   "ece_after": 0.0027546138768805226,
+   "val_macro_f1": 0.9571133469934997,
+   "table": [
+    {
+     "mu_iso": 0.5,
+     "n_c": 1,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.009999948501586697,
+      "max_delay": 0.014000129699707209
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 56,
+      "median_delay": 0.014999938964843862,
+      "max_delay": 0.02199999618530235
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 38,
+      "median_delay": 0.029500129699707056,
+      "max_delay": 0.1169999580383303
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 2,
+     "false_alarm_runs": 26,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.01499996757507338,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.020000053405762053,
+      "max_delay": 0.02700011062622032
+     },
+     "bias": {
+      "n": 58,
+      "declared": 58,
+      "correct": 41,
+      "median_delay": 0.034999862670898274,
+      "max_delay": 0.12200007247924827
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 3,
+     "false_alarm_runs": 23,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 28,
+      "declared": 28,
+      "correct": 28,
+      "median_delay": 0.019999967575073274,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 57,
+      "declared": 57,
+      "correct": 57,
+      "median_delay": 0.024999767303467202,
+      "max_delay": 0.03200022506713829
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 43,
+      "median_delay": 0.03999997711181624,
+      "max_delay": 0.12700018692016624
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 4,
+     "false_alarm_runs": 19,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.024999977111816563,
+      "max_delay": 0.028999996185302912
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.02999988174438517,
+      "max_delay": 0.03700007247924786
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 40,
+      "median_delay": 0.045499948501587006,
+      "max_delay": 0.131999824523926
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 6,
+     "false_alarm_runs": 15,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.03499994850158705,
+      "max_delay": 0.03900022506713885
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.040000072479248416,
+      "max_delay": 0.04700009155273399
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 45,
+      "median_delay": 0.058000024795532124,
+      "max_delay": 0.14200005340576194
+     }
+    },
+    {
+     "mu_iso": 0.5,
+     "n_c": 8,
+     "false_alarm_runs": 14,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 30,
+      "declared": 30,
+      "correct": 30,
+      "median_delay": 0.0449998912811278,
+      "max_delay": 0.048999977111816584
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.04999986267089884,
+      "max_delay": 0.05700005340576153
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 47,
+      "median_delay": 0.07099991989135734,
+      "max_delay": 0.15199980545043967
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 1,
+     "false_alarm_runs": 19,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.01000011062622086,
+      "max_delay": 0.014000129699707209
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.015999891281127887,
+      "max_delay": 0.023999938964843537
+     },
+     "bias": {
+      "n": 59,
+      "declared": 59,
+      "correct": 43,
+      "median_delay": 0.03299992942810048,
+      "max_delay": 0.11999976730346695
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 2,
+     "false_alarm_runs": 18,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.015000091552733963,
+      "max_delay": 0.019000186920165696
+     },
+     "loe": {
+      "n": 59,
+      "declared": 59,
+      "correct": 59,
+      "median_delay": 0.02099991989135752,
+      "max_delay": 0.029000053405761506
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 42,
+      "median_delay": 0.0380000581741331,
+      "max_delay": 0.12499988174438492
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 3,
+     "false_alarm_runs": 17,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.020000148773193338,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.025999881744384723,
+      "max_delay": 0.034000167846679474
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 43,
+      "median_delay": 0.04499986267089806,
+      "max_delay": 0.1299999961853029
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 4,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.025000034332275156,
+      "max_delay": 0.028999996185302912
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.030999905586242882,
+      "max_delay": 0.03899980545043924
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 45,
+      "median_delay": 0.04999997711181603,
+      "max_delay": 0.13500011062622086
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 6,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.035000072479247635,
+      "max_delay": 0.03900022506713885
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.04099990081787119,
+      "max_delay": 0.04900003433227518
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 48,
+      "median_delay": 0.06250012969970742,
+      "max_delay": 0.1449998626708986
+     }
+    },
+    {
+     "mu_iso": 0.7,
+     "n_c": 8,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.04500001525878883,
+      "max_delay": 0.048999977111816584
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.05099989128112803,
+      "max_delay": 0.05899978637695291
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 51,
+      "median_delay": 0.07700001525878886,
+      "max_delay": 0.17999995803833002
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 1,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.011000110626220305,
+      "max_delay": 0.014000129699707209
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.01600001049041766,
+      "max_delay": 0.023999938964843537
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 43,
+      "median_delay": 0.03500011062622033,
+      "max_delay": 0.12399988174438459
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 2,
+     "false_alarm_runs": 16,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 29,
+      "declared": 29,
+      "correct": 29,
+      "median_delay": 0.016000225067138274,
+      "max_delay": 0.019000186920165696
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.020999991416930985,
+      "max_delay": 0.029000053405761506
+     },
+     "bias": {
+      "n": 60,
+      "declared": 60,
+      "correct": 43,
+      "median_delay": 0.040000225067138295,
+      "max_delay": 0.12899999618530256
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 3,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02099986267089804,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.025999972343444755,
+      "max_delay": 0.034000167846679474
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 46,
+      "median_delay": 0.0459999341964723,
+      "max_delay": 0.15499986267089838
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 4,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02599997711181601,
+      "max_delay": 0.02900016784667958
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.031000053405761285,
+      "max_delay": 0.03899980545043924
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 47,
+      "median_delay": 0.051000225067138416,
+      "max_delay": 0.15999997711181635
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 6,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.036000205993651946,
+      "max_delay": 0.03900022506713885
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.04100007247924786,
+      "max_delay": 0.04900003433227518
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.06699978637695292,
+      "max_delay": 0.1700002059936523
+     }
+    },
+    {
+     "mu_iso": 0.8,
+     "n_c": 8,
+     "false_alarm_runs": 9,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04649992942810055,
+      "max_delay": 0.04900014877319325
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.05100003433227496,
+      "max_delay": 0.05899978637695291
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 51,
+      "median_delay": 0.08799984359741231,
+      "max_delay": 0.17999995803833002
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 1,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.01199991989135718,
+      "max_delay": 0.014999900817871392
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.016000158309936285,
+      "max_delay": 0.027000082015991023
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 46,
+      "median_delay": 0.03900019645690911,
+      "max_delay": 0.2489998817443846
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 2,
+     "false_alarm_runs": 13,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.016999986648559506,
+      "max_delay": 0.02000001525878936
+     },
+     "loe": {
+      "n": 60,
+      "declared": 60,
+      "correct": 60,
+      "median_delay": 0.021000048637390023,
+      "max_delay": 0.03199995803832989
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 48,
+      "median_delay": 0.04549996280670143,
+      "max_delay": 0.25399999618530256
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 3,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.021999824523925682,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.02600003433227549,
+      "max_delay": 0.03700007247924786
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 48,
+      "median_delay": 0.05249994850158668,
+      "max_delay": 0.2590001106262205
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 4,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.02699993896484365,
+      "max_delay": 0.029999767303467095
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.03100014877319346,
+      "max_delay": 0.041999948501586726
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.059000072479247656,
+      "max_delay": 0.2639999866485594
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 6,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.03699996757507318,
+      "max_delay": 0.03999999618530303
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.04100015354156494,
+      "max_delay": 0.05199993896484356
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 50,
+      "median_delay": 0.07650014877319311,
+      "max_delay": 0.27399997711181623
+     }
+    },
+    {
+     "mu_iso": 0.9,
+     "n_c": 8,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04699991989135732,
+      "max_delay": 0.05000022506713897
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.05100015830993643,
+      "max_delay": 0.0619999294281004
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 51,
+      "median_delay": 0.0879999008178709,
+      "max_delay": 0.3889999866485594
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 1,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.012000072479247947,
+      "max_delay": 0.014999900817871392
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.01699986267089848,
+      "max_delay": 0.027000082015991023
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.04800016784667971,
+      "max_delay": 0.47400002479553205
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 2,
+     "false_alarm_runs": 12,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.01700003433227515,
+      "max_delay": 0.02000001525878936
+     },
+     "loe": {
+      "n": 61,
+      "declared": 61,
+      "correct": 61,
+      "median_delay": 0.021999919891357855,
+      "max_delay": 0.03199995803832989
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 48,
+      "median_delay": 0.05449983406066883,
+      "max_delay": 0.4789999008178709
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 3,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.022000072479247734,
+      "max_delay": 0.02500012969970733
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.026999986648559737,
+      "max_delay": 0.03700007247924786
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 48,
+      "median_delay": 0.06299994850158663,
+      "max_delay": 0.4840000152587889
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 4,
+     "false_alarm_runs": 11,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 31,
+      "declared": 31,
+      "correct": 31,
+      "median_delay": 0.027000015258789034,
+      "max_delay": 0.030000148773193125
+     },
+     "loe": {
+      "n": 62,
+      "declared": 62,
+      "correct": 62,
+      "median_delay": 0.032000043869018446,
+      "max_delay": 0.041999948501586726
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.06600009155273412,
+      "max_delay": 0.5790000438690184
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 6,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.037000091552734204,
+      "max_delay": 0.04199978637695345
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.04199995803833012,
+      "max_delay": 0.05199993896484356
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 50,
+      "median_delay": 0.08299999618530274,
+      "max_delay": 0.5890000343322752
+     }
+    },
+    {
+     "mu_iso": 0.95,
+     "n_c": 8,
+     "false_alarm_runs": 6,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04700007247924809,
+      "max_delay": 0.05200001525878939
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05200015830993676,
+      "max_delay": 0.0619999294281004
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 52,
+      "median_delay": 0.09299998664855957,
+      "max_delay": 0.820999843597412
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 1,
+     "false_alarm_runs": 8,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.01300003433227559,
+      "max_delay": 0.017000186920165916
+     },
+     "loe": {
+      "n": 63,
+      "declared": 63,
+      "correct": 63,
+      "median_delay": 0.020000129699707436,
+      "max_delay": 0.03199995803832989
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.05999980545043915,
+      "max_delay": 0.6940000534057615
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 2,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.017999929428100803,
+      "max_delay": 0.021999824523925682
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.02500016784668002,
+      "max_delay": 0.03700007247924786
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 49,
+      "median_delay": 0.06799986267089864,
+      "max_delay": 0.6989999294281004
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 3,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.022999905586242875,
+      "max_delay": 0.02699993896484365
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.029999962806701808,
+      "max_delay": 0.041999948501586726
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 51,
+      "median_delay": 0.07299993896484391,
+      "max_delay": 0.7040000438690184
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 4,
+     "false_alarm_runs": 7,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.028000015258789368,
+      "max_delay": 0.03200005340576162
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03499999618530314,
+      "max_delay": 0.047000062942504695
+     },
+     "bias": {
+      "n": 61,
+      "declared": 61,
+      "correct": 52,
+      "median_delay": 0.07950003910064707,
+      "max_delay": 0.7089999198913572
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 6,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.037999910354614475,
+      "max_delay": 0.041999805450439354
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04500022506713908,
+      "max_delay": 0.05700005340576153
+     },
+     "bias": {
+      "n": 63,
+      "declared": 63,
+      "correct": 55,
+      "median_delay": 0.08800004386901872,
+      "max_delay": 0.9210002250671385
+     }
+    },
+    {
+     "mu_iso": 0.99,
+     "n_c": 8,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04799999618530304,
+      "max_delay": 0.05200003433227529
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05499997711181681,
+      "max_delay": 0.06700004386901837
+     },
+     "bias": {
+      "n": 63,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.10099996757507324,
+      "max_delay": 0.9309999771118163
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 1,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.01499996757507338,
+      "max_delay": 0.01900007247924762
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.022999915122985826,
+      "max_delay": 0.03700007247924786
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.08199998664855945,
+      "max_delay": 0.914000082015991
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 2,
+     "false_alarm_runs": 4,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.019999967575073274,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.028000029563903794,
+      "max_delay": 0.041999948501586726
+     },
+     "bias": {
+      "n": 62,
+      "declared": 62,
+      "correct": 57,
+      "median_delay": 0.08700010108947742,
+      "max_delay": 0.9189999580383299
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 3,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.02499991035461413,
+      "max_delay": 0.028999996185302912
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03299984359741215,
+      "max_delay": 0.047000062942504695
+     },
+     "bias": {
+      "n": 63,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.09249999618530258,
+      "max_delay": 0.9240000724792479
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 4,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.02999992942810037,
+      "max_delay": 0.03400011062622088
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.03799980545043935,
+      "max_delay": 0.05199993896484356
+     },
+     "bias": {
+      "n": 63,
+      "declared": 62,
+      "correct": 58,
+      "median_delay": 0.09750011062622055,
+      "max_delay": 0.9290001869201658
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 6,
+     "false_alarm_runs": 3,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.039999948501586946,
+      "max_delay": 0.04400016784667926
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.048000010490417466,
+      "max_delay": 0.0619999294281004
+     },
+     "bias": {
+      "n": 63,
+      "declared": 62,
+      "correct": 59,
+      "median_delay": 0.10799988174438457,
+      "max_delay": 0.9389999389648436
+     }
+    },
+    {
+     "mu_iso": 0.999,
+     "n_c": 8,
+     "false_alarm_runs": 2,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.05000000572204577,
+      "max_delay": 0.05400009155273455
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.05799978637695302,
+      "max_delay": 0.1239998435974119
+     },
+     "bias": {
+      "n": 64,
+      "declared": 62,
+      "correct": 61,
+      "median_delay": 0.12199976730346673,
+      "max_delay": 0.9490001678466795
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 1,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.017000110626220533,
+      "max_delay": 0.02400018692016559
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.026999977111816564,
+      "max_delay": 0.041999948501586726
+     },
+     "bias": {
+      "n": 64,
+      "declared": 62,
+      "correct": 60,
+      "median_delay": 0.10400016784667976,
+      "max_delay": 0.9059998817443846
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 2,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.022000086784362605,
+      "max_delay": 0.028999824523925355
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.031999900817871074,
+      "max_delay": 0.047000062942504695
+     },
+     "bias": {
+      "n": 64,
+      "declared": 61,
+      "correct": 60,
+      "median_delay": 0.10999976730346672,
+      "max_delay": 0.9109999961853026
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 3,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.027000091552734418,
+      "max_delay": 0.033999938964843324
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.0369998340606692,
+      "max_delay": 0.05199993896484356
+     },
+     "bias": {
+      "n": 64,
+      "declared": 61,
+      "correct": 60,
+      "median_delay": 0.11499988174438469,
+      "max_delay": 0.9160001106262206
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 4,
+     "false_alarm_runs": 1,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.03200005340576162,
+      "max_delay": 0.03900005340576129
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.04199994850158717,
+      "max_delay": 0.05700005340576153
+     },
+     "bias": {
+      "n": 64,
+      "declared": 60,
+      "correct": 59,
+      "median_delay": 0.11799999618530244,
+      "max_delay": 0.40699991989135764
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 6,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.04200006771087628,
+      "max_delay": 0.04899980545043903
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.052000072479248205,
+      "max_delay": 0.1239998435974119
+     },
+     "bias": {
+      "n": 64,
+      "declared": 60,
+      "correct": 59,
+      "median_delay": 0.13299992942810057,
+      "max_delay": 0.4170001487731936
+     }
+    },
+    {
+     "mu_iso": 0.9999,
+     "n_c": 8,
+     "false_alarm_runs": 0,
+     "fault_free_hours": 0.19528694889492448,
+     "break": {
+      "n": 32,
+      "declared": 32,
+      "correct": 32,
+      "median_delay": 0.05200003433227529,
+      "max_delay": 0.059000034332274964
+     },
+     "loe": {
+      "n": 64,
+      "declared": 64,
+      "correct": 64,
+      "median_delay": 0.06199992942810084,
+      "max_delay": 0.13400007247924783
+     },
+     "bias": {
+      "n": 64,
+      "declared": 60,
+      "correct": 59,
+      "median_delay": 0.14299993896484375,
+      "max_delay": 0.854000015258789
+     }
+    }
+   ],
+   "chosen": {
+    "mu_iso": 0.9999,
+    "n_c": 6,
+    "false_alarm_runs": 0,
+    "fault_free_hours": 0.19528694889492448,
+    "break": {
+     "n": 32,
+     "declared": 32,
+     "correct": 32,
+     "median_delay": 0.04200006771087628,
+     "max_delay": 0.04899980545043903
+    },
+    "loe": {
+     "n": 64,
+     "declared": 64,
+     "correct": 64,
+     "median_delay": 0.052000072479248205,
+     "max_delay": 0.1239998435974119
+    },
+    "bias": {
+     "n": 64,
+     "declared": 60,
+     "correct": 59,
+     "median_delay": 0.13299992942810057,
+     "max_delay": 0.4170001487731936
+    }
+   }
+  }
+ },
+ "deployed_seed": 2,
+ "chosen": {
+  "mu_iso": 0.9999,
+  "n_c": 4,
+  "false_alarm_runs": 0,
+  "fault_free_hours": 0.19528694889492448,
+  "break": {
+   "n": 32,
+   "declared": 32,
+   "correct": 32,
+   "median_delay": 0.028999910354614133,
+   "max_delay": 0.03300016784668003
+  },
+  "loe": {
+   "n": 64,
+   "declared": 64,
+   "correct": 64,
+   "median_delay": 0.032000043869018446,
+   "max_delay": 0.04300018692016572
+  },
+  "bias": {
+   "n": 64,
+   "declared": 63,
+   "correct": 61,
+   "median_delay": 0.07399991035461406,
+   "max_delay": 0.2859998626708986
+  }
+ },
+ "provenance": {
+  "code_digest": "266dfa61ed777b05",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-27T13:02:11Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

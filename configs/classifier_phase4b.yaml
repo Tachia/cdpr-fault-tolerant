@@ -1,0 +1,64 @@
+# Frozen learned fault classifier trained on both paths (Phase 4b, 2026-10-27): baseline B3 of Phase 5.
+# Hyperparameters: those of configs/classifier_phase4.yaml (no new search).
+# Models: results/phase4b_training.json. Temperatures, thresholds and the deployed seed:
+# results/phase4b_thresholds.json (validation runs of both paths).
+# The test runs are evaluated once, after this file is written (scripts/phase4b_test.py).
+params:
+  arch: lstm
+  window: 20
+  lstm_hidden: 64
+  lstm_layers: 2
+  dropout: 0.24298172848567406
+  lr: 0.0017524083914833295
+  weight_decay: 2.5637443672300642e-05
+t_from: 2.0
+deployed_model:
+  file: results/phase4b_models/seed2.pt
+  sha256_16: 813b05ed8607c087
+  temperature: 0.6379290435201515
+  mu_iso: 0.9999
+  n_c: 4
+  seed: 2
+  best_epoch: 8
+  val_macro_f1: 0.9649056457117249
+declaration:
+  mu_iso: 0.9999
+  n_c: 4
+seed_models:
+  '0':
+    file: results/phase4b_models/seed0.pt
+    sha256_16: cbd2aebf339dccfd
+    temperature: 0.5976597284414688
+    mu_iso: 0.9999
+    n_c: 4
+  '1':
+    file: results/phase4b_models/seed1.pt
+    sha256_16: 85bf18ae2658d8ef
+    temperature: 0.5993153243721542
+    mu_iso: 0.9999
+    n_c: 8
+  '2':
+    file: results/phase4b_models/seed2.pt
+    sha256_16: 813b05ed8607c087
+    temperature: 0.6379290435201515
+    mu_iso: 0.9999
+    n_c: 4
+  '3':
+    file: results/phase4b_models/seed3.pt
+    sha256_16: 79d180cc7b672d8d
+    temperature: 0.6432941896296965
+    mu_iso: 0.9999
+    n_c: 6
+  '4':
+    file: results/phase4b_models/seed4.pt
+    sha256_16: 492b25e8731ed26b
+    temperature: 0.5497476321217184
+    mu_iso: 0.9999
+    n_c: 6
+hashes:
+  protocol: 54d15c7987103438
+  phase4_dataset: 00cb48553bc96097
+  phase4b_dataset: 5442dfbf0ac36e4c
+  features_module: d659dfa5950bf8df
+  models_module: bc0b887ff09b44cd
+  learning_digest: 8aa62569041d0e4b

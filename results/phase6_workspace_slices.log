@@ -1,0 +1,6 @@
+z3 all {'points': 14241, 'feasible': 8059, 'feasible_fraction': 0.5659012709781617} 27 s
+z3 without_1 {'points': 14241, 'feasible': 14, 'feasible_fraction': 0.000983077031107366} 53 s
+z3 without_5 {'points': 14241, 'feasible': 4073, 'feasible_fraction': 0.28600519626430726} 79 s
+y0 all {'points': 8601, 'feasible': 4762, 'feasible_fraction': 0.5536565515637717} 95 s
+y0 without_1 {'points': 8601, 'feasible': 321, 'feasible_fraction': 0.03732124171607953} 112 s
+y0 without_5 {'points': 8601, 'feasible': 2206, 'feasible_fraction': 0.25648180444134405} 127 s

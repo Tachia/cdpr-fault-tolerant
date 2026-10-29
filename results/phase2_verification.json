@@ -1,0 +1,39 @@
+{
+  "provenance": {
+    "code_digest": "c77663b917040fde",
+    "utc": "2026-10-26T09:26:49Z",
+    "python": "3.13.17",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "casadi": "3.8.1"
+  },
+  "energy": {
+    "duration_s": 10.0,
+    "step_s": 6.25e-05,
+    "initial_kinetic_energy_J": 0.03205000000002656,
+    "max_drift_J": 1.1368683772161603e-12,
+    "drift_over_KE0": 3.5471712237604317e-11,
+    "any_slack": false,
+    "pass": true
+  },
+  "skew": {
+    "max_abs_N_plus_NT": 7.105427357601002e-15,
+    "pass": true
+  },
+  "equilibrium": {
+    "tensions_N": [
+      151.417,
+      151.417,
+      151.417,
+      151.417,
+      58.583,
+      58.583,
+      58.583,
+      58.583
+    ],
+    "max_abs_xdot": 4.792462722965259e-10
+  },
+  "compiled_vs_numpy": {
+    "max_rel_diff_xdot": 5.04846582720149e-13
+  }
+}

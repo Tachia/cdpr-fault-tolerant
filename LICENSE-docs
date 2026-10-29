@@ -1,0 +1,14 @@
+Copyright (c) 2026 Mfeuter Joseph Tachia and Alexander V. Maloletov
+
+The documents (docs/, paper/), the figures (figures/, paper/figures/) and the stored results and data
+(results/, data/) of this repository are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0). You may share and adapt them for any purpose, provided that you give
+appropriate credit, provide a link to the licence and indicate if changes were made.
+
+Full text of the licence: https://creativecommons.org/licenses/by/4.0/legalcode
+
+The class files of the Elsevier CAS template in paper/manuscript/ (cas-dc.cls, cas-common.sty,
+elsarticle-num-names.bst and thumbnails/) are distributed under their own licence, the LaTeX Project
+Public License, as stated in those files.
+
+The code (cdpr_ft/, scripts/, tests/, reproduce.py) is licensed under the MIT licence, see LICENSE.

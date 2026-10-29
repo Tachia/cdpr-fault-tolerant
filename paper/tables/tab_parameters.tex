@@ -1,0 +1,23 @@
+% written by scripts/paper_tables.py from stored files; do not edit
+\begin{table*}[t]
+\centering\small
+\caption{Model of the robot. The controller uses the nominal values; the plant of every run draws the randomised ones from the seed of the run.}\label{tab:parameters}
+\begin{tabular}{@{}p{0.2\linewidth}p{0.47\linewidth}p{0.27\linewidth}@{}}
+\toprule
+Quantity & Value & Source \\
+\midrule
+Frame (anchor box) & $8\times6$ m, anchors at $z=1$ and $5$ m & CASPR model IPAnema\_2 \cite{lau2016caspr} \\
+Platform attachments & $|x|\le0.75$, $|y|\le0.125$, $z\in[0.25,0.75]$ m & CASPR \\
+Mass, inertia & 10 kg, 1 kg\,m$^2$ per axis & CASPR \\
+Tension bounds & $t_{\min}=10$ N, $t_{\max}=200$ N & CASPR ($t_{\max}$); design choice ($t_{\min}$) \\
+Cable & Dyneema, $d=1.5$ mm, $EA=35188$ N, retardation 20 ms & \cite{pott2013ipanema}; EA scaled from \cite{tempel2015iftomm} \\
+Drum, gearbox & radius 50 mm, $i=12$, stroke 6 m & \cite{pott2013ipanema} \\
+Motor & MSK030C: 0.9 N\,m rated, 4 N\,m peak, rotor $3\times10^{-5}$ kg\,m$^2$ & sized from \cite{rexroth_msk2018} \\
+Velocity, acceleration limits & 2.5 m/s, 25 m/s$^2$ & \cite{pott2013ipanema} \\
+Encoder & 1048576 counts/rev, $\pm$120 arcsec & \cite{rexroth_msk2018}, option M1 \\
+Motor current noise & 0.004 N\,m (nominal), $\times2$ in half of the runs & design choice \\
+Rates & plant RK4 step 62.5 $\mu$s, control 1000 Hz, measurement delay 1 sample & step convergence study \\
+Randomised in every run & mass $\pm10\%$, principal inertias $\pm20\%$, centre of mass $\pm2$ cm, anchors $\pm5$ mm, $EA\ \pm20\%$ (uniform) & study design \\
+\bottomrule
+\end{tabular}
+\end{table*}

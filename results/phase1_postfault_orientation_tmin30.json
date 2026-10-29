@@ -1,0 +1,36 @@
+{
+  "t_min": 30.0,
+  "max_tilt_deg": 20.0,
+  "step_deg": 10.0,
+  "n_nominal_positions": 2096,
+  "fraction_feasible_zero_orientation": [
+    0.0854,
+    0.0854,
+    0.0854,
+    0.0854,
+    0.2257,
+    0.2257,
+    0.2257,
+    0.2257
+  ],
+  "fraction_feasible_with_tilt": [
+    0.4165,
+    0.4165,
+    0.4165,
+    0.4165,
+    0.6126,
+    0.6126,
+    0.6126,
+    0.6126
+  ],
+  "median_tilt_deg_when_needed": [
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0
+  ]
+}

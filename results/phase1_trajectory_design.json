@@ -1,0 +1,102 @@
+{
+  "upper_bound_fraction": 0.8,
+  "center_m": [
+    0.0,
+    0.0,
+    3.0
+  ],
+  "largest_radius_by_period": {
+    "T2": {
+      "largest_radius_m": 0.75,
+      "limited_by": "speed or acceleration"
+    },
+    "T3": {
+      "largest_radius_m": 1.15,
+      "limited_by": "speed or acceleration"
+    },
+    "T4": {
+      "largest_radius_m": 1.55,
+      "limited_by": "speed or acceleration"
+    },
+    "T5": {
+      "largest_radius_m": 1.95,
+      "limited_by": "speed or acceleration"
+    },
+    "T6": {
+      "largest_radius_m": 2.0,
+      "limited_by": "tension"
+    },
+    "T8": {
+      "largest_radius_m": 1.9,
+      "limited_by": "tension"
+    }
+  },
+  "selected_circle_admissible_by_center_height": {
+    "1.5": true,
+    "1.75": true,
+    "2": true,
+    "2.25": true,
+    "2.5": true,
+    "2.75": true,
+    "3": true,
+    "3.25": true,
+    "3.5": true,
+    "3.75": true,
+    "4": false,
+    "4.25": false,
+    "4.5": false
+  },
+  "selected": {
+    "T1_circle": {
+      "center_m": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "radius_m": 0.5,
+      "period_s": 4.0,
+      "turns": 3,
+      "duration_s": 16.0,
+      "admissible": true,
+      "min_margin_N": 25.45,
+      "max_speed_m_s": 0.785,
+      "max_acc_m_s2": 1.234,
+      "post_fault_static_coverage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.509,
+        0.286,
+        0.286,
+        0.509
+      ]
+    },
+    "T2_helix": {
+      "start_center_m": [
+        0.0,
+        0.0,
+        2.5
+      ],
+      "radius_m": 0.5,
+      "period_s": 4.0,
+      "turns": 3,
+      "climb_m": 1.0,
+      "duration_s": 16.0,
+      "admissible": true,
+      "min_margin_N": 9.36,
+      "max_speed_m_s": 0.79,
+      "max_acc_m_s2": 1.234,
+      "post_fault_static_coverage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.516,
+        0.286,
+        0.298,
+        0.503
+      ]
+    }
+  }
+}

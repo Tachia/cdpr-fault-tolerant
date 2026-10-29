@@ -1,0 +1,55 @@
+{
+ "step_m": 0.05,
+ "z_plane_m": 3.0,
+ "y_plane_m": 0.0,
+ "t_min": 10.0,
+ "t_max": 200.0,
+ "orientation": "zero",
+ "cases": {
+  "all": null,
+  "without_1": 1,
+  "without_5": 5
+ },
+ "summary": {
+  "z3_all": {
+   "points": 14241,
+   "feasible": 8059,
+   "feasible_fraction": 0.5659012709781617
+  },
+  "z3_without_1": {
+   "points": 14241,
+   "feasible": 14,
+   "feasible_fraction": 0.000983077031107366
+  },
+  "z3_without_5": {
+   "points": 14241,
+   "feasible": 4073,
+   "feasible_fraction": 0.28600519626430726
+  },
+  "y0_all": {
+   "points": 8601,
+   "feasible": 4762,
+   "feasible_fraction": 0.5536565515637717
+  },
+  "y0_without_1": {
+   "points": 8601,
+   "feasible": 321,
+   "feasible_fraction": 0.03732124171607953
+  },
+  "y0_without_5": {
+   "points": 8601,
+   "feasible": 2206,
+   "feasible_fraction": 0.25648180444134405
+  }
+ },
+ "npz_sha256_16": "3490da15b8dc7d89",
+ "provenance": {
+  "code_digest": "c6cbc1cddfc2ade0",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-29T02:39:40Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

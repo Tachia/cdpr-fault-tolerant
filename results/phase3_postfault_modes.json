@@ -1,0 +1,77 @@
+{
+ "per_cable": {
+  "1": {
+   "n_end_poses": 222,
+   "lowest_Hz_min": 3.3284978768065336,
+   "lowest_Hz_median": 3.535652767686572,
+   "lowest_Hz_max": 3.6040805224421133,
+   "highest_Hz_max": 18.226602652271243,
+   "equilibrium_residual_N_max": 1.578694639033359e-05
+  },
+  "2": {
+   "n_end_poses": 222,
+   "lowest_Hz_min": 3.375392228023323,
+   "lowest_Hz_median": 3.50400833507275,
+   "lowest_Hz_max": 3.6422631611676812,
+   "highest_Hz_max": 18.28748238335431,
+   "equilibrium_residual_N_max": 4.4779150536096446e-06
+  },
+  "3": {
+   "n_end_poses": 222,
+   "lowest_Hz_min": 3.3279188773054758,
+   "lowest_Hz_median": 3.5506633903439857,
+   "lowest_Hz_max": 3.606909815799049,
+   "highest_Hz_max": 18.238005908977453,
+   "equilibrium_residual_N_max": 4.975533525311232e-06
+  },
+  "4": {
+   "n_end_poses": 222,
+   "lowest_Hz_min": 3.3562446515321844,
+   "lowest_Hz_median": 3.493428358103618,
+   "lowest_Hz_max": 3.6473941535034817,
+   "highest_Hz_max": 18.28748237128516,
+   "equilibrium_residual_N_max": 4.737342399313294e-06
+  },
+  "5": {
+   "n_end_poses": 191,
+   "lowest_Hz_min": 3.2314235479401834,
+   "lowest_Hz_median": 3.3064755267277066,
+   "lowest_Hz_max": 3.521228471675464,
+   "highest_Hz_max": 17.89754030003219,
+   "equilibrium_residual_N_max": 5.002847436266834e-06
+  },
+  "6": {
+   "n_end_poses": 186,
+   "lowest_Hz_min": 3.25878850630284,
+   "lowest_Hz_median": 3.3289541622860757,
+   "lowest_Hz_max": 3.562356592929069,
+   "highest_Hz_max": 17.966277238371603,
+   "equilibrium_residual_N_max": 4.711949845405197e-06
+  },
+  "7": {
+   "n_end_poses": 153,
+   "lowest_Hz_min": 3.2325535163701913,
+   "lowest_Hz_median": 3.3347305012761845,
+   "lowest_Hz_max": 3.560909365565077,
+   "highest_Hz_max": 17.941236246794933,
+   "equilibrium_residual_N_max": 5.018310630040557e-06
+  },
+  "8": {
+   "n_end_poses": 187,
+   "lowest_Hz_min": 3.2587757310215832,
+   "lowest_Hz_median": 3.332648319202578,
+   "lowest_Hz_max": 3.5399930435524993,
+   "highest_Hz_max": 17.999378080860787,
+   "equilibrium_residual_N_max": 4.711957453913909e-06
+  }
+ },
+ "EA": 35187.8125,
+ "provenance": {
+  "code_digest": "7c6995d399ff5f48",
+  "utc": "2026-10-26T15:02:46Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

@@ -1,0 +1,20 @@
+% written by scripts/phase5_tables.py from results/phase5/analysis.json; do not edit
+\begin{table}[h]
+\centering\small
+\caption{Computation per cycle on the machine of the campaign (two runs in parallel on two cores), fault runs: medians over runs of the mean and the 99th percentile, and the largest value (ms). Periods: MPC 20~ms, estimator 5~ms. The estimator cycle includes the alternative diagnosis of B2, B3 and B3T, whose classifier alone is shown in the last column. B2 has no MPC.}\label{tab:compute}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Method & MPC mean & MPC p99 & MPC max & Estimator mean & Estimator p99 & Classifier mean \\
+\midrule
+P & 32.0 & 65.1 & 362.3 & 2.89 & 5.31 & -- \\
+A1 & 32.0 & 64.2 & 407.5 & 2.88 & 5.30 & -- \\
+A2 & 44.8 & 124.5 & 414.7 & 2.89 & 5.28 & -- \\
+A5 & 34.4 & 89.3 & 349.4 & 2.91 & 5.34 & -- \\
+B0 & 34.2 & 70.4 & 355.0 & 2.92 & 5.34 & -- \\
+B1 & 32.3 & 63.8 & 277.5 & 2.88 & 5.29 & -- \\
+B2 & -- & -- & -- & 3.45 & 6.08 & -- \\
+B3 & 31.9 & 66.0 & 323.4 & 4.65 & 7.56 & 1.48 \\
+B3T & 90.3 & 637.2 & 1142.6 & 2.94 & 4.80 & 0.94 \\
+\bottomrule
+\end{tabular}\end{adjustbox}
+\end{table}

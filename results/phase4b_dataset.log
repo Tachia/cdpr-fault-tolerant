@@ -1,0 +1,9 @@
+run 0, 1 s
+run 50, 18 s
+run 100, 37 s
+run 150, 55 s
+run 200, 75 s
+run 250, 92 s
+run 300, 110 s
+run 350, 148 s
+352 runs, 491098 cycles, 150 s

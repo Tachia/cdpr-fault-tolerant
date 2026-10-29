@@ -1,0 +1,22 @@
+{
+  "provenance": {
+    "code_digest": "c77663b917040fde",
+    "utc": "2026-10-26T09:32:20Z",
+    "python": "3.13.17",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "casadi": "3.8.1"
+  },
+  "cases": {
+    "onset_0.1mm": {
+      "damping_onset_m": 0.0001,
+      "max_tension_N": 244.16027412649794,
+      "max_tension_before_break_N": 160.60182988261587
+    },
+    "plain_kelvin_voigt": {
+      "damping_onset_m": 0.0,
+      "max_tension_N": 359.9075236852923,
+      "max_tension_before_break_N": 160.60182988261587
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+ "figures": {
+  "fig01_robot_task": {
+   "inputs": [
+    {
+     "file": "configs/robot_ipanema2_caspr.yaml",
+     "sha256_16": "47987c0631c20766"
+    }
+   ],
+   "note": "geometry of configs/robot_ipanema2_caspr.yaml at the home pose; paths of the reference point P from cdpr_ft.analysis.trajectories.reference"
+  },
+  "fig02_architecture": {
+   "inputs": [
+    {
+     "file": "paper/figures/src/fig02_architecture.tex",
+     "sha256_16": "745f416e63c24691"
+    },
+    {
+     "file": "configs/controller_phase3.yaml",
+     "sha256_16": "71c8e8640f29365f"
+    }
+   ],
+   "note": "block diagram; every block is a module of the repository, rates from configs/controller_phase3.yaml"
+  },
+  "fig03_postfault_workspace": {
+   "inputs": [
+    {
+     "file": "results/phase6_workspace_slices.npz",
+     "sha256_16": "3490da15b8dc7d89"
+    },
+    {
+     "file": "results/phase3_safe_poses.npz",
+     "sha256_16": "994fb7d2aaa623a3"
+    },
+    {
+     "file": "configs/robot_ipanema2_caspr.yaml",
+     "sha256_16": "47987c0631c20766"
+    }
+   ],
+   "note": "static wrench-feasible poses at zero orientation in the planes z = 3 m and y = 0 (scripts/phase6_workspace_slices.py); circles: poses of the planner's safe set (results/phase3_safe_poses.npz, margin >= 10 N with tilt up to 20 deg) lying in the plane"
+  },
+  "fig04_example_break": {
+   "inputs": [
+    {
+     "file": "configs/robot_ipanema2_caspr.yaml",
+     "sha256_16": "47987c0631c20766"
+    },
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00001.npz",
+     "sha256_16": "d4572a8e736cb116"
+    },
+    {
+     "file": "results/phase5/traces/B3/run00001.npz",
+     "sha256_16": "2b0c59801c22e9dc"
+    },
+    {
+     "file": "results/phase5/traces/B2/run00001.npz",
+     "sha256_16": "a00235c69d116d7f"
+    },
+    {
+     "file": "results/phase5/traces/B0/run00001.npz",
+     "sha256_16": "dd99b24d4dc3aa2b"
+    }
+   ],
+   "note": "run 1 (T1, break of cable 2 at 4.933 s), chosen by pick_example(): median declaration delay of P among the kept upper-cable break runs"
+  },
+  "fig05_detection_delay": {
+   "inputs": [
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    }
+   ],
+   "note": "empirical distribution of the delay of correct declarations over all fault runs of the campaign (both paths); runs without a correct declaration never reach the curve"
+  },
+  "fig06_false_alarms": {
+   "inputs": [
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    }
+   ],
+   "note": "fault-free runs of the campaign (100 per path; 30 per path for B3T), share with a false alarm and 95 % Wilson interval"
+  },
+  "fig07_safety_after_break": {
+   "inputs": [
+    {
+     "file": "results/phase5/analysis.json",
+     "sha256_16": "c272cb01c401438f"
+    }
+   ],
+   "note": "(a) share of the 104 upper- and 104 lower-cable break runs (both paths) in which the platform was lost, 95 % Wilson intervals; (b) median share of the 2 s after the break with an intact cable outside [t_min, t_max], 95 % bootstrap intervals"
+  },
+  "fig08_tightening": {
+   "inputs": [
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    }
+   ],
+   "note": "smallest tension margin of the intact cables in the transient window of every fault run, with against without the probability-aware tightening (P against A1, B3T against B3, paired runs); values below -160 N drawn at -160 N"
+  },
+  "fig09_recovery": {
+   "inputs": [
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    }
+   ],
+   "note": "recovery: first time after the onset from which the position error stays for 1 s within twice the 95th percentile of the fault-free runs of the same path (protocol, amendment 1); lost runs and runs that did not recover before their end (4 s after the onset) never reach the curve"
+  },
+  "fig10_learned_vs_model": {
+   "inputs": [
+    {
+     "file": "results/phase4_test.json",
+     "sha256_16": "9c7f622990a5557f"
+    },
+    {
+     "file": "results/phase4b_test.json",
+     "sha256_16": "44fb64e1eb8c2998"
+    },
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    }
+   ],
+   "note": "offline: the single test of Phase 4 (results/phase4_test.json: T1-trained classifier and IMM) and of Phase 4b (results/phase4b_test.json), 8 fault-free and 80 fault runs per path; closed loop: the campaign, 100 fault-free and 312 fault runs per path; 95 % Wilson intervals"
+  },
+  "fig11_computation": {
+   "inputs": [
+    {
+     "file": "results/phase5/rows.jsonl.gz",
+     "sha256_16": "82282551f395f21f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00000.npz",
+     "sha256_16": "eac90da9b8b4c85b"
+    },
+    {
+     "file": "results/phase5/traces/P/run00001.npz",
+     "sha256_16": "d4572a8e736cb116"
+    },
+    {
+     "file": "results/phase5/traces/P/run00002.npz",
+     "sha256_16": "45f08c614889133a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00003.npz",
+     "sha256_16": "c2e0226e0991b996"
+    },
+    {
+     "file": "results/phase5/traces/P/run00004.npz",
+     "sha256_16": "18e0c835ae3e8dae"
+    },
+    {
+     "file": "results/phase5/traces/P/run00005.npz",
+     "sha256_16": "82ab04bcdc62cef3"
+    },
+    {
+     "file": "results/phase5/traces/P/run00006.npz",
+     "sha256_16": "9abdd444b230f049"
+    },
+    {
+     "file": "results/phase5/traces/P/run00007.npz",
+     "sha256_16": "ae8a0169bc1fe442"
+    },
+    {
+     "file": "results/phase5/traces/P/run00008.npz",
+     "sha256_16": "00cebe1f3e09227f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00009.npz",
+     "sha256_16": "339df2c5b64906da"
+    },
+    {
+     "file": "results/phase5/traces/P/run00010.npz",
+     "sha256_16": "e3f1333e0e2db42f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00011.npz",
+     "sha256_16": "531dd01394cd11fd"
+    },
+    {
+     "file": "results/phase5/traces/P/run00012.npz",
+     "sha256_16": "333197bf67c8a6d2"
+    },
+    {
+     "file": "results/phase5/traces/P/run00013.npz",
+     "sha256_16": "6166b28c21d3f2da"
+    },
+    {
+     "file": "results/phase5/traces/P/run00014.npz",
+     "sha256_16": "ec94718477fe4dd4"
+    },
+    {
+     "file": "results/phase5/traces/P/run00015.npz",
+     "sha256_16": "c125ce67c4dc7703"
+    },
+    {
+     "file": "results/phase5/traces/P/run00016.npz",
+     "sha256_16": "ab84571871d62076"
+    },
+    {
+     "file": "results/phase5/traces/P/run00017.npz",
+     "sha256_16": "124745a04f18ce7f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00018.npz",
+     "sha256_16": "e82c94a501c68abd"
+    },
+    {
+     "file": "results/phase5/traces/P/run00019.npz",
+     "sha256_16": "d596177f1592706a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00020.npz",
+     "sha256_16": "b8df794a2912889c"
+    },
+    {
+     "file": "results/phase5/traces/P/run00021.npz",
+     "sha256_16": "26ccd2ec5e79ba68"
+    },
+    {
+     "file": "results/phase5/traces/P/run00022.npz",
+     "sha256_16": "1d5b133183fdf735"
+    },
+    {
+     "file": "results/phase5/traces/P/run00023.npz",
+     "sha256_16": "a8607d20758a921a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00024.npz",
+     "sha256_16": "c9616ace78da37cf"
+    },
+    {
+     "file": "results/phase5/traces/P/run00025.npz",
+     "sha256_16": "cce42198b54018a9"
+    },
+    {
+     "file": "results/phase5/traces/P/run00026.npz",
+     "sha256_16": "52e7aab6e1f405bf"
+    },
+    {
+     "file": "results/phase5/traces/P/run00027.npz",
+     "sha256_16": "5c13ec99a44de9cf"
+    },
+    {
+     "file": "results/phase5/traces/P/run00028.npz",
+     "sha256_16": "2339e964e19dea70"
+    },
+    {
+     "file": "results/phase5/traces/P/run00029.npz",
+     "sha256_16": "f1cd86368b20b8fa"
+    },
+    {
+     "file": "results/phase5/traces/P/run00030.npz",
+     "sha256_16": "cf45bfc81ddfd2e2"
+    },
+    {
+     "file": "results/phase5/traces/P/run00031.npz",
+     "sha256_16": "02afb9e86309cd89"
+    },
+    {
+     "file": "results/phase5/traces/P/run00032.npz",
+     "sha256_16": "febea7f4e926f99f"
+    },
+    {
+     "file": "results/phase5/traces/P/run00033.npz",
+     "sha256_16": "bd62b78b35204b7a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00034.npz",
+     "sha256_16": "44c59272e0f0d733"
+    },
+    {
+     "file": "results/phase5/traces/P/run00035.npz",
+     "sha256_16": "0850f92552f932cc"
+    },
+    {
+     "file": "results/phase5/traces/P/run00036.npz",
+     "sha256_16": "266f99675be632cb"
+    },
+    {
+     "file": "results/phase5/traces/P/run00037.npz",
+     "sha256_16": "4d750cb1b14f72d2"
+    },
+    {
+     "file": "results/phase5/traces/P/run00038.npz",
+     "sha256_16": "946d0213e0dd583c"
+    },
+    {
+     "file": "results/phase5/traces/P/run00039.npz",
+     "sha256_16": "2acacc4ead238d60"
+    },
+    {
+     "file": "results/phase5/traces/P/run00040.npz",
+     "sha256_16": "0e0fac13c596e49e"
+    },
+    {
+     "file": "results/phase5/traces/P/run00041.npz",
+     "sha256_16": "b33966ef09a2f996"
+    },
+    {
+     "file": "results/phase5/traces/P/run00042.npz",
+     "sha256_16": "67e450f8b28c4f56"
+    },
+    {
+     "file": "results/phase5/traces/P/run00043.npz",
+     "sha256_16": "0df8559169089f1a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00044.npz",
+     "sha256_16": "c2241c133a990c4a"
+    },
+    {
+     "file": "results/phase5/traces/P/run00045.npz",
+     "sha256_16": "c2a416cce1645326"
+    },
+    {
+     "file": "results/phase5/traces/P/run00046.npz",
+     "sha256_16": "f5930a87f12a50da"
+    },
+    {
+     "file": "results/phase5/traces/P/run00047.npz",
+     "sha256_16": "4d54164ebee82dc6"
+    }
+   ],
+   "note": "(a) every MPC solve of the kept fault-run traces of P (repetition 0, 48 runs); (b) the 99th percentile of the estimator cycle (observers, IMM and, for B3, the classifier) of every run of P and B3; two runs shared the two cores of the machine throughout the campaign"
+  }
+ },
+ "provenance": {
+  "code_digest": "c6cbc1cddfc2ade0",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-29T17:50:01Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

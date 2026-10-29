@@ -1,0 +1,22 @@
+{
+ "hashes": {
+  "protocol": "10331039ba40774c",
+  "controller_config": "71c8e8640f29365f",
+  "b3_config": "c1a51875fc7b0e23",
+  "b3_model": "813b05ed8607c087",
+  "b2_config": "aee6e9a39eb377fa",
+  "recovery_library": "a8749c838681c808",
+  "safe_poses": "994fb7d2aaa623a3",
+  "controller_digest": "2e03873280e4d102",
+  "learning_digest": "8aa62569041d0e4b"
+ },
+ "provenance": {
+  "code_digest": "c6cbc1cddfc2ade0",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-10-27T17:48:43Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ }
+}

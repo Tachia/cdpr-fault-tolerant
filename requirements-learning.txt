@@ -1,0 +1,8 @@
+# Phase 4 (learned fault classifier) on top of requirements.txt. Versions used for the stored results.
+# The PyPI wheel of torch for Linux brings the CUDA libraries (several GB); on a machine without a
+# GPU the CPU build is enough:  pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+# The stored results were produced with the default PyPI wheel (torch 2.14.1+cu130) running on the CPU.
+# Whether the CPU build gives bit-identical weights has not been checked; `reproduce.py phase4 --only test`
+# checks the evaluation from the stored models in either build.
+torch==2.14.1
+optuna==5.0.0

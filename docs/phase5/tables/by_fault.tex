@@ -1,0 +1,34 @@
+% written by scripts/phase5_tables.py from results/phase5/analysis.json; do not edit
+\begin{table}[h]
+\centering\small
+\caption{Fault runs by method and fault type, both paths. Lost: platform lost; correct: fault declared with the correct mode; delay: median of the correct declarations (ms); margin: median of the smallest tension margin in the transient (N); outside: median share of the transient with a cable outside its bounds (\%); error: median RMS position error after the transient (mm); recovered: error back in the band of the fault-free runs for 1~s before the run ended, and the median time to that (s).}\label{tab:byfault}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}llrrrrrrrrr@{}}
+\toprule
+Fault & Method & Runs & Lost & Correct & Delay & Margin & Outside & Error & Recovered & Time \\
+\midrule
+Break & P & 208 & 11/208 & 208/208 & 17 & $-$10.0 & 5.1 & 5.6 & 181/208 & 0.27 \\
+ & A1 & 208 & 11/208 & 208/208 & 17 & $-$10.0 & 5.2 & 5.7 & 182/208 & 0.28 \\
+ & A2 & 208 & 38/208 & 208/208 & 17 & $-$24.5 & 86.5 & 72.7 & 74/208 & 1.01 \\
+ & A5 & 208 & 20/208 & 208/208 & 17 & $-$10.2 & 20.2 & 5.5 & 173/208 & 0.70 \\
+ & B0 & 208 & 122/208 & 0/208 & -- & $-$31.9 & 79.4 & 83.4 & 0/208 & -- \\
+ & B1 & 208 & 4/208 & 208/208 & 0 & $-$8.2 & 2.1 & 4.8 & 197/208 & 0.19 \\
+ & B2 & 208 & 65/208 & 208/208 & 22 & $-$38.7 & 19.5 & 23.8 & 93/208 & 0.90 \\
+ & B3 & 208 & 25/208 & 208/208 & 30 & $-$10.0 & 8.8 & 6.3 & 157/208 & 0.33 \\
+ & B3T & 64 & 44/64 & 11/64 & 532 & $-$76.7 & 81.8 & 70.2 & 19/64 & 0.43 \\
+Loss of effectiveness & P & 208 & 0/208 & 207/208 & 23 & 26.9 & 0.0 & 18.2 & 80/208 & 0.00 \\
+ & A1 & 208 & 0/208 & 208/208 & 23 & 26.7 & 0.0 & 18.2 & 80/208 & 0.00 \\
+ & B0 & 208 & 1/208 & 0/208 & -- & 24.5 & 0.0 & 31.9 & 55/208 & 0.00 \\
+ & B1 & 208 & 0/208 & 208/208 & 0 & 27.3 & 0.0 & 18.2 & 80/208 & 0.00 \\
+ & B2 & 208 & 19/208 & 0/208 & -- & 17.5 & 0.0 & 62.2 & 48/208 & 0.45 \\
+ & B3 & 208 & 0/208 & 206/208 & 33 & 26.5 & 0.0 & 18.2 & 80/208 & 0.00 \\
+ & B3T & 64 & 29/64 & 5/64 & 32 & 4.0 & 0.0 & 33.7 & 35/64 & 0.00 \\
+Bias & P & 208 & 0/208 & 208/208 & 41 & 37.0 & 0.0 & 5.3 & 206/208 & 0.00 \\
+ & A1 & 208 & 0/208 & 208/208 & 42 & 37.1 & 0.0 & 5.3 & 206/208 & 0.00 \\
+ & B0 & 208 & 0/208 & 0/208 & -- & 36.0 & 0.0 & 8.1 & 153/208 & 0.00 \\
+ & B1 & 208 & 0/208 & 208/208 & 0 & 37.2 & 0.0 & 5.4 & 206/208 & 0.00 \\
+ & B2 & 208 & 2/208 & 0/208 & -- & 35.3 & 0.0 & 16.1 & 199/208 & 0.00 \\
+ & B3 & 208 & 0/208 & 184/208 & 79 & 37.0 & 0.0 & 5.7 & 200/208 & 0.00 \\
+ & B3T & 64 & 22/64 & 0/64 & -- & 17.1 & 0.0 & 18.4 & 42/64 & 0.00 \\
+\bottomrule
+\end{tabular}\end{adjustbox}
+\end{table}

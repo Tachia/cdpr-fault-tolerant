@@ -1,0 +1,9 @@
+jacobian_vs_fd_max_rel_err 8.95e-10
+mass_relation_max_abs 1.78e-15  min_eig_M 0.495
+gravity_relation_max_abs 7.11e-15
+skew_Mdot_2C_max_abs 3.55e-15
+lagrange_vs_newton_euler_max_abs 9.91e-11
+same_check_without_centripetal_force_max_abs 3.72e+00
+equilibrium_tensions_N [151.42, 151.42, 151.42, 151.42, 58.58, 58.58, 58.58, 58.58]  max_abs_xdot 1.80e-10
+energy_drift_over_KE0_1s_dt1e-4 3.49e-10
+step_halving_pose_diff 4e-4vs2e-4 2.36e-13  2e-4vs1e-4 1.64e-14  ratio 14.4

@@ -1,0 +1,132 @@
+# Protocol of Phase 5: the evaluation campaign.
+# Written on 27 October 2026, before any run with an evaluation seed (200000 and up) was simulated.
+# Every Phase 5 script reads its settings from this file and stamps its SHA-256 prefix into its
+# output; a change after the first evaluation run is recorded here with the reason.
+# Pilot runs (seeds 900000 and up) are used only to time the methods and to check the logs; no
+# numerical setting of any method is chosen on them.
+#
+# How the learned classifier enters the controller (decided before the evaluation runs). The
+# classifier takes the place of the IMM's mode probabilities; the IMM's filters keep running,
+# because the controller also needs from the IMM the state of the platform and, after a
+# declaration, the state and tension deficit of the declared mode, which a classifier does not
+# give. Two arms were planned: the probabilities used for the declaration only (the MPC switching
+# after it, as in A1), and used also for the fault scenarios of the probability-aware MPC (as in P).
+# The first pilot run with the second arm (pilot seed 900000, break of cable 1 on T1, with the
+# Phase 4 model) showed a positive feedback: as soon as it was armed the classifier gave the fault
+# modes about 15 % together (4 % the largest), the MPC tightened against the two most probable,
+# the motion this produced was unlike anything in the classifier's training runs (run without
+# tightening), within 30 ms its healthy probability fell below 1e-3, and an actuator fault of
+# winch 2 was declared falsely 0.35 s after arming. The same classifier declaring only kept the
+# healthy mode at 0.83 to 0.87 over the same interval and declared the break correctly. The arm
+# that declares only is therefore the learned baseline B3 (the way learned detectors are used in
+# the literature), and the arm with tightening is kept as a secondary arm, B3T, to measure this
+# effect over the whole campaign.
+#
+# Amendment 1 (27 October 2026, before any result was analysed). The campaign was started at
+# 14:20 UTC with B2 at the gains of the first version of scripts/phase5_b2_gains.py (20 rad/s).
+# Its first eight B2 runs (breaks on T1, repetition 0) left the tension bounds for 31 to 45 % of
+# the pre-fault window and lost the platform in all eight. The gain study's own runs had shown the
+# same tendency at 20 rad/s (up to 31.5 % of the time outside the bounds on T2), which its rule
+# (smallest error among the settings that lose no run) did not weigh. B2's gains were therefore
+# chosen again on the same calibration runs, on a finer grid, with a rule that requires the
+# tension bounds to be kept, and its thresholds calibrated again on its own calibration runs with
+# these gains (scripts/phase5_b2_gains.py, phase5_b2_runs.py, phase5_b2_calibrate.py; the first
+# settings are kept in results/phase5_b2_v1/). B2's calibration runs have declarations disabled,
+# so B2 was then run as a whole on the 32 break runs of its calibration set: it declared all of
+# them but lost the platform in 24, as it tilted towards the pose of the recovery plan. The
+# proposed controller changes its MPC weights after a break declaration (fixed in Phase 3 on
+# calibration runs); so that B2 is treated alike, its gains after a break declaration were chosen
+# on those 32 runs by a rule fixed before them (scripts/phase5_b2_postbreak.py; the code gained
+# the option, cdpr_ft/control/ftc.py, ct_gains_post, used by B2 only). No other setting of any
+# method changed. The 75 rows
+# of the first start (all methods, breaks on T1, repetition 0) are kept as a record in
+# results/phase5_first_start/ and enter no result; the campaign was started again from its first
+# run under this version of the protocol. The same amendment states in full how the recovery time
+# is computed (metrics, below).
+
+controller:
+  file: controller_phase3.yaml      # frozen Phase 3 configuration (sha256/16 71c8e8640f29365f), unchanged
+  # Accommodation of actuator faults, as frozen: after an actuator declaration the tension loop of
+  # the faulty winch is corrected by the IMM's deficit estimate, while the IMM keeps the commands as
+  # its input. Its A_i filter then estimates the deficit left after the correction, and the pair
+  # settles at about half the true deficit (pilot: 27 to 32 N against 54 to 63 N for rho = 0.3,
+  # post-fault position error about 25 mm). Giving the IMM the corrected command removes the bias in
+  # the steady state but made the loop unstable for rho = 0.6 (pilot, cable 5, both paths: platform
+  # lost twice, kept twice with the frozen scheme), so the frozen scheme is kept and the evaluation
+  # reports its deficit error (metric deficit_rmse_N against the true deficit of the plant).
+
+b3:                                 # learned classifier trained on both paths (Phase 4b), for B3 and B3T
+  file: configs/classifier_phase4b.yaml
+b2:                                 # threshold detection: gains and thresholds chosen on B2's own calibration runs (seeds 140000 and 150000 and up)
+  file: configs/b2_phase5.yaml
+
+methods:
+  # P proposed; A1 no probability-aware tightening; A2 no re-planning; A5 planner solved online;
+  # B0 no fault tolerance; B1 oracle; B2 threshold detection with computed torque and tension
+  # distribution; B3 learned classifier in place of the IMM probabilities for the declaration (MPC
+  # switching after it, as A1); B3T the same classifier also in the fault scenarios of the MPC (as
+  # P), secondary arm. See cdpr_ft/eval/campaign.py.
+  fault: [P, A1, A2, A5, B0, B1, B2, B3, B3T]
+  fault_types_of:                   # methods run only on some fault types
+    A2: [break]                     # before and without a break declaration A2 is P exactly
+    A5: [break]                     # the planner acts on break declarations only
+  fault_free: [P, A1, B2, B3, B3T]  # B0, B1 and A2 behave as A1 or P without a fault
+  subset:                           # methods run on part of the runs (budget, from the pilot timing)
+    B3T: {fault_repetitions: 4, fault_free: 30}   # secondary arm, about twice as costly per run (its MPC carries
+                                                   # more scenarios); its false alarms were frequent in the pilot, and
+                                                   # 192 fault and 60 fault-free runs, paired with B3, measure them
+
+runs:
+  trajectories: [T1, T2]
+  seed_base: 200000                 # fault runs of path k: 200000 + 10000 k + j; fault-free: 220000 + 10000 k + r
+  pilot_seed_base: 900000
+  repetitions: 13                   # per (path, fault type, cable): 104 fault runs per path and type
+  fault_types: [break, loe, bias]
+  values:                           # alternating with the repetition index
+    break: [0.0]
+    loe: [0.3, 0.6]                 # rho
+    bias: [0.1, -0.1]               # fraction of the holding torque at the start pose
+  noise: [1.0, 2.0]                 # factor on the sensor noise, alternating every two repetitions
+  onset: [3.0, 7.0]                 # uniform [s], drawn from seed + 500000, rounded to 1 ms
+  after_onset: 4.0                  # [s] a fault run ends this long after the onset, at the end of the path, or when the platform is lost
+  duration: 16.0                    # [s] path duration; fault-free runs last the whole path
+  fault_free: 100                   # per path
+  parameters: randomised as in the specification (Sec. 8), from the seed
+
+metrics:                            # cdpr_ft/eval/campaign.py, evaluate()
+  t_from: 2.0                       # [s] start of the pre-fault window (arming time of the IMM)
+  transient: 2.0                    # [s] the transient window is [t_f, t_f + 2 s]; the post window follows it
+  deficit_settle: 0.5               # [s] deficit errors are counted from the declaration plus this
+  trace_every: 5                    # inner samples per trace sample (200 Hz)
+  tracking: position and rotation error to the active reference (nominal before a declaration, the plan after); RMSE and maximum per window
+  tension: smallest margin of the intact cables to [t_min, t_max] per window; share of the window with any intact cable outside
+  detection: declared mode and time; delay from the onset; false alarm (declaration in a fault-free run or before the onset); missed (no declaration by the end of the run)
+  recovery_time: first time after the onset from which the position error to the active reference stays below a band for 1 s; the band is twice the 95th percentile of the position error from 2 s, pooled over all samples of the fault-free runs of the same path of the method that behaves as this one before a fault (P for P, A2 and A5; A1 for A1, B0 and B1; B2, B3 and B3T their own); a lost run, or one that ends before its error has stayed in the band for 1 s, has not recovered; computed in the analysis from the traces (amendment 1)
+  outcome: platform lost (tilt above 30 deg, frame left, drum window left); for breaks also the planner branch and the distance to the target of the plan at the end
+  compute: MPC and estimator cycle times, mean, 99th percentile and maximum
+
+analysis:                           # fixed before the runs
+  primary:                          # each with its comparison and its family for the Holm correction
+    - {endpoint: platform lost after a break, comparisons: [P vs B0, P vs B2, P vs B3, P vs A2]}
+    - {endpoint: fault declared with the correct mode, comparisons: [P vs B2, P vs B3, A1 vs B3]}
+    - {endpoint: declaration delay of correct declarations, comparisons: [P vs B2, P vs B3, A1 vs B3]}
+    - {endpoint: false alarms per hour of armed fault-free operation, comparisons: [P vs A1, P vs B2, P vs B3]}
+    - {endpoint: smallest tension margin in the transient window, comparisons: [P vs A1, B3T vs B3]}
+    - {endpoint: share of the transient window with a tension outside its bounds, comparisons: [P vs A1, P vs B1]}
+  secondary: tracking errors by window, recovery time, planner branches and target errors, deficit estimation error, online planner (A5), the 2 x 2 diagnosis x tightening table (P, A1, B3T, B3), false alarms of B3T against B3, results by path, fault type, cable group (upper 1-4, lower 5-8) and noise level, computation times
+  statistics:
+    rates: share with a 95 % Wilson interval; paired differences with a 95 % bootstrap interval over runs and McNemar's exact test
+    continuous: median with a 95 % bootstrap interval; paired differences by the Wilcoxon signed-rank test
+    false_alarm_rate: per hour of armed time (from 2 s to the onset or to the end), exact Poisson interval
+    bootstrap: 2000 resamples over runs, seed 0
+    multiplicity: Holm correction within each primary endpoint
+  reporting: every run is reported; no run is excluded. Lost runs enter the tracking metrics up to the time they ended.
+
+storage:
+  rows: results/phase5_work/rows.jsonl (all runs; condensed into results/phase5/ for the repository)
+  traces: "results/phase5_work/traces/<method>/run<run>.npz (all runs, regenerated from the seeds); kept in the repository for the figures, fixed in advance: repetition 0 of every path, fault type and cable, and fault-free repetitions 0-1, for every method"
+
+not_run:                            # items of the specification not in this campaign, with the reason
+  - double faults: the IMM and the declaration logic handle one fault; after a declaration the mode set is not re-armed, so a second fault is outside the method as built (stated as a limitation)
+  - A3 (variants of the IMM mode set) and A4 (external pose sensor): not built; listed as further work
+  - T3 point-to-point paths: not built in Phase 1; the two paths T1 and T2 are used

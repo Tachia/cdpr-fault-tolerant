@@ -1,0 +1,12 @@
+nominal {'0.001->0.0005': (0.0001113, True), '0.0005->0.00025': (9.47e-05, True), '0.00025->0.000125': (0.0002055, True), '0.000125->6.25e-05': (1.64e-05, True), '6.25e-05->3.125e-05': (8.52e-05, True)}
+break_lower {'0.001->0.0005': (6.2e-06, True), '0.0005->0.00025': (1.5e-06, True), '0.00025->0.000125': (1.2e-06, True), '0.000125->6.25e-05': (1e-07, True), '6.25e-05->3.125e-05': (0.0, True)}
+break_upper {'0.001->0.0005': (0.0126936, False), '0.0005->0.00025': (0.0064451, False), '0.00025->0.000125': (0.006841, False), '0.000125->6.25e-05': (0.0027411, False), '6.25e-05->3.125e-05': (0.000273, True)}
+loe {'0.001->0.0005': (4e-07, True), '0.0005->0.00025': (9e-07, True), '0.00025->0.000125': (1e-07, True), '0.000125->6.25e-05': (4e-07, True), '6.25e-05->3.125e-05': (4e-07, True)}
+stiff_break {'0.001->0.0005': (0.0300562, False), '0.0005->0.00025': (0.0166203, False), '0.00025->0.000125': (0.0037403, False), '0.000125->6.25e-05': (0.0004262, True), '6.25e-05->3.125e-05': (0.0001579, True)}
+break_upper_noise_free {'0.001->0.0005': (0.0126849, False), '0.0005->0.00025': (0.0064367, False), '0.00025->0.000125': (0.0095331, False), '0.000125->6.25e-05': (0.0035486, False), '6.25e-05->3.125e-05': (0.0012445, False)}
+stiff_break_noise_free {'0.001->0.0005': (0.025706, False), '0.0005->0.00025': (0.0138348, False), '0.00025->0.000125': (0.000376, True), '0.000125->6.25e-05': (0.0014639, False), '6.25e-05->3.125e-05': (0.0002161, True)}
+step 0.001: metrics above 0.1 % on halving -> {'break_upper': ('max_tension_N', 0.012694), 'stiff_break': ('max_tension_N', 0.030056), 'break_upper_noise_free': ('max_tension_N', 0.012685), 'stiff_break_noise_free': ('max_tension_N', 0.025706)}
+step 0.0005: metrics above 0.1 % on halving -> {'break_upper': ('max_tension_N', 0.006445), 'stiff_break': ('max_tension_N', 0.01662), 'break_upper_noise_free': ('max_tension_N', 0.006437), 'stiff_break_noise_free': ('max_tension_N', 0.013835)}
+step 0.00025: metrics above 0.1 % on halving -> {'break_upper': ('max_tension_N', 0.006841), 'stiff_break': ('max_tension_N', 0.00374), 'break_upper_noise_free': ('max_tension_N', 0.009533)}
+step 0.000125: metrics above 0.1 % on halving -> {'break_upper': ('max_tension_N', 0.002741), 'break_upper_noise_free': ('max_tension_N', 0.003549), 'stiff_break_noise_free': ('max_tension_N', 0.001464)}
+step 6.25e-05: metrics above 0.1 % on halving -> {'break_upper_noise_free': ('max_tension_N', 0.001245)}

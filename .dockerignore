@@ -1,0 +1,9 @@
+.git
+build/
+reproduction/
+results/phase3_calib/*/run*.npz
+results/phase3_calib/*/runs.json
+**/__pycache__
+.pytest_cache
+.venv
+venv
