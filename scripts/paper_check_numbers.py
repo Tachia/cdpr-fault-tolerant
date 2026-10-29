@@ -341,6 +341,8 @@ claim(f"scenarios: threshold \\mu_s, at most & 10^-3, {ft['max_fault_scenarios']
 claim(f"time scaling: horizon, \\kappa_\\min & {pl_['horizon']:.0f} s, {pl_['kappa_min']:g}")
 claim(f"T, intervals; s_p, s_\\min & {rc['t_lo']:.0f} s, {rc['steps']}; {rc['s_path']:.0f}, {rc['s_min']:.0f} N", rc["t_lo"] == rc["t_hi"])
 claim(f"library: break instants; detection delay & every 50 ms; {1e3 * ft['library_delay']:.0f} ms")
+claim(f"the stage cost of a fault scenario is scaled by {mp['fault_track_scale']:g}")
+claim(f"a soft tension margin of {rc['s_soft']:.0f} N, penalised quadratically", rc["w_margin"] > 0)
 
 print(f"{PASSED} claims checked against the stored results")
 (ROOT / "paper" / "manuscript" / "number_check.txt").write_text(

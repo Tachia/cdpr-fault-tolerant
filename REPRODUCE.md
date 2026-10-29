@@ -69,7 +69,7 @@ Times are those measured on the reference machine (2 cores, Section 6).
 | `python reproduce.py phase4b` | The classifier trained on both paths: 352 closed-loop runs, training, calibration, freeze and the offline test | about 2.1 h |
 | `python reproduce.py phase5 --only campaign_subset,analysis` | 28 jobs of the evaluation campaign simulated again (every method on four fixed runs) and compared with the stored rows and traces; the statistics recomputed from the stored rows | about 11 min |
 | `python reproduce.py phase5` | The settings of baseline B2 (gain studies, its calibration runs, thresholds), the freeze, the campaign subset and the statistics | about 1.1 h |
-| `python reproduce.py phase6` | The workspace slices of figure 3, the eleven figures and the three tables of the paper, compared byte for byte | about 2.5 min |
+| `python reproduce.py phase6` | The workspace slices of figure 2, the eleven figures and the three tables of the paper, compared byte for byte | about 2.5 min |
 | `python reproduce.py phase7` | Every checked number of the manuscript against the stored results (fails if any disagrees) | 15 s |
 | `python reproduce.py all` | All of the above | about 14 h |
 
@@ -220,4 +220,6 @@ The search and the training ran while other work used the machine at times, so t
 **Phase 6 (29 October 2026).** `reproduce.py phase6` in the working copy: the workspace slices (68,835 values), the eleven figures (22 PDF and PNG files, compared byte for byte), their manifest and the six tables came out identical, in 2.2 min.
 
 **Phase 7 (29 October 2026).** After the manuscript was written and revised, the paper keeps three tables (parameters, methods, results) and prints the online-planner ablation as A3; `reproduce.py phase6` then reproduced every figure and table byte for byte, and `reproduce.py phase7` confirmed the 80 checked passages of the manuscript against the stored results.
+
+**Phase 8 (29 October 2026).** After the internal review the figure files were renamed in the order in which the manuscript shows them (`fig01` to `fig11`), and one label of the block diagram (figure 3) was corrected; `reproduce.py phase6` then reproduced every figure and table byte for byte, `reproduce.py phase7` confirmed the 82 checked passages, and the 56 tests pass.
 

@@ -79,3 +79,5 @@ PASS  scenarios: threshold \mu_s, at most & 10^-3, 2 fault scenarios
 PASS  time scaling: horizon, \kappa_\min & 2 s, 0.25
 PASS  T, intervals; s_p, s_\min & 1 s, 15; 5, 10 N
 PASS  library: break instants; detection delay & every 50 ms; 15 ms
+PASS  the stage cost of a fault scenario is scaled by 0.1
+PASS  a soft tension margin of 20 N, penalised quadratically

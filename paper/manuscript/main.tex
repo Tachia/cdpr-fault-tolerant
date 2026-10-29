@@ -56,18 +56,19 @@
 \author[1,2]{Alexander V. Maloletov}[orcid=0000-0002-7312-2944]
 \affiliation[1]{organization={Institute of Robotics and Computer Vision, Innopolis University},
   addressline={Universitetskaya St. 1}, city={Innopolis}, postcode={420500}, country={Russia}}
-\affiliation[2]{organization={Volgograd State Technical University}, city={Volgograd}, country={Russia}}
+\affiliation[2]{organization={Volgograd State Technical University},
+  addressline={Lenin Avenue 28}, city={Volgograd}, country={Russia}}
 \cortext[1]{Corresponding author}
 
 \begin{abstract}
-A cable driven parallel robot that loses a cable has a fraction of a second to move its platform to a pose that the remaining cables can still hold. We present a fault tolerant controller for the eight cable robot IPAnema~2 that identifies the fault from the motor encoders and currents of the winches alone and answers a cable break with a recovery motion computed in advance. Extended state observers estimate the cable tensions at each winch, and an interacting multiple model estimator over seventeen modes separates cable breaks from actuator faults at the platform. A model predictive controller tracks the task within the tension bounds and, once a break is declared, follows a stored optimal recovery path that brings the platform to rest at a pose the seven remaining cables can hold. The controller was compared with eight alternatives in a paired simulation study of 624 fault cases and 200 fault free runs on randomised robots with elastic cables, winch dynamics and sensor noise. It identified 623 of the 624 faults correctly, declared every cable break within 19~ms and lost the platform after 11 of 208 cable breaks, against 122 without fault tolerance and 65 with a classical threshold based pipeline. A recurrent neural classifier trained on the same signals identified faults later and less reliably and raised frequent false alarms, and when its probabilities also shaped the constraints of the controller, the platform was lost after 44 of 64 breaks. Weighting the fault scenarios of the controller by their probabilities before a declaration, the idea this study set out to test, gave no measurable benefit, because the model based diagnosis declares within one control period. The controller does not yet run in real time, which is the main step before tests on hardware.
+A cable driven parallel robot that loses a cable has a fraction of a second to move its platform to a pose that the remaining cables can still hold. We present a fault tolerant controller for the eight cable robot IPAnema~2 that identifies the fault from the motor encoders and currents of the winches alone and answers a cable break with a recovery motion computed in advance. Extended state observers estimate the cable tensions at each winch, and an interacting multiple model estimator over seventeen modes separates cable breaks from actuator faults at the platform. A model predictive controller tracks the task within the tension bounds and, once a break is declared, follows a stored optimal recovery path that brings the platform to rest at a pose the seven remaining cables can hold. The controller was compared with eight alternatives in a paired simulation study of 624 fault cases and 200 fault free runs on randomised robots with elastic cables, winch dynamics and sensor noise. It identified 623 of the 624 faults correctly, declared every cable break within 19~ms and lost the platform after 11 of 208 cable breaks, against 122 without fault tolerance and 65 with a classical threshold based pipeline. A recurrent neural classifier trained on the same signals identified faults later and less reliably and raised frequent false alarms, and when its probabilities also shaped the constraints of the controller, the platform was lost after 44 of 64 breaks. Weighting the fault scenarios of the controller by their probabilities before a declaration, the idea this study set out to test, gave no measurable benefit, because the model based diagnosis declares a cable break within one control period. The controller does not yet run in real time, which is the main step before tests on hardware.
 \end{abstract}
 
 \begin{highlights}
 \item A 17 mode IMM isolates every cable break within 19 ms from winch signals alone
 \item Recovery plans computed offline keep the platform after 197 of 208 cable breaks
 \item A learned fault classifier should not shape the constraints of the controller
-\item Probability weighted MPC gave no benefit with a diagnosis this fast
+\item Probability weighted MPC gave no benefit, as breaks are declared within one period
 \end{highlights}
 
 \begin{keywords}
@@ -118,7 +119,7 @@ The world frame has its $z$ axis pointing upward. The pose of the platform is de
 \begin{equation}\label{eq:q}
 \vc q=\begin{bmatrix}\vc p\\ \vc\varphi\end{bmatrix}\in\mathbb R^{6},\qquad \mt R(\vc\varphi)=\mt R_z(\psi)\,\mt R_y(\vartheta)\,\mt R_x(\phi),
 \end{equation}
-where $\vc p$ is the position of $P$ and $\vc\varphi=[\phi,\vartheta,\psi]^\top$ are ZYX Euler angles. The angular velocity follows from the Euler rates as $\vc\omega=\mt E(\vc\varphi)\dot{\vc\varphi}$, with $\mt E$ singular only at $\vartheta=\pm\pi/2$, far outside the tilt this robot can hold, and we collect the velocities in the twist $\vc\nu=[\dot{\vc p}^\top,\vc\omega^\top]^\top=\mt H(\vc q)\dot{\vc q}$ with $\mt H=\operatorname{blkdiag}(\eye_3,\mt E)$. Cable $i$ runs from the attachment point to the anchor, so its vector, length and direction are
+where $\vc p$ is the position of $P$ and $\vc\varphi=[\phi,\vartheta,\psi]^\top$ are ZYX Euler angles. Each cable is taken to leave the frame at its fixed anchor point, and the small motion of the exit point on the guiding pulley is neglected. The angular velocity follows from the Euler rates as $\vc\omega=\mt E(\vc\varphi)\dot{\vc\varphi}$, with $\mt E$ singular only at $\vartheta=\pm\pi/2$, far outside the tilt this robot can hold, and we collect the velocities in the twist $\vc\nu=[\dot{\vc p}^\top,\vc\omega^\top]^\top=\mt H(\vc q)\dot{\vc q}$ with $\mt H=\operatorname{blkdiag}(\eye_3,\mt E)$. Cable $i$ runs from the attachment point to the anchor, so its vector, length and direction are
 \begin{equation}\label{eq:cable}
 \vc l_i=\vc a_i-\vc p-\mt R\vc b_i,\qquad l_i=\lVert\vc l_i\rVert,\qquad \vc u_i=\vc l_i/l_i,
 \end{equation}
@@ -174,7 +175,7 @@ Every winch carries a synchronous servo motor of the Bosch Rexroth IndraDyn~S se
 \begin{equation}\label{eq:winch}
 I_m\ddot\theta_i=\tau_i^{\mathrm{act}}-r_d t_i,
 \end{equation}
-where $\tau_i^{\mathrm{act}}$ is the torque the motor delivers and $I_m$ the rotor inertia; friction is left out, as in the winch analysis of \citet{ida2022actuators}, because no data on it are published. The winch is not small next to the platform: seen from the cable, the rotor of 0.3~kg\,cm$^2$ acts like a mass of $I_m/r_d^2=1.7$~kg, against a platform of 10~kg. The drum limits the change of the free length to 6~m, a window that we centred on the lengths each cable takes over the static workspace. Equations \eqref{eq:NE}, \eqref{eq:tension} and \eqref{eq:winch} together form the model of the simulator, with the $6+n$ coordinates $(\vc q,\vc\theta)$.
+where $\tau_i^{\mathrm{act}}$ is the torque the motor delivers and $I_m$ the rotor inertia; friction is left out, as in the winch analysis of \citet{ida2022actuators}, because no data on it are published. The winch is not small next to the platform: seen from the cable, the rotor of 0.3~kg\,cm$^2$ acts like a mass of $I_m/r_d^2=1.7$~kg, against a platform of 10~kg. Equation \eqref{eq:winch} is the Lagrange equation of the coordinate $\theta_i$, with the kinetic energy $\tfrac12I_m\dot\theta_i^2$ and the virtual work $(\tau_i^{\mathrm{act}}-r_dt_i)\,\delta\theta_i$ of the motor and the cable on the drum, so that \eqref{eq:EL} and \eqref{eq:winch} together are the Lagrange equations of the robot in the coordinates $(\vc q,\vc\theta)$. The drum limits the change of the free length to 6~m, a window that we centred on the lengths each cable takes over the static workspace. Equations \eqref{eq:NE}, \eqref{eq:tension} and \eqref{eq:winch} form the model of the simulator.
 
 \subsection{Faults and sensors}\label{sec:faults}
 
@@ -199,7 +200,7 @@ a linear programme whose solution is also the tension distribution farthest from
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig03_postfault_workspace.pdf}
+\includegraphics[width=\textwidth]{fig02_postfault_workspace.pdf}
 \caption{A cable break leaves the level platform almost no pose near the task when the lost cable is an upper one. Shading: tension margin \eqref{eq:margin} of the level platform at the poses where all remaining cables stay within $[t_{\min},t_{\max}]=[10,200]$~N and within their drum windows, in the horizontal plane $z=3$~m (a--c) and the vertical plane $y=0$ (d--f), with all cables (a, d), after the loss of the upper cable~1 (b, e) and after the loss of the lower cable~5 (c, f). Circles: poses in the same plane that the remaining cables hold with a margin of at least 10~N once the platform may tilt by up to $20^\circ$; these are the targets of the recovery plans. Lines: the path T1 and the extent of the helix T2.}\label{fig:workspace}
 \end{figure*}
 
@@ -238,11 +239,11 @@ The platform level diagnosis runs an IMM estimator \citep{blom1988imm} over the 
 \begin{equation}\label{eq:modes}
 \vc t^{(0)}=\vc t_d,\qquad \vc t^{(\mathcal B_i)}=(\eye-\vc e_i\vc e_i^\top)\vc t_d,\qquad \vc t^{(\mathcal A_i)}=\vc t_d-\vc e_i\delta_i,
 \end{equation}
-where $\delta_i$ is the unknown deficit of \eqref{eq:bias}. The mode $\mathcal A_i$ merges the loss of effectiveness and the bias, because both produce the same signature at the platform. Every filter carries the state $\vc x=[\vc q^\top,\vc\nu^\top,\delta,\vc w_b^\top,\vc\beta^\top,\kappa]^\top\in\mathbb R^{28}$. The deficit $\delta$ is a random walk used only by the modes $\mathcal A_i$. The other three groups describe what the nominal model gets wrong and are shared by all modes: $\vc w_b$ is a slowly varying wrench that absorbs the errors in mass, centre of mass and inertia, $\vc\beta$ holds offsets of the length readings that absorb the errors of the anchors and of the homing, and $\kappa$ is the ratio of the true to the nominal axial stiffness. They are needed because the deficit of a mode $\mathcal A_i$ is a free parameter: without them, on a randomised plant, the filters of the actuator modes absorbed the model mismatch and won in fault free runs. A fault, in contrast, is an abrupt change that the slow bias states cannot follow on the time scale of the diagnosis, so it remains for the fault modes to explain.
+where $\delta_i$ is the unknown deficit of \eqref{eq:bias}. The mode $\mathcal A_i$ merges the loss of effectiveness and the bias, because both produce the same signature at the platform. Every filter carries the state $\vc x=[\vc q^\top,\vc\nu^\top,\delta,\vc w_b^\top,\vc\eta^\top,\gamma]^\top\in\mathbb R^{28}$. The deficit $\delta$ is a random walk used only by the modes $\mathcal A_i$. The other three groups describe what the nominal model gets wrong and are shared by all modes: $\vc w_b$ is a slowly varying wrench that absorbs the errors in mass, centre of mass and inertia, $\vc\eta$ holds offsets of the length readings that absorb the errors of the anchors and of the homing, and $\gamma$ is the ratio of the true to the nominal axial stiffness. They are needed because the deficit of a mode $\mathcal A_i$ is a free parameter: without them, on a randomised plant, the filters of the actuator modes absorbed the model mismatch and won in fault free runs. A fault, in contrast, is an abrupt change that the slow bias states cannot follow on the time scale of the diagnosis, so it remains for the fault modes to explain.
 
 Each filter propagates the mean of \eqref{eq:NE}, with its own $\vc t^{(j)}$ and the wrench $\vc w_b$ added, over the period $\Delta_I=5$~ms by a fourth order Runge--Kutta step, and the covariance with the Jacobian obtained by algorithmic differentiation. The measurement is $\vc y=[\tilde{\vc l}_u^\top,\hat{\vc t}^\top]^\top$, the unstretched lengths read from the encoders and the tension estimates of the winches, and under mode $j$ its expected value is
 \begin{equation}\label{eq:h}
-\tilde l_{u,i}=\frac{\kappa EA\,l_i(\vc q)}{\kappa EA+t_i^{(j)}}+\beta_i,\qquad
+\tilde l_{u,i}=\frac{\gamma EA\,l_i(\vc q)}{\gamma EA+t_i^{(j)}}+\eta_i,\qquad
 \hat t_i=\begin{cases}0,&j=\mathcal B_i,\\ t_{d,i},&\text{otherwise},\end{cases}
 \end{equation}
 where the first relation is \eqref{eq:tension} solved for the free length and the second states that the tension loop holds $\hat t_i$ at its reference unless the cable has gone. The filters take the tension commands, averaged over the period, as their input rather than the tension estimates, which lag the true tensions by 9.5~ms; this also gives the IMM a model of the motion the controller itself produces. The fault modes enter only after the first 2~s, which gives the bias states time to converge at the start of the task.
@@ -291,7 +292,7 @@ Fig.~\ref{fig:architecture} shows how the parts fit together, and Algorithm~\ref
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.86\textwidth]{fig02_architecture.pdf}
+\includegraphics[width=0.86\textwidth]{fig03_architecture.pdf}
 \caption{The fault tolerant controller. The winch observers estimate the tensions $\hat{\vc t}$ from the encoder angles and motor currents; the IMM, driven by the tension commands $\vc t_d$ and fed with $\hat{\vc t}$ and the encoder lengths, returns the mode probabilities $\vc\mu$, the platform state $\hat{\vc x}$ and, for an actuator fault, the deficit $\hat\delta_i$ that the tension loop of that winch compensates. Before a declaration the MPC can weight up to two fault scenarios by their probabilities (dashed); after a break declaration its reference becomes the recovery plan stored for that cable and instant.}\label{fig:architecture}
 \end{figure*}
 
@@ -320,13 +321,13 @@ Fig.~\ref{fig:architecture} shows how the parts fit together, and Algorithm~\ref
 At each control instant the scenario set $\mathcal J=\{0\}\cup\{j:\mu_j\ge\mu_s\}$ holds the healthy mode and the fault modes whose probability exceeds $\mu_s=10^{-3}$, at most the two most probable ones, with weights $\tilde\mu_j=\mu_j/\sum_{l\in\mathcal J}\mu_l$. The controller solves
 \begin{equation}\label{eq:mpc}
 \begin{aligned}
-\min_{\vc t_0,\dots,\vc t_{N-1}}\ &\sum_{j\in\mathcal J}\tilde\mu_j\Big[\sum_{k=0}^{N-1}\big(\lVert\vc x^{(j)}_k-\vc x^{\mathrm{ref}}_k\rVert^2_{\mt Q}+\lVert\vc t_k-\vc t_{k-1}\rVert^2_{\mt R}\big)\\
+\min_{\vc t_0,\dots,\vc t_{N-1}}\ &\sum_{j\in\mathcal J}\tilde\mu_j\Big[\sum_{k=0}^{N-1}\big(\lVert\vc x^{(j)}_k-\vc x^{\mathrm{ref}}_k\rVert^2_{\mt Q_x}+\lVert\vc t_k-\vc t_{k-1}\rVert^2_{\mt Q_t}\big)\\
 &\qquad\quad+V_f^{(j)}(\vc x^{(j)}_N)\Big]\\
 \text{s.t.}\ &\vc x^{(j)}_{k+1}=\vc f_d\big(\vc x^{(j)}_k,\vc t^{(j)}(\vc t_k)\big),\quad\vc x^{(j)}_0=\hat{\vc x}^{(j)},\\
 &t_{\min}\le t_{k,i}\le t_{\max},\qquad j\in\mathcal J,
 \end{aligned}
 \end{equation}
-where $\vc f_d$ is \eqref{eq:NE} discretised over the control period and $\vc t^{(j)}(\cdot)$ the map \eqref{eq:modes}. All scenarios share one tension sequence, so the first command suits every mode that is still plausible. For the healthy mode the terminal cost $V_f^{(0)}$ penalises the distance to the reference; for a fault mode it pulls the predicted pose toward the nearest pose that the remaining cables hold with a margin of 10~N, looked up from sets stored offline. As $\mu_j$ grows, this term starts moving the platform toward the region in which it would survive fault $j$ before the fault is confirmed; we call this the probability aware tightening. \citet{raman2023cable} used IMM weights to blend the outputs of mode specific controllers, whereas in \eqref{eq:mpc} the probabilities weight predicted costs inside one optimisation, so the tension bounds hold whichever mode is true. With the healthy mode alone, \eqref{eq:mpc} is a tracking MPC with tension bounds whose first command also solves the tension distribution problem.
+where $\vc x^{(j)}_k=(\vc q,\vc\nu)$ is the platform state predicted under mode $j$, $\vc f_d$ is \eqref{eq:NE} discretised over the control period and $\vc t^{(j)}(\cdot)$ the map \eqref{eq:modes}. All scenarios share one tension sequence, so the first command suits every mode that is still plausible. For the healthy mode the terminal cost $V_f^{(0)}$ penalises the distance to the reference; for a fault mode it pulls the predicted pose toward the nearest pose that the remaining cables hold with a margin of 10~N, looked up from sets stored offline. As $\mu_j$ grows, this term starts moving the platform toward the region in which it would survive fault $j$ before the fault is confirmed; we call this the probability aware tightening. \citet{raman2023cable} used IMM weights to blend the outputs of mode specific controllers, whereas in \eqref{eq:mpc} the probabilities weight predicted costs inside one optimisation, so the tension bounds hold whichever mode is true. With the healthy mode alone, \eqref{eq:mpc} is a tracking MPC with tension bounds whose first command also solves the tension distribution problem. In the implementation the predictions also carry the bias wrench $\hat{\vc w}_b$ of the IMM, the stage cost of a fault scenario is scaled by 0.1, and two small terms are added, a pull toward the feedforward tensions of the reference and a penalty on predicted free lengths that approach the ends of their drum windows; the complete formulation is in the repository.
 
 The horizon is $N=12$ steps of 20~ms. The programme is written in CasADi \citep{andersson2019casadi} and solved by IPOPT \citep{wachter2006ipopt} with the exact Hessian, warm started from the shifted previous solution. After a break declaration the velocity weights are scaled down and the weight of the tension changes up (Table~\ref{tab:settings}), because the elasticity of the cables, which the prediction model leaves out, matters more with seven cables: at the end poses of the recovery plans the lowest elastic mode of the platform falls to 3.2 to 3.6~Hz, against 5.5~Hz at the home pose with eight cables. We do not claim recursive feasibility or closed loop stability for \eqref{eq:mpc}. The plant differs from the prediction model through the cable elasticity, the winch dynamics and the estimation errors, and the scenario set changes with time. The tension box itself never becomes infeasible, since it does not depend on the state; what can be lost is the ability to track, and the evaluation measures it instead of assuming it.
 
@@ -339,16 +340,16 @@ After the declaration of an actuator fault $\mathcal A_i$ the reference is kept,
 Once a break of cable $i$ is declared, the planner decides what the platform can still do, in two branches tried in order. In the first, time scaling, the remaining reference over the next 2~s is slowed down by the largest factor $\kappa\in[0.25,1]$ for which the margin \eqref{eq:margin}, with the inertial wrench of the slowed motion added to gravity, stays nonnegative at every sample with the seven cables. Below $\kappa=0.25$ the task no longer continues in any useful sense, and the second branch, recovery, brings the platform to rest within $T=1$~s at a pose the remaining cables hold with a margin of $s_{\min}=10$~N. The recovery path solves an optimal control problem on the rigid model with the remaining cables,
 \begin{equation}\label{eq:recovery}
 \begin{aligned}
-\min\ &\lVert\vc q_N-\hat{\vc q}\rVert^2_{\mt W_q}+h\sum_k w_v\lVert\vc\nu_k\rVert^2+h\sum_k w_a\Big\lVert\frac{\vc\nu_{k+1}-\vc\nu_k}{h}\Big\rVert^2\\
+\min\ &\lVert\vc q_N-\hat{\vc q}\rVert^2_{\mt Q_q}+h\sum_k w_v\lVert\vc\nu_k\rVert^2+h\sum_k w_a\Big\lVert\frac{\vc\nu_{k+1}-\vc\nu_k}{h}\Big\rVert^2\\
 &+w_r\sum_k\lVert\vc t_{k+1}-\vc t_k\rVert^2+w_s\sum_k s_k\\
 \text{s.t.}\ &\vc x_0=\hat{\vc x},\ \ \text{collocation of \eqref{eq:NE} on every interval},\\
-&t_{k,i}=0,\quad t_{\min}+s_p-s_k\le t_{k,l}\le t_{\max}-s_p+s_k,\\
+&t_{k,i}=0,\quad t_{\min}+s_p-s_k\le t_{k,l}\le t_{\max}-s_p+s_k,\ \ l\ne i,\\
 &s_k\ge0,\quad\lVert\dot{\vc p}_k\rVert\le v_{\max},\quad\lVert\vc\varphi_k\rVert_\infty\le25^\circ,\quad\vc\nu_N=\vc0,\\
 &\mt W(\vc q_N)\vc t_{\mathrm{hold}}+\vc w_g(\vc q_N)=\vc 0,\quad\lVert\vc\varphi_N\rVert_\infty\le20^\circ,\\
-&t_{\min}+s_{\min}\le t_{\mathrm{hold},l}\le t_{\max}-s_{\min},
+&t_{\min}+s_{\min}\le t_{\mathrm{hold},l}\le t_{\max}-s_{\min},\ \ l\ne i,
 \end{aligned}
 \end{equation}
-transcribed by Hermite--Simpson collocation \citep{kelly2017collocation} on 15 intervals of $h=T/15$ with the tensions constant over each, and solved with IPOPT. The terminal conditions say that the platform ends at rest at a pose the remaining cables hold, and the first term picks among those poses one close to the pose at the break. The twist and acceleration terms keep the motion direct and smooth, and the hard margin $s_p=5$~N is relaxed by slacks $s_k$, so the problem stays feasible from any state; nonzero slacks mark a third branch, a descent with the least violation of the bounds. We first joined the current state to the nearest safe pose with a quintic polynomial, but after an upper cable break no duration made such a path feasible, because the seven cables can only produce accelerations inside a narrow set that changes with the pose, and a polynomial of fixed shape does not stay in it.
+transcribed by Hermite--Simpson collocation \citep{kelly2017collocation} on 15 intervals of $h=T/15$ with the tensions constant over each, and solved with IPOPT. The terminal conditions say that the platform ends at rest at a pose the remaining cables hold, and the first term picks among those poses one close to the pose at the break. The twist and acceleration terms keep the motion direct and smooth, and the hard margin $s_p=5$~N is relaxed by slacks $s_k$, so the problem stays feasible from any state; nonzero slacks mark a third branch, a descent with the least violation of the bounds. Three constraints of the implementation are left out of \eqref{eq:recovery} for clarity: a soft tension margin of 20~N, penalised quadratically, which keeps tension in reserve for the feedback of the MPC, the acceleration limit of Table~\ref{tab:parameters}, and the drum windows of the remaining cables. We first joined the current state to the nearest safe pose with a quintic polynomial, but after an upper cable break no duration made such a path feasible, because the seven cables can only produce accelerations inside a narrow set that changes with the pose, and a polynomial of fixed shape does not stay in it.
 
 \subsection{A library of recovery plans}\label{sec:library}
 
@@ -416,7 +417,7 @@ The difference that matters most in closed loop is the false alarm. The classifi
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig10_learned_vs_model.pdf}
+\includegraphics[width=\textwidth]{fig07_learned_vs_model.pdf}
 \caption{Learned against model based diagnosis, offline and in closed loop, with 95\% Wilson intervals. (a) Fault free runs with a false alarm. (b) Fault runs declared with the correct mode. Offline: single tests on the same stored runs (8 fault free and 80 fault runs per path) of the classifier trained on T1, of the classifier trained on both paths and of the IMM. Closed loop: the evaluation (100 fault free and 312 fault runs per path). Training on both paths removes most of the failure to generalise to the helix, but the false alarms on T2 remain.}\label{fig:learned}
 \end{figure*}
 
@@ -426,7 +427,7 @@ The proposed controller lost the platform after 11 of the 208 breaks (5.3\%), ag
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig07_safety_after_break.pdf}
+\includegraphics[width=\textwidth]{fig08_safety_after_break.pdf}
 \caption{Safety after the 104 upper and 104 lower cable breaks of the evaluation. (a) Share of the runs in which the platform was lost, with 95\% Wilson intervals. (b) Median share of the 2~s after the break during which an intact cable was outside its tension bounds, with 95\% bootstrap intervals. All losses of P follow upper cable breaks; without replanning (A2) the platform spends most of the transient outside the bounds.}\label{fig:safety}
 \end{figure*}
 
@@ -450,7 +451,7 @@ With the IMM the tightening had no measurable effect (Fig.~\ref{fig:tightening})
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig08_tightening.pdf}
+\includegraphics[width=\columnwidth]{fig10_tightening.pdf}
 \caption{Smallest tension margin of the intact cables in the 2~s after the fault, with the tightening against without it on the same run. (a) IMM (P against A1, 624 runs): the points lie on the diagonal. (b) Classifier (B3T against B3, 138 runs): most points lie below it. Values below $-160$~N are drawn at $-160$~N.}\label{fig:tightening}
 \end{figure}
 
@@ -487,12 +488,12 @@ The controller does not run in real time. The MPC needed 32~ms on average agains
 
 The accommodation of actuator faults is biased (Section~\ref{sec:actuator}). Giving the IMM the corrected command removes the bias in the steady state, and in pilot runs it cut the error after a loss of effectiveness of 0.3 from 25 to 2~mm, but it lost the platform for $\rho=0.6$, where the present scheme kept it. An accommodation that estimates the deficit from the corrected command therefore needs a stability argument which the present design does not have.
 
-The study is a simulation. The geometry and inertia of the robot are those of a published model, but the cable stiffness is scaled from a larger cable, the motor is sized from the manufacturer's data, the noise of the current measurement is our choice, and friction is not modelled. The evaluation randomises the parameters and doubles the noise to cover part of this uncertainty, but a test on a physical robot is the step that remains. It also covers single faults only: the IMM and the declaration logic handle one fault and do not rearm after a declaration, so a second fault during the recovery is outside its scope.
+The study is a simulation. The geometry and inertia of the robot are those of a published model, but the cable stiffness is scaled from a larger cable, the motor is sized from the manufacturer's data, the noise of the current measurement is our choice, and friction is not modelled. Friction in the gearbox and at the drum would enter the tension estimate \eqref{eq:bias} like a torque bias, as an error that changes sign with the winch speed, and would have to be identified and compensated on hardware. The evaluation randomises the parameters and doubles the noise to cover part of this uncertainty, but a test on a physical robot is the step that remains. It also covers single faults only: the IMM and the declaration logic handle one fault and do not rearm after a declaration, so a second fault during the recovery is outside its scope.
 
 % =====================================================================
 \section{Conclusions}\label{sec:conclusions}
 
-A cable break on this robot is a race against the fall of the platform, and the race is won by isolating the fault quickly and having the recovery motion ready. A two level diagnosis, observers at the winches and an IMM over seventeen modes at the platform, isolated every fault type from the encoders and motor currents alone, declared every break within 19~ms and raised one false alarm in 1.29~h. With recovery plans computed in advance along the task the platform was lost after 11 of 208 breaks, all of them upper cable breaks, against 122 without fault tolerance and 20 when the same plans were solved online. A learned classifier trained on the same signals was slower and less reliable, and when its probabilities shaped the constraints of the controller the closed loop raised false alarms in most runs. Weighting fault scenarios by the probabilities of the IMM, the idea the study started from, had no effect because the IMM declares within one control period. The work stops short of a real time implementation and of an unbiased accommodation of actuator faults, and its next steps are a real time iteration of the MPC, an accommodation with a stability argument, double faults and the test on a laboratory robot that would show whether the margins found in simulation hold on hardware.
+A cable break on this robot is a race against the fall of the platform, and the race is won by isolating the fault quickly and having the recovery motion ready. A two level diagnosis, observers at the winches and an IMM over seventeen modes at the platform, isolated every fault type from the encoders and motor currents alone, declared every break within 19~ms and raised one false alarm in 1.29~h. With recovery plans computed in advance along the task the platform was lost after 11 of 208 breaks, all of them upper cable breaks, against 122 without fault tolerance and 20 when the same plans were solved online. A learned classifier trained on the same signals was slower and less reliable, and when its probabilities shaped the constraints of the controller the closed loop raised false alarms in most runs. Weighting fault scenarios by the probabilities of the IMM, the idea the study started from, had no effect because the IMM declares a break within one control period. The work stops short of a real time implementation and of an unbiased accommodation of actuator faults, and its next steps are a real time iteration of the MPC, an accommodation with a stability argument, double faults and the test on a laboratory robot that would show whether the margins found in simulation hold on hardware.
 
 % =====================================================================
 \section*{CRediT authorship contribution statement}

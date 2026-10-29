@@ -81,9 +81,9 @@ def _phase5_subset_outputs() -> list[str]:
     return [R + "phase5/subset_rows.json"] + [R + f"phase5/traces/{m}/run{r:05d}.npz" for m, r in jobs]
 
 
-PAPER_FIGURES = ["fig01_robot_task", "fig02_architecture", "fig03_postfault_workspace", "fig04_example_break",
-                 "fig05_detection_delay", "fig06_false_alarms", "fig07_safety_after_break", "fig08_tightening",
-                 "fig09_recovery", "fig10_learned_vs_model", "fig11_computation"]
+PAPER_FIGURES = ["fig01_robot_task", "fig02_postfault_workspace", "fig03_architecture", "fig04_example_break",
+                 "fig05_detection_delay", "fig06_false_alarms", "fig07_learned_vs_model", "fig08_safety_after_break",
+                 "fig09_recovery", "fig10_tightening", "fig11_computation"]
 PAPER_TABLES = ["tab_parameters", "tab_methods", "tab_results"]
 
 

@@ -2,7 +2,7 @@
 
 Every figure reads files of results/ (the condensed campaign of Phase 5, its traces, the tests of
 the classifiers, the workspace slices) and the robot configuration; no simulation is run here, and
-nothing in a figure is drawn by hand except the block diagram of figure 2 (TikZ). Where a figure
+nothing in a figure is drawn by hand except the block diagram of figure 3 (TikZ). Where a figure
 shows a single run, the run is chosen by a rule written in this file before the figure was drawn
 (pick_example). Each figure is written as vector PDF and as PNG (300 dpi) to paper/figures/, and
 paper/figures/manifest.json records, for every figure, the files it read with their SHA-256
@@ -15,10 +15,10 @@ Figure standard (paper/README.md):
     headings are used only where panels differ by one condition; what a line or a mark means, and
     every count, goes into the caption or a table;
   - axis labels name the quantity and its unit; methods appear by their code (P, A1, ..., B3T),
-    defined in the methods table; one colour per method in every figure, chosen with the palette
-    validator of the data-visualisation guidelines (the sets drawn together pass the colour-vision
-    checks), and line styles or marker fills carry the method or the path as well, so that a grey
-    print stays readable; reference values (periods, tension bounds) are thin grey lines.
+    defined in the methods table; one colour per method in every figure, chosen so that the colours
+    drawn together stay distinguishable under the common forms of colour vision deficiency, and line
+    styles or marker fills carry the method or the path as well, so that a grey print stays
+    readable; reference values (periods, tension bounds) are thin grey lines.
 Usage: python scripts/paper_figures.py [fig01 fig04 ...]      (no argument: all figures)
 """
 from __future__ import annotations
@@ -229,34 +229,8 @@ def fig01():
          "reference point P from cdpr_ft.analysis.trajectories.reference")
 
 
-# ------------------------------------------------------------- figure 2: architecture (TikZ)
+# ------------------------------------------------------------------ figure 2: what a fault leaves
 def fig02():
-    """The block diagram is TikZ (paper/figures/src/fig02_architecture.tex), compiled here."""
-    import os
-    import shutil
-    import subprocess
-    src = OUT / "src"
-    tex = use(src / "fig02_architecture.tex")
-    use(ROOT / "configs" / "controller_phase3.yaml")
-    env = dict(os.environ, SOURCE_DATE_EPOCH="0", FORCE_SOURCE_DATE="1")      # reproducible PDF bytes
-    subprocess.run(["pdflatex", "-interaction=nonstopmode", tex.name], cwd=src, check=True, env=env,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    shutil.copy(src / "fig02_architecture.pdf", OUT / "fig02_architecture.pdf")
-    subprocess.run(["pdftoppm", "-r", "300", "-png", "-singlefile", str(OUT / "fig02_architecture.pdf"),
-                    str(OUT / "fig02_architecture")], check=True)
-    seen, inputs = set(), []
-    for i in _INPUTS:
-        if i["file"] not in seen:
-            seen.add(i["file"])
-            inputs.append(i)
-    _MANIFEST["fig02_architecture"] = {"inputs": inputs, "note": "block diagram; every block is a module of the "
-                                       "repository, rates from configs/controller_phase3.yaml"}
-    _INPUTS.clear()
-    print("written fig02_architecture", flush=True)
-
-
-# ------------------------------------------------------------------ figure 3: what a fault leaves
-def fig03():
     d = np.load(use(RES / "phase6_workspace_slices.npz"))
     safe = np.load(use(RES / "phase3_safe_poses.npz"))
     use(ROOT / "configs" / "robot_ipanema2_caspr.yaml")
@@ -304,9 +278,35 @@ def fig03():
                Line2D([], [], color=INK, lw=0.6, ls=(0, (3, 1.5)), label="T2"),
                Line2D([], [], marker="o", ls="none", mfc="none", mec=INK, mew=0.5, ms=3, label="safe pose")]
     fig.legend(handles=handles, loc="outside lower center", ncol=3)
-    save(fig, "fig03_postfault_workspace", "static wrench-feasible poses at zero orientation in the planes z = 3 m "
+    save(fig, "fig02_postfault_workspace", "static wrench-feasible poses at zero orientation in the planes z = 3 m "
          "and y = 0 (scripts/phase6_workspace_slices.py); circles: poses of the planner's safe set "
          "(results/phase3_safe_poses.npz, margin >= 10 N with tilt up to 20 deg) lying in the plane")
+
+
+# ------------------------------------------------------------- figure 3: architecture (TikZ)
+def fig03():
+    """The block diagram is TikZ (paper/figures/src/fig03_architecture.tex), compiled here."""
+    import os
+    import shutil
+    import subprocess
+    src = OUT / "src"
+    tex = use(src / "fig03_architecture.tex")
+    use(ROOT / "configs" / "controller_phase3.yaml")
+    env = dict(os.environ, SOURCE_DATE_EPOCH="0", FORCE_SOURCE_DATE="1")      # reproducible PDF bytes
+    subprocess.run(["pdflatex", "-interaction=nonstopmode", tex.name], cwd=src, check=True, env=env,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    shutil.copy(src / "fig03_architecture.pdf", OUT / "fig03_architecture.pdf")
+    subprocess.run(["pdftoppm", "-r", "300", "-png", "-singlefile", str(OUT / "fig03_architecture.pdf"),
+                    str(OUT / "fig03_architecture")], check=True)
+    seen, inputs = set(), []
+    for i in _INPUTS:
+        if i["file"] not in seen:
+            seen.add(i["file"])
+            inputs.append(i)
+    _MANIFEST["fig03_architecture"] = {"inputs": inputs, "note": "block diagram; every block is a module of the "
+                                       "repository, rates from configs/controller_phase3.yaml"}
+    _INPUTS.clear()
+    print("written fig03_architecture", flush=True)
 
 
 # ---------------------------------------------------------------- figure 4: one break in closed loop
@@ -458,81 +458,8 @@ def fig06():
          "a false alarm and 95 % Wilson interval")
 
 
-# ---------------------------------------------------------------------- figure 7: safety after a break
+# ------------------------------------------------- figure 7: learned against model-based diagnosis
 def fig07():
-    s = analysis()["summary"]
-    methods = ["P", "B1", "B3", "A5", "A2", "B2", "B0"]
-    fig, axes = plt.subplots(1, 2, figsize=(TWO, 2.5), sharey=True)
-    ypos = np.arange(len(methods))[::-1]
-    items = []
-    for y, m in zip(ypos, methods):
-        for grp, dy in (("upper", 0.17), ("lower", -0.17)):
-            g = s[f"{m}|all|break|{grp}"]
-            items.append((y + dy, m, g["lost"][0] / g["n"], tuple(g["lost"][1]), grp == "upper"))
-    dotplot(axes[0], items)
-    axes[0].set_yticks(ypos), axes[0].set_yticklabels([NAME.get(m, m) for m in methods])
-    axes[0].set_xlabel("break runs with the platform lost (%)")
-    label(axes[0], "(a)")
-    items = []
-    for y, m in zip(ypos, methods):
-        for grp, dy in (("upper", 0.17), ("lower", -0.17)):
-            med, (lo, hi), n = s[f"{m}|all|break|{grp}"]["transient_outside_pct"]
-            items.append((y + dy, m, med / 100, (lo / 100, hi / 100), grp == "upper"))
-    dotplot(axes[1], items)
-    axes[1].set_xlabel("time outside the tension bounds (%)")
-    label(axes[1], "(b)")
-    path_legend(fig, "upper cable broken", "lower cable broken")
-    save(fig, "fig07_safety_after_break", "(a) share of the 104 upper- and 104 lower-cable break runs (both paths) in "
-         "which the platform was lost, 95 % Wilson intervals; (b) median share of the 2 s after the break with an "
-         "intact cable outside [t_min, t_max], 95 % bootstrap intervals")
-
-
-# -------------------------------------------------------------------- figure 8: the tightening
-def fig08():
-    rs = rows()
-    by = {(r["method"], r["run"]): r for r in rs}
-    key = "transient_min_margin_N"
-    fig, axes = plt.subplots(1, 2, figsize=(ONE, 1.95), sharey=True)
-    lim = (-160, 60)
-    for ax, (on, off, title), lab in zip(axes, [("P", "A1", "IMM"), ("B3T", "B3", "Classifier")], "ab"):
-        runs = sorted(k for (m, k) in by if m == on and (off, k) in by and by[(on, k)]["fault"]
-                      and by[(on, k)].get(key) is not None and by[(off, k)].get(key) is not None)
-        x = np.clip([by[(off, k)][key] for k in runs], *lim)
-        y = np.clip([by[(on, k)][key] for k in runs], *lim)
-        ax.plot(lim, lim, color=REF, lw=0.7)
-        ax.scatter(x, y, s=5, color=STYLE[on]["color"], alpha=0.45, linewidths=0, clip_on=False)
-        ax.set_xlim(*lim), ax.set_ylim(*lim)
-        ax.set_aspect("equal")
-        ax.set_title(title)
-        ax.set_xlabel("without tightening (N)")
-        label(ax, f"({lab})")
-    axes[0].set_ylabel("with tightening (N)")
-    save(fig, "fig08_tightening", "smallest tension margin of the intact cables in the transient window of every "
-         "fault run, with against without the probability-aware tightening (P against A1, B3T against B3, paired "
-         "runs); values below -160 N drawn at -160 N")
-
-
-# -------------------------------------------------------------- figure 9: recovery and re-planning
-def fig09():
-    rs = rows()
-    fig, ax = plt.subplots(figsize=(ONE, 2.1))
-    for m in ("B1", "P", "A5", "A2"):
-        g = [r for r in rs if r["method"] == m and r["fault"] and r["fault"][0] == "break"]
-        rec = [r["recovery_time_s"] for r in g if r.get("recovery_time_s") is not None]
-        x, y = ecdf(rec, total=len(g))
-        ax.step(np.r_[x, 3.0], np.r_[y, y[-1]], where="post", color=STYLE[m]["color"], ls=STYLE[m]["ls"],
-                label=NAME.get(m, m))
-    ax.set_xlim(0, 3.0), ax.set_ylim(0, 1.0)
-    ax.set_xlabel("time from the break (s)")
-    ax.set_ylabel("break runs recovered")
-    ax.legend(loc="center right", bbox_to_anchor=(1.0, 0.52), handlelength=1.8)
-    save(fig, "fig09_recovery", "recovery: first time after the onset from which the position error stays for 1 s "
-         "within twice the 95th percentile of the fault-free runs of the same path (protocol, amendment 1); lost "
-         "runs and runs that did not recover before their end (4 s after the onset) never reach the curve")
-
-
-# ------------------------------------------------- figure 10: learned against model-based diagnosis
-def fig10():
     p4 = json.loads(use(RES / "phase4_test.json").read_text())["splits"]
     p4b = json.loads(use(RES / "phase4b_test.json").read_text())["splits"]
     rs = rows()
@@ -567,9 +494,82 @@ def fig10():
     for ax, lab in zip(axes, "ab"):
         label(ax, f"({lab})")
     path_legend(fig)
-    save(fig, "fig10_learned_vs_model", "offline: the single test of Phase 4 (results/phase4_test.json: T1-trained "
+    save(fig, "fig07_learned_vs_model", "offline: the single test of Phase 4 (results/phase4_test.json: T1-trained "
          "classifier and IMM) and of Phase 4b (results/phase4b_test.json), 8 fault-free and 80 fault runs per path; "
          "closed loop: the campaign, 100 fault-free and 312 fault runs per path; 95 % Wilson intervals")
+
+
+# ---------------------------------------------------------------------- figure 8: safety after a break
+def fig08():
+    s = analysis()["summary"]
+    methods = ["P", "B1", "B3", "A5", "A2", "B2", "B0"]
+    fig, axes = plt.subplots(1, 2, figsize=(TWO, 2.5), sharey=True)
+    ypos = np.arange(len(methods))[::-1]
+    items = []
+    for y, m in zip(ypos, methods):
+        for grp, dy in (("upper", 0.17), ("lower", -0.17)):
+            g = s[f"{m}|all|break|{grp}"]
+            items.append((y + dy, m, g["lost"][0] / g["n"], tuple(g["lost"][1]), grp == "upper"))
+    dotplot(axes[0], items)
+    axes[0].set_yticks(ypos), axes[0].set_yticklabels([NAME.get(m, m) for m in methods])
+    axes[0].set_xlabel("break runs with the platform lost (%)")
+    label(axes[0], "(a)")
+    items = []
+    for y, m in zip(ypos, methods):
+        for grp, dy in (("upper", 0.17), ("lower", -0.17)):
+            med, (lo, hi), n = s[f"{m}|all|break|{grp}"]["transient_outside_pct"]
+            items.append((y + dy, m, med / 100, (lo / 100, hi / 100), grp == "upper"))
+    dotplot(axes[1], items)
+    axes[1].set_xlabel("time outside the tension bounds (%)")
+    label(axes[1], "(b)")
+    path_legend(fig, "upper cable broken", "lower cable broken")
+    save(fig, "fig08_safety_after_break", "(a) share of the 104 upper- and 104 lower-cable break runs (both paths) in "
+         "which the platform was lost, 95 % Wilson intervals; (b) median share of the 2 s after the break with an "
+         "intact cable outside [t_min, t_max], 95 % bootstrap intervals")
+
+
+# -------------------------------------------------------------- figure 9: recovery and re-planning
+def fig09():
+    rs = rows()
+    fig, ax = plt.subplots(figsize=(ONE, 2.1))
+    for m in ("B1", "P", "A5", "A2"):
+        g = [r for r in rs if r["method"] == m and r["fault"] and r["fault"][0] == "break"]
+        rec = [r["recovery_time_s"] for r in g if r.get("recovery_time_s") is not None]
+        x, y = ecdf(rec, total=len(g))
+        ax.step(np.r_[x, 3.0], np.r_[y, y[-1]], where="post", color=STYLE[m]["color"], ls=STYLE[m]["ls"],
+                label=NAME.get(m, m))
+    ax.set_xlim(0, 3.0), ax.set_ylim(0, 1.0)
+    ax.set_xlabel("time from the break (s)")
+    ax.set_ylabel("break runs recovered")
+    ax.legend(loc="center right", bbox_to_anchor=(1.0, 0.52), handlelength=1.8)
+    save(fig, "fig09_recovery", "recovery: first time after the onset from which the position error stays for 1 s "
+         "within twice the 95th percentile of the fault-free runs of the same path (protocol, amendment 1); lost "
+         "runs and runs that did not recover before their end (4 s after the onset) never reach the curve")
+
+
+# -------------------------------------------------------------------- figure 10: the tightening
+def fig10():
+    rs = rows()
+    by = {(r["method"], r["run"]): r for r in rs}
+    key = "transient_min_margin_N"
+    fig, axes = plt.subplots(1, 2, figsize=(ONE, 1.95), sharey=True)
+    lim = (-160, 60)
+    for ax, (on, off, title), lab in zip(axes, [("P", "A1", "IMM"), ("B3T", "B3", "Classifier")], "ab"):
+        runs = sorted(k for (m, k) in by if m == on and (off, k) in by and by[(on, k)]["fault"]
+                      and by[(on, k)].get(key) is not None and by[(off, k)].get(key) is not None)
+        x = np.clip([by[(off, k)][key] for k in runs], *lim)
+        y = np.clip([by[(on, k)][key] for k in runs], *lim)
+        ax.plot(lim, lim, color=REF, lw=0.7)
+        ax.scatter(x, y, s=5, color=STYLE[on]["color"], alpha=0.45, linewidths=0, clip_on=False)
+        ax.set_xlim(*lim), ax.set_ylim(*lim)
+        ax.set_aspect("equal")
+        ax.set_title(title)
+        ax.set_xlabel("without tightening (N)")
+        label(ax, f"({lab})")
+    axes[0].set_ylabel("with tightening (N)")
+    save(fig, "fig10_tightening", "smallest tension margin of the intact cables in the transient window of every "
+         "fault run, with against without the probability-aware tightening (P against A1, B3T against B3, paired "
+         "runs); values below -160 N drawn at -160 N")
 
 
 # ------------------------------------------------------------------------ figure 11: computation

@@ -29,8 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "results"
 OUT = ROOT / "figures" / "verification"
 
-# Categorical slots in fixed order (checked for colour vision deficiency with the palette
-# validator: adjacent pairs for lines and bars, all pairs for the first three slots).
+# Categorical slots in fixed order (checked for colour differences under simulated colour vision
+# deficiency: adjacent pairs for lines and bars, all pairs for the first three slots).
 C = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]
 INK, INK2, MUTED, GRID, AXIS = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
 SEQ = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]

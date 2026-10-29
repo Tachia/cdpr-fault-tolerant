@@ -31,7 +31,7 @@ Compile: pdflatex main, bibtex main, pdflatex main, pdflatex main
   main.tex                  manuscript
   references.bib            bibliography (style elsarticle-num-names.bst)
   cas-dc.cls, cas-common.sty, elsarticle-num-names.bst, thumbnails/   Elsevier CAS template files
-  figures/                  the eleven figures (vector PDF)
+  figures/                  the eleven figures (vector PDF), numbered in order of appearance
   tables/                   the tables of parameters, methods and results
   highlights.txt            the highlights, as a separate file for the submission system
   main.pdf                  the compiled manuscript

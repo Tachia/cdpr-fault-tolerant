@@ -1,7 +1,7 @@
-% Figure 2: architecture of the fault tolerant controller (the only manuscript figure that is not
+% Figure 3: architecture of the fault tolerant controller (the only manuscript figure that is not
 % drawn from data). Every block is a module of the repository; rates are those of
 % configs/controller_phase3.yaml and configs/robot_ipanema2_caspr.yaml.
-% Build: pdflatex fig02_architecture.tex (scripts/paper_figures.py fig02 runs it).
+% Build: pdflatex fig03_architecture.tex (scripts/paper_figures.py fig03 runs it).
 \documentclass[tikz,border=3pt,10pt]{standalone}
 \usepackage{amsmath}
 \usepackage{mathptmx}
@@ -25,7 +25,7 @@
 ]
 \node[blk] (ref) at (0,0) {\textbf{Reference}\\nominal path T1 or T2,\\or the recovery plan};
 \node[est, right=of ref] (mpc) {\textbf{Scenario MPC}, 50 Hz\\healthy model and up to\\two fault scenarios};
-\node[blk, right=of mpc] (loop) {\textbf{Tension loops}, 1 kHz\\PI, friction and inertia\\feedforward};
+\node[blk, right=of mpc] (loop) {\textbf{Tension loops}, 1 kHz\\PI and inertia\\feedforward};
 \node[blk, right=of loop, fill=white] (plant) {\textbf{Plant}\\platform, 8 elastic cables,\\geared winches};
 \node[blk, below=17mm of ref] (plan) {\textbf{Recovery plans}\\library computed offline\\along T1 and T2};
 \node[est, below=17mm of mpc] (dec) {\textbf{Declaration}\\$\max_j \mu_j \ge \mu_{\mathrm{iso}}$ in\\$N_c$ successive cycles};
