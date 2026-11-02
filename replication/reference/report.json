@@ -1,0 +1,207 @@
+{
+ "label": "reference",
+ "tier": 2,
+ "jobs": 2,
+ "steps": {
+  "tests": {
+   "verdict": "PASSED",
+   "summary": "56 passed in 45.87s",
+   "minutes": 0.8
+  },
+  "statistics": {
+   "verdict": "IDENTICAL",
+   "command": "reproduce.py phase5 --only analysis",
+   "exit_status": 0,
+   "files": {
+    "results/phase5/analysis.json": "IDENTICAL (37758 values compared, 37758 identical, largest relative difference 0.00e+00)"
+   },
+   "minutes": 0.4
+  },
+  "workspace_and_tables": {
+   "verdict": "IDENTICAL",
+   "command": "reproduce.py phase6 --only workspace_slices,tables",
+   "exit_status": 0,
+   "files": {
+    "results/phase6_workspace_slices.npz": "IDENTICAL (68835 values compared, 68835 identical, largest relative difference 0.00e+00)",
+    "results/phase6_workspace_slices.json": "IDENTICAL (28 values compared, 28 identical, largest relative difference 0.00e+00)",
+    "paper/tables/tab_parameters.tex": "IDENTICAL (23 values compared, 23 identical, largest relative difference 0.00e+00)",
+    "paper/tables/tab_methods.tex": "IDENTICAL (20 values compared, 20 identical, largest relative difference 0.00e+00)",
+    "paper/tables/tab_results.tex": "IDENTICAL (22 values compared, 22 identical, largest relative difference 0.00e+00)"
+   },
+   "minutes": 2.2
+  },
+  "figures": {
+   "verdict": "IDENTICAL",
+   "files": {
+    "paper/figures/fig01_robot_task.pdf": "IDENTICAL",
+    "paper/figures/fig01_robot_task.png": "IDENTICAL",
+    "paper/figures/fig02_postfault_workspace.pdf": "IDENTICAL",
+    "paper/figures/fig02_postfault_workspace.png": "IDENTICAL",
+    "paper/figures/fig04_example_break.pdf": "IDENTICAL",
+    "paper/figures/fig04_example_break.png": "IDENTICAL",
+    "paper/figures/fig05_detection_delay.pdf": "IDENTICAL",
+    "paper/figures/fig05_detection_delay.png": "IDENTICAL",
+    "paper/figures/fig06_false_alarms.pdf": "IDENTICAL",
+    "paper/figures/fig06_false_alarms.png": "IDENTICAL",
+    "paper/figures/fig07_learned_vs_model.pdf": "IDENTICAL",
+    "paper/figures/fig07_learned_vs_model.png": "IDENTICAL",
+    "paper/figures/fig08_safety_after_break.pdf": "IDENTICAL",
+    "paper/figures/fig08_safety_after_break.png": "IDENTICAL",
+    "paper/figures/fig09_recovery.pdf": "IDENTICAL",
+    "paper/figures/fig09_recovery.png": "IDENTICAL",
+    "paper/figures/fig10_tightening.pdf": "IDENTICAL",
+    "paper/figures/fig10_tightening.png": "IDENTICAL",
+    "paper/figures/fig11_computation.pdf": "IDENTICAL",
+    "paper/figures/fig11_computation.png": "IDENTICAL"
+   },
+   "minutes": 0.1,
+   "note": "figure 3 (TikZ) left out: its bytes depend on the TeX installation"
+  },
+  "manuscript_numbers": {
+   "verdict": "IDENTICAL",
+   "command": "reproduce.py phase7",
+   "exit_status": 0,
+   "files": {
+    "paper/manuscript/number_check.txt": "IDENTICAL (83 values compared, 83 identical, largest relative difference 0.00e+00)"
+   },
+   "minutes": 0.0
+  },
+  "reviewer_check": {
+   "verdict": "IDENTICAL",
+   "command": "reproduce.py quick",
+   "exit_status": 0,
+   "files": {
+    "results/phase3_check_quick.json": "IDENTICAL (432 values compared, 432 identical, largest relative difference 0.00e+00)"
+   },
+   "minutes": 2.1
+  },
+  "kept_jobs": {
+   "verdict": "IDENTICAL",
+   "command": "reproduce.py phase5 --only campaign_subset",
+   "exit_status": 0,
+   "files": {
+    "results/phase5/subset_rows.json": "IDENTICAL (1437 values compared, 1437 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/P/run00000.npz": "IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A1/run00000.npz": "IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A2/run00000.npz": "IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A5/run00000.npz": "IDENTICAL (68616 values compared, 68616 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B0/run00000.npz": "IDENTICAL (69463 values compared, 69463 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B1/run00000.npz": "IDENTICAL (118245 values compared, 118245 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B2/run00000.npz": "IDENTICAL (85514 values compared, 85514 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3/run00000.npz": "IDENTICAL (87201 values compared, 87201 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3T/run00000.npz": "IDENTICAL (148114 values compared, 148114 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/P/run00023.npz": "IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A1/run00023.npz": "IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B0/run00023.npz": "IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B1/run00023.npz": "IDENTICAL (132973 values compared, 132973 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B2/run00023.npz": "IDENTICAL (166070 values compared, 166070 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3/run00023.npz": "IDENTICAL (166565 values compared, 166565 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3T/run00023.npz": "IDENTICAL (71447 values compared, 71447 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/P/run00036.npz": "IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A1/run00036.npz": "IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B0/run00036.npz": "IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B1/run00036.npz": "IDENTICAL (138353 values compared, 138353 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B2/run00036.npz": "IDENTICAL (172790 values compared, 172790 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3/run00036.npz": "IDENTICAL (173305 values compared, 173305 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3T/run00036.npz": "IDENTICAL (68077 values compared, 68077 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/P/run00049.npz": "IDENTICAL (215193 values compared, 215193 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/A1/run00049.npz": "IDENTICAL (215193 values compared, 215193 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B2/run00049.npz": "IDENTICAL (268759 values compared, 268759 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3/run00049.npz": "IDENTICAL (269559 values compared, 269559 identical, largest relative difference 0.00e+00)",
+    "results/phase5/traces/B3T/run00049.npz": "IDENTICAL (81429 values compared, 81429 identical, largest relative difference 0.00e+00)"
+   },
+   "minutes": 8.0
+  },
+  "sample": {
+   "verdict": "IDENTICAL",
+   "jobs": 394,
+   "identical": 394,
+   "numeric": 0,
+   "outcome": 0,
+   "largest_relative_difference": 0.0,
+   "largest_in": null,
+   "delays_shifted": 0,
+   "outcome_differences": [],
+   "minutes": 11.0,
+   "note": "recovery times are added to the stored rows from the traces when the campaign is condensed; the sample keeps no traces, so they are not compared here"
+  }
+ },
+ "started_utc": "2026-11-02 18:22",
+ "environment": {
+  "python": "3.13.17",
+  "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "cores": 2,
+  "commit": "4bcc95c6a13243724ed4ac038042d170dfe7d61f",
+  "tree": "0ad48b1a676d9013243e73c7377c55ff16d51f0d",
+  "describe": "v1.0-replication",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "cpu_flags": [
+   "sse4_2",
+   "avx",
+   "avx2",
+   "fma",
+   "avx512f"
+  ],
+  "memory_gb": 7.8,
+  "packages": {
+   "numpy": {
+    "installed": "2.5.3",
+    "reference": "2.5.3"
+   },
+   "scipy": {
+    "installed": "1.18.1",
+    "reference": "1.18.1"
+   },
+   "casadi": {
+    "installed": "3.8.1",
+    "reference": "3.8.1"
+   },
+   "sympy": {
+    "installed": "1.14.0",
+    "reference": "1.14.0"
+   },
+   "PyYAML": {
+    "installed": "6.0.3",
+    "reference": "6.0.3"
+   },
+   "mujoco": {
+    "installed": "3.3.0",
+    "reference": "3.3.0"
+   },
+   "matplotlib": {
+    "installed": "3.11.2",
+    "reference": "3.11.2"
+   },
+   "pillow": {
+    "installed": "12.3.0",
+    "reference": "13.0.0"
+   },
+   "fonttools": {
+    "installed": "4.66.1",
+    "reference": "4.67.0"
+   },
+   "pytest": {
+    "installed": "9.1.1",
+    "reference": "9.1.1"
+   },
+   "torch": {
+    "installed": "2.14.1",
+    "reference": "2.14.1"
+   },
+   "optuna": {
+    "installed": "5.0.0",
+    "reference": "5.0.0"
+   }
+  },
+  "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "pdflatex": true,
+  "thread_variables": {
+   "OPENBLAS_NUM_THREADS": "1"
+  },
+  "numpy_runtime": "[{'numpy_version': '2.5.3',\n  'python': '3.13.17 (main, Oct 21 2026, 17:48:31) [Clang 23.1.3 ]',\n  'uname': uname_result(system='Linux', node='vm', release='6.18.44-fc-v185', version='#1 SMP PREEMPT_DYNAMIC @0', machine='x86_64')},\n {'simd_extensions': {'baseline': ['X86_V2'],\n                      'found': ['X86_V3', 'X86_V4', 'AVX512_ICL', 'AVX512_SPR'],\n                      'not_found': []}},\n {'ignore_floating_point_errors_in_matmul': False},\n {'architecture': 'SkylakeX',\n  'filepath': '/usr/local/lib/python3.13/dist-packages/numpy.libs/libscipy_openblas64_-f48b354e.so',\n  'internal_api': 'openblas',\n  'num_threads': 1,\n  'prefix': 'libscipy_openblas',\n  'threading_layer': 'pthreads',\n  'user_api': 'blas',\n  'version': '0.3.34.106.0'}]\n"
+ },
+ "clean_after": true,
+ "finished_utc": "2026-11-02 20:33",
+ "overall": "REPRODUCED IDENTICALLY"
+}

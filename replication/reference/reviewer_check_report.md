@@ -1,0 +1,15 @@
+# Reproduction report
+
+Target: quick; 1 step(s); --jobs 2; Python 3.13.17, Linux x86_64, 2 cores; started 2026-11-02 18:25 UTC
+
+### quick
+
+`scripts/phase3_closed_loop_check.py quick controller_phase3.yaml 2 breaks` (frozen controller on the 8 calibration breaks; compared run by run with the final check), about 3 min on the reference machine
+
+finished in 2.1 min
+results/phase3_check_quick.json: IDENTICAL (432 values compared, 432 identical, largest relative difference 0.00e+00)
+
+
+## Summary
+
+All steps reproduced the stored results within tolerance.

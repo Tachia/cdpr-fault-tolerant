@@ -1,0 +1,17 @@
+# Reproduction report
+
+Target: phase7; 1 step(s); --jobs 2; Python 3.13.17, Linux x86_64, 2 cores; started 2026-11-02 18:25 UTC
+
+### numbers
+
+`scripts/paper_check_numbers.py` (every checked number of the manuscript against the stored results; fails if any disagrees), about 0.2 min on the reference machine
+
+finished in 0.0 min
+paper/manuscript/number_check.txt: IDENTICAL (83 values compared, 83 identical, largest relative difference 0.00e+00)
+
+
+## Summary
+
+All steps reproduced the stored results within tolerance.
+
+report: reproduction/20261102T182541Z/report.md

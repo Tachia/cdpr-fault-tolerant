@@ -1,0 +1,26 @@
+# Reproduction report
+
+Target: phase6; 2 step(s); --jobs 2; Python 3.13.17, Linux x86_64, 2 cores; started 2026-11-02 18:23 UTC
+
+### workspace_slices
+
+`scripts/phase6_workspace_slices.py`, about 2.2 min on the reference machine
+
+finished in 2.2 min
+results/phase6_workspace_slices.npz: IDENTICAL (68835 values compared, 68835 identical, largest relative difference 0.00e+00)
+results/phase6_workspace_slices.json: IDENTICAL (28 values compared, 28 identical, largest relative difference 0.00e+00)
+
+
+### tables
+
+`scripts/paper_tables.py`, about 0.1 min on the reference machine
+
+finished in 0.0 min
+paper/tables/tab_parameters.tex: IDENTICAL (23 values compared, 23 identical, largest relative difference 0.00e+00)
+paper/tables/tab_methods.tex: IDENTICAL (20 values compared, 20 identical, largest relative difference 0.00e+00)
+paper/tables/tab_results.tex: IDENTICAL (22 values compared, 22 identical, largest relative difference 0.00e+00)
+
+
+## Summary
+
+All steps reproduced the stored results within tolerance.

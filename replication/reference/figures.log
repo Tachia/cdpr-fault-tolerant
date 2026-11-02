@@ -1,0 +1,12 @@
+written fig01_robot_task
+written fig02_postfault_workspace
+written fig04_example_break
+written fig05_detection_delay
+written fig06_false_alarms
+written fig07_learned_vs_model
+written fig08_safety_after_break
+written fig09_recovery
+written fig10_tightening
+written fig11_computation
+/home/claude/cdpr_ft/scripts/paper_figures.py:141: UserWarning: There are no gridspecs with layoutgrids. Possibly did not call parent GridSpec with the "figure" keyword
+  fig.savefig(OUT / f"{name}.png", metadata={"Software": None})
