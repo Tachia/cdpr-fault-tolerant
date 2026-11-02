@@ -29,6 +29,8 @@ python reproduce.py phase7    # every checked number of the paper against the st
 
 The first command that needs the estimators or the MPC compiles them to C and caches them in `build/` (about 15 minutes on two cores, once). `python reproduce.py list` shows every step with its run time.
 
+To check the results on other machines and compare them, `REPLICATION.md` gives a protocol fixed in advance, with three tiers from the stored results to the whole campaign, a script for Linux machines and a Kaggle notebook (`scripts/replicate.py`, `scripts/compare_replications.py`, `replication/`).
+
 ## How the results were produced
 
 | Step | Content | Documentation |
@@ -57,6 +59,7 @@ Settings were chosen on calibration runs (seeds from 100000) and the classifier 
 | Path | Content |
 |---|---|
 | `reproduce.py` | Runs the tests, redraws the figures, and reruns any step and compares its output with the stored reference |
+| `REPLICATION.md`, `replication/` | Protocol for replications on other machines; environment script, Kaggle notebook and the report of the reference machine |
 | `requirements.txt` | Library versions with which every stored result was produced |
 | `requirements-learning.txt` | The two further libraries of Phase 4 (torch, optuna) |
 | `configs/robot_ipanema2_caspr.yaml` | Robot geometry, inertia, limits, cable (1.5 mm Dyneema) and winch (drum radius 50 mm, gearbox 12, Rexroth MSK030C), each value with its source |
@@ -74,7 +77,7 @@ Settings were chosen on calibration runs (seeds from 100000) and the classifier 
 | `cdpr_ft/estimation/alternatives.py` | The diagnoses that replace the IMM's probabilities in the baselines: the trained classifier (B3) and the threshold rule (B2) |
 | `cdpr_ft/eval/` | The evaluation campaign: methods, run list, one run with its metrics and its trace |
 | `cdpr_ft/provenance.py` | Code digest and library versions stamped into every result |
-| `scripts/` | One script per analysis, calibration, training or evaluation step (`phase1_*` to `phase6_*`); `paper_figures.py`, `paper_tables.py`, `paper_check_numbers.py` and `paper_package.py` (manuscript); `compare_results.py` |
+| `scripts/` | One script per analysis, calibration, training or evaluation step (`phase1_*` to `phase6_*`); `paper_figures.py`, `paper_tables.py`, `paper_check_numbers.py` and `paper_package.py` (manuscript); `compare_results.py`; `replicate.py` and `compare_replications.py` (replication) |
 | `tests/` | Verification gates: Jacobian against finite differences, mass and gravity relations, Lagrange against Newton-Euler, skew symmetry, equilibrium, energy, step halving, faults, geared winch, sourced parameters, drive requirements, drum windows, compiled plant and prediction model, sensors, loop timing, observer poles, IMM probabilities, time scaling, recovery plan, MPC, replay of a run; classifier inputs against the diagnosis, declaration rule, networks, deterministic training |
 | `results/` | Stored outputs of every script; `results/README.md` lists them with the script and code version that produced each |
 | `figures/verification/`, `figures/phase4/` | Verification and calibration figures, and the figures of the classifier, drawn from `results/` (PDF and PNG); `figures/README.md` |

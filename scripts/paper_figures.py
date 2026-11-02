@@ -72,6 +72,9 @@ plt.rcParams.update({
     "lines.linewidth": 1.1, "legend.frameon": False, "legend.handlelength": 2.2, "savefig.dpi": 300,
     "pdf.fonttype": 42, "axes.titlelocation": "center", "axes.titlepad": 3,
     "figure.constrained_layout.use": True,
+    # stated rather than left to the matplotlibrc of the installation: the hinting changes the
+    # pixels of the PNG files (not the PDF files), and the stored PNG files were drawn without it
+    "text.hinting": "no_hinting",
 })
 
 _MANIFEST: dict = {}

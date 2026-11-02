@@ -51,3 +51,6 @@ Thumbs.db
 .idea/
 # Journal package written by scripts/paper_package.py
 paper/manuscript/*.zip
+
+# Reports of scripts/replicate.py (kept by whoever runs it; compared by scripts/compare_replications.py)
+replication/runs/

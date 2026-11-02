@@ -44,6 +44,7 @@ plt.rcParams.update({
     "axes.spines.top": False, "axes.spines.right": False, "axes.axisbelow": True,
     "lines.linewidth": 1.2, "legend.frameon": False, "savefig.dpi": 300, "pdf.fonttype": 42,
     "axes.titlelocation": "left", "axes.titleweight": "bold",
+    "text.hinting": "no_hinting",   # as for the stored PNG files, whatever the matplotlibrc says
 })
 
 

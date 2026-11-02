@@ -8,7 +8,7 @@ sympy==1.14.0
 PyYAML==6.0.3
 mujoco==3.3.0
 matplotlib==3.11.2
-# two dependencies of matplotlib that change the PNG figures by a few pixels when their version differs
+# two dependencies of matplotlib, pinned with it (REPRODUCE.md, Section 4, Figures)
 pillow==13.0.0
 fonttools==4.67.0
 pytest==9.1.1
