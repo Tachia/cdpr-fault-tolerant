@@ -174,7 +174,8 @@ rec = {m: (s(m)["recovered"][0], s(m)["recovery_time_s"][0]) for m in ("P", "B1"
 claim(f"in {rec['P'][0]} of the {nbreak} break runs, after {rec['P'][1]:.2f} s in the median")
 claim(f"the oracle recovered {rec['B1'][0]} runs after {rec['B1'][1]:.2f} s, A3 {rec['A5'][0]} after {rec['A5'][1]:.2f} s and "
       f"A2 {rec['A2'][0]} after {rec['A2'][1]:.2f} s")
-claim(f"The 0.4 s of latency cost nine platforms and quadrupled", lost["A5"] - lost["P"] == 9,
+claim(f"With the 0.4 s of latency, nine more platforms were lost, a difference that is suggestive but not significant on its "
+      f"own (p={rp['P vs A5']['lost']['p']:.2f}), while the share of the transient outside the bounds quadrupled", lost["A5"] - lost["P"] == 9,
       round(s("A5")["transient_outside_pct"][0] / s("P")["transient_outside_pct"][0]) == 4)
 claim(f"the classifier cost {lost['B3'] - lost['P']} platforms more than the IMM, {lost['B3']} against {lost['P']}")
 
@@ -206,6 +207,17 @@ claim(f"(paired median difference {mg['median_diff']:.0f} N, p={mg['p']:.2f})")
 allp = [(pa[("P", r["run"])], pa[("A1", r["run"])]) for r in ROWS if r["method"] == "P"]
 same_pre = sum(a["pre_rmse_p_mm"] == b["pre_rmse_p_mm"] for a, b in allp)
 claim(f"the position error before the fault was identical in {same_pre} of the {len(allp)} paired runs")
+# declarations of P and A1, run by run (a comparison made after the evaluation, outside its analysis plan)
+fa_p = [r for r in rows("P") if r["false_alarm"]]
+fa_a1 = pa[("A1", fa_p[0]["run"])] if len(fa_p) == 1 else None
+claim(f"P raised one false alarm, {fa_p[0]['fault'][2] - fa_p[0]['t_declare']:.1f} s before a loss of effectiveness that A1 declared correctly",
+      len(fa_p) == 1, fa_p[0]["fault"][0] == "loe", bool(fa_a1 and fa_a1["correct"]))
+dd = {k: [round(1e3 * (pa[("P", r["run"])]["delay_s"] - pa[("A1", r["run"])]["delay_s"])) for r in rows("P", kind=k)
+          if pa[("P", r["run"])]["correct"] and pa[("A1", r["run"])]["correct"]] for k in ("break", "loe", "bias")}
+early = [-x for x in dd["bias"] if x < 0]
+claim(f"in {sum(x != 0 for x in dd['bias'])} of the {len(rows('P', kind='bias'))} runs with a torque bias the two declared at different "
+      f"times, P earlier in {len(early)} of them, by {min(early)} to {max(early)} ms, and later in two",
+      sum(x > 0 for x in dd["bias"]) == 2, not any(dd["break"]), not any(dd["loe"]))
 mb = PRIMARY["smallest tension margin in the transient window"]["B3T vs B3"]
 claim(f"raised a false alarm in {x2['B3T']['false_alarm_runs']} of {x2['B3T']['fault_runs'] + x2['B3T']['fault_free_runs']} runs "
       f"against {x2['B3']['false_alarm_runs']} for B3 on the same runs, reduced the correct declarations from "
@@ -298,6 +310,12 @@ claim(f"with a median drop of the reference point of {min(dmed):.2f} to {max(dme
       f"by at most {dlow:.2f} m")
 drift = max(x["drift_end_m"] for x in cases if x["branch"] == 2 and x["cable"] < 4)
 claim(f"drifts from a recovery path after an upper cable break by up to {drift:.2f} m by its end")
+rec2 = [x for x in cases if x["branch"] == 2]
+st = [x["solver_status"] for x in rec2]
+claim(f"All {len(rec2):,} recovery problems of the library met the termination criteria of IPOPT, {st.count('Solve_Succeeded'):,} at its "
+      f"optimal and {st.count('Solved_To_Acceptable_Level')} at its acceptable level, with every slack zero",
+      st.count("Solve_Succeeded") + st.count("Solved_To_Acceptable_Level") == len(rec2), max(x["max_slack"] for x in rec2) <= 1e-6)
+claim(f"the plans deviate from their collocation solution by at most {1e3 * max(v['local_error_max_m'] for v in pc.values()):.2f} mm")
 pm = load("phase3_postfault_modes.json")["per_cable"]
 claim(f"the lowest elastic mode of the platform falls to {min(v['lowest_Hz_min'] for v in pm.values()):.1f} to "
       f"{max(v['lowest_Hz_max'] for v in pm.values()):.1f} Hz")

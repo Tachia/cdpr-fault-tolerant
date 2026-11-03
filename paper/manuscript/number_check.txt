@@ -26,7 +26,7 @@ PASS  Without it (A2), 38 platforms were lost, 86.5% of the transient was spent 
 PASS  lost 20 platforms against 11 (paired, p=0.09, a secondary comparison) and raised the time outside the bounds in the transient from 5.1 to 20.2%
 PASS  in 181 of the 208 break runs, after 0.27 s in the median
 PASS  the oracle recovered 197 runs after 0.19 s, A3 173 after 0.70 s and A2 74 after 1.01 s
-PASS  The 0.4 s of latency cost nine platforms and quadrupled
+PASS  With the 0.4 s of latency, nine more platforms were lost, a difference that is suggestive but not significant on its own (p=0.09), while the share of the transient outside the bounds quadrupled
 PASS  the classifier cost 14 platforms more than the IMM, 25 against 11
 PASS  lost 19 platforms after a loss of effectiveness and 2 after a bias.
 PASS  an RMS error of 30 N in the median, 20 N for \rho=0.3 and 52 N
@@ -35,6 +35,8 @@ PASS  After a bias the deficit error was 5.6 N and 206 of 208 runs returned to t
 PASS  P and A1 lost the same number of platforms after a break, 11 each, with the outcome differing in ten runs, five each way
 PASS  (paired median difference 0 N, p=0.26)
 PASS  the position error before the fault was identical in 804 of the 824 paired runs
+PASS  P raised one false alarm, 2.8 s before a loss of effectiveness that A1 declared correctly
+PASS  in 51 of the 208 runs with a torque bias the two declared at different times, P earlier in 49 of them, by 5 to 15 ms, and later in two
 PASS  raised a false alarm in 154 of 252 runs against 11 for B3 on the same runs, reduced the correct declarations from 186 to 16 of 192, lost 44 of 64 platforms after a break against 8, and lowered the margin in the transient by 19 N (paired median; 95% interval -28.7 to -13.8 N)
 PASS  took 2.9 ms on average and 5.3 ms at the 99th percentile, against its period of 5 ms.
 PASS  The MPC took 32 ms on average and 65 ms at the 99th percentile
@@ -56,6 +58,8 @@ PASS  Solving \eqrefeq:recovery took 0.21 s in the median and at most 0.82 s on 
 PASS  applies after a latency of 0.4 s, which covers the 99th percentile of the solve times
 PASS  with a median drop of the reference point of 0.54 to 0.60 m depending on the cable, whereas after a lower cable break the time scaling sufficed for 31 to 69 of the 222 instants of both paths and the recovery plans dropped by at most 0.02 m
 PASS  drifts from a recovery path after an upper cable break by up to 0.11 m by its end
+PASS  All 1,605 recovery problems of the library met the termination criteria of IPOPT, 1,603 at its optimal and 2 at its acceptable level, with every slack zero
+PASS  the plans deviate from their collocation solution by at most 0.12 mm
 PASS  the lowest elastic mode of the platform falls to 3.2 to 3.6 Hz
 PASS  RMS error of 0.30 N at the nominal current noise and 0.57 N at twice that noise, at the price of a lag of 3/\omega_o=9.5 ms
 PASS  At the home pose the six elastic modes of the platform with locked winches then lie between 5.5 and 18.7 Hz.

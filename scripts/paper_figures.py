@@ -550,7 +550,7 @@ def fig09():
          "runs and runs that did not recover before their end (4 s after the onset) never reach the curve")
 
 
-# -------------------------------------------------------------------- figure 10: the tightening
+# ------------------------------------------------- figure 10: the probability weighting of the scenarios
 def fig10():
     rs = rows()
     by = {(r["method"], r["run"]): r for r in rs}
@@ -567,11 +567,11 @@ def fig10():
         ax.set_xlim(*lim), ax.set_ylim(*lim)
         ax.set_aspect("equal")
         ax.set_title(title)
-        ax.set_xlabel("without tightening (N)")
+        ax.set_xlabel("without weighting (N)")
         label(ax, f"({lab})")
-    axes[0].set_ylabel("with tightening (N)")
+    axes[0].set_ylabel("with weighting (N)")
     save(fig, "fig10_tightening", "smallest tension margin of the intact cables in the transient window of every "
-         "fault run, with against without the probability-aware tightening (P against A1, B3T against B3, paired "
+         "fault run, with against without the probability weighting of the MPC scenarios (P against A1, B3T against B3, paired "
          "runs); values below -160 N drawn at -160 N")
 
 

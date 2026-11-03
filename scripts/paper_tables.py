@@ -80,7 +80,7 @@ def parameters():
 def methods():
     rows = [["P", "Proposed: IMM diagnosis; before a declaration the MPC weights the fault scenarios by their "
                   "probabilities; after a break declaration it follows a plan from the library"],
-            ["A1", "P without the probability aware tightening"],
+            ["A1", "P without the probability weighting of the scenarios"],
             ["A2", "P without replanning after a break"],
             ["A3", "P with the recovery plan solved online, applied after 0.4~s"],
             ["B0", "No fault tolerance: healthy model throughout, no declaration"],
