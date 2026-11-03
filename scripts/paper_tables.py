@@ -10,7 +10,8 @@
 The complete tables of the evaluation (primary endpoints with their statistics, results by fault type,
 computation times) are those of docs/phase5/evaluation.pdf, written by scripts/phase5_tables.py.
 Numbers are formatted from the files; none is typed by hand.
-Usage: python scripts/paper_tables.py
+Usage: python scripts/paper_tables.py                  (Elsevier CAS layout, paper/tables/)
+       python scripts/paper_tables.py --layout ijc     (Taylor & Francis Interact layout, paper/ijc/tables/)
 """
 from __future__ import annotations
 
@@ -31,9 +32,18 @@ OUT = ROOT / "paper" / "tables"
 HEAD = "% written by scripts/paper_tables.py from stored files; do not edit\n"
 
 
+# "cas": Elsevier CAS double column (paper/tables/); "ijc": Taylor & Francis Interact single column of
+# the International Journal of Control (paper/ijc/tables/), caption above the table through \tbl
+LAYOUT = "cas"
+
+
 def tabular(caption, label, header, rows, align, star=False):
-    env = "table*" if star else "table"
     body = "\n".join(" & ".join(r) + r" \\" for r in rows)
+    if LAYOUT == "ijc":
+        return (HEAD + f"\\begin{{table}}\n\\tbl{{{caption}}}\n"
+                f"{{\\begin{{tabular}}{{@{{}}{align}@{{}}}}\n\\toprule\n{header} \\\\\n\\midrule\n{body}\n"
+                f"\\bottomrule\n\\end{{tabular}}}}\n\\label{{{label}}}\n\\end{{table}}\n")
+    env = "table*" if star else "table"
     return (HEAD + f"\\begin{{{env}}}[t]\n\\centering\\small\n\\caption{{{caption}}}\\label{{{label}}}\n"
             f"\\begin{{tabular}}{{@{{}}{align}@{{}}}}\n\\toprule\n{header} \\\\\n\\midrule\n{body}\n"
             f"\\bottomrule\n\\end{{tabular}}\n\\end{{{env}}}\n")
@@ -173,6 +183,9 @@ def latency():
 
 
 def main():
+    global OUT, LAYOUT
+    if sys.argv[1:3] == ["--layout", "ijc"]:
+        LAYOUT, OUT = "ijc", ROOT / "paper" / "ijc" / "tables"
     OUT.mkdir(parents=True, exist_ok=True)
     parameters()
     methods()

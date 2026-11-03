@@ -1,6 +1,8 @@
 # Manuscript, figures and tables
 
-The manuscript is `manuscript/main.tex` (`main.pdf`), written in the Elsevier CAS double column class named by the author guide of the Chinese Journal of Mechanical Engineering. `manuscript/build.sh` compiles it (pdflatex and BibTeX; the class files are in the folder), and `scripts/paper_package.py` writes `manuscript/cjme_manuscript.zip`, a self-contained LaTeX project for the journal or Overleaf. `scripts/paper_check_numbers.py` checks 109 passages of the text against the stored files (the results of the evaluation, the example run, the classifier test, the model and workspace analyses, the recovery library, the frozen settings, and the replay of the lost runs and the latency study made after the review), writes `manuscript/number_check.txt` and fails if any number disagrees (`reproduce.py phase7`). The few remaining numbers, from development runs and the appendix table, are those of the technical reports in `docs/`.
+The manuscript is now prepared for the **International Journal of Control** (Taylor & Francis), in `ijc/`. The journal reviews double anonymously and accepts LaTeX: `ijc/main.tex` gives both versions, `ijc/main_anonymous.pdf` ("Manuscript - anonymous": no author details, funding, contributions or repository address) and `ijc/main_full.pdf` ("Manuscript - with author details"), built by `ijc/build.sh` or by `scripts/paper_package_ijc.py`, which also writes `ijc/ijc_latex_source.zip`, the single zip of LaTeX source files the submission asks for (both versions as separate files, their .bbl files, the Taylor & Francis class and style, the figures as PDF and EPS, the tables). It uses the Interact layout of Taylor & Francis (`interact.cls`, author-date references with `tfcad.bst`); the journal accepts any consistent layout and reference style at submission. Its figures are those of `figures/` redrawn at the page width of that layout (`scripts/paper_figures.py --layout ijc`, `ijc/figures/`), its tables are written in the Taylor & Francis form (`scripts/paper_tables.py --layout ijc`, `ijc/tables/`), and `scripts/paper_check_numbers.py --ijc` checks its numbers (`ijc/number_check.txt`). The abstract is shortened to the 150 words of the journal, the keywords to six, and the highlights of the earlier version are dropped.
+
+The version for the first target journal follows. The manuscript is `manuscript/main.tex` (`main.pdf`), written in the Elsevier CAS double column class named by the author guide of the Chinese Journal of Mechanical Engineering. `manuscript/build.sh` compiles it (pdflatex and BibTeX; the class files are in the folder), and `scripts/paper_package.py` writes `manuscript/cjme_manuscript.zip`, a self-contained LaTeX project for the journal or Overleaf. `scripts/paper_check_numbers.py` checks 109 passages of the text against the stored files (the results of the evaluation, the example run, the classifier test, the model and workspace analyses, the recovery library, the frozen settings, and the replay of the lost runs and the latency study made after the review), writes `manuscript/number_check.txt` and fails if any number disagrees (`reproduce.py phase7`). The few remaining numbers, from development runs and the appendix table, are those of the technical reports in `docs/`.
 
 Apart from the text of the manuscript, everything in this folder is written by a script from stored results; nothing is drawn or typed by hand, except the block diagram of figure 3 (TikZ source in `figures/src/`, whose blocks are modules of `cdpr_ft/`).
 
@@ -10,7 +12,8 @@ Apart from the text of the manuscript, everything in this folder is written by a
 | `figures/manifest.json` | For every figure: the stored files it read with their SHA-256 prefixes, and the rule of any choice | `scripts/paper_figures.py` |
 | `figures/src/fig03_architecture.tex` | TikZ source of the block diagram | by hand; compiled by `scripts/paper_figures.py` |
 | `tables/tab_*.tex` | The tables of the manuscript (LaTeX) | `scripts/paper_tables.py` |
-| `manuscript/` | The manuscript (`main.tex`, `main.pdf`), its bibliography (`references.bib`, every entry checked against its Crossref record), its build script, the class files and the record of the number check | LaTeX; `scripts/paper_check_numbers.py` |
+| `ijc/` | The version for the International Journal of Control: `main.tex` (both versions), `main_anonymous.pdf`, `main_full.pdf`, `build.sh`, the Taylor & Francis template files, `figures/`, `tables/`, the record of its number check | LaTeX; `scripts/paper_figures.py --layout ijc`, `scripts/paper_tables.py --layout ijc`, `scripts/paper_package_ijc.py`, `scripts/paper_check_numbers.py --ijc` |
+| `manuscript/` | The version for the first target journal (`main.tex`, `main.pdf`), its bibliography (`references.bib`, every entry checked against its Crossref record), its build script, the class files and the record of the number check | LaTeX; `scripts/paper_check_numbers.py` |
 
 ## Figure standard
 
@@ -51,7 +54,9 @@ The figures follow the usual conventions of robotics and control journals (IEEE 
 python scripts/phase6_workspace_slices.py   # 2 min, only for figure 2
 python scripts/paper_figures.py             # seconds; or name figures: fig04 fig07
 python scripts/paper_tables.py
-python reproduce.py phase6                  # all three, compared with the stored files byte for byte
+python scripts/paper_figures.py --layout ijc   # the same, for the International Journal of Control version
+python scripts/paper_tables.py --layout ijc
+python reproduce.py phase6                  # all of them, compared with the stored files byte for byte
 ```
 
 The figures use the STIX fonts shipped with matplotlib, so they look the same on every machine; figure 3 needs `pdflatex` with the `mathptmx` package. Redrawn in the environment of `requirements.txt`, every PDF and PNG is identical byte for byte to the stored one.

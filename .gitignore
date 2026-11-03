@@ -54,3 +54,6 @@ paper/manuscript/*.zip
 
 # Reports of scripts/replicate.py (kept by whoever runs it; compared by scripts/compare_replications.py)
 replication/runs/
+paper/ijc/*.zip
+paper/ijc/main_anonymous.tex
+paper/ijc/main_full.tex

@@ -84,7 +84,7 @@ def _phase5_subset_outputs() -> list[str]:
 PAPER_FIGURES = ["fig01_robot_task", "fig02_postfault_workspace", "fig03_architecture", "fig04_example_break",
                  "fig05_detection_delay", "fig06_false_alarms", "fig07_learned_vs_model", "fig08_safety_after_break",
                  "fig09_recovery", "fig10_tightening", "fig11_computation"]
-PAPER_TABLES = ["tab_parameters", "tab_methods", "tab_results"]
+PAPER_TABLES = ["tab_parameters", "tab_methods", "tab_results", "tab_latency"]
 
 
 PHASES: dict[str, list[Step]] = {
@@ -185,10 +185,17 @@ PHASES: dict[str, list[Step]] = {
              [f"paper/figures/{n}.{e}" for n in PAPER_FIGURES for e in ("pdf", "png")] + ["paper/figures/manifest.json"],
              0.1, note="the manuscript figures from the stored results; PDF and PNG files compared byte for byte"),
         Step("tables", ["paper_tables.py"], [f"paper/tables/{n}.tex" for n in PAPER_TABLES], 0.1),
+        Step("figures_ijc", ["paper_figures.py", "--layout", "ijc"],
+             [f"paper/ijc/figures/{n}.{e}" for n in PAPER_FIGURES for e in ("pdf", "png")] + ["paper/ijc/figures/manifest.json"],
+             0.1, note="the same figures at the page width of the International Journal of Control"),
+        Step("tables_ijc", ["paper_tables.py", "--layout", "ijc"], [f"paper/ijc/tables/{n}.tex" for n in PAPER_TABLES], 0.1,
+             note="the same tables in the Taylor & Francis form"),
     ],
     "phase7": [
         Step("numbers", ["paper_check_numbers.py"], ["paper/manuscript/number_check.txt"], 0.2,
              note="every checked number of the manuscript against the stored results; fails if any disagrees"),
+        Step("numbers_ijc", ["paper_check_numbers.py", "--ijc"], ["paper/ijc/number_check.txt"], 0.2,
+             note="the same check for the version for the International Journal of Control"),
     ],
 }
 QUICK = Step("quick", ["phase3_closed_loop_check.py", "quick", "controller_phase3.yaml", JOBS, "breaks"],

@@ -20,6 +20,7 @@ Figure standard (paper/README.md):
     styles or marker fills carry the method or the path as well, so that a grey print stays
     readable; reference values (periods, tension bounds) are thin grey lines.
 Usage: python scripts/paper_figures.py [fig01 fig04 ...]      (no argument: all figures)
+       python scripts/paper_figures.py --layout ijc [fig01 ...] (International Journal of Control page width)
 """
 from __future__ import annotations
 
@@ -292,7 +293,7 @@ def fig03():
     import os
     import shutil
     import subprocess
-    src = OUT / "src"
+    src = ROOT / "paper" / "figures" / "src"
     tex = use(src / "fig03_architecture.tex")
     use(ROOT / "configs" / "controller_phase3.yaml")
     env = dict(os.environ, SOURCE_DATE_EPOCH="0", FORCE_SOURCE_DATE="1")      # reproducible PDF bytes
@@ -609,9 +610,24 @@ FIGURES = {"fig01": fig01, "fig02": fig02, "fig03": fig03, "fig04": fig04, "fig0
            "fig07": fig07, "fig08": fig08, "fig09": fig09, "fig10": fig10, "fig11": fig11}
 
 
+# Page widths of the journal layouts. The default is the double column page of the first target
+# (Elsevier CAS); "ijc" is the single column page of the International Journal of Control (Taylor &
+# Francis Interact layout, text width 34 pc = 408 pt), for which the full width figures are redrawn at that
+# width so that their type stays at 8 pt, and written to paper/ijc/figures/.
+LAYOUTS = {"cas": (7.16, ROOT / "paper" / "figures"), "ijc": (408 / 72.27, ROOT / "paper" / "ijc" / "figures")}
+
+
 def main():
+    global TWO, OUT
     from cdpr_ft.provenance import stamp
-    names = sys.argv[1:] or list(FIGURES)
+    args = sys.argv[1:]
+    layout = "cas"
+    if "--layout" in args:
+        i = args.index("--layout")
+        layout = args[i + 1]
+        del args[i:i + 2]
+    TWO, OUT = LAYOUTS[layout]
+    names = args or list(FIGURES)
     path = OUT / "manifest.json"
     old = json.loads(path.read_text())["figures"] if path.exists() else {}
     for n in names:

@@ -8,6 +8,8 @@ traces of run 1 (the example of figure 4), the Phase 1 and Phase 3 result files 
 the Phase 4 test file (classifier), results/phase6_workspace_slices.json, the robot configuration, and the
 frozen controller configuration for the table of settings.
 Writes paper/manuscript/number_check.txt (every passage checked). Usage: python scripts/paper_check_numbers.py
+With --ijc the version for the International Journal of Control (paper/ijc/main.tex) is checked and the record
+is written to paper/ijc/number_check.txt.
 (exit status 1 if any claim fails)
 """
 from __future__ import annotations
@@ -38,13 +40,22 @@ def normalise(tex: str) -> str:
     return re.sub(r"\s+", " ", tex)
 
 
-TEXT = normalise((ROOT / "paper" / "manuscript" / "main.tex").read_text())
+# the manuscript checked: the Elsevier CAS version (default) or the International Journal of Control
+# version (--ijc); passages that exist in one of them only (abstract, highlights) are marked with MS
+MS = "ijc" if "--ijc" in sys.argv[1:] else "cas"
+MSDIR = ROOT / "paper" / ("ijc" if MS == "ijc" else "manuscript")
+TEXT = normalise((MSDIR / "main.tex").read_text())
 A = load("phase5/analysis.json")
 S = A["summary"]
 ROWS = [json.loads(line) for line in gzip.open(RES / "phase5" / "rows.jsonl.gz", "rt")]
 PRIMARY = {e["endpoint"]: {c["comparison"]: c for c in e["comparisons"]} for e in A["primary"]}
 SEC = A["secondary"]
 FAILED, PASSED, LOG = [], 0, []
+
+
+def LA_ALL_LOST_BEFORE():
+    la = load("latency/analysis.json")["conditions"]
+    return all(la[d]["lost"] == la[d]["lost_before_onset"] == la[d]["runs"] for d in ("20", "40", "60"))
 
 
 def claim(passage, *values):
@@ -98,16 +109,25 @@ x2 = SEC["diagnosis_x_tightening"]["table"]
 assert A["rows"] == 5212
 
 nff = sum(1 for r in ROWS if r["method"] == "P" and r["group"] == "fault_free")
-claim(f"a paired simulation study of {nfault} fault cases and {nff} fault free runs")
-claim(f"It identified {correct['P']} of the {nfault} faults correctly, declared every cable break within {max_break} ms and lost "
-      f"the platform after {lost['P']} of {nbreak} cable breaks, against {lost['B0']} without fault tolerance and {lost['B2']} with "
-      f"a classical threshold based pipeline.")
-claim(f"when its probabilities also weighted the fault scenarios of the controller, the platform was lost in "
-      f"{x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} break runs.")
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim(f"a paired simulation study of {nfault} fault cases and {nff} fault free runs")
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim(f"It identified {correct['P']} of the {nfault} faults correctly, declared every cable break within {max_break} ms and lost "
+          f"the platform after {lost['P']} of {nbreak} cable breaks, against {lost['B0']} without fault tolerance and {lost['B2']} with "
+          f"a classical threshold based pipeline.")
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim(f"when its probabilities also weighted the fault scenarios of the controller, the platform was lost in "
+          f"{x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} break runs.")
+if MS == "ijc":                     # abstract of the International Journal of Control version
+    claim(f"In {nfault} simulated fault runs, the controller declared every break within {max_break} ms and lost the platform "
+          f"after {lost['P']} of {nbreak} breaks, against {lost['B0']} without fault tolerance.")
+    claim("delayed by one period, the platform fell in every run tested.", LA_ALL_LOST_BEFORE())
 claim(f"the platform was lost after every one of {upper['B0']} simulated breaks of an upper cable",
       upper["B0"] == s("B0", group="upper")["n"])
-claim(f"Recovery plans computed offline keep the platform after {nbreak - lost['P']} of {nbreak} cable breaks")
-claim(f"isolates every cable break within {max_break} ms")
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim(f"Recovery plans computed offline keep the platform after {nbreak - lost['P']} of {nbreak} cable breaks")
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim(f"isolates every cable break within {max_break} ms")
 claim(f"It identified {correct['P']} of {nfault} faults correctly and declared every break within {max_break} ms.")
 claim(f"With it the platform was lost after {lost['P']} of {nbreak} breaks, against {lost['A5']} with the same planner solved "
       f"online and {lost['B0']} without fault tolerance.")
@@ -353,8 +373,9 @@ claim(f"With 40 and 60 ms the platform was lost in every run as well, again befo
       f"therefore {LA['largest_delay_without_significantly_more_losses_ms']} ms.",
       all(LC[d]["lost"] == LC[d]["lost_before_onset"] == 104 for d in ("40", "60")),
       all(LA["against_0_ms"][d]["lost"]["p_holm"] < 0.05 for d in ("20", "40", "60")))
-claim("an output delayed by one period of 20 ms made the platform fall before any fault in all 104 runs tested",
-      LC["20"]["lost_before_onset"] == 104)
+if MS == "cas":                     # abstract or highlights of the CAS version
+    claim("an output delayed by one period of 20 ms made the platform fall before any fault in all 104 runs tested",
+          LC["20"]["lost_before_onset"] == 104)
 early_eval = sum(1 for r in ROWS if r["t_declare"] is not None and r["t_declare"] < 2.0)
 early_lat = sum(1 for r in LROWS if r["delay_ms"] > 0 and r["t_declare"] is not None and r["t_declare"] < 2.0)
 claim("this happened in no run of the evaluation and in most runs of the latency study",
@@ -497,9 +518,33 @@ claim(f"library: break instants; detection delay & every 50 ms; {1e3 * ft['libra
 claim(f"the stage cost of a fault scenario is scaled by {mp['fault_track_scale']:g}")
 claim(f"a soft tension margin of {rc['s_soft']:.0f} N, penalised quadratically", rc["w_margin"] > 0)
 
+if MS == "ijc":
+    # the word count stated on the title page, recounted with detex: Sections 1 to 8, without and with
+    # the floats (tables, figures with their captions, the algorithm) and without display equations
+    import shutil
+    import subprocess
+    import tempfile
+    if shutil.which("detex"):
+        src = (MSDIR / "main.tex").read_text()
+        body = src[src.index("\\section{Introduction}"):src.index("\\section*{Disclosure statement}")]
+        noflt = body
+        for env in ("equation", "align", "gather", "multline", "table", "figure", "algorithm"):
+            noflt = re.sub(r"\\begin\{%s\*?\}.*?\\end\{%s\*?\}" % (env, env), " ", noflt, flags=re.S)
+        withflt = body
+        for env in ("equation", "align", "gather", "multline"):
+            withflt = re.sub(r"\\begin\{%s\*?\}.*?\\end\{%s\*?\}" % (env, env), " ", withflt, flags=re.S)
+
+        def words(tex):
+            with tempfile.NamedTemporaryFile("w", suffix=".tex", delete=False) as f:
+                f.write(tex)
+            return len(subprocess.run(["detex", "-n", f.name], capture_output=True, text=True).stdout.split())
+        n0, n1 = words(noflt), words(withflt)
+        claim(f"Word count: about {50 * round(n0 / 50):,} words in Sections 1 to 8 (about {50 * round(n1 / 50):,} with the "
+              f"tables, figure captions and algorithm)")
+
 print(f"{PASSED} claims checked against the stored results")
-(ROOT / "paper" / "manuscript" / "number_check.txt").write_text(
-    "Passages of paper/manuscript/main.tex whose numbers agree with the stored results "
+(MSDIR / "number_check.txt").write_text(
+    f"Passages of {MSDIR.relative_to(ROOT)}/main.tex whose numbers agree with the stored results "
     "(scripts/paper_check_numbers.py):\n" + "".join(f"PASS  {x}\n" for x in LOG)
     + "".join(f"FAIL  {x}\n" for x in FAILED))
 if FAILED:
