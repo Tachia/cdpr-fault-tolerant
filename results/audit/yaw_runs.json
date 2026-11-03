@@ -1,0 +1,288 @@
+{
+ "limit_deg": 30.0,
+ "runs": [
+  {
+   "method": "A2",
+   "run": 103,
+   "fault": [
+    "break",
+    3,
+    3.366,
+    0.0
+   ],
+   "error": null,
+   "t_any_angle": 4.016,
+   "t_roll_or_pitch": 4.476,
+   "t_physical_tilt": 4.438,
+   "other_stop": null,
+   "t_last": 7.3660000000000005,
+   "max_roll_pitch_deg": 179.96471329905245,
+   "max_physical_tilt_deg": 176.21588761169394,
+   "t_stored_stop": 4.016,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  },
+  {
+   "method": "A2",
+   "run": 274,
+   "fault": [
+    "break",
+    0,
+    4.309,
+    0.0
+   ],
+   "error": null,
+   "t_any_angle": 4.861,
+   "t_roll_or_pitch": 5.238,
+   "t_physical_tilt": 5.226,
+   "other_stop": null,
+   "t_last": 8.309000000000001,
+   "max_roll_pitch_deg": 179.93567207945466,
+   "max_physical_tilt_deg": 177.26540287853973,
+   "t_stored_stop": 4.861,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  },
+  {
+   "method": "B2",
+   "run": 53,
+   "fault": [
+    "break",
+    3,
+    5.694,
+    0.0
+   ],
+   "error": null,
+   "t_any_angle": 5.961,
+   "t_roll_or_pitch": null,
+   "t_physical_tilt": null,
+   "other_stop": null,
+   "t_last": 9.694,
+   "max_roll_pitch_deg": 14.898476242187648,
+   "max_physical_tilt_deg": 15.207075974283283,
+   "t_stored_stop": 5.961,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": false,
+   "lost_physical_tilt_rule": false
+  },
+  {
+   "method": "B2",
+   "run": 185,
+   "fault": [
+    "loe",
+    3,
+    6.744,
+    0.6
+   ],
+   "error": null,
+   "t_any_angle": 8.656,
+   "t_roll_or_pitch": 8.709,
+   "t_physical_tilt": 8.595,
+   "other_stop": [
+    "frame",
+    9.631
+   ],
+   "t_last": 9.631,
+   "max_roll_pitch_deg": 179.89421469217285,
+   "max_physical_tilt_deg": 177.54186173859406,
+   "t_stored_stop": 8.656,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  },
+  {
+   "method": "B2",
+   "run": 284,
+   "fault": [
+    "loe",
+    2,
+    5.914,
+    0.6
+   ],
+   "error": null,
+   "t_any_angle": 6.327,
+   "t_roll_or_pitch": 6.406,
+   "t_physical_tilt": 6.372,
+   "other_stop": null,
+   "t_last": 9.914,
+   "max_roll_pitch_deg": 179.9978813086738,
+   "max_physical_tilt_deg": 178.24941913841366,
+   "t_stored_stop": 6.327,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  },
+  {
+   "method": "B2",
+   "run": 485,
+   "fault": [
+    "loe",
+    3,
+    4.163,
+    0.6
+   ],
+   "error": null,
+   "t_any_angle": 4.607,
+   "t_roll_or_pitch": 4.625,
+   "t_physical_tilt": 4.5520000000000005,
+   "other_stop": [
+    "drum",
+    6.6530000000000005
+   ],
+   "t_last": 6.6530000000000005,
+   "max_roll_pitch_deg": 176.92547259716986,
+   "max_physical_tilt_deg": 170.237162193519,
+   "t_stored_stop": 4.607,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  },
+  {
+   "method": "B2",
+   "run": 559,
+   "fault": [
+    "loe",
+    1,
+    5.927,
+    0.6
+   ],
+   "error": null,
+   "t_any_angle": 6.392,
+   "t_roll_or_pitch": 6.455,
+   "t_physical_tilt": 6.397,
+   "other_stop": null,
+   "t_last": 9.927,
+   "max_roll_pitch_deg": 179.96352025442357,
+   "max_physical_tilt_deg": 174.87381766684993,
+   "t_stored_stop": 6.392,
+   "same_as_stored": true,
+   "lost_roll_pitch_rule": true,
+   "lost_physical_tilt_rule": true
+  }
+ ],
+ "summary": {
+  "yaw_only_runs": 7,
+  "all_same_as_stored": true,
+  "lost_roll_pitch_rule": 6,
+  "lost_physical_tilt_rule": 6
+ },
+ "provenance": {
+  "code_digest": "c6cbc1cddfc2ade0",
+  "controller_config_sha256_16": "71c8e8640f29365f",
+  "utc": "2026-11-03T15:16:03Z",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "casadi": "3.8.1"
+ },
+ "primary_platform_lost_after_a_break": {
+  "three_angles": [
+   {
+    "comparison": "P vs B0",
+    "pairs": 208,
+    "a": 11,
+    "b": 122,
+    "b_upper": 104,
+    "b_lower": 18,
+    "a_only": 0,
+    "b_only": 111,
+    "p": 7.703719777548943e-34,
+    "p_holm": 3.0814879110195774e-33
+   },
+   {
+    "comparison": "P vs B2",
+    "pairs": 208,
+    "a": 11,
+    "b": 65,
+    "b_upper": 35,
+    "b_lower": 30,
+    "a_only": 7,
+    "b_only": 61,
+    "p": 7.387402755493211e-12,
+    "p_holm": 2.2162208266479633e-11
+   },
+   {
+    "comparison": "P vs B3",
+    "pairs": 208,
+    "a": 11,
+    "b": 25,
+    "b_upper": 24,
+    "b_lower": 1,
+    "a_only": 5,
+    "b_only": 19,
+    "p": 0.006610751152038574,
+    "p_holm": 0.006610751152038574
+   },
+   {
+    "comparison": "P vs A2",
+    "pairs": 208,
+    "a": 11,
+    "b": 38,
+    "b_upper": 31,
+    "b_lower": 7,
+    "a_only": 4,
+    "b_only": 31,
+    "p": 3.4654513001441956e-06,
+    "p_holm": 6.930902600288391e-06
+   }
+  ],
+  "roll_or_pitch": [
+   {
+    "comparison": "P vs B0",
+    "pairs": 208,
+    "a": 11,
+    "b": 122,
+    "b_upper": 104,
+    "b_lower": 18,
+    "a_only": 0,
+    "b_only": 111,
+    "p": 7.703719777548943e-34,
+    "p_holm": 3.0814879110195774e-33
+   },
+   {
+    "comparison": "P vs B2",
+    "pairs": 208,
+    "a": 11,
+    "b": 64,
+    "b_upper": 34,
+    "b_lower": 30,
+    "a_only": 7,
+    "b_only": 60,
+    "p": 1.3280368233066496e-11,
+    "p_holm": 3.9841104699199486e-11
+   },
+   {
+    "comparison": "P vs B3",
+    "pairs": 208,
+    "a": 11,
+    "b": 25,
+    "b_upper": 24,
+    "b_lower": 1,
+    "a_only": 5,
+    "b_only": 19,
+    "p": 0.006610751152038574,
+    "p_holm": 0.006610751152038574
+   },
+   {
+    "comparison": "P vs A2",
+    "pairs": 208,
+    "a": 11,
+    "b": 38,
+    "b_upper": 31,
+    "b_lower": 7,
+    "a_only": 4,
+    "b_only": 31,
+    "p": 3.4654513001441956e-06,
+    "p_holm": 6.930902600288391e-06
+   }
+  ]
+ },
+ "outcomes_changed_by_roll_or_pitch_rule": [
+  [
+   "B2",
+   53
+  ]
+ ]
+}

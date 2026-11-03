@@ -6,6 +6,7 @@
   paper/tables/tab_methods.tex      the methods of the evaluation and what each changes
   paper/tables/tab_results.tex      the outcome of every method (results/phase5/analysis.json and
                                     results/phase5/rows.jsonl.gz)
+  paper/tables/tab_latency.tex      the latency study added after the review (results/latency/analysis.json)
 The complete tables of the evaluation (primary endpoints with their statistics, results by fault type,
 computation times) are those of docs/phase5/evaluation.pdf, written by scripts/phase5_tables.py.
 Numbers are formatted from the files; none is typed by hand.
@@ -116,16 +117,58 @@ def results():
                      f"{delay:.0f}" if delay is not None and m != "B1" else "--",
                      f"{alarms / hours:.1f}" if declares and m not in ("A2", "A5") else "--",
                      f"{br['recovered'][0]}/{br['n']}"])
+    # losses in break runs that happened before the break (only B3T has any)
+    early = {m: sum(1 for r in rows_all if r["method"] == m and r["lost"] and r["fault"] and r["fault"][0] == "break"
+                    and r["t_end"] < r["fault"][2]) for m in ("P", "A1", "A2", "A5", "B0", "B1", "B2", "B3", "B3T")}
+    assert all(v == 0 for m, v in early.items() if m != "B3T"), early
+    b3t = [r for r in rows_all if r["method"] == "B3T"]
+    b3t_fault = sum(1 for r in b3t if r["fault"])
+    b3t_break = sum(1 for r in b3t if r["fault"] and r["fault"][0] == "break")
+    b3t_lost_break = sum(1 for r in b3t if r["lost"] and r["fault"] and r["fault"][0] == "break")
     (OUT / "tab_results.tex").write_text(tabular(
-        "Outcome of every method. Lost: platform lost after the breaks of an upper and of a lower cable; "
-        "correct: faults declared with the correct mode; delay: median delay of the correct break declarations; "
-        "false alarms: per hour of operation with the fault modes armed; recovered: breaks after which the "
-        "position error returned to the band of the fault free runs. A2 and A3 ran the break runs only, and B3T "
-        "a subset fixed in advance. The differences in platforms lost between P and each of B0, B2, B3 and A2 "
+        "Outcome of every method. Lost: platforms lost in the runs with a break of an upper and of a lower cable, "
+        "out of the break runs of each group; correct: faults declared with the correct mode, out of all fault "
+        "runs of the method; delay: median delay of the correct break declarations; false alarms: per hour of "
+        "operation with the fault modes armed; recovered: break runs after which the position error returned to "
+        "the band of the fault free runs. A2 and A3 ran the 208 break runs only, and B3T a subset fixed in advance "
+        f"of {b3t_fault} fault runs, {b3t_break} of them breaks, and {len(b3t) - b3t_fault} fault free runs. "
+        f"B3T lost {early['B3T']} of its {b3t_lost_break} platforms in break runs before the break, every other "
+        "method after it. The differences in platforms lost between P and each of B0, B2, B3 and A2 "
         "remain after the Holm correction ($p\\le0.007$).", "tab:results",
         "& \\multicolumn{2}{c}{Lost} & Correct & Delay & False alarms & Recovered \\\\\n"
         "\\cmidrule(lr){2-3}\nMethod & upper & lower & & (ms) & (per h) & breaks",
         body, "lrrrrrr", star=True))
+
+
+def pval(p):
+    return "$<0.001$" if p < 0.001 else f"{p:.2f}"
+
+
+def latency():
+    """The study added after the review: P on the 104 upper cable breaks with the MPC output delayed
+    (results/latency/analysis.json, protocol post_review/latency_protocol.yaml)."""
+    a = json.loads((ROOT / "results" / "latency" / "analysis.json").read_text())
+    assert a["validation"]["identical"] == a["validation"]["runs"] and not a["missing"]
+    body = []
+    for d in sorted(int(k) for k in a["conditions"]):
+        c, comp = a["conditions"][str(d)], a["against_0_ms"].get(str(d))
+        lo, hi = c["lost_wilson"]
+        body.append([f"{d}", f"{max(20, d)}", f"{c['lost']}/{c['runs']}", f"{100 * lo:.0f}--{100 * hi:.0f}",
+                     f"{c['lost_before_onset']}", pval(comp["lost"]["p_holm"]) if comp else "--",
+                     f"{c['median_transient_outside_pct']:.1f}", f"{c['median_transient_min_margin_N']:.0f}",
+                     f"{c['correct']}/{c['runs']}"])
+    (OUT / "tab_latency.tex").write_text(tabular(
+        "Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks of the evaluation, a "
+        "study added after the review with its protocol fixed before its runs. For $D>0$ a solve starts every "
+        "$\\max(20~\\mathrm{ms},D)$, and its first command takes effect $D$ after the start and is held until the "
+        "next. Lost: platforms lost, with the 95\\% Wilson interval in percent; before: of these, lost before the "
+        "cable broke; $p$: exact McNemar test against $D=0$ on the same runs, Holm correction over the three delays; "
+        "outside and margin: medians over the runs that reached the break, of the share of the 2~s after it with an "
+        "intact cable outside its bounds and of the smallest tension margin of the intact cables; correct: breaks "
+        "declared with the correct mode.", "tab:latency",
+        "$D$ & Period & Lost & 95\\% CI & Before & $p$ & Outside & Margin & Correct \\\\\n"
+        "(ms) & (ms) & & (\\%) & & & (\\%) & (N) &",
+        body, "rrrrrrrrr"))
 
 
 def main():
@@ -133,6 +176,8 @@ def main():
     parameters()
     methods()
     results()
+    if (ROOT / "results" / "latency" / "analysis.json").exists():
+        latency()
     print("tables written to", OUT.relative_to(ROOT), sorted(p.name for p in OUT.glob("*.tex")))
 
 

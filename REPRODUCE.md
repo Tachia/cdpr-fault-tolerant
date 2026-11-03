@@ -223,3 +223,16 @@ The search and the training ran while other work used the machine at times, so t
 
 **Phase 8 (29 October 2026).** After the internal review the figure files were renamed in the order in which the manuscript shows them (`fig01` to `fig11`), and one label of the block diagram (figure 3) was corrected; `reproduce.py phase6` then reproduced every figure and table byte for byte, `reproduce.py phase7` confirmed the 82 checked passages, and the 56 tests pass.
 
+
+## 7. Checks made after the review
+
+Three scripts, run after the review of the manuscript, simulate stored runs again with the frozen code and settings. They change nothing in the package, so the code digest is unchanged; where a study needs a different behaviour (a delayed MPC output, or a run continued past the attitude rule), the script makes the change in its own worker processes only.
+
+| Command | What it does | Output, check |
+|---|---|---|
+| `python scripts/audit_lost_runs.py 2` | Simulates again every run of the campaign in which a platform was lost (432 runs, about 2 h on two cores), recording the angle that ended the run and every MPC solve | `results/audit/lost_runs.json`; every row must equal the stored row (432 identical) and the count of unsuccessful solves must equal the stored count |
+| `python scripts/audit_lost_runs.py 1 --failed` | The same for the runs that were kept although a solve was unsuccessful | `results/audit/failed_solve_runs.json`, same checks |
+| `python scripts/audit_yaw_runs.py 1` | Continues the runs ended on yaw alone without the attitude rule and recomputes the primary loss comparison under a rule on roll and pitch | `results/audit/yaw_runs.json`; the stop time of each continued run must equal the stored one |
+| `python scripts/latency_probe.py 2` | The latency study of `post_review/latency_protocol.yaml`: P on the 104 upper cable breaks with the MPC output delayed by 0, 20, 40 and 60 ms. The rows at 0 ms are compared with the campaign first, and the delayed conditions run only if all are identical | `results/latency/validation.json`, `rows.jsonl`, `analysis.json` (`--analyse` recomputes the statistics from the rows) |
+
+All four are resumable: a run already written to the `.jsonl` file is not simulated again.

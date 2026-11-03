@@ -159,6 +159,13 @@ def analyse():
             "runs": len(rows), "lost": lost, "lost_wilson": wilson(lost, len(rows)),
             "correct": sum(bool(r["correct"]) for r in rows),
             "delay_ms_median": float(1e3 * np.median([r["delay_s"] for r in rows if r["correct"]])),
+            # descriptive detail beyond the protocol: when the losses happened, how the runs ended and how
+            # many were declared before the break (false alarms)
+            "lost_before_onset": sum(1 for r in rows if r["lost"] and r["t_end"] < r["fault"][2]),
+            "stopped": {k: sum(1 for r in rows if r["stopped"] == k) for k in sorted({str(r["stopped"]) for r in rows
+                                                                                       if r["stopped"]})},
+            "false_alarm": sum(bool(r["false_alarm"]) for r in rows),
+            "lost_t_from_onset_s": sorted(round(r["t_end"] - r["fault"][2], 3) for r in rows if r["lost"]),
             "runs_with_failed_solve": sum(1 for r in rows if r["base_metrics"]["mpc_failures"] > 0),
             "failed_solves": int(sum(r["base_metrics"]["mpc_failures"] for r in rows)),
             **{f"median_{k}": float(np.median([r[k] for r in rows if r.get(k) is not None]))

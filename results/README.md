@@ -120,3 +120,18 @@ Pilot runs (seeds 900000 and up) went to `results/phase5_pilot/` and are not res
 | `phase6_workspace_slices.npz`, `.json` | Tension margin and drum-window flag of the static wrench-feasible poses (zero orientation) on the planes z = 3 m and y = 0, with all cables and without cable 1 or cable 5 (figure 3) | `phase6_workspace_slices.py` |
 | `phase6_workspace_slices.log` | Console output | |
 
+
+## After the review: replay of the lost runs and latency study
+
+These files were written after the review of the manuscript, with the frozen code and settings of the evaluation (the digest of the frozen controller is unchanged; the scripts that need a change of behaviour make it in their own process only). They are checks of the stored results and one added study, kept apart from the evaluation of Phase 5.
+
+| File | Content | Script |
+|---|---|---|
+| `audit/lost_runs.jsonl`, `.json` | Every run in which a platform was lost (432), simulated again: the angle that ended the run, the IPOPT status, iterations, scenarios and constraint violation of every unsuccessful MPC solve, and the check that the row equals the stored row (all 432 identical) | `audit_lost_runs.py` |
+| `audit/failed_solve_runs.jsonl`, `.json` | The same for the runs that were kept although an MPC solve was unsuccessful | `audit_lost_runs.py --failed` |
+| `audit/yaw_runs.json` | The seven runs ended on yaw alone, continued without the attitude rule; outcome under a rule on roll and pitch and on the physical tilt; the primary comparison of platforms lost after a break under both rules | `audit_yaw_runs.py` |
+| `latency/rows.jsonl` | Rows of the latency study: P on the 104 upper cable breaks with the MPC output available 0, 20, 40 and 60 ms after each solve starts | `latency_probe.py` |
+| `latency/validation.json` | The rows at 0 ms against the stored rows of the evaluation (the delayed conditions run only if all are identical) | `latency_probe.py` |
+| `latency/analysis.json` | Every condition against 0 ms: platforms lost (exact McNemar test), the secondary endpoints (Wilcoxon), Holm correction over the three delays, Wilson intervals | `latency_probe.py --analyse` |
+
+The protocol of the latency study, `post_review/latency_protocol.yaml`, was committed and pushed before its first run.

@@ -1,0 +1,394 @@
+{
+ "runs": 432,
+ "row_check": {
+  "identical": 432
+ },
+ "failed_solve_count_equals_stored": true,
+ "trigger_by_method": {
+  "A1": {
+   "roll": 11
+  },
+  "A2": {
+   "roll": 35,
+   "yaw": 2,
+   "pitch": 1
+  },
+  "A5": {
+   "roll": 20
+  },
+  "B0": {
+   "roll": 119,
+   "pitch": 3,
+   "yaw": 1
+  },
+  "B1": {
+   "roll": 4
+  },
+  "B2": {
+   "roll": 80,
+   "yaw": 5,
+   "pitch": 1
+  },
+  "B3": {
+   "roll": 25
+  },
+  "B3T": {
+   "roll": 93,
+   "pitch": 21
+  },
+  "P": {
+   "roll": 11
+  }
+ },
+ "yaw_triggered": [
+  {
+   "method": "A2",
+   "run": 103,
+   "roll": 21.97083995889907,
+   "pitch": 12.431421956121335,
+   "yaw": 30.15676750466756
+  },
+  {
+   "method": "A2",
+   "run": 274,
+   "roll": 12.720819972652976,
+   "pitch": 6.2082699618281225,
+   "yaw": 30.012614022922392
+  },
+  {
+   "method": "B0",
+   "run": 325,
+   "roll": 14.956530409091263,
+   "pitch": 30.020135584241167,
+   "yaw": 30.051621004029805
+  },
+  {
+   "method": "B2",
+   "run": 53,
+   "roll": 2.0338937303032907,
+   "pitch": 7.592144292696967,
+   "yaw": 30.0008531722834
+  },
+  {
+   "method": "B2",
+   "run": 185,
+   "roll": 24.41665294207875,
+   "pitch": 25.69726574193707,
+   "yaw": 30.046030011246533
+  },
+  {
+   "method": "B2",
+   "run": 284,
+   "roll": 21.99913637684874,
+   "pitch": 14.938040086989268,
+   "yaw": 30.04175446270822
+  },
+  {
+   "method": "B2",
+   "run": 485,
+   "roll": 27.738502340479123,
+   "pitch": 23.17340458372239,
+   "yaw": 30.01069312210009
+  },
+  {
+   "method": "B2",
+   "run": 559,
+   "roll": 22.651015658984804,
+   "pitch": 19.716001930056038,
+   "yaw": 30.03651476795488
+  }
+ ],
+ "failed_solves_by_method": {
+  "A1": {
+   "lost_runs": 11,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|no_failed_solve": 11
+   }
+  },
+  "A2": {
+   "lost_runs": 38,
+   "lost_runs_with_failed_solve": 8,
+   "failed_solves": 8,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 8,
+   "loss_after_first_failure_s": {
+    "median": 0.2529999999999999,
+    "min": 0.19599999999999973,
+    "max": 0.3700000000000001
+   },
+   "first_failure_with_attitude_below_10_deg": 6,
+   "statuses": {
+    "Maximum_Iterations_Exceeded": 8
+   },
+   "iterations": {
+    "30": 8
+   },
+   "scenarios": {
+    "1": 8
+   },
+   "inf_pr_of_returned_iterate": {
+    "median": 3.9517248251463855e-08,
+    "max": 0.00400815157612322
+   },
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|failed_solve": 8,
+    "lost_after_onset|after_onset|no_failed_solve": 30
+   }
+  },
+  "A5": {
+   "lost_runs": 20,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|no_failed_solve": 20
+   }
+  },
+  "B0": {
+   "lost_runs": 123,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|none|no_failed_solve": 123
+   }
+  },
+  "B1": {
+   "lost_runs": 4,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|no_failed_solve": 4
+   }
+  },
+  "B2": {
+   "lost_runs": 86,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|no_failed_solve": 83,
+    "lost_before_onset|before_onset|no_failed_solve": 3
+   }
+  },
+  "B3": {
+   "lost_runs": 25,
+   "lost_runs_with_failed_solve": 1,
+   "failed_solves": 1,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 1,
+   "loss_after_first_failure_s": {
+    "median": 0.484,
+    "min": 0.484,
+    "max": 0.484
+   },
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {
+    "Maximum_Iterations_Exceeded": 1
+   },
+   "iterations": {
+    "30": 1
+   },
+   "scenarios": {
+    "1": 1
+   },
+   "inf_pr_of_returned_iterate": {
+    "median": 0.36377686699662437,
+    "max": 0.36377686699662437
+   },
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|failed_solve": 1,
+    "lost_after_onset|after_onset|no_failed_solve": 24
+   }
+  },
+  "B3T": {
+   "lost_runs": 114,
+   "lost_runs_with_failed_solve": 78,
+   "failed_solves": 335,
+   "first_failure_before_onset": 55,
+   "first_failure_before_fault_incl_fault_free": 72,
+   "first_failure_before_loss": 78,
+   "loss_after_first_failure_s": {
+    "median": 0.534,
+    "min": 0.009999999999999787,
+    "max": 2.97
+   },
+   "first_failure_with_attitude_below_10_deg": 55,
+   "statuses": {
+    "Maximum_Iterations_Exceeded": 335
+   },
+   "iterations": {
+    "30": 335
+   },
+   "scenarios": {
+    "3": 318,
+    "1": 5,
+    "2": 12
+   },
+   "inf_pr_of_returned_iterate": {
+    "median": 0.13756159109763466,
+    "max": 116.48594092949332
+   },
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|failed_solve": 4,
+    "lost_after_onset|after_onset|no_failed_solve": 2,
+    "lost_after_onset|before_onset|failed_solve": 4,
+    "lost_after_onset|before_onset|no_failed_solve": 16,
+    "lost_after_onset|none|failed_solve": 9,
+    "lost_after_onset|none|no_failed_solve": 6,
+    "lost_before_onset|before_onset|failed_solve": 14,
+    "lost_before_onset|before_onset|no_failed_solve": 8,
+    "lost_before_onset|none|failed_solve": 47,
+    "lost_before_onset|none|no_failed_solve": 4
+   }
+  },
+  "P": {
+   "lost_runs": 11,
+   "lost_runs_with_failed_solve": 0,
+   "failed_solves": 0,
+   "first_failure_before_onset": 0,
+   "first_failure_before_fault_incl_fault_free": 0,
+   "first_failure_before_loss": 0,
+   "loss_after_first_failure_s": null,
+   "first_failure_with_attitude_below_10_deg": 0,
+   "statuses": {},
+   "iterations": {},
+   "scenarios": {},
+   "inf_pr_of_returned_iterate": null,
+   "by_timing_declaration_failure": {
+    "lost_after_onset|after_onset|no_failed_solve": 11
+   }
+  }
+ },
+ "lost_before_onset_by_method": {
+  "A1": {
+   "lost_runs": 11,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 11
+   }
+  },
+  "A2": {
+   "lost_runs": 38,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 38
+   }
+  },
+  "A5": {
+   "lost_runs": 20,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 20
+   }
+  },
+  "B0": {
+   "lost_runs": 123,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 122,
+    "loe": 1
+   }
+  },
+  "B1": {
+   "lost_runs": 4,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 4
+   }
+  },
+  "B2": {
+   "lost_runs": 86,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {
+    "bias": 2,
+    "loe": 1
+   },
+   "fault_runs_lost_after_onset": {
+    "break": 65,
+    "loe": 18
+   }
+  },
+  "B3": {
+   "lost_runs": 25,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 25
+   }
+  },
+  "B3T": {
+   "lost_runs": 114,
+   "fault_free": 19,
+   "fault_runs_lost_before_onset": {
+    "loe": 17,
+    "bias": 20,
+    "break": 17
+   },
+   "fault_runs_lost_after_onset": {
+    "break": 27,
+    "loe": 12,
+    "bias": 2
+   }
+  },
+  "P": {
+   "lost_runs": 11,
+   "fault_free": 0,
+   "fault_runs_lost_before_onset": {},
+   "fault_runs_lost_after_onset": {
+    "break": 11
+   }
+  }
+ }
+}

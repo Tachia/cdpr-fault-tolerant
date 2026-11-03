@@ -41,6 +41,7 @@ To check the results on other machines and compare them, `REPLICATION.md` gives 
 | 4 | Learned fault classifier: data from the frozen controller, search, training, thresholds on validation runs, one test | `docs/phase4/classifier.pdf`, `configs/classifier_phase4*.yaml` |
 | 5 | Evaluation: nine methods on the same randomised runs, protocol fixed before the runs | `docs/phase5/evaluation.pdf`, `configs/evaluation_phase5.yaml`, `results/phase5/` |
 | 6, 7 | Figures, tables and the manuscript, drawn and checked from the stored results | `paper/` |
+| After the review | Replay of every lost run and of every kept run with an unsuccessful MPC solve, recording the angle that ended the run and every solve; the runs ended on yaw alone continued without the attitude rule; the latency study, the frozen controller P with its MPC output delayed by 0 to 60 ms on the 104 upper cable breaks, protocol written and pushed before its first run | `post_review/latency_protocol.yaml`, `results/audit/`, `results/latency/` |
 
 Settings were chosen on calibration runs (seeds from 100000) and the classifier was trained on its own runs (seeds from 300000); the evaluation uses seeds from 200000 and shares no parameter draw, noise sequence or fault onset with them. In the paper the ablation with the planner solved online is called A3; in the evaluation files it is A5.
 
@@ -77,7 +78,8 @@ Settings were chosen on calibration runs (seeds from 100000) and the classifier 
 | `cdpr_ft/estimation/alternatives.py` | The diagnoses that replace the IMM's probabilities in the baselines: the trained classifier (B3) and the threshold rule (B2) |
 | `cdpr_ft/eval/` | The evaluation campaign: methods, run list, one run with its metrics and its trace |
 | `cdpr_ft/provenance.py` | Code digest and library versions stamped into every result |
-| `scripts/` | One script per analysis, calibration, training or evaluation step (`phase1_*` to `phase6_*`); `paper_figures.py`, `paper_tables.py`, `paper_check_numbers.py` and `paper_package.py` (manuscript); `compare_results.py`; `replicate.py` and `compare_replications.py` (replication) |
+| `scripts/` | One script per analysis, calibration, training or evaluation step (`phase1_*` to `phase6_*`); `paper_figures.py`, `paper_tables.py`, `paper_check_numbers.py` and `paper_package.py` (manuscript); `compare_results.py`; `replicate.py` and `compare_replications.py` (replication); `audit_lost_runs.py`, `audit_yaw_runs.py` and `latency_probe.py` (checks made after the review) |
+| `post_review/` | Protocol of the latency study, fixed before its runs; the scripts that run it leave the frozen controller and its digest unchanged |
 | `tests/` | Verification gates: Jacobian against finite differences, mass and gravity relations, Lagrange against Newton-Euler, skew symmetry, equilibrium, energy, step halving, faults, geared winch, sourced parameters, drive requirements, drum windows, compiled plant and prediction model, sensors, loop timing, observer poles, IMM probabilities, time scaling, recovery plan, MPC, replay of a run; classifier inputs against the diagnosis, declaration rule, networks, deterministic training |
 | `results/` | Stored outputs of every script; `results/README.md` lists them with the script and code version that produced each |
 | `figures/verification/`, `figures/phase4/` | Verification and calibration figures, and the figures of the classifier, drawn from `results/` (PDF and PNG); `figures/README.md` |

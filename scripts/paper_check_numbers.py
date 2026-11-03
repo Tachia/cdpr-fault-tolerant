@@ -102,8 +102,8 @@ claim(f"a paired simulation study of {nfault} fault cases and {nff} fault free r
 claim(f"It identified {correct['P']} of the {nfault} faults correctly, declared every cable break within {max_break} ms and lost "
       f"the platform after {lost['P']} of {nbreak} cable breaks, against {lost['B0']} without fault tolerance and {lost['B2']} with "
       f"a classical threshold based pipeline.")
-claim(f"when its probabilities also shaped the constraints of the controller, the platform was lost after "
-      f"{x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} breaks.")
+claim(f"when its probabilities also weighted the fault scenarios of the controller, the platform was lost in "
+      f"{x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} break runs.")
 claim(f"the platform was lost after every one of {upper['B0']} simulated breaks of an upper cable",
       upper["B0"] == s("B0", group="upper")["n"])
 claim(f"Recovery plans computed offline keep the platform after {nbreak - lost['P']} of {nbreak} cable breaks")
@@ -111,9 +111,9 @@ claim(f"isolates every cable break within {max_break} ms")
 claim(f"It identified {correct['P']} of {nfault} faults correctly and declared every break within {max_break} ms.")
 claim(f"With it the platform was lost after {lost['P']} of {nbreak} breaks, against {lost['A5']} with the same planner solved "
       f"online and {lost['B0']} without fault tolerance.")
-claim(f"used that way it raised false alarms in {x2['B3T']['false_alarm_runs']} of "
-      f"{x2['B3T']['fault_runs'] + x2['B3T']['fault_free_runs']} runs and lost {x2['B3T']['lost_after_break'][0]} of "
-      f"{x2['B3T']['lost_after_break'][1]} breaks.")
+claim(f"the weighting came with false alarms in {x2['B3T']['false_alarm_runs']} of "
+      f"{x2['B3T']['fault_runs'] + x2['B3T']['fault_free_runs']} runs and with unsuccessful solves of the MPC, and the platform "
+      f"was lost in {x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} break runs.")
 claim(f"Counting every method on every run it applies to, B3T on a subset fixed in advance, the evaluation comprises "
       f"{A['rows']:,} simulations.")
 
@@ -177,11 +177,27 @@ claim(f"the oracle recovered {rec['B1'][0]} runs after {rec['B1'][1]:.2f} s, A3 
 claim(f"With the 0.4 s of latency, nine more platforms were lost, a difference that is suggestive but not significant on its "
       f"own (p={rp['P vs A5']['lost']['p']:.2f}), while the share of the transient outside the bounds quadrupled", lost["A5"] - lost["P"] == 9,
       round(s("A5")["transient_outside_pct"][0] / s("P")["transient_outside_pct"][0]) == 4)
-claim(f"the classifier cost {lost['B3'] - lost['P']} platforms more than the IMM, {lost['B3']} against {lost['P']}")
+claim(f"the classifier cost {lost['B3'] - lost['P']} platforms more than the IMM, {lost['B3']} against {lost['P']}; used also to "
+      f"weight the scenarios of the MPC, it lost the platform in {x2['B3T']['lost_after_break'][0]} of "
+      f"{x2['B3T']['lost_after_break'][1]} break runs")
 
 # ------------------------------------------------------------------ results: actuator faults
-claim(f"lost {s('B2', kind='loe')['lost'][0]} platforms after a loss of effectiveness and {s('B2', kind='bias')['lost'][0]} "
-      f"after a bias.")
+def lost_split(method, kinds):
+    """Platforms lost in the runs with a fault of the given kinds, after and before the onset."""
+    rr = [r for r in ROWS if r["method"] == method and r["lost"] and r["fault"] and r["fault"][0] in kinds]
+    after = [r for r in rr if r["t_end"] >= r["fault"][2]]
+    before = [r for r in rr if r["t_end"] < r["fault"][2]]
+    return after, before
+
+
+b2_after, b2_before = lost_split("B2", ("loe", "bias"))
+b3t_after, b3t_before = lost_split("B3T", ("loe", "bias"))
+claim(f"except B3T, which lost {len(b3t_after)} after the onset of an actuator fault and {len(b3t_before)} more in such runs "
+      f"before the onset")
+claim(f"B2, which cannot isolate them, lost {sum(r['fault'][0] == 'loe' for r in b2_after)} platforms after a loss of effectiveness, "
+      f"and in {['', 'one', 'two', 'three'][len(b2_before)]} other runs with an actuator fault it lost the platform before the onset, "
+      f"after a false alarm.", all(r["false_alarm"] and r["t_declare"] < r["fault"][2] for r in b2_before),
+      all(r["fault"][0] == "loe" for r in b2_after))
 loeP = rows("P", kind="loe")
 by_rho = {rho: [r for r in loeP if r["fault"][3] == rho] for rho in (0.3, 0.6)}
 med = lambda xs: float(np.median([x for x in xs if x is not None]))
@@ -219,12 +235,77 @@ claim(f"in {sum(x != 0 for x in dd['bias'])} of the {len(rows('P', kind='bias'))
       f"times, P earlier in {len(early)} of them, by {min(early)} to {max(early)} ms, and later in two",
       sum(x > 0 for x in dd["bias"]) == 2, not any(dd["break"]), not any(dd["loe"]))
 mb = PRIMARY["smallest tension margin in the transient window"]["B3T vs B3"]
-claim(f"raised a false alarm in {x2['B3T']['false_alarm_runs']} of {x2['B3T']['fault_runs'] + x2['B3T']['fault_free_runs']} runs "
-      f"against {x2['B3']['false_alarm_runs']} for B3 on the same runs, reduced the correct declarations from "
-      f"{x2['B3']['correct'][0]} to {x2['B3T']['correct'][0]} of {x2['B3']['correct'][1]}, lost {x2['B3T']['lost_after_break'][0]} "
-      f"of {x2['B3T']['lost_after_break'][1]} platforms after a break against {x2['B3']['lost_after_break'][0]}, and lowered the "
-      f"margin in the transient by {-mb['median_diff']:.0f} N (paired median; 95% interval {mb['median_diff_ci'][0]:.1f} to "
+claim(f"a false alarm was raised in {x2['B3T']['false_alarm_runs']} of {x2['B3T']['fault_runs'] + x2['B3T']['fault_free_runs']} "
+      f"runs against {x2['B3']['false_alarm_runs']} for B3 on the same runs, the correct declarations fell from "
+      f"{x2['B3']['correct'][0]} to {x2['B3T']['correct'][0]} of {x2['B3']['correct'][1]}, the platform was lost in "
+      f"{x2['B3T']['lost_after_break'][0]} of {x2['B3T']['lost_after_break'][1]} break runs against "
+      f"{x2['B3']['lost_after_break'][0]}, in {len(lost_split('B3T', ('break',))[1])} of them before the cable broke, and the "
+      f"margin in the transient fell by {-mb['median_diff']:.0f} N (paired median; 95% interval {mb['median_diff_ci'][0]:.1f} to "
       f"{mb['median_diff_ci'][1]:.1f} N)")
+# unsuccessful solves: counts stored by the campaign, details recorded by the replay of the lost runs (post-review audit)
+AUD = load("audit/lost_runs.json")
+fsm = AUD["failed_solves_by_method"]
+b3t_rows = [r for r in ROWS if r["method"] == "B3T"]
+p_fail = [r for r in ROWS if r["method"] == "P" and r["base_metrics"]["mpc_failures"]]
+claim(f"IPOPT returned without success in {sum(r['base_metrics']['mpc_failures'] for r in b3t_rows)} solves in "
+      f"{sum(r['base_metrics']['mpc_failures'] > 0 for r in b3t_rows)} of the {len(b3t_rows)} runs of B3T, against one solve in one "
+      f"run for P.", len(p_fail) == 1 and p_fail[0]["base_metrics"]["mpc_failures"] == 1)
+fb = fsm["B3T"]
+claim(f"all unsuccessful ones stopped at the limit of 30 iterations, {fb['scenarios']['3']} of the {fb['failed_solves']} with the "
+      f"healthy and two fault scenarios in the programme, and the iterates they returned violated the equality constraints of the "
+      f"prediction by {fb['inf_pr_of_returned_iterate']['median']:.2f} in the median and by up to "
+      f"{fb['inf_pr_of_returned_iterate']['max']:.0f} (in metres, radians or their rates), against at most "
+      f"{fsm['A2']['inf_pr_of_returned_iterate']['max']:.3f} for the {['', '', '', '', '', '', '', '', 'eight'][fsm['A2']['failed_solves']]} "
+      f"unsuccessful solves in the lost runs of A2.",
+      AUD["row_check"] == {"identical": AUD["runs"]}, AUD["failed_solve_count_equals_stored"],
+      all(set(v["statuses"]) <= {"Maximum_Iterations_Exceeded"} and set(v["iterations"]) <= {"30"} for v in fsm.values()))
+tdf = fb["by_timing_declaration_failure"]
+pre = {k: v for k, v in tdf.items() if k.startswith("lost_before_onset")}
+lb = AUD["lost_before_onset_by_method"]["B3T"]
+claim(f"Of the {fb['lost_runs']} platforms B3T lost, {sum(pre.values())} were lost before any fault, {lb['fault_free']} of them in "
+      f"fault free runs; {sum(v for k, v in pre.items() if k.endswith('|failed_solve'))} of these {sum(pre.values())} runs contained "
+      f"an unsuccessful solve, {sum(v for k, v in pre.items() if '|before_onset|' in k)} a false declaration, and "
+      f"{sum(v for k, v in pre.items() if '|none|' in k)} no declaration at all.",
+      sum(pre.values()) == lb["fault_free"] + sum(lb["fault_runs_lost_before_onset"].values()))
+lead = fb["loss_after_first_failure_s"]
+claim(f"In each of the {fb['lost_runs_with_failed_solve']} lost runs with an unsuccessful solve the first one came before the loss, "
+      f"by {lead['median']:.2f} s in the median, and in {fb['first_failure_with_attitude_below_10_deg']} of them the attitude was "
+      f"still below 10^\\circ when it came; in "
+      f"{sum(r['base_metrics']['mpc_failures'] > 0 for r in b3t_rows) - fb['lost_runs_with_failed_solve']} other runs the solver "
+      f"failed and the platform was kept.", fb["first_failure_before_loss"] == fb["lost_runs_with_failed_solve"], lead["min"] > 0,
+      sum(1 for r in b3t_rows if r["base_metrics"]["mpc_failures"] > 0 and not r["lost"])
+      == sum(r["base_metrics"]["mpc_failures"] > 0 for r in b3t_rows) - fb["lost_runs_with_failed_solve"])
+
+# ------------------------------------------------------------------ replay of the lost runs (after the review)
+trig = {}
+for v in AUD["trigger_by_method"].values():
+    for k, c in v.items():
+        trig[k] = trig.get(k, 0) + c
+YAW = load("audit/yaw_runs.json")
+yr = YAW["runs"]
+kept = [x for x in yr if not x["lost_roll_pitch_rule"]]
+cont = [x for x in yr if x["lost_roll_pitch_rule"]]
+lead_yaw = max(x["t_roll_or_pitch"] - x["t_stored_stop"] for x in cont)
+cmp3 = {c["comparison"]: c for c in YAW["primary_platform_lost_after_a_break"]["three_angles"]}
+cmp2 = {c["comparison"]: c for c in YAW["primary_platform_lost_after_a_break"]["roll_or_pitch"]}
+p2 = cmp2["P vs B2"]["p_holm"]
+claim(f"After the review we simulated again every one of the {AUD['runs']} runs in which a platform was lost",
+      AUD["runs"] == sum(r["lost"] for r in ROWS))
+claim(f"All {AUD['runs']} rows came out identical to the stored ones.", AUD["row_check"] == {"identical": AUD["runs"]})
+claim(f"Roll ended {trig['roll']} of the runs, pitch {trig['pitch']} and yaw {trig['yaw']}. In one of the eight, pitch had passed "
+      f"30^\\circ as well; in the other seven, runs of A2 and B2, yaw alone had.",
+      trig["yaw"] == 8, len(yr) == 7, {x["method"] for x in yr} == {"A2", "B2"}, YAW["summary"]["all_same_as_stored"])
+claim(f"In six of them roll or pitch passed 30^\\circ within {lead_yaw:.2f} s of the stored end, and so did the tilt of the "
+      f"platform axis; in the seventh, a break of an upper cable under B2, roll, pitch and tilt stayed below 30^\\circ until the "
+      f"run ended.", len(cont) == 6, all(x["t_physical_tilt"] is not None for x in cont), len(kept) == 1,
+      kept[0]["method"] == "B2" and kept[0]["fault"][0] == "break" and kept[0]["fault"][1] < 4,
+      kept[0]["t_physical_tilt"] is None and kept[0]["other_stop"] is None
+      and abs(kept[0]["t_last"] - (kept[0]["fault"][2] + 4.0)) < 1e-9)
+claim(f"B2 then loses {cmp2['P vs B2']['b']} platforms after a break instead of {cmp3['P vs B2']['b']}, and its difference from P "
+      f"remains after the Holm correction (p={p2 / 10 ** np.floor(np.log10(p2)):.1f}\\times10^{int(np.floor(np.log10(p2)))})",
+      cmp3["P vs B2"]["p_holm"] == PRIMARY["platform lost after a break"]["P vs B2"]["p_holm"],
+      all(cmp2[k]["b"] == cmp3[k]["b"] and cmp2[k]["a"] == cmp3[k]["a"] for k in cmp2 if k != "P vs B2"))
+claim("No other loss changes, and every loss of P ended on roll.", AUD["trigger_by_method"]["P"] == {"roll": lost["P"]})
 
 # ------------------------------------------------------------------ results: computation
 cP = S["P|all|all_faults|all"]

@@ -9,8 +9,12 @@ code and settings of the campaign. Two things are recorded that the campaign did
 The recording only reads values; the row of each run must come out identical to the stored row
 (every value except timing), which the script checks.
 
-Output: results/audit/lost_runs.jsonl (one record per run), results/audit/lost_runs.json (summary)
-Usage: python scripts/audit_lost_runs.py [processes]       (resumable)
+With --failed, the runs that were not lost but contained an unsuccessful solve are replayed in the
+same way, so that every unsuccessful solve of the campaign has a recorded status.
+
+Output: results/audit/lost_runs.jsonl (one record per run), results/audit/lost_runs.json (summary);
+        with --failed: results/audit/failed_solve_runs.jsonl and failed_solve_runs.json
+Usage: python scripts/audit_lost_runs.py [processes] [--failed]       (resumable)
 """
 from __future__ import annotations
 
@@ -101,14 +105,8 @@ def audit(job):
     return rec, row
 
 
-def main(processes=2):
-    protocol, _ = load_protocol(PROTOCOL)
-    by_run = {r["run"]: r for r in run_list(protocol)}
-    with gzip.open(ROOT / "results" / "phase5" / "rows.jsonl.gz", "rt") as f:
-        stored = {(d["method"], d["run"]): d for d in map(json.loads, f)}
-    lost = sorted(k for k, d in stored.items() if d["lost"])
-    OUT.mkdir(parents=True, exist_ok=True)
-    path = OUT / "lost_runs.jsonl"
+def replay(keys, path, stored, by_run, processes):
+    """Simulate the (method, run) pairs again with the recording; resumable."""
     done = {}
     if path.exists():
         for line in path.read_text().splitlines():
@@ -117,8 +115,8 @@ def main(processes=2):
             except json.JSONDecodeError:
                 continue
             done[(d["method"], d["run"])] = d
-    todo = [(m, by_run[r]) for m, r in lost if (m, r) not in done]
-    print(f"{len(lost)} lost runs, {len(todo)} to do", flush=True)
+    todo = [(m, by_run[r]) for m, r in keys if (m, r) not in done]
+    print(f"{len(keys)} runs, {len(todo)} to do", flush=True)
     t0 = time.time()
     if todo:
         with mp.get_context("fork").Pool(processes, initializer=worker_init, initargs=(str(PROTOCOL),),
@@ -131,23 +129,92 @@ def main(processes=2):
                 done[(rec["method"], rec["run"])] = rec
                 if (k + 1) % 10 == 0 or k + 1 == len(todo):
                     print(f"  {k + 1}/{len(todo)} runs, {(time.time() - t0) / 60:.1f} min", flush=True)
-    recs = [done[k] for k in lost]
+    return [done[k] for k in keys]
+
+
+def solve_records(recs, stored):
+    """Unsuccessful solves of the replayed runs; their count must equal the count the campaign stored."""
+    fails = [f for r in recs for f in r["failures"]]
+    inf = [f["inf_pr"] for f in fails if f["inf_pr"] is not None]
+    return {"failed_solves": len(fails),
+            "count_equals_stored": all(r["failed_solves"] == stored[(r["method"], r["run"])]["base_metrics"]["mpc_failures"]
+                                       for r in recs),
+            "statuses": dict(Counter(f["status"] for f in fails)),
+            "iterations": dict(Counter(str(f["iterations"]) for f in fails)),
+            "by_method": {m: {"runs": sum(1 for r in recs if r["method"] == m and r["failed_solves"]),
+                              "failed_solves": sum(r["failed_solves"] for r in recs if r["method"] == m)}
+                          for m in sorted({r["method"] for r in recs})},
+            "inf_pr_of_returned_iterate": ({"median": float(np.median(inf)), "max": float(max(inf))} if inf else None)}
+
+
+def main(processes=2, which="lost"):
+    protocol, _ = load_protocol(PROTOCOL)
+    by_run = {r["run"]: r for r in run_list(protocol)}
+    with gzip.open(ROOT / "results" / "phase5" / "rows.jsonl.gz", "rt") as f:
+        stored = {(d["method"], d["run"]): d for d in map(json.loads, f)}
+    OUT.mkdir(parents=True, exist_ok=True)
+    if which == "failed":
+        # the runs that were not lost but contained an unsuccessful solve, so that every unsuccessful
+        # solve of the campaign has a recorded status
+        keys = sorted(k for k, d in stored.items() if not d["lost"] and d["base_metrics"]["mpc_failures"] > 0)
+        recs = replay(keys, OUT / "failed_solve_runs.jsonl", stored, by_run, processes)
+        lost_recs = [json.loads(x) for x in (OUT / "lost_runs.jsonl").read_text().splitlines()]
+        summary = {"runs": len(recs), "row_check": dict(Counter(r["row_check"] for r in recs)),
+                   "runs_not_lost": solve_records(recs, stored),
+                   "all_runs_with_failed_solve": solve_records(
+                       [r for r in recs + lost_recs if r["failed_solves"]], stored),
+                   "stored_failed_solves_total": int(sum(d["base_metrics"]["mpc_failures"] for d in stored.values()))}
+        (OUT / "failed_solve_runs.json").write_text(json.dumps(summary, indent=1))
+        print(json.dumps(summary, indent=1))
+        return
+    lost = sorted(k for k, d in stored.items() if d["lost"])
+    recs = replay(lost, OUT / "lost_runs.jsonl", stored, by_run, processes)
     summary = {"runs": len(recs), "row_check": dict(Counter(r["row_check"] for r in recs)),
+               "failed_solve_count_equals_stored": all(
+                   r["failed_solves"] == stored[(r["method"], r["run"])]["base_metrics"]["mpc_failures"] for r in recs),
                "trigger_by_method": {}, "yaw_triggered": [], "failed_solves_by_method": {}}
     by_m = defaultdict(list)
     for r in recs:
         by_m[r["method"]].append(r)
+    def before_fault(r, t):                 # before the onset, or at any time in a fault free run
+        return t is not None and (r["onset"] is None or t < r["onset"])
+
+    def declaration(r):
+        if r["t_declare"] is None:
+            return "none"
+        return "before_onset" if before_fault(r, r["t_declare"]) else "after_onset"
+    summary["lost_before_onset_by_method"] = {}
     for m, rs in sorted(by_m.items()):
         summary["trigger_by_method"][m] = dict(Counter(r["trigger"] for r in rs))
+        summary["lost_before_onset_by_method"][m] = {
+            "lost_runs": len(rs), "fault_free": sum(1 for r in rs if r["onset"] is None),
+            "fault_runs_lost_before_onset": dict(Counter(r["fault"][0] for r in rs
+                                                         if r["onset"] is not None and r["t_end"] < r["onset"])),
+            "fault_runs_lost_after_onset": dict(Counter(r["fault"][0] for r in rs
+                                                        if r["onset"] is not None and r["t_end"] >= r["onset"]))}
         fl = [r for r in rs if r["failed_solves"]]
         before_tilt = [f for r in fl for f in r["failures"][:1] if f["attitude_deg"] is not None and f["attitude_deg"] < 10]
+        fails = [f for r in fl for f in r["failures"]]
+        inf = [f["inf_pr"] for f in fails if f["inf_pr"] is not None]
+        lead = [r["t_end"] - r["first_failure_t"] for r in fl if r["first_failure_t"] is not None]
         summary["failed_solves_by_method"][m] = {
             "lost_runs": len(rs), "lost_runs_with_failed_solve": len(fl),
             "failed_solves": sum(r["failed_solves"] for r in rs),
             "first_failure_before_onset": sum(1 for r in fl if r["first_failure_t"] is not None and r["onset"] is not None
                                               and r["first_failure_t"] < r["onset"]),
+            "first_failure_before_fault_incl_fault_free": sum(1 for r in fl if before_fault(r, r["first_failure_t"])),
+            "first_failure_before_loss": sum(1 for x in lead if x > 0),
+            "loss_after_first_failure_s": ({"median": float(np.median(lead)), "min": float(min(lead)),
+                                            "max": float(max(lead))} if lead else None),
             "first_failure_with_attitude_below_10_deg": len(before_tilt),
-            "statuses": dict(Counter(f["status"] for r in fl for f in r["failures"]))}
+            "statuses": dict(Counter(f["status"] for f in fails)),
+            "iterations": dict(Counter(str(f["iterations"]) for f in fails)),
+            "scenarios": dict(Counter(str(f["scenarios"]) for f in fails)),
+            "inf_pr_of_returned_iterate": ({"median": float(np.median(inf)), "max": float(max(inf))} if inf else None),
+            "by_timing_declaration_failure": {
+                "|".join(k): v for k, v in sorted(Counter(
+                    ("lost_before_onset" if before_fault(r, r["t_end"]) else "lost_after_onset", declaration(r),
+                     "failed_solve" if r["failed_solves"] else "no_failed_solve") for r in rs).items())}}
     summary["yaw_triggered"] = [{"method": r["method"], "run": r["run"], **r["angles_end_deg"]}
                                 for r in recs if r["trigger"] == "yaw"]
     (OUT / "lost_runs.json").write_text(json.dumps(summary, indent=1))
@@ -155,4 +222,5 @@ def main(processes=2):
 
 
 if __name__ == "__main__":
-    main(*(int(a) for a in sys.argv[1:2]))
+    args = sys.argv[1:]
+    main(*(int(a) for a in args[:1]), *(["failed"] if "--failed" in args else []))
