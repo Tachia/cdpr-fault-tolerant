@@ -1,0 +1,79 @@
+{
+ "runs": 41,
+ "row_check": {
+  "identical": 41
+ },
+ "runs_not_lost": {
+  "failed_solves": 55,
+  "count_equals_stored": true,
+  "statuses": {
+   "Maximum_Iterations_Exceeded": 55
+  },
+  "iterations": {
+   "30": 55
+  },
+  "by_method": {
+   "A1": {
+    "runs": 1,
+    "failed_solves": 1
+   },
+   "A2": {
+    "runs": 5,
+    "failed_solves": 5
+   },
+   "B3": {
+    "runs": 1,
+    "failed_solves": 1
+   },
+   "B3T": {
+    "runs": 33,
+    "failed_solves": 47
+   },
+   "P": {
+    "runs": 1,
+    "failed_solves": 1
+   }
+  },
+  "inf_pr_of_returned_iterate": {
+   "median": 1.8778622740356354e-05,
+   "max": 3.692148550495398
+  }
+ },
+ "all_runs_with_failed_solve": {
+  "failed_solves": 399,
+  "count_equals_stored": true,
+  "statuses": {
+   "Maximum_Iterations_Exceeded": 399
+  },
+  "iterations": {
+   "30": 399
+  },
+  "by_method": {
+   "A1": {
+    "runs": 1,
+    "failed_solves": 1
+   },
+   "A2": {
+    "runs": 13,
+    "failed_solves": 13
+   },
+   "B3": {
+    "runs": 2,
+    "failed_solves": 2
+   },
+   "B3T": {
+    "runs": 111,
+    "failed_solves": 382
+   },
+   "P": {
+    "runs": 1,
+    "failed_solves": 1
+   }
+  },
+  "inf_pr_of_returned_iterate": {
+   "median": 0.06837998872089424,
+   "max": 116.48594092949332
+  }
+ },
+ "stored_failed_solves_total": 399
+}

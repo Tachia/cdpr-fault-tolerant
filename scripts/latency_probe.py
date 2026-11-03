@@ -142,6 +142,10 @@ def validate(done, runs):
     return {"runs": len(classes), "identical": len(classes) - len(bad), "not_identical": bad}
 
 
+def med(xs):
+    return float(np.median(xs)) if len(xs) else None
+
+
 def analyse():
     from phase5_analyse import holm, paired_binary, paired_continuous, wilson
     rng = np.random.default_rng(0)
@@ -158,7 +162,7 @@ def analyse():
         res["conditions"][d] = {
             "runs": len(rows), "lost": lost, "lost_wilson": wilson(lost, len(rows)),
             "correct": sum(bool(r["correct"]) for r in rows),
-            "delay_ms_median": float(1e3 * np.median([r["delay_s"] for r in rows if r["correct"]])),
+            "delay_ms_median": med([1e3 * r["delay_s"] for r in rows if r["correct"]]),
             # descriptive detail beyond the protocol: when the losses happened, how the runs ended and how
             # many were declared before the break (false alarms)
             "lost_before_onset": sum(1 for r in rows if r["lost"] and r["t_end"] < r["fault"][2]),
@@ -168,8 +172,9 @@ def analyse():
             "lost_t_from_onset_s": sorted(round(r["t_end"] - r["fault"][2], 3) for r in rows if r["lost"]),
             "runs_with_failed_solve": sum(1 for r in rows if r["base_metrics"]["mpc_failures"] > 0),
             "failed_solves": int(sum(r["base_metrics"]["mpc_failures"] for r in rows)),
-            **{f"median_{k}": float(np.median([r[k] for r in rows if r.get(k) is not None]))
-               for k in STUDY["endpoints"]["secondary"]}}
+            **{key: val for k in STUDY["endpoints"]["secondary"]
+               for key, val in ((f"median_{k}", med([r[k] for r in rows if r.get(k) is not None])),
+                                (f"n_{k}", sum(1 for r in rows if r.get(k) is not None)))}}
     keys = [d for d in DELAYS if d > 0 and len(by[d]) == len(runs)]
     if len(by[0]) == len(runs) and keys:
         comp = {d: {"lost": paired_binary(by[d], by[0], runs, lambda r: r["lost"], rng)} for d in keys}
@@ -177,8 +182,16 @@ def analyse():
             for d in keys:
                 comp[d][k] = paired_continuous(by[d], by[0], runs, k, rng)
         for k in ["lost"] + STUDY["endpoints"]["secondary"]:
-            adj = holm([comp[d][k]["p"] for d in keys])
-            for d, p in zip(keys, adj):
+            # a continuous endpoint has no test where no run of the delayed condition reached the break
+            # (its transient is not defined); such comparisons get no p-value and leave the Holm family
+            for d in keys:
+                if comp[d][k].get("pairs", 1) == 0:
+                    comp[d][k]["p"] = None
+            ok_d = [d for d in keys if comp[d][k]["p"] is not None]
+            adj = holm([comp[d][k]["p"] for d in ok_d]) if ok_d else []
+            for d in keys:
+                comp[d][k]["p_holm"] = None
+            for d, p in zip(ok_d, adj):
                 comp[d][k]["p_holm"] = p
         res["against_0_ms"] = comp
         ok = [d for d in keys if comp[d]["lost"]["p_holm"] >= STUDY["statistics"]["alpha"]

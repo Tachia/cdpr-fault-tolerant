@@ -132,6 +132,7 @@ These files were written after the review of the manuscript, with the frozen cod
 | `audit/yaw_runs.json` | The seven runs ended on yaw alone, continued without the attitude rule; outcome under a rule on roll and pitch and on the physical tilt; the primary comparison of platforms lost after a break under both rules | `audit_yaw_runs.py` |
 | `latency/rows.jsonl` | Rows of the latency study: P on the 104 upper cable breaks with the MPC output available 0, 20, 40 and 60 ms after each solve starts | `latency_probe.py` |
 | `latency/validation.json` | The rows at 0 ms against the stored rows of the evaluation (the delayed conditions run only if all are identical) | `latency_probe.py` |
-| `latency/analysis.json` | Every condition against 0 ms: platforms lost (exact McNemar test), the secondary endpoints (Wilcoxon), Holm correction over the three delays, Wilson intervals | `latency_probe.py --analyse` |
+| `latency/analysis.json` | Every condition against 0 ms: platforms lost (exact McNemar test), the secondary endpoints (Wilcoxon, not defined where no delayed run reached the break), Holm correction over the three delays, Wilson intervals; when the losses happened and how the runs ended | `latency_probe.py --analyse` |
+| `latency/motion_20ms.json` | The 20 ms runs simulated again with the attitude kept (rows identical to the study): time and angle of each loss, frequency and growth of the attitude oscillation, attitude when the IMM declared | `latency_motion.py 20` |
 
 The protocol of the latency study, `post_review/latency_protocol.yaml`, was committed and pushed before its first run.

@@ -155,20 +155,21 @@ def latency():
         lo, hi = c["lost_wilson"]
         body.append([f"{d}", f"{max(20, d)}", f"{c['lost']}/{c['runs']}", f"{100 * lo:.0f}--{100 * hi:.0f}",
                      f"{c['lost_before_onset']}", pval(comp["lost"]["p_holm"]) if comp else "--",
-                     f"{c['median_transient_outside_pct']:.1f}", f"{c['median_transient_min_margin_N']:.0f}",
+                     "--" if c["median_transient_outside_pct"] is None else f"{c['median_transient_outside_pct']:.1f}",
+                     "--" if c["median_transient_min_margin_N"] is None else f"{c['median_transient_min_margin_N']:.0f}",
                      f"{c['correct']}/{c['runs']}"])
     (OUT / "tab_latency.tex").write_text(tabular(
         "Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks of the evaluation, a "
-        "study added after the review with its protocol fixed before its runs. For $D>0$ a solve starts every "
+        "study added after the evaluation, with its protocol fixed before its runs. For $D>0$ a solve starts every "
         "$\\max(20~\\mathrm{ms},D)$, and its first command takes effect $D$ after the start and is held until the "
         "next. Lost: platforms lost, with the 95\\% Wilson interval in percent; before: of these, lost before the "
         "cable broke; $p$: exact McNemar test against $D=0$ on the same runs, Holm correction over the three delays; "
         "outside and margin: medians over the runs that reached the break, of the share of the 2~s after it with an "
-        "intact cable outside its bounds and of the smallest tension margin of the intact cables; correct: breaks "
-        "declared with the correct mode.", "tab:latency",
+        "intact cable outside its bounds and of the smallest tension margin of the intact cables (--: no run reached "
+        "the break); correct: breaks declared with the correct mode.", "tab:latency",
         "$D$ & Period & Lost & 95\\% CI & Before & $p$ & Outside & Margin & Correct \\\\\n"
         "(ms) & (ms) & & (\\%) & & & (\\%) & (N) &",
-        body, "rrrrrrrrr"))
+        body, "rrrrrrrrr", star=True))
 
 
 def main():

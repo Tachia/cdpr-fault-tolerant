@@ -43,12 +43,24 @@ PASS  IPOPT returned without success in 382 solves in 111 of the 252 runs of B3T
 PASS  all unsuccessful ones stopped at the limit of 30 iterations, 318 of the 335 with the healthy and two fault scenarios in the programme, and the iterates they returned violated the equality constraints of the prediction by 0.14 in the median and by up to 116 (in metres, radians or their rates), against at most 0.004 for the eight unsuccessful solves in the lost runs of A2.
 PASS  Of the 114 platforms B3T lost, 73 were lost before any fault, 19 of them in fault free runs; 61 of these 73 runs contained an unsuccessful solve, 22 a false declaration, and 51 no declaration at all.
 PASS  In each of the 78 lost runs with an unsuccessful solve the first one came before the loss, by 0.53 s in the median, and in 55 of them the attitude was still below 10^\circ when it came; in 33 other runs the solver failed and the platform was kept.
-PASS  After the review we simulated again every one of the 432 runs in which a platform was lost
+PASS  After the evaluation we simulated again every one of the 432 runs in which a platform was lost
 PASS  All 432 rows came out identical to the stored ones.
 PASS  Roll ended 398 of the runs, pitch 26 and yaw 8. In one of the eight, pitch had passed 30^\circ as well; in the other seven, runs of A2 and B2, yaw alone had.
 PASS  In six of them roll or pitch passed 30^\circ within 0.46 s of the stored end, and so did the tilt of the platform axis; in the seventh, a break of an upper cable under B2, roll, pitch and tilt stayed below 30^\circ until the run ended.
 PASS  B2 then loses 64 platforms after a break instead of 65, and its difference from P remains after the Holm correction (p=4.0\times10^-11)
 PASS  No other loss changes, and every loss of P ended on roll.
+PASS  We also replayed the 41 runs in which a solve was unsuccessful but the platform was kept, again with identical rows.
+PASS  All 399 unsuccessful solves of the evaluation, the number the campaign had stored, stopped at the limit of 30 iterations. B3T had 382 of them; P had one, 1.2 s after the break of an upper cable, in a run in which the platform was kept.
+PASS  All 399 unsuccessful solves of the evaluation stopped at the limit of 30 iterations
+PASS  With D=0 all 104 rows were identical to those of the evaluation.
+PASS  With the output one period late, D=20 ms, the platform was lost in all 104 runs, and every loss came before the cable broke, between 0.66 and 1.40 s after the start, while the breaks were due between 3 and 7 s.
+PASS  The roll of the platform oscillated at about 5 Hz with an amplitude that grew by a factor of 32 in the median over half a second, and every run ended on roll.
+PASS  In every run the IMM, not yet armed, then declared a fault of an intact cable or winch, a break of an upper cable in 100 of them, and the platform was lost 0.17 to 0.55 s later.
+PASS  since in 77 runs roll or pitch had already passed 5^\circ
+PASS  With 40 and 60 ms the platform was lost in every run as well, again before the break, and unsuccessful solves appeared in 68 and 55 of the runs. The largest computation time tested without significantly more losses than at D=0 is therefore 0 ms.
+PASS  an output delayed by one period of 20 ms made the platform fall before any fault in all 104 runs tested
+PASS  this happened in no run of the evaluation and in most runs of the latency study
+PASS  with the output of the MPC delayed by one period the platform fell in every run tested
 PASS  took 2.9 ms on average and 5.3 ms at the 99th percentile, against its period of 5 ms.
 PASS  The MPC took 32 ms on average and 65 ms at the 99th percentile
 PASS  The MPC needed 32 ms on average against its period of 20 ms

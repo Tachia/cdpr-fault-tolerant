@@ -226,7 +226,7 @@ The search and the training ran while other work used the machine at times, so t
 
 ## 7. Checks made after the review
 
-Three scripts, run after the review of the manuscript, simulate stored runs again with the frozen code and settings. They change nothing in the package, so the code digest is unchanged; where a study needs a different behaviour (a delayed MPC output, or a run continued past the attitude rule), the script makes the change in its own worker processes only.
+Four scripts, run after the review of the manuscript, simulate stored runs again with the frozen code and settings. They change nothing in the package, so the code digest is unchanged; where a study needs a different behaviour (a delayed MPC output, or a run continued past the attitude rule), the script makes the change in its own worker processes only.
 
 | Command | What it does | Output, check |
 |---|---|---|
@@ -234,5 +234,6 @@ Three scripts, run after the review of the manuscript, simulate stored runs agai
 | `python scripts/audit_lost_runs.py 1 --failed` | The same for the runs that were kept although a solve was unsuccessful | `results/audit/failed_solve_runs.json`, same checks |
 | `python scripts/audit_yaw_runs.py 1` | Continues the runs ended on yaw alone without the attitude rule and recomputes the primary loss comparison under a rule on roll and pitch | `results/audit/yaw_runs.json`; the stop time of each continued run must equal the stored one |
 | `python scripts/latency_probe.py 2` | The latency study of `post_review/latency_protocol.yaml`: P on the 104 upper cable breaks with the MPC output delayed by 0, 20, 40 and 60 ms. The rows at 0 ms are compared with the campaign first, and the delayed conditions run only if all are identical | `results/latency/validation.json`, `rows.jsonl`, `analysis.json` (`--analyse` recomputes the statistics from the rows) |
+| `python scripts/latency_motion.py 20 2` | Simulates the 20 ms runs again with the attitude kept and describes how each run ended | `results/latency/motion_20ms.json`; every row must equal the stored row of the study |
 
-All four are resumable: a run already written to the `.jsonl` file is not simulated again.
+The audit and latency scripts are resumable: a run already written to the `.jsonl` file is not simulated again.

@@ -289,7 +289,7 @@ lead_yaw = max(x["t_roll_or_pitch"] - x["t_stored_stop"] for x in cont)
 cmp3 = {c["comparison"]: c for c in YAW["primary_platform_lost_after_a_break"]["three_angles"]}
 cmp2 = {c["comparison"]: c for c in YAW["primary_platform_lost_after_a_break"]["roll_or_pitch"]}
 p2 = cmp2["P vs B2"]["p_holm"]
-claim(f"After the review we simulated again every one of the {AUD['runs']} runs in which a platform was lost",
+claim(f"After the evaluation we simulated again every one of the {AUD['runs']} runs in which a platform was lost",
       AUD["runs"] == sum(r["lost"] for r in ROWS))
 claim(f"All {AUD['runs']} rows came out identical to the stored ones.", AUD["row_check"] == {"identical": AUD["runs"]})
 claim(f"Roll ended {trig['roll']} of the runs, pitch {trig['pitch']} and yaw {trig['yaw']}. In one of the eight, pitch had passed "
@@ -306,6 +306,60 @@ claim(f"B2 then loses {cmp2['P vs B2']['b']} platforms after a break instead of 
       cmp3["P vs B2"]["p_holm"] == PRIMARY["platform lost after a break"]["P vs B2"]["p_holm"],
       all(cmp2[k]["b"] == cmp3[k]["b"] and cmp2[k]["a"] == cmp3[k]["a"] for k in cmp2 if k != "P vs B2"))
 claim("No other loss changes, and every loss of P ended on roll.", AUD["trigger_by_method"]["P"] == {"roll": lost["P"]})
+FS = load("audit/failed_solve_runs.json")
+fa = FS["all_runs_with_failed_solve"]
+nfs = sum(r["base_metrics"]["mpc_failures"] for r in ROWS)
+fsp = [json.loads(x) for x in (RES / "audit" / "failed_solve_runs.jsonl").read_text().splitlines()]
+fsp = [x for x in fsp if x["method"] == "P"]
+pf = fsp[0]["failures"][0] if len(fsp) == 1 and fsp[0]["failed_solves"] == 1 else None
+claim(f"We also replayed the {FS['runs']} runs in which a solve was unsuccessful but the platform was kept, again with identical rows.",
+      FS["row_check"] == {"identical": FS["runs"]},
+      FS["runs"] == sum(1 for r in ROWS if not r["lost"] and r["base_metrics"]["mpc_failures"] > 0))
+claim(f"All {fa['failed_solves']} unsuccessful solves of the evaluation, the number the campaign had stored, stopped at the limit of "
+      f"30 iterations. B3T had {fa['by_method']['B3T']['failed_solves']} of them; P had one, {pf['t'] - fsp[0]['fault'][2]:.1f} s after "
+      f"the break of an upper cable, in a run in which the platform was kept.",
+      fa["failed_solves"] == nfs == FS["stored_failed_solves_total"], fa["count_equals_stored"],
+      fa["statuses"] == {"Maximum_Iterations_Exceeded": nfs}, fa["iterations"] == {"30": nfs},
+      fsp[0]["fault"][0] == "break" and fsp[0]["fault"][1] < 4)
+claim(f"All {fa['failed_solves']} unsuccessful solves of the evaluation stopped at the limit of 30 iterations")
+
+# ------------------------------------------------------------------ latency study (after the review)
+LA = load("latency/analysis.json")
+LC = LA["conditions"]
+LROWS = [json.loads(x) for x in (RES / "latency" / "rows.jsonl").read_text().splitlines()]
+LM = load("latency/motion_20ms.json")["summary"]
+l20 = [r for r in LROWS if r["delay_ms"] == 20]
+from collections import Counter
+dec20 = Counter(r["declared"] for r in l20)
+lead20 = [r["t_end"] - r["t_declare"] for r in l20]
+onsets = [r["fault"][2] for r in l20]
+claim(f"With D=0 all {LA['validation']['identical']} rows were identical to those of the evaluation.",
+      LA["validation"]["identical"] == LA["validation"]["runs"] == 104, not LA["missing"])
+claim(f"With the output one period late, D=20 ms, the platform was lost in all {LC['20']['lost']} runs, and every loss came before "
+      f"the cable broke, between {min(r['t_end'] for r in l20):.2f} and {max(r['t_end'] for r in l20):.2f} s after the start, while "
+      f"the breaks were due between 3 and 7 s.", LC["20"]["lost"] == LC["20"]["lost_before_onset"] == len(l20) == 104,
+      3.0 <= min(onsets) and max(onsets) <= 7.0)
+claim(f"The roll of the platform oscillated at about {LM['zero_crossing_hz']['median']:.0f} Hz with an amplitude that grew by a "
+      f"factor of {LM['growth']['median']:.0f} in the median over half a second, and every run ended on roll.",
+      LM["angle"]["roll"] == LM["lost"] == 104, LM["row_check"] == {"identical": 104},
+      abs(LM["zero_crossing_hz"]["q25"] - LM["zero_crossing_hz"]["median"]) < 0.5)
+claim(f"In every run the IMM, not yet armed, then declared a fault of an intact cable or winch, a break of an upper cable in "
+      f"{sum(v for k, v in dec20.items() if k is not None and 1 <= k <= 4)} of them, and the platform was lost {min(lead20):.2f} to "
+      f"{max(lead20):.2f} s later.", all(r["declared"] is not None and r["t_declare"] < 2.0 for r in l20))
+claim(f"since in {LM['above_5_deg_before_declaration']} runs roll or pitch had already passed 5^\\circ")
+fs40, fs60 = LC["40"]["runs_with_failed_solve"], LC["60"]["runs_with_failed_solve"]
+claim(f"With 40 and 60 ms the platform was lost in every run as well, again before the break, and unsuccessful solves appeared in "
+      f"{fs40} and {fs60} of the runs. The largest computation time tested without significantly more losses than at D=0 is "
+      f"therefore {LA['largest_delay_without_significantly_more_losses_ms']} ms.",
+      all(LC[d]["lost"] == LC[d]["lost_before_onset"] == 104 for d in ("40", "60")),
+      all(LA["against_0_ms"][d]["lost"]["p_holm"] < 0.05 for d in ("20", "40", "60")))
+claim("an output delayed by one period of 20 ms made the platform fall before any fault in all 104 runs tested",
+      LC["20"]["lost_before_onset"] == 104)
+early_eval = sum(1 for r in ROWS if r["t_declare"] is not None and r["t_declare"] < 2.0)
+early_lat = sum(1 for r in LROWS if r["delay_ms"] > 0 and r["t_declare"] is not None and r["t_declare"] < 2.0)
+claim("this happened in no run of the evaluation and in most runs of the latency study",
+      early_eval == 0, early_lat > sum(1 for r in LROWS if r["delay_ms"] > 0) / 2)
+claim("with the output of the MPC delayed by one period the platform fell in every run tested")
 
 # ------------------------------------------------------------------ results: computation
 cP = S["P|all|all_faults|all"]
