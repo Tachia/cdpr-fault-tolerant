@@ -1,0 +1,65 @@
+# Post-review robustness study: sensitivity of the proposed controller to the computation time of
+# its MPC. Written and committed on 3 November 2026, before any run of the study.
+#
+# Why: in the campaign of Phase 5 (configs/evaluation_phase5.yaml) the simulation applies every
+# controller output in the sample in which it is computed, while the MPC needed 32 ms on average
+# (65 ms at the 99th percentile) against its period of 20 ms. This study asks how the outcome after
+# an upper cable break changes when the MPC output arrives later. It is not part of the
+# preregistered campaign and is reported separately from it. A fixed computation time is a model of
+# delay, not a real time implementation: it shows the sensitivity to the delays tested, and it does
+# not show that a given computer meets them.
+
+label: post-review latency study
+script: scripts/latency_probe.py
+results: results/latency/
+
+runs:
+  # the 104 upper cable break runs of the campaign: paths T1 and T2, cables 1 to 4, repetitions 0
+  # to 12, with the seeds, onsets, noise factors and randomised plants of the campaign
+  source: configs/evaluation_phase5.yaml
+  select: {group: fault, fault_type: break, cables: [0, 1, 2, 3]}
+  expected: 104
+method: P                           # frozen settings of configs/controller_phase3.yaml, as in the campaign
+
+conditions:
+  computation_time_ms: [0, 20, 40, 60]
+  # D = 0 is the controller of the campaign. For D > 0 the MPC runs on one core: a solve starts at
+  # t_s = m * max(20 ms, D), m = 0, 1, 2, ..., so that the next solve starts when the previous one
+  # has finished. The solve uses the state estimate and the reference at t_s and, as the previous
+  # command of its rate penalty, the command applied at t_s. Its first tension command and the
+  # drum acceleration feedforward take effect at t_s + D and are held until the next solution takes
+  # effect. Nothing else changes: the observers, the IMM, the declaration and the tension loops keep
+  # their timing (they ran within their periods on average: 2.9 ms against 5 ms for the estimator
+  # cycle); the warm start still shifts by one MPC interval; a solve in progress at a declaration is
+  # applied when it completes; the plan of the library is taken at the declaration as before, and
+  # the first solve with the declared mode starts at the next solve time.
+
+validation:
+  # before any D > 0 run: the D = 0 rows of the study must equal the stored rows of the campaign in
+  # every value except timing. If they do not, the study stops and the cause is found first.
+  reference_rows: results/phase5/rows.jsonl.gz
+
+endpoints:
+  primary:
+    - lost                          # platform lost after the break (tilt, frame or drum rule of the campaign)
+  secondary:
+    - transient_outside_pct         # share of the 2 s after the onset with an intact cable outside its bounds
+    - transient_min_margin_N        # smallest tension margin of the intact cables in that window
+    - transient_max_p_mm            # largest position error to the active reference in that window
+    - post_rmse_p_mm                # position error after the transient
+    - pre_rmse_p_mm                 # tracking before the fault
+  checks:
+    - correct and delay_s           # isolation of the break, which the delay can affect through the motion
+    - base_metrics.mpc_failures     # unsuccessful MPC solves
+
+statistics:
+  losses: exact McNemar test of each D > 0 against D = 0 on the same runs, Holm correction over the three delays; 95% Wilson intervals of the shares
+  continuous: Wilcoxon signed rank test of each D > 0 against D = 0 on the same runs (runs lost in either condition included as recorded), Holm correction over the three delays per endpoint; medians and paired median differences
+  alpha: 0.05
+
+reporting:
+  - every condition is reported, whatever its outcome; no run is excluded
+  - the paper states the loss count at every delay and the largest tested delay whose losses are not significantly higher than at D = 0
+  - the controller, its settings and the runs are not changed after the results are seen
+  - the rows of the study are kept in results/latency/ and never mixed with the rows of the campaign
+compute: about 1.1 core hours per condition (4.3 core hours in all)
