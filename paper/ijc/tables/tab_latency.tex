@@ -1,10 +1,10 @@
 % written by scripts/paper_tables.py from stored files; do not edit
 \begin{table}
-\tbl{Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks of the evaluation, a study added after the evaluation, with its protocol fixed before its runs. For $D>0$ a solve starts every $\max(20~\mathrm{ms},D)$, and its first command takes effect $D$ after the start and is held until the next. Lost: platforms lost, with the 95\% Wilson interval in percent; before: of these, lost before the cable broke; $p$: exact McNemar test against $D=0$ on the same runs, Holm correction over the three delays; outside and margin: medians over the runs that reached the break, of the share of the 2~s after it with an intact cable outside its bounds and of the smallest tension margin of the intact cables (--: no run reached the break); correct: breaks declared with the correct mode.}
+\tbl{Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks.}
 {\begin{tabular}{@{}rrrrrrrrr@{}}
 \toprule
-$D$ & Period & Lost & 95\% CI & Before & $p$ & Outside & Margin & Correct \\
-(ms) & (ms) & & (\%) & & & (\%) & (N) & \\
+$D$ & Period & Lost & 95\% CI & Lost before & $p$ & Outside & Smallest & Correct \\
+(ms) & (ms) & & (\%) & the break & (Holm) & bounds (\%) & margin (N) & declarations \\
 \midrule
 0 & 20 & 11/104 & 6--18 & 0 & -- & 11.6 & -10 & 104/104 \\
 20 & 20 & 104/104 & 96--100 & 104 & $<0.001$ & -- & -- & 0/104 \\

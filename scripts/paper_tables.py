@@ -83,6 +83,7 @@ def parameters():
          "anchors $\\pm5$ mm, $EA\\ \\pm20\\%$ (uniform)", "study design"],
     ]
     (OUT / "tab_parameters.tex").write_text(tabular(
+        "Model of the robot and the randomisation of its plant." if LAYOUT == "ijc" else
         "Model of the robot. The controller uses the nominal values; the plant of every run draws the "
         "randomised ones from the seed of the run.", "tab:parameters", "Quantity & Value & Source", rows,
         "p{0.2\\linewidth}p{0.47\\linewidth}p{0.27\\linewidth}", star=True))
@@ -101,6 +102,7 @@ def methods():
             ["B3", "Recurrent classifier in place of the IMM probabilities for the declaration; A1 otherwise"],
             ["B3T", "B3 with the classifier probabilities also weighting the MPC scenarios"]]
     (OUT / "tab_methods.tex").write_text(tabular(
+        "Methods of the evaluation." if LAYOUT == "ijc" else
         "Methods of the evaluation. All run on the same plant, sensors and seeds, so every comparison is paired.",
         "tab:methods", "Method & Description", rows, "lp{0.8\\linewidth}"))
 
@@ -135,6 +137,15 @@ def results():
     b3t_fault = sum(1 for r in b3t if r["fault"])
     b3t_break = sum(1 for r in b3t if r["fault"] and r["fault"][0] == "break")
     b3t_lost_break = sum(1 for r in b3t if r["lost"] and r["fault"] and r["fault"][0] == "break")
+    if LAYOUT == "ijc":
+        # concise title; the headers carry the definitions, the denominators are in the cells, and the
+        # comments (Holm correction, early losses of B3T) are in the text of the manuscript
+        (OUT / "tab_results.tex").write_text(tabular(
+            "Outcome of every method in the evaluation.", "tab:results",
+            "& \\multicolumn{2}{c}{Lost in break runs} & Correct & Median break & False alarms & Breaks \\\\\n"
+            "\\cmidrule(lr){2-3}\nMethod & upper & lower & declarations & delay (ms) & (per h) & recovered",
+            body, "lrrrrrr", star=True))
+        return
     (OUT / "tab_results.tex").write_text(tabular(
         "Outcome of every method. Lost: platforms lost in the runs with a break of an upper and of a lower cable, "
         "out of the break runs of each group; correct: faults declared with the correct mode, out of all fault "
@@ -168,6 +179,13 @@ def latency():
                      "--" if c["median_transient_outside_pct"] is None else f"{c['median_transient_outside_pct']:.1f}",
                      "--" if c["median_transient_min_margin_N"] is None else f"{c['median_transient_min_margin_N']:.0f}",
                      f"{c['correct']}/{c['runs']}"])
+    if LAYOUT == "ijc":
+        (OUT / "tab_latency.tex").write_text(tabular(
+            "Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks.", "tab:latency",
+            "$D$ & Period & Lost & 95\\% CI & Lost before & $p$ & Outside & Smallest & Correct \\\\\n"
+            "(ms) & (ms) & & (\\%) & the break & (Holm) & bounds (\\%) & margin (N) & declarations",
+            body, "rrrrrrrrr", star=True))
+        return
     (OUT / "tab_latency.tex").write_text(tabular(
         "Sensitivity of P to the computation time $D$ of the MPC on the 104 upper cable breaks of the evaluation, a "
         "study added after the evaluation, with its protocol fixed before its runs. For $D>0$ a solve starts every "

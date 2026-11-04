@@ -380,14 +380,15 @@ early_eval = sum(1 for r in ROWS if r["t_declare"] is not None and r["t_declare"
 early_lat = sum(1 for r in LROWS if r["delay_ms"] > 0 and r["t_declare"] is not None and r["t_declare"] < 2.0)
 claim("this happened in no run of the evaluation and in most runs of the latency study",
       early_eval == 0, early_lat > sum(1 for r in LROWS if r["delay_ms"] > 0) / 2)
-claim("with the output of the MPC delayed by one period the platform fell in every run tested")
+claim("with the output of the MPC delayed by one period the platform fell in every run tested" if MS == "cas" else
+      "with its output delayed by one period the platform fell in every run tested")
 
 # ------------------------------------------------------------------ results: computation
 cP = S["P|all|all_faults|all"]
 claim(f"took {cP['imm_ms']['mean_median']:.1f} ms on average and {cP['imm_ms']['p99_median']:.1f} ms at the 99th percentile, "
       f"against its period of 5 ms.")
 claim(f"The MPC took {cP['mpc_ms']['mean_median']:.0f} ms on average and {cP['mpc_ms']['p99_median']:.0f} ms at the 99th percentile")
-claim(f"The MPC needed {cP['mpc_ms']['mean_median']:.0f} ms on average against its period of 20 ms")
+claim(f"{'The' if MS == 'cas' else 'the'} MPC needed {cP['mpc_ms']['mean_median']:.0f} ms on average against its period of 20 ms")
 
 # ------------------------------------------------------------------ the example run (figure 4)
 import paper_figures as pf  # noqa: E402
@@ -489,12 +490,18 @@ cov = [x for k in ("T1_circle", "T2_helix") for x in trs[k]["post_fault_static_c
 assert all(x == 0 for k in ("T1_circle", "T2_helix") for x in trs[k]["post_fault_static_coverage"][:4])
 claim(f"while after a lower cable breaks it can on {100 * min(cov):.0f} to {100 * max(cov):.0f}% of the path")
 claim(f"rotor of {1e4 * c['winch']['inertia']:.1f} kg cm^2 acts like a mass".replace("kg cm^2", "kgcm^2"))
-claim(f"vertical lines: declarations of P ({dl['P']} ms), B2 ({dl['B2']} ms) and B3 ({dl['B3']} ms)")
-claim(f"A break of the upper cable {cable + 1} at {onset:.3f} s on {sel['trajectory']} (run {run} of the evaluation)")
+if MS == "cas":                     # the declarations are in the caption of the CAS version only
+    claim(f"vertical lines: declarations of P ({dl['P']} ms), B2 ({dl['B2']} ms) and B3 ({dl['B3']} ms)")
+claim(f"break of the upper cable {cable + 1} at {onset:.3f} s on {sel['trajectory']} (run {run} of the evaluation)")
 claim(f"declared every break within {max_break} ms and raised one false alarm in {hours:.2f} h. With recovery plans computed in "
       f"advance along the task the platform was lost after {lost['P']} of {nbreak} breaks, all of them upper cable breaks, against "
       f"{lost['B0']} without fault tolerance and {lost['A5']} when the same plans were solved online.")
-claim(f"(a) IMM (P against A1, {mg['pairs']} runs): the points lie on the diagonal. (b) Classifier (B3T against B3, {mb['pairs']} runs)")
+if MS == "cas":
+    claim(f"(a) IMM (P against A1, {mg['pairs']} runs): the points lie on the diagonal. (b) Classifier (B3T against B3, {mb['pairs']} runs)")
+else:
+    claim(f"the {mg['pairs']} paired runs lie on the diagonal")
+    claim(f"most of the {mb['pairs']} paired runs in which B3T reached the fault lie below the diagonal",
+          mb["pairs"] == sum(1 for r in ROWS if r["method"] == "B3T" and r["fault"] and r["t_end"] >= r["fault"][2]))
 
 # ------------------------------------------------------------------ settings table against the frozen configuration
 cfg = yaml.safe_load((ROOT / "configs" / "controller_phase3.yaml").read_text())
@@ -526,7 +533,10 @@ if MS == "ijc":
     import tempfile
     if shutil.which("detex"):
         src = (MSDIR / "main.tex").read_text()
-        body = src[src.index("\\section{Introduction}"):src.index("\\section*{Disclosure statement}")]
+        start = src.index("\\section{Introduction}")
+        body = src[start:src.index("\\section*{", start)]          # up to the first unnumbered section
+        if body.rstrip().endswith("\\ifblind\\else"):
+            body = body[:body.rfind("\\ifblind")]
         noflt = body
         for env in ("equation", "align", "gather", "multline", "table", "figure", "algorithm"):
             noflt = re.sub(r"\\begin\{%s\*?\}.*?\\end\{%s\*?\}" % (env, env), " ", noflt, flags=re.S)

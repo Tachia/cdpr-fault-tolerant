@@ -56,10 +56,10 @@ PASS  In every run the IMM, not yet armed, then declared a fault of an intact ca
 PASS  since in 77 runs roll or pitch had already passed 5^\circ
 PASS  With 40 and 60 ms the platform was lost in every run as well, again before the break, and unsuccessful solves appeared in 68 and 55 of the runs. The largest computation time tested without significantly more losses than at D=0 is therefore 0 ms.
 PASS  this happened in no run of the evaluation and in most runs of the latency study
-PASS  with the output of the MPC delayed by one period the platform fell in every run tested
+PASS  with its output delayed by one period the platform fell in every run tested
 PASS  took 2.9 ms on average and 5.3 ms at the 99th percentile, against its period of 5 ms.
 PASS  The MPC took 32 ms on average and 65 ms at the 99th percentile
-PASS  The MPC needed 32 ms on average against its period of 20 ms
+PASS  the MPC needed 32 ms on average against its period of 20 ms
 PASS  Cable 2 breaks at 4.933 s on T1.
 PASS  The IMM gives the break mode a probability above 0.99 in the cycle 11 ms after the break and declares it after 17 ms.
 PASS  The classifier's probability rises earlier, to 0.99 at 6 ms, but both reach the threshold of 0.9999 in the same cycle, 11 ms after the break; the IMM needs two such cycles and declares after 17 ms, the classifier needs four and declares after 27 ms, and the threshold rule of B2 declares at 22 ms.
@@ -85,10 +85,10 @@ PASS  At the home pose the six elastic modes of the platform with locked winches
 PASS  never falls below 95.4% of EA
 PASS  while after a lower cable breaks it can on 29 to 52% of the path
 PASS  rotor of 0.3 kgcm^2 acts like a mass
-PASS  vertical lines: declarations of P (17 ms), B2 (22 ms) and B3 (27 ms)
-PASS  A break of the upper cable 2 at 4.933 s on T1 (run 1 of the evaluation)
+PASS  break of the upper cable 2 at 4.933 s on T1 (run 1 of the evaluation)
 PASS  declared every break within 19 ms and raised one false alarm in 1.29 h. With recovery plans computed in advance along the task the platform was lost after 11 of 208 breaks, all of them upper cable breaks, against 122 without fault tolerance and 20 when the same plans were solved online.
-PASS  (a) IMM (P against A1, 624 runs): the points lie on the diagonal. (b) Classifier (B3T against B3, 138 runs)
+PASS  the 624 paired runs lie on the diagonal
+PASS  most of the 138 paired runs in which B3T reached the fault lie below the diagonal
 PASS  bandwidth \omega_o/2\pi; k_P, k_I & 50 Hz; 0.5, 20 s^-1
 PASS  period; arming time & 5 ms; 2 s
 PASS  process noise, linear and angular acceleration & 0.5 ms^-2, 1 rads^-2
@@ -104,4 +104,4 @@ PASS  T, intervals; s_p, s_\min & 1 s, 15; 5, 10 N
 PASS  library: break instants; detection delay & every 50 ms; 15 ms
 PASS  the stage cost of a fault scenario is scaled by 0.1
 PASS  a soft tension margin of 20 N, penalised quadratically
-PASS  Word count: about 10,350 words in Sections 1 to 8 (about 11,600 with the tables, figure captions and algorithm)
+PASS  Word count: about 9,850 words in Sections 1 to 8 (about 10,450 with the tables, figure captions and algorithm)

@@ -90,7 +90,7 @@ PASS  never falls below 95.4% of EA
 PASS  while after a lower cable breaks it can on 29 to 52% of the path
 PASS  rotor of 0.3 kgcm^2 acts like a mass
 PASS  vertical lines: declarations of P (17 ms), B2 (22 ms) and B3 (27 ms)
-PASS  A break of the upper cable 2 at 4.933 s on T1 (run 1 of the evaluation)
+PASS  break of the upper cable 2 at 4.933 s on T1 (run 1 of the evaluation)
 PASS  declared every break within 19 ms and raised one false alarm in 1.29 h. With recovery plans computed in advance along the task the platform was lost after 11 of 208 breaks, all of them upper cable breaks, against 122 without fault tolerance and 20 when the same plans were solved online.
 PASS  (a) IMM (P against A1, 624 runs): the points lie on the diagonal. (b) Classifier (B3T against B3, 138 runs)
 PASS  bandwidth \omega_o/2\pi; k_P, k_I & 50 Hz; 0.5, 20 s^-1
